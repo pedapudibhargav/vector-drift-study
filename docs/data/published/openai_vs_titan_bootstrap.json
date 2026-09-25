@@ -1,0 +1,457 @@
+{
+  "B": 5000,
+  "seed": 42,
+  "n": 200,
+  "tau": 0.1,
+  "endpoint": {
+    "hit_at_1": {
+      "openai_hnsw_drop": {
+        "estimate": -0.295,
+        "ci95": [
+          -0.355,
+          -0.23
+        ]
+      },
+      "titan_hnsw_drop": {
+        "estimate": -0.235,
+        "ci95": [
+          -0.295,
+          -0.18
+        ]
+      },
+      "openai_exact_drop": {
+        "estimate": -0.26,
+        "ci95": [
+          -0.32,
+          -0.2
+        ]
+      },
+      "titan_exact_drop": {
+        "estimate": -0.235,
+        "ci95": [
+          -0.295,
+          -0.18
+        ]
+      },
+      "hnsw_titan_minus_openai_drop": {
+        "estimate": 0.06,
+        "ci95": [
+          -0.015,
+          0.135
+        ]
+      },
+      "hnsw_titan_minus_openai_at_100k": {
+        "estimate": 0.08,
+        "ci95": [
+          0.02,
+          0.14
+        ]
+      },
+      "exact_titan_minus_openai_drop": {
+        "estimate": 0.025,
+        "ci95": [
+          -0.05,
+          0.1
+        ]
+      },
+      "exact_titan_minus_openai_at_100k": {
+        "estimate": 0.045,
+        "ci95": [
+          -0.01,
+          0.105
+        ]
+      }
+    },
+    "hit_at_10": {
+      "openai_hnsw_drop": {
+        "estimate": -0.285,
+        "ci95": [
+          -0.345,
+          -0.225
+        ]
+      },
+      "titan_hnsw_drop": {
+        "estimate": -0.175,
+        "ci95": [
+          -0.23,
+          -0.12
+        ]
+      },
+      "openai_exact_drop": {
+        "estimate": -0.21,
+        "ci95": [
+          -0.265,
+          -0.155
+        ]
+      },
+      "titan_exact_drop": {
+        "estimate": -0.175,
+        "ci95": [
+          -0.23,
+          -0.12
+        ]
+      },
+      "hnsw_titan_minus_openai_drop": {
+        "estimate": 0.11,
+        "ci95": [
+          0.04,
+          0.175
+        ]
+      },
+      "hnsw_titan_minus_openai_at_100k": {
+        "estimate": 0.1,
+        "ci95": [
+          0.04,
+          0.16
+        ]
+      },
+      "exact_titan_minus_openai_drop": {
+        "estimate": 0.035,
+        "ci95": [
+          -0.025,
+          0.1
+        ]
+      },
+      "exact_titan_minus_openai_at_100k": {
+        "estimate": 0.025,
+        "ci95": [
+          -0.03,
+          0.08
+        ]
+      }
+    },
+    "mrr": {
+      "openai_hnsw_drop": {
+        "estimate": -0.2929,
+        "ci95": [
+          -0.3433,
+          -0.2418
+        ]
+      },
+      "titan_hnsw_drop": {
+        "estimate": -0.2065,
+        "ci95": [
+          -0.2495,
+          -0.1643
+        ]
+      },
+      "openai_exact_drop": {
+        "estimate": -0.2492,
+        "ci95": [
+          -0.2959,
+          -0.2028
+        ]
+      },
+      "titan_exact_drop": {
+        "estimate": -0.2065,
+        "ci95": [
+          -0.2495,
+          -0.1643
+        ]
+      },
+      "hnsw_titan_minus_openai_drop": {
+        "estimate": 0.0865,
+        "ci95": [
+          0.0302,
+          0.1416
+        ]
+      },
+      "hnsw_titan_minus_openai_at_100k": {
+        "estimate": 0.1003,
+        "ci95": [
+          0.0515,
+          0.1486
+        ]
+      },
+      "exact_titan_minus_openai_drop": {
+        "estimate": 0.0427,
+        "ci95": [
+          -0.0078,
+          0.0924
+        ]
+      },
+      "exact_titan_minus_openai_at_100k": {
+        "estimate": 0.0565,
+        "ci95": [
+          0.0123,
+          0.1023
+        ]
+      }
+    }
+  },
+  "exact_minus_hnsw_hit10": {
+    "openai_5000": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "hit10_disagreements": 0
+    },
+    "openai_50000": {
+      "estimate": 0.085,
+      "ci95": [
+        0.05,
+        0.125
+      ],
+      "hit10_disagreements": 17
+    },
+    "openai_100000": {
+      "estimate": 0.075,
+      "ci95": [
+        0.04,
+        0.11
+      ],
+      "hit10_disagreements": 15
+    },
+    "titan_5000": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "hit10_disagreements": 0
+    },
+    "titan_50000": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "hit10_disagreements": 0
+    },
+    "titan_100000": {
+      "estimate": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "hit10_disagreements": 0
+    }
+  },
+  "titan_raw_hit10_ci": {
+    "5000": {
+      "estimate": 0.785,
+      "ci95": [
+        0.725,
+        0.84
+      ]
+    },
+    "10000": {
+      "estimate": 0.755,
+      "ci95": [
+        0.695,
+        0.815
+      ]
+    },
+    "15000": {
+      "estimate": 0.735,
+      "ci95": [
+        0.675,
+        0.795
+      ]
+    },
+    "20000": {
+      "estimate": 0.7,
+      "ci95": [
+        0.635,
+        0.765
+      ]
+    },
+    "25000": {
+      "estimate": 0.695,
+      "ci95": [
+        0.63,
+        0.76
+      ]
+    },
+    "40000": {
+      "estimate": 0.65,
+      "ci95": [
+        0.585,
+        0.715
+      ]
+    },
+    "50000": {
+      "estimate": 0.645,
+      "ci95": [
+        0.58,
+        0.71
+      ]
+    },
+    "75000": {
+      "estimate": 0.615,
+      "ci95": [
+        0.55,
+        0.685
+      ]
+    },
+    "100000": {
+      "estimate": 0.61,
+      "ci95": [
+        0.545,
+        0.68
+      ]
+    }
+  },
+  "fits": {
+    "openai": {
+      "hit_at_1": {
+        "a": 1.279,
+        "b": 0.087
+      },
+      "hit_at_10": {
+        "a": 1.474,
+        "b": 0.086
+      },
+      "mrr": {
+        "a": 1.359,
+        "b": 0.088
+      }
+    },
+    "titan": {
+      "hit_at_1": {
+        "a": 1.382,
+        "b": 0.087
+      },
+      "hit_at_10": {
+        "a": 1.334,
+        "b": 0.064
+      },
+      "mrr": {
+        "a": 1.312,
+        "b": 0.074
+      }
+    }
+  },
+  "early_step_hit10_5k_to_10k": {
+    "openai": {
+      "estimate": -0.135,
+      "ci95": [
+        -0.18,
+        -0.09
+      ]
+    },
+    "titan": {
+      "estimate": -0.03,
+      "ci95": [
+        -0.055,
+        -0.01
+      ]
+    }
+  },
+  "delta_meta": {
+    "openai": {
+      "delta_meta": {
+        "5000": 0.08,
+        "10000": 0.175,
+        "15000": 0.18,
+        "20000": 0.175,
+        "25000": 0.175,
+        "40000": 0.135,
+        "50000": 0.135,
+        "75000": 0.135,
+        "100000": 0.13
+      },
+      "points_below_tau": [
+        5000
+      ],
+      "n_star_sustained": null,
+      "n_star_first_crossing": 5000
+    },
+    "titan": {
+      "delta_meta": {
+        "5000": 0.085,
+        "10000": 0.07,
+        "15000": 0.075,
+        "20000": 0.095,
+        "25000": 0.095,
+        "40000": 0.115,
+        "50000": 0.105,
+        "75000": 0.1,
+        "100000": 0.08
+      },
+      "points_below_tau": [
+        5000,
+        10000,
+        15000,
+        20000,
+        25000,
+        100000
+      ],
+      "n_star_sustained": 100000,
+      "n_star_first_crossing": 5000
+    }
+  },
+  "hit10_overlap_100k": {
+    "both_miss": 68,
+    "both_hit": 92,
+    "openai_only_hit": 10,
+    "titan_only_hit": 30
+  },
+  "hit10_by_type": {
+    "basic": {
+      "openai_5000": 0.825,
+      "n": 63,
+      "openai_100000": 0.571,
+      "titan_5000": 0.873,
+      "titan_100000": 0.73
+    },
+    "metadata": {
+      "openai_5000": 0.718,
+      "n": 39,
+      "openai_100000": 0.385,
+      "titan_5000": 0.641,
+      "titan_100000": 0.436
+    },
+    "semantic": {
+      "openai_5000": 0.622,
+      "n": 45,
+      "openai_100000": 0.267,
+      "titan_5000": 0.622,
+      "titan_100000": 0.356
+    },
+    "intra_document_reasoning": {
+      "openai_5000": 1.0,
+      "n": 10,
+      "openai_100000": 0.8,
+      "titan_5000": 0.9,
+      "titan_100000": 0.7
+    },
+    "project_related": {
+      "openai_5000": 1.0,
+      "n": 11,
+      "openai_100000": 0.909,
+      "titan_5000": 1.0,
+      "titan_100000": 1.0
+    },
+    "constrained": {
+      "openai_5000": 0.917,
+      "n": 12,
+      "openai_100000": 0.75,
+      "titan_5000": 0.917,
+      "titan_100000": 0.917
+    },
+    "conflicting_info": {
+      "openai_5000": 0.875,
+      "n": 8,
+      "openai_100000": 0.5,
+      "titan_5000": 0.875,
+      "titan_100000": 0.5
+    },
+    "completeness": {
+      "openai_5000": 1.0,
+      "n": 6,
+      "openai_100000": 0.5,
+      "titan_5000": 0.833,
+      "titan_100000": 0.667
+    },
+    "miscellaneous": {
+      "openai_5000": 1.0,
+      "n": 6,
+      "openai_100000": 0.833,
+      "titan_5000": 1.0,
+      "titan_100000": 1.0
+    }
+  }
+}

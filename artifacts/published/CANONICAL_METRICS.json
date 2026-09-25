@@ -1,0 +1,25 @@
+{
+  "canonical": true,
+  "promoted_at": "2026-09-20T22:07:57Z",
+  "sweep_md5": "c7079e1324cf81d253c2d599c98b07b4",
+  "fit_md5": "288640d5754bd6f3f883dbc7b97b295c",
+  "integrity": "OK",
+  "unique_eval_ids": true,
+  "empty_retrieved_cells": 0,
+  "n_star_tau_0_10": null,
+  "n_star_last_ge": 100000,
+  "fit_hit_at_10": {
+    "a": 1.4740926693219225,
+    "b": 0.08578610511454804,
+    "form": "a - b*log(N)"
+  },
+  "source_results": "data/results/erb_scale_sweep_20260920T203818Z.json",
+  "note": "Integrity-clean unique-eval-id re-sweep after HNSW iterative_scan fix.",
+  "human_review": "spotcheck_done_9of10_agree_1_unsure",
+  "bm25_baseline": "artifacts/published/erb_bm25_baseline_primary200.json",
+  "bm25_vs_dense_bootstrap": "artifacts/published/bm25_vs_dense_bootstrap.json",
+  "l4_spotcheck_human": "artifacts/published/l4_spotcheck_human_results.json",
+  "verify_script": "scripts/erb/verify_paper_numbers.py",
+  "llm_openai_report": "artifacts/published/llm_audit_report_openai.json",
+  "llm_ollama_status": "quarantined"
+}

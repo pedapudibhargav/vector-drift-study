@@ -1,0 +1,105 @@
+name: vector-drift-research
+
+services:
+  vector-drift-postgres:
+    container_name: vector-drift-postgres
+    image: pgvector/pgvector:pg16
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-vector_drift_db}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./infra/db/init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-vector_drift_db}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - vector-drift-net
+
+  vector-drift-api:
+    container_name: vector-drift-api
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+      args:
+        DOCKER_PYTHON_IMAGE: ${DOCKER_PYTHON_IMAGE:-docker.io/library/python:3.12-slim}
+        PYPI_INDEX_URL: ${PYPI_INDEX_URL:-https://pypi.org/simple/}
+        PIP_TRUSTED_HOST: ${PIP_TRUSTED_HOST:-}
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      - BACKEND_HOST=0.0.0.0
+      - BACKEND_PORT=8000
+      - CORS_ORIGINS=http://localhost:5173,http://127.0.0.1:5173
+      - DATABASE_URL=postgresql+asyncpg://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@vector-drift-postgres:5432/${POSTGRES_DB:-vector_drift_db}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    volumes:
+      - ./apps/api/app:/app/app
+      - ./data:/app/data
+      - ./artifacts:/app/artifacts
+      - ./docs/data:/app/docs/data:ro
+      - ./scripts:/app/scripts:ro
+      - ./init_vector_db.py:/app/init_vector_db.py:ro
+      - ./.env:/app/.env:ro
+    depends_on:
+      vector-drift-postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    networks:
+      - vector-drift-net
+
+  vector-drift-web:
+    container_name: vector-drift-web
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+      args:
+        DOCKER_NODE_IMAGE: ${DOCKER_NODE_IMAGE:-docker.io/library/node:22-alpine}
+        NPM_REGISTRY: ${NPM_REGISTRY:-https://registry.npmjs.org/}
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_PROXY_TARGET=http://vector-drift-api:8000
+    volumes:
+      - ./apps/web/src:/app/src
+      - ./apps/web/index.html:/app/index.html
+    depends_on:
+      vector-drift-api:
+        condition: service_healthy
+    networks:
+      - vector-drift-net
+
+  vector-drift-adminer:
+    container_name: vector-drift-adminer
+    image: adminer:4
+    ports:
+      - "8081:8080"
+    environment:
+      ADMINER_DEFAULT_SERVER: vector-drift-postgres
+    depends_on:
+      vector-drift-postgres:
+        condition: service_healthy
+    networks:
+      - vector-drift-net
+    profiles: ["tools"]
+
+volumes:
+  pgdata:
+
+networks:
+  vector-drift-net:
+    name: vector-drift-net

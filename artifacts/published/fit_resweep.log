@@ -1,0 +1,3 @@
+usage: fit_scaling_law.py [-h] [--tau TAU] [--bootstrap BOOTSTRAP] [--out OUT]
+                          results_json
+fit_scaling_law.py: error: unrecognized arguments: --sweep

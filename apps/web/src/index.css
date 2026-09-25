@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-brand-400: oklch(0.62 0.18 250);
+  --color-brand-500: oklch(0.55 0.18 250);
+  --color-brand-600: oklch(0.48 0.2 250);
+  --color-surface-900: oklch(0.15 0.01 260);
+  --color-surface-800: oklch(0.2 0.012 260);
+  --color-surface-700: oklch(0.25 0.012 260);
+  --color-surface-600: oklch(0.32 0.01 260);
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-surface-900 text-gray-100 antialiased;
+}

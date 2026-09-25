@@ -1,0 +1,88 @@
+# Environment
+.env
+.env.local
+
+# Local-only notes (employer network, personal planning — never publish)
+private/
+docker-compose.corp.yml
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+dist/
+.pytest_cache/
+
+# Node
+node_modules/
+apps/web/dist/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+
+# Data
+data/raw/
+data/processed/
+data/aws_urls_dataset.db
+data/grouped_urls_manifest.json
+data/static/
+data/embedding_audit.json
+data/url_pipeline_index.db
+data/reports/*
+!data/reports/.gitkeep
+data/ingest_eval*.json
+data/evaluation_sample_*.json
+data/gate3_test_*.json
+data/gate3_*.log
+data/scan_registry_test.json
+data/full_ingest_smoke.json
+data/enterprise_rag_bench/zips/
+data/enterprise_rag_bench/documents/
+data/erb_ingest_checkpoint.json
+data/erb_query_embed_cache.json
+data/erb_scale_manifest.json
+data/erb_cost_tracker.json
+data/results/
+*.log
+
+# Local TLS intercept / private CA certs (never commit)
+infra/certs/
+
+# Generated static exports (run scripts/export_static_url_lists.py)
+apps/web/public/data/
+
+
+# Large local DB dumps (publish via GitHub Releases — Option C)
+data/backups/*/
+!data/backups/README.md
+
+# Verification bundle is committed (Option B, no embeddings) under
+# artifacts/verification/ and docs/data/verification/
+data/backups/release/
+
+# Keep published camera-ready artifacts tracked
+!artifacts/
+!artifacts/published/
+!artifacts/published/**
+
+# Allow publishing selected result snapshots via artifacts/; ignore working results dir
+# data/results/ remains ignored — copy finals into artifacts/published/
+
+
+# Local AWS SSO config (never commit — credentials / account profiles)
+.aws/
+data/erb_titan_ingest_checkpoint.json
+data/erb_titan_ingest_heartbeat.json
+data/erb_ollama_ingest_checkpoint.json
+data/erb_titan_query_embed_cache.json
+
+# LaTeX build leftovers / local backups
+*.aux
+*.bak_*

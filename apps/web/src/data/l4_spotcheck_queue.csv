@@ -1,0 +1,11 @@
+question_id,corpus_scale_size,condition,auto_hit_at_10,gold_answers_question,human_label_correct,spot_reason,priority,human_notes
+qst_0010::metadata,5000,meta,True,True,y,irene_choi_auditor_inconsistency,spotcheck,The gold document answers the question by providing the due date for Irene Choi's action item.
+qst_0010::metadata,40000,raw,False,False,y,irene_choi_auditor_inconsistency,spotcheck,The gold document does not mention any due date for Irene Choi's action item.
+qst_0003::metadata,5000,raw,True,True,y,hit_gold_ok,spotcheck,"The gold document provides the due date as before the holiday break, which answers the question."
+qst_0024::metadata,15000,raw,True,True,y,hit_gold_ok,spotcheck,The gold document directly answers the question by providing verification steps after rotating production credentials.
+qst_0002::metadata,20000,raw,False,True,y,miss_gold_ok_true_miss,spotcheck,The gold document correctly identifies Markus Klein as the internal organizer for the meeting in question.
+qst_0002::metadata,100000,raw,False,True,y,miss_gold_ok_true_miss,spotcheck,The gold document correctly identifies Markus Klein as the internal organizer for the meeting in question.
+qst_0016::basic,40000,meta,False,True,y,miss_gold_ok_true_miss,spotcheck,"The gold document specifies the default expiration period for contractor access as 30 days, which answers the question."
+qst_0041::metadata,50000,meta,False,False,y,miss_gold_false_check_label,spotcheck,"The gold document does not specify a forecasted deal closure month, making the MISS fair."
+qst_0044::metadata,25000,meta,False,False,y,miss_gold_false_check_label,spotcheck,The gold document does not mention the sales owner for the account.
+qst_0054::metadata,100000,raw,False,False,y,miss_gold_false_check_label,spotcheck,The gold document does not list an owner for the draft internal notes document.

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Verify Hit@k results — Vector Drift Study</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .toolbar { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: end; margin: 1rem 0 1.25rem; }
+    .toolbar label { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.8rem; color: #444; }
+    .toolbar input, .toolbar select, .toolbar button {
+      font: inherit; padding: 0.4rem 0.55rem; border: 1px solid #ccc; border-radius: 6px;
+    }
+    table.results { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    table.results th, table.results td { border-bottom: 1px solid #e5e5e5; padding: 0.45rem 0.4rem; text-align: left; vertical-align: top; }
+    table.results th { position: sticky; top: 0; background: #fafafa; }
+    table.results tr { cursor: pointer; }
+    table.results tr:hover { background: #f3f7ff; }
+    .pill { display: inline-block; padding: 0.1rem 0.4rem; border-radius: 999px; font-size: 0.75rem; }
+    .ok { background: #e7f7ec; color: #116329; }
+    .bad { background: #fde8e8; color: #9b1c1c; }
+    .drawer {
+      position: fixed; inset: 0 0 0 auto; width: min(560px, 100%); background: #fff;
+      border-left: 1px solid #ddd; box-shadow: -8px 0 24px rgba(0,0,0,.08);
+      padding: 1rem 1.25rem 2rem; overflow: auto; transform: translateX(100%); transition: transform .2s ease;
+      z-index: 40;
+    }
+    .drawer.open { transform: translateX(0); }
+    .drawer pre {
+      white-space: pre-wrap; background: #f6f6f6; padding: 0.75rem; border-radius: 8px;
+      font-size: 0.78rem; max-height: 220px; overflow: auto;
+    }
+    .hit-list { list-style: none; padding: 0; margin: 0; }
+    .hit-list li { border: 1px solid #eee; border-radius: 8px; padding: 0.6rem; margin-bottom: 0.5rem; }
+    .hit-list li.gold { border-color: #86efac; background: #f0fdf4; }
+    .pager { display: flex; gap: 0.5rem; align-items: center; margin: 1rem 0; }
+    .muted { color: #666; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <header class="site-header wrap">
+    <div class="brand-row">
+      <a class="brand" href="../">Vector Retrieval Drift</a>
+      <nav class="nav">
+        <a href="../">Home</a>
+        <a href="./">Verify results</a>
+        <a href="https://github.com/pedapudibhargav/vector-drift-study">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap" style="padding-bottom: 3rem;">
+    <h1>Per-query verification (static)</h1>
+    <p class="muted">
+      Browse every primary-200 Hit@1/5/10 row from the published sweep.
+      Chunk text is served from a static Option-B bundle (no Postgres, no embeddings).
+      Full local restore (Option C dump) is documented on the home page.
+    </p>
+    <p id="status" class="muted">Loading verification bundle…</p>
+
+    <div class="toolbar">
+      <label>Scale N
+        <select id="scale"><option value="">All</option></select>
+      </label>
+      <label>Condition
+        <select id="condition">
+          <option value="">All</option>
+          <option value="raw">raw</option>
+          <option value="meta">meta</option>
+        </select>
+      </label>
+      <label>Hit@10
+        <select id="hit10">
+          <option value="">All</option>
+          <option value="1">hits</option>
+          <option value="0">misses</option>
+        </select>
+      </label>
+      <label>Search question id
+        <input id="qsearch" type="search" placeholder="qst_…" />
+      </label>
+      <button type="button" id="apply">Apply</button>
+    </div>
+
+    <div class="pager">
+      <button type="button" id="prev">Prev</button>
+      <span id="pageinfo" class="muted"></span>
+      <button type="button" id="next">Next</button>
+    </div>
+
+    <div style="overflow:auto; max-height: 70vh;">
+      <table class="results">
+        <thead>
+          <tr>
+            <th>question</th><th>N</th><th>cond</th>
+            <th>@1</th><th>@5</th><th>@10</th><th>MRR</th><th>rank</th><th>score</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <aside id="drawer" class="drawer" aria-live="polite">
+    <button type="button" id="close">Close</button>
+    <div id="detail"></div>
+  </aside>
+
+  <script>
+    const PAGE = 50;
+    let rows = [];
+    let filtered = [];
+    let chunks = {};
+    let page = 0;
+
+    const el = (id) => document.getElementById(id);
+
+    function pill(ok) {
+      return `<span class="pill ${ok ? 'ok' : 'bad'}">${ok ? 'yes' : 'no'}</span>`;
+    }
+
+    function renderTable() {
+      const start = page * PAGE;
+      const slice = filtered.slice(start, start + PAGE);
+      el('tbody').innerHTML = slice.map((r, i) => `
+        <tr data-i="${start + i}">
+          <td>${r.question_id}</td>
+          <td>${r.corpus_scale_size}</td>
+          <td>${r.condition}</td>
+          <td>${pill(r.hit_at_1)}</td>
+          <td>${pill(r.hit_at_5)}</td>
+          <td>${pill(r.hit_at_10)}</td>
+          <td>${r.mrr ?? ''}</td>
+          <td>${r.best_gold_rank ?? ''}</td>
+          <td>${r.best_gold_score ?? ''}</td>
+        </tr>`).join('');
+      el('pageinfo').textContent = `${filtered.length} rows · page ${page + 1}/${Math.max(1, Math.ceil(filtered.length / PAGE) || 1)}`;
+    }
+
+    function applyFilters() {
+      const scale = el('scale').value;
+      const cond = el('condition').value;
+      const hit = el('hit10').value;
+      const q = el('qsearch').value.trim().toLowerCase();
+      filtered = rows.filter(r => {
+        if (scale && String(r.corpus_scale_size) !== scale) return false;
+        if (cond && r.condition !== cond) return false;
+        if (hit === '1' && !r.hit_at_10) return false;
+        if (hit === '0' && r.hit_at_10) return false;
+        if (q && !String(r.question_id).toLowerCase().includes(q)) return false;
+        return true;
+      });
+      page = 0;
+      renderTable();
+    }
+
+    function openDetail(r) {
+      const gold = new Set(r.expected_doc_ids || []);
+      const hits = (r.retrieved_doc_ids || []).map((id, idx) => {
+        const text = chunks[id] || '(chunk text not in static bundle — restore Option C dump for full DB)';
+        return `<li class="${gold.has(id) ? 'gold' : ''}">
+          <strong>#${idx + 1}</strong> <code>${id}</code> ${gold.has(id) ? '<span class="pill ok">gold</span>' : ''}
+          <pre>${escapeHtml(text)}</pre>
+        </li>`;
+      }).join('');
+      const goldBlocks = (r.expected_doc_ids || []).map(id => {
+        const text = chunks[id] || '(missing)';
+        return `<h4>Gold <code>${id}</code></h4><pre>${escapeHtml(text)}</pre>`;
+      }).join('');
+      el('detail').innerHTML = `
+        <h2>${r.question_id}</h2>
+        <p><strong>N=${r.corpus_scale_size}</strong> · ${r.condition} ·
+           Hit@1 ${r.hit_at_1} · @5 ${r.hit_at_5} · @10 ${r.hit_at_10} · MRR ${r.mrr}</p>
+        <h3>Question</h3>
+        <pre>${escapeHtml(r.question_text || '(question text missing)')}</pre>
+        ${goldBlocks}
+        <h3>Retrieved top-k</h3>
+        <ul class="hit-list">${hits || '<li>none</li>'}</ul>`;
+      el('drawer').classList.add('open');
+    }
+
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
+
+    async function boot() {
+      try {
+        const [manifest, chunkJson, pqText] = await Promise.all([
+          fetch('./../data/verification/manifest.json').then(r => r.json()),
+          fetch('./../data/verification/chunks_by_id.json').then(r => r.json()),
+          fetch('./../data/verification/per_query.jsonl').then(r => r.text()),
+        ]);
+        chunks = chunkJson;
+        rows = pqText.trim().split('\n').filter(Boolean).map(l => JSON.parse(l));
+        const scales = [...new Set(rows.map(r => r.corpus_scale_size))].sort((a,b)=>a-b);
+        el('scale').innerHTML = '<option value=\"\">All</option>' + scales.map(s => `<option value="${s}">${s}</option>`).join('');
+        el('status').textContent = `Loaded ${rows.length} rows · ${manifest.chunks_resolved}/${manifest.unique_docs_referenced} chunk texts · built ${manifest.created_at}`;
+        applyFilters();
+      } catch (e) {
+        el('status').textContent = 'Failed to load verification bundle. Run: python3 scripts/erb/export_verification_bundle.py';
+        console.error(e);
+      }
+    }
+
+    el('apply').onclick = applyFilters;
+    el('prev').onclick = () => { if (page > 0) { page--; renderTable(); } };
+    el('next').onclick = () => { if ((page + 1) * PAGE < filtered.length) { page++; renderTable(); } };
+    el('close').onclick = () => el('drawer').classList.remove('open');
+    el('tbody').onclick = (ev) => {
+      const tr = ev.target.closest('tr[data-i]');
+      if (!tr) return;
+      openDetail(filtered[Number(tr.dataset.i)]);
+    };
+    boot();
+  </script>
+</body>
+</html>

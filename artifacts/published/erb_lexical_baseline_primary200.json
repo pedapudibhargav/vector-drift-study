@@ -1,0 +1,6711 @@
+{
+  "created_at": "2026-09-18T03:03:51Z",
+  "method": "postgres_ts_rank_cd + plainto_tsquery(english)",
+  "question_count": 200,
+  "primary_questions": 200,
+  "embedded_coverage": 42178,
+  "scales": [
+    5000,
+    10000,
+    20000,
+    25000
+  ],
+  "persisted_db": true,
+  "runs": [
+    {
+      "condition": "lexical_fts",
+      "corpus_scale_size": 5000,
+      "questions_evaluated": 200,
+      "hit_at_1": 0.045,
+      "hit_at_5": 0.045,
+      "hit_at_10": 0.045,
+      "document_recall": 0.0338,
+      "mrr": 0.045,
+      "experiment_run_id": "d4aadee7-eb6c-46ac-857a-8491f7a8db98"
+    },
+    {
+      "condition": "lexical_fts",
+      "corpus_scale_size": 10000,
+      "questions_evaluated": 200,
+      "hit_at_1": 0.045,
+      "hit_at_5": 0.045,
+      "hit_at_10": 0.045,
+      "document_recall": 0.0338,
+      "mrr": 0.045,
+      "experiment_run_id": "6ae6a443-6f8b-4f8c-9bc2-df5552d0d350"
+    },
+    {
+      "condition": "lexical_fts",
+      "corpus_scale_size": 20000,
+      "questions_evaluated": 200,
+      "hit_at_1": 0.045,
+      "hit_at_5": 0.045,
+      "hit_at_10": 0.045,
+      "document_recall": 0.0338,
+      "mrr": 0.045,
+      "experiment_run_id": "cc133d97-4f2d-440b-96f7-61584dc6464b"
+    },
+    {
+      "condition": "lexical_fts",
+      "corpus_scale_size": 25000,
+      "questions_evaluated": 200,
+      "hit_at_1": 0.045,
+      "hit_at_5": 0.045,
+      "hit_at_10": 0.045,
+      "document_recall": 0.0338,
+      "mrr": 0.045,
+      "experiment_run_id": "77b29401-d74b-4d7b-ad1b-6ca556db9edc"
+    }
+  ],
+  "per_question_by_scale": {
+    "5000": [
+      {
+        "question_id": "qst_0407",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0242",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0029",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0331",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0230",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0329",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_f4fbc3f2bcc24bb29f9da2c81e43661f"
+        ]
+      },
+      {
+        "question_id": "qst_0065",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0036",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0116",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0004",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0222",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0053",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0394",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0064",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0321",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0186",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0106",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0079",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0020",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0002",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0006",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0101",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0047",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0240",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0354",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0102",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0028",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0095",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0359",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0348",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0170",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0103",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0089",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0161",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0440",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0145",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0149",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0469",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0160",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0409",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0425",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0091",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0081",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0266",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0023",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0347",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 0.5,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_dab17ee5c3924a9998b17b3591bbae28"
+        ]
+      },
+      {
+        "question_id": "qst_0192",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0076",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0035",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0393",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0238",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0470",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0113",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0278",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0358",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 0.25,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_330be20dd4224d8dad24eb633121ba06"
+        ]
+      },
+      {
+        "question_id": "qst_0067",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0019",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0312",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": [
+          "dsid_546f40265e5740b583eb9f24ffa53570",
+          "dsid_be7e5cffb2704eb0b90de833ef6be6c1",
+          "dsid_3242990ca4ca4b139b628fb65887ddfc",
+          "dsid_ee9942076dfa4249a77338a401d25eab",
+          "dsid_bec90d2205534ca9a016f244e13884e5",
+          "dsid_61259cb6a4bc413ab7cd2d07dfd5df0a",
+          "dsid_9c63777c789c4f7db9e391024dd887ae",
+          "dsid_10559147d3014931898864f22c311e47"
+        ]
+      },
+      {
+        "question_id": "qst_0044",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0381",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0107",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0210",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0261",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0427",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0380",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0083",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0299",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0442",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0063",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0036",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0219",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0025",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0373",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0096",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0066",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0404",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0062",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0042",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0384",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0269",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0284",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0057",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0291",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0444",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0109",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0428",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0460",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0364",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0047",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0062",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0084",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0318",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0426",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_c90bd544f3b5437fba711492db31aeea",
+          "dsid_553e1651575a416dae6b92d019d2f9f4"
+        ]
+      },
+      {
+        "question_id": "qst_0135",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0065",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0050",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0157",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0094",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0080",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0357",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0164",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0286",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0464",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0139",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0429",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 0.5,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_8a085e12606b4ea79f43ee176cba2ccb"
+        ]
+      },
+      {
+        "question_id": "qst_0199",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0361",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0313",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0018",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0089",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0060",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0175",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0181",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0327",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0254",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0126",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0461",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0079",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0265",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0379",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0058",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0096",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0048",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0411",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_5f3a672da4974781a5577b0f3d4993e9",
+          "dsid_8ffbd9fe82df457ca67d4fbc9ff1090c"
+        ]
+      },
+      {
+        "question_id": "qst_0082",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0239",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0179",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0450",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0138",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0215",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0447",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0099",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0383",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0241",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0040",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0221",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0252",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0067",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0134",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0245",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0294",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0281",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0197",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0280",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0389",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0208",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0045",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_a673ed031ece43c5bc4a0d27a284c8dc"
+        ]
+      },
+      {
+        "question_id": "qst_0014",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0021",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0072",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0310",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0285",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0003",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0006",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0406",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0166",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0018",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0085",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0246",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0029",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0423",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0225",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0055",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0080",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0451",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0073",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": [
+          "dsid_ed60495791974d6998e688031728d924",
+          "dsid_69a2bffadbcc44ecb12e6ad8f13807de"
+        ]
+      },
+      {
+        "question_id": "qst_0216",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0213",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0301",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_ca18eee975d34f4da7b1b880ea5ac271"
+        ]
+      },
+      {
+        "question_id": "qst_0448",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": [
+          "dsid_7f0a1ac8a93b43e9884865825ca9d539",
+          "dsid_329e7ecd6b304c30b61a30e07919e008",
+          "dsid_958e29ad0c3d4164860b55a102925f28",
+          "dsid_73e7b6330dfe481c92598ba4f97c3fff",
+          "dsid_a9a67d815b07451e90ed8c3d1734d007",
+          "dsid_602422b841b94f5c8089555015df0ed8",
+          "dsid_36d7605113204cdca94405cb30fc2c10",
+          "dsid_3d4c58b34ac24aa0bdaae152e3ba684a",
+          "dsid_acab3f167da743889845cd0cced08f45",
+          "dsid_39be65662e0541c9868dfe3d331d5654"
+        ]
+      },
+      {
+        "question_id": "qst_0124",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0144",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0183",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0415",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 0.5,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_05841423a55e4c35abd276d9899b7134",
+          "dsid_1d4420d2718345bcb8f16213e39ab19d"
+        ]
+      },
+      {
+        "question_id": "qst_0131",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0200",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0162",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0034",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0033",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0398",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0085",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0076",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0387",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0098",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0048",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0004",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0077",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0190",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0248",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0182",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0150",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0087",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0156",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0132",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0016",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0243",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0279",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0306",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0141",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0082",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      }
+    ],
+    "10000": [
+      {
+        "question_id": "qst_0407",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0242",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0029",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0331",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0230",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0329",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_f4fbc3f2bcc24bb29f9da2c81e43661f"
+        ]
+      },
+      {
+        "question_id": "qst_0065",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0036",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0116",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": [
+          "dsid_b8522f9fb9f74332b39f8a6de49f99e2",
+          "dsid_ef0f75da44b34274a70c223e47fcf2f4",
+          "dsid_619a0899aeb540248130d261540a0231"
+        ]
+      },
+      {
+        "question_id": "qst_0004",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0222",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0053",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0394",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0064",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0321",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0186",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0106",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0079",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0020",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0002",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0006",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0101",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0047",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0240",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0354",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0102",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0028",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0095",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0359",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0348",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0170",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0103",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0089",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0161",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0440",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0145",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0149",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0469",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0160",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0409",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0425",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0091",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0081",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0266",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0023",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0347",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 0.5,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_dab17ee5c3924a9998b17b3591bbae28"
+        ]
+      },
+      {
+        "question_id": "qst_0192",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0076",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0035",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0393",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0238",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0470",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0113",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0278",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0358",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 0.25,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_330be20dd4224d8dad24eb633121ba06"
+        ]
+      },
+      {
+        "question_id": "qst_0067",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0019",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0312",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": [
+          "dsid_546f40265e5740b583eb9f24ffa53570",
+          "dsid_be7e5cffb2704eb0b90de833ef6be6c1",
+          "dsid_f0fbea935a4849b7842f773bbafb69da",
+          "dsid_19c886ed6348496c969091f862b68214",
+          "dsid_09c9c54115d943eda12888709ed23695",
+          "dsid_3242990ca4ca4b139b628fb65887ddfc",
+          "dsid_ee9942076dfa4249a77338a401d25eab",
+          "dsid_bec90d2205534ca9a016f244e13884e5",
+          "dsid_e21397c298724e8faf6a51270b17d59d",
+          "dsid_61259cb6a4bc413ab7cd2d07dfd5df0a"
+        ]
+      },
+      {
+        "question_id": "qst_0044",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0381",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0107",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0210",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0261",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0427",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0380",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0083",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0299",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0442",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0063",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0036",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0219",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0025",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0373",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0096",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0066",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0404",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0062",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0042",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0384",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0269",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0284",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0057",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0291",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0444",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0109",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0428",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0460",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0364",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0047",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0062",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0084",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0318",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0426",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_c90bd544f3b5437fba711492db31aeea",
+          "dsid_553e1651575a416dae6b92d019d2f9f4"
+        ]
+      },
+      {
+        "question_id": "qst_0135",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0065",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0050",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0157",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0094",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0080",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0357",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0164",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0286",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0464",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0139",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0429",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 0.5,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_8a085e12606b4ea79f43ee176cba2ccb"
+        ]
+      },
+      {
+        "question_id": "qst_0199",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0361",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0313",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0018",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0089",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0060",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0175",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0181",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0327",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0254",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0126",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0461",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0079",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0265",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0379",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0058",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0096",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0048",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0411",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_5f3a672da4974781a5577b0f3d4993e9",
+          "dsid_8ffbd9fe82df457ca67d4fbc9ff1090c"
+        ]
+      },
+      {
+        "question_id": "qst_0082",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0239",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0179",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0450",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0138",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0215",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0447",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0099",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0383",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0241",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0040",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0221",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0252",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0067",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0134",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0245",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0294",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0281",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0197",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0280",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0389",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0208",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0045",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_a673ed031ece43c5bc4a0d27a284c8dc"
+        ]
+      },
+      {
+        "question_id": "qst_0014",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0021",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0072",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0310",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0285",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0003",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0006",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0406",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0166",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0018",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0085",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0246",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0029",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0423",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0225",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0055",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0080",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0451",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0073",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": [
+          "dsid_4975b107976a4902a4d8a1e7e2d5234e",
+          "dsid_67491732f18a419da657e652e6d06de4",
+          "dsid_ed60495791974d6998e688031728d924",
+          "dsid_38c27f602f4b4ca8b694bc4d5bdf2e23",
+          "dsid_69a2bffadbcc44ecb12e6ad8f13807de",
+          "dsid_75393a098ca44803ae097c4b2d543199"
+        ]
+      },
+      {
+        "question_id": "qst_0216",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0213",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0301",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_ca18eee975d34f4da7b1b880ea5ac271"
+        ]
+      },
+      {
+        "question_id": "qst_0448",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": [
+          "dsid_7f0a1ac8a93b43e9884865825ca9d539",
+          "dsid_329e7ecd6b304c30b61a30e07919e008",
+          "dsid_958e29ad0c3d4164860b55a102925f28",
+          "dsid_022b26491d734532913039eefedf5e06",
+          "dsid_73cfbef702264ccb93d146a50fd2315e",
+          "dsid_73e7b6330dfe481c92598ba4f97c3fff",
+          "dsid_a9a67d815b07451e90ed8c3d1734d007",
+          "dsid_602422b841b94f5c8089555015df0ed8",
+          "dsid_612ae601969540d497ff82d8ecc1f521",
+          "dsid_36d7605113204cdca94405cb30fc2c10"
+        ]
+      },
+      {
+        "question_id": "qst_0124",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0144",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0183",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0415",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 0.5,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_05841423a55e4c35abd276d9899b7134",
+          "dsid_1d4420d2718345bcb8f16213e39ab19d"
+        ]
+      },
+      {
+        "question_id": "qst_0131",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0200",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0162",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0034",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0033",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0398",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0085",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0076",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0387",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0098",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0048",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0004",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0077",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0190",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0248",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0182",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0150",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0087",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0156",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0132",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0016",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0243",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0279",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0306",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0141",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0082",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      }
+    ],
+    "20000": [
+      {
+        "question_id": "qst_0407",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0242",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0029",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0331",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0230",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0329",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_f4fbc3f2bcc24bb29f9da2c81e43661f"
+        ]
+      },
+      {
+        "question_id": "qst_0065",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0036",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0116",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": [
+          "dsid_fd51ebfbe56c474c9ee3ba238619630e",
+          "dsid_b8522f9fb9f74332b39f8a6de49f99e2",
+          "dsid_5dd236c1bdb74c888da37cd084e68b3c",
+          "dsid_06b6ace6ae094712806536c0ccea07e0",
+          "dsid_7c68d1d0763347c8b9d3a271084b7053",
+          "dsid_73c7a9f1c5684394a33abd2b2b418a5e",
+          "dsid_ef0f75da44b34274a70c223e47fcf2f4",
+          "dsid_df696c771a704d58890d553ca946784e",
+          "dsid_619a0899aeb540248130d261540a0231",
+          "dsid_a045f41d97644d45b4f7171601425288"
+        ]
+      },
+      {
+        "question_id": "qst_0004",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0222",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0053",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0394",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0064",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0321",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0186",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0106",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0079",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0020",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0002",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0006",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0101",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0047",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0240",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0354",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0102",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0028",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0095",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0359",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0348",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0170",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0103",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0089",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0161",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0440",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0145",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0149",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0469",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0160",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0409",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0425",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0091",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0081",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0266",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0023",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0347",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 0.5,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_dab17ee5c3924a9998b17b3591bbae28"
+        ]
+      },
+      {
+        "question_id": "qst_0192",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0076",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0035",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0393",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0238",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0470",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0113",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0278",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0358",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 0.25,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_330be20dd4224d8dad24eb633121ba06"
+        ]
+      },
+      {
+        "question_id": "qst_0067",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0019",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0312",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": [
+          "dsid_546f40265e5740b583eb9f24ffa53570",
+          "dsid_95aaab5e5a6640ffaceadee4bcdb5f76",
+          "dsid_d3a3d7204a194eac88aed1d5d331e946",
+          "dsid_0611bc312bb24ff39b6e8a6d1c667518",
+          "dsid_24fff84150f74c5d8199c88c6c35d2de",
+          "dsid_20c57afb84cb45ba9fc7e0fc27be219a",
+          "dsid_be7e5cffb2704eb0b90de833ef6be6c1",
+          "dsid_b20eb0f0cf51450dabb0e9e0fd4390f7",
+          "dsid_f0fbea935a4849b7842f773bbafb69da",
+          "dsid_19c886ed6348496c969091f862b68214"
+        ]
+      },
+      {
+        "question_id": "qst_0044",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0381",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0107",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0210",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0261",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0427",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0380",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0083",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0299",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0442",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0063",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0036",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0219",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0025",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0373",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0096",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0066",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0404",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0062",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0042",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0384",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0269",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0284",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0057",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": [
+          "dsid_8271993eae994b89beed2760c2d4e090"
+        ]
+      },
+      {
+        "question_id": "qst_0291",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0444",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0109",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0428",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0460",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0364",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0047",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0062",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0084",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0318",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0426",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_c90bd544f3b5437fba711492db31aeea",
+          "dsid_553e1651575a416dae6b92d019d2f9f4"
+        ]
+      },
+      {
+        "question_id": "qst_0135",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0065",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0050",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0157",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0094",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0080",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0357",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0164",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0286",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0464",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0139",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0429",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 0.5,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_8a085e12606b4ea79f43ee176cba2ccb"
+        ]
+      },
+      {
+        "question_id": "qst_0199",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0361",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0313",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0018",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0089",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0060",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0175",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0181",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0327",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0254",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0126",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0461",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0079",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": [
+          "dsid_ff059b265d5148fb9720ccd5cf539c84"
+        ]
+      },
+      {
+        "question_id": "qst_0265",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0379",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0058",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0096",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0048",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0411",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_5f3a672da4974781a5577b0f3d4993e9",
+          "dsid_8ffbd9fe82df457ca67d4fbc9ff1090c"
+        ]
+      },
+      {
+        "question_id": "qst_0082",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0239",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0179",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0450",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0138",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0215",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0447",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0099",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0383",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0241",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0040",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0221",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0252",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0067",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0134",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0245",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0294",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0281",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0197",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0280",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0389",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0208",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0045",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_a673ed031ece43c5bc4a0d27a284c8dc"
+        ]
+      },
+      {
+        "question_id": "qst_0014",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0021",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0072",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0310",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0285",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0003",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0006",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0406",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0166",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0018",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0085",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0246",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0029",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0423",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0225",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0055",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0080",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0451",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0073",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": [
+          "dsid_4975b107976a4902a4d8a1e7e2d5234e",
+          "dsid_67491732f18a419da657e652e6d06de4",
+          "dsid_ed60495791974d6998e688031728d924",
+          "dsid_b83c94333b424640a913e66e59433410",
+          "dsid_38c27f602f4b4ca8b694bc4d5bdf2e23",
+          "dsid_69a2bffadbcc44ecb12e6ad8f13807de",
+          "dsid_75393a098ca44803ae097c4b2d543199",
+          "dsid_950286f2d7d548e88c14bea0f4423aa9",
+          "dsid_a30bf9f105a6403da636f29094f95370",
+          "dsid_ea040e6303c74bc49a0eb39ea5ceb02a"
+        ]
+      },
+      {
+        "question_id": "qst_0216",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0213",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0301",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_ca18eee975d34f4da7b1b880ea5ac271"
+        ]
+      },
+      {
+        "question_id": "qst_0448",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": [
+          "dsid_7f0a1ac8a93b43e9884865825ca9d539",
+          "dsid_1e5b33d8f1ef4f89bfcc7e0fa785e827",
+          "dsid_329e7ecd6b304c30b61a30e07919e008",
+          "dsid_abe2a15688ba4a71a176c0e063a0d70b",
+          "dsid_958e29ad0c3d4164860b55a102925f28",
+          "dsid_5039f426a519424899f51c595c83541d",
+          "dsid_022b26491d734532913039eefedf5e06",
+          "dsid_75cfb4d1508347fb8dd80254e4043ad6",
+          "dsid_08dad2eca6254098bf395cfb5ddbd037",
+          "dsid_73cfbef702264ccb93d146a50fd2315e"
+        ]
+      },
+      {
+        "question_id": "qst_0124",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0144",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0183",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0415",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 0.5,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_05841423a55e4c35abd276d9899b7134",
+          "dsid_1d4420d2718345bcb8f16213e39ab19d"
+        ]
+      },
+      {
+        "question_id": "qst_0131",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0200",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0162",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0034",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0033",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0398",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0085",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0076",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0387",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0098",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0048",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0004",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0077",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0190",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0248",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0182",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0150",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0087",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0156",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0132",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0016",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0243",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0279",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0306",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0141",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0082",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      }
+    ],
+    "25000": [
+      {
+        "question_id": "qst_0407",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0242",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0029",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0331",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0230",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0329",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_f4fbc3f2bcc24bb29f9da2c81e43661f"
+        ]
+      },
+      {
+        "question_id": "qst_0065",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0036",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0116",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": [
+          "dsid_fd51ebfbe56c474c9ee3ba238619630e",
+          "dsid_b8522f9fb9f74332b39f8a6de49f99e2",
+          "dsid_5dd236c1bdb74c888da37cd084e68b3c",
+          "dsid_9476aed39f8c42878ec5c82ce7b40049",
+          "dsid_06b6ace6ae094712806536c0ccea07e0",
+          "dsid_7c68d1d0763347c8b9d3a271084b7053",
+          "dsid_73c7a9f1c5684394a33abd2b2b418a5e",
+          "dsid_ef0f75da44b34274a70c223e47fcf2f4",
+          "dsid_df696c771a704d58890d553ca946784e",
+          "dsid_fa0be1d5027649be8f1f44b27dc86bfd"
+        ]
+      },
+      {
+        "question_id": "qst_0004",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0222",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0053",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0394",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0064",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0321",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0186",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0106",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0079",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0020",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0002",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0006",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0101",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0047",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0240",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0354",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0102",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0028",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0095",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0359",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0348",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0170",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0103",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0089",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0161",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0440",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0145",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0149",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0469",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0160",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0409",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0425",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0091",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0081",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0266",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0023",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0347",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 0.5,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_dab17ee5c3924a9998b17b3591bbae28"
+        ]
+      },
+      {
+        "question_id": "qst_0192",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0076",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0035",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0393",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0238",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0470",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0113",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0278",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0358",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 0.25,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_330be20dd4224d8dad24eb633121ba06"
+        ]
+      },
+      {
+        "question_id": "qst_0067",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0019",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0312",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": [
+          "dsid_546f40265e5740b583eb9f24ffa53570",
+          "dsid_95aaab5e5a6640ffaceadee4bcdb5f76",
+          "dsid_d3a3d7204a194eac88aed1d5d331e946",
+          "dsid_0611bc312bb24ff39b6e8a6d1c667518",
+          "dsid_9133d1e272134dec8f485a001a66f028",
+          "dsid_24fff84150f74c5d8199c88c6c35d2de",
+          "dsid_20c57afb84cb45ba9fc7e0fc27be219a",
+          "dsid_4341bbdda7864022bc623f17dbcfb312",
+          "dsid_be7e5cffb2704eb0b90de833ef6be6c1",
+          "dsid_b20eb0f0cf51450dabb0e9e0fd4390f7"
+        ]
+      },
+      {
+        "question_id": "qst_0044",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0381",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0107",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0210",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0261",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0427",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0380",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0083",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0299",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0442",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0063",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0036",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0219",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0025",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0373",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0096",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0066",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0404",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0062",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0042",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0384",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0269",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0284",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0057",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": [
+          "dsid_8271993eae994b89beed2760c2d4e090"
+        ]
+      },
+      {
+        "question_id": "qst_0291",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0444",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0109",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0428",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0460",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0364",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": [
+          "dsid_c9a813f512b746a0a8dd5eb64d6fbcda"
+        ]
+      },
+      {
+        "question_id": "qst_0047",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0062",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0084",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0318",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0426",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_c90bd544f3b5437fba711492db31aeea",
+          "dsid_553e1651575a416dae6b92d019d2f9f4"
+        ]
+      },
+      {
+        "question_id": "qst_0135",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0065",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0050",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0157",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0094",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0080",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0357",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0164",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0286",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0464",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0139",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0429",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 0.5,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_8a085e12606b4ea79f43ee176cba2ccb"
+        ]
+      },
+      {
+        "question_id": "qst_0199",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0361",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0313",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0018",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0089",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0060",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0175",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0181",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0327",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0254",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0126",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0461",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0079",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": [
+          "dsid_ff059b265d5148fb9720ccd5cf539c84"
+        ]
+      },
+      {
+        "question_id": "qst_0265",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0379",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0058",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0096",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0048",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0411",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_5f3a672da4974781a5577b0f3d4993e9",
+          "dsid_8ffbd9fe82df457ca67d4fbc9ff1090c"
+        ]
+      },
+      {
+        "question_id": "qst_0082",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0239",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0179",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0450",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0138",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0215",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0447",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0099",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0383",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0241",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0040",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0221",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0252",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0067",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0134",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": [
+          "dsid_f09b9dbd0b694a0f96f51945e0c78531"
+        ]
+      },
+      {
+        "question_id": "qst_0245",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0294",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0281",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0197",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0280",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0389",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0208",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0045",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_a673ed031ece43c5bc4a0d27a284c8dc"
+        ]
+      },
+      {
+        "question_id": "qst_0014",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0021",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0072",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0310",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0285",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0003",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0006",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0406",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0166",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0018",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0085",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0246",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0029",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0423",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0225",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0055",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0080",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0451",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0073",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": [
+          "dsid_4975b107976a4902a4d8a1e7e2d5234e",
+          "dsid_67491732f18a419da657e652e6d06de4",
+          "dsid_ed60495791974d6998e688031728d924",
+          "dsid_b83c94333b424640a913e66e59433410",
+          "dsid_e47ab3022c9c488d9e4e770f2cf41874",
+          "dsid_ba7e9853fa0d4617b2042229de159531",
+          "dsid_38c27f602f4b4ca8b694bc4d5bdf2e23",
+          "dsid_05ddb5e264cc45628d0c5e96ccf369f3",
+          "dsid_69a2bffadbcc44ecb12e6ad8f13807de",
+          "dsid_75393a098ca44803ae097c4b2d543199"
+        ]
+      },
+      {
+        "question_id": "qst_0216",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0213",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0301",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_ca18eee975d34f4da7b1b880ea5ac271"
+        ]
+      },
+      {
+        "question_id": "qst_0448",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": [
+          "dsid_7f0a1ac8a93b43e9884865825ca9d539",
+          "dsid_1e5b33d8f1ef4f89bfcc7e0fa785e827",
+          "dsid_329e7ecd6b304c30b61a30e07919e008",
+          "dsid_abe2a15688ba4a71a176c0e063a0d70b",
+          "dsid_66a13275582a49ffa5e075e0041e1540",
+          "dsid_958e29ad0c3d4164860b55a102925f28",
+          "dsid_3956df230e1746d9a508eb0a80420fa2",
+          "dsid_5039f426a519424899f51c595c83541d",
+          "dsid_022b26491d734532913039eefedf5e06",
+          "dsid_75cfb4d1508347fb8dd80254e4043ad6"
+        ]
+      },
+      {
+        "question_id": "qst_0124",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0144",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0183",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0415",
+        "rank": 1,
+        "hit_at_10": true,
+        "document_recall": 0.5,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "dsid_05841423a55e4c35abd276d9899b7134",
+          "dsid_79b0e1726c854a0883f38360b6fd6465",
+          "dsid_1d4420d2718345bcb8f16213e39ab19d"
+        ]
+      },
+      {
+        "question_id": "qst_0131",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0200",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0162",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0034",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0033",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0398",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0085",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0076",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0387",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0098",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0048",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0004",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0077",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0190",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0248",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0182",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0150",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0087",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0156",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0132",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0016",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0243",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0279",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0306",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0141",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      },
+      {
+        "question_id": "qst_0082",
+        "rank": null,
+        "hit_at_10": false,
+        "document_recall": 0.0,
+        "mrr": 0.0,
+        "retrieved_doc_ids": []
+      }
+    ]
+  }
+}

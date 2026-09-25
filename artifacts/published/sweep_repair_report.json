@@ -1,0 +1,68 @@
+{
+  "quarantine_count": 0,
+  "quarantine_sample": [],
+  "quarantine_by_reason": {},
+  "n_star_tau_0_10": 20000,
+  "fit_hit_at_10": {
+    "a": 0.6248915560043979,
+    "b": 0.02145816749885985,
+    "form": "a - b*log(N)"
+  },
+  "delta_points": [
+    {
+      "corpus_scale_size": 5000,
+      "delta_hit_at_10": 0.325,
+      "raw_hit_at_10": 0.425,
+      "meta_hit_at_10": 0.75
+    },
+    {
+      "corpus_scale_size": 10000,
+      "delta_hit_at_10": 0.26999999999999996,
+      "raw_hit_at_10": 0.425,
+      "meta_hit_at_10": 0.695
+    },
+    {
+      "corpus_scale_size": 15000,
+      "delta_hit_at_10": 0.12000000000000005,
+      "raw_hit_at_10": 0.425,
+      "meta_hit_at_10": 0.545
+    },
+    {
+      "corpus_scale_size": 20000,
+      "delta_hit_at_10": 0.06,
+      "raw_hit_at_10": 0.425,
+      "meta_hit_at_10": 0.485
+    },
+    {
+      "corpus_scale_size": 25000,
+      "delta_hit_at_10": 0.03500000000000003,
+      "raw_hit_at_10": 0.425,
+      "meta_hit_at_10": 0.46
+    },
+    {
+      "corpus_scale_size": 40000,
+      "delta_hit_at_10": 0.0,
+      "raw_hit_at_10": 0.4,
+      "meta_hit_at_10": 0.4
+    },
+    {
+      "corpus_scale_size": 50000,
+      "delta_hit_at_10": 0.0050000000000000044,
+      "raw_hit_at_10": 0.395,
+      "meta_hit_at_10": 0.4
+    },
+    {
+      "corpus_scale_size": 75000,
+      "delta_hit_at_10": 0.015000000000000013,
+      "raw_hit_at_10": 0.37,
+      "meta_hit_at_10": 0.385
+    },
+    {
+      "corpus_scale_size": 100000,
+      "delta_hit_at_10": 0.010000000000000009,
+      "raw_hit_at_10": 0.37,
+      "meta_hit_at_10": 0.38
+    }
+  ],
+  "note": "Empty-retrieval quarantines require a DB re-sweep with fixed eval_ids. Canonical published JSON excludes those rows rather than inventing hits."
+}

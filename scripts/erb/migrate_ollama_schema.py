@@ -1,0 +1,60 @@
+#!/usr/bin/env python3
+"""Create document_chunks_ollama (768-d) for parallel nomic-embed-text study arm."""
+
+from __future__ import annotations
+
+import os
+import sys
+
+DDL = """
+CREATE EXTENSION IF NOT EXISTS vector;
+
+CREATE TABLE IF NOT EXISTS document_chunks_ollama (
+    id BIGSERIAL PRIMARY KEY,
+    url TEXT NOT NULL,
+    doc_id TEXT,
+    title TEXT,
+    chunk_index INTEGER NOT NULL DEFAULT 0,
+    chunk_text TEXT NOT NULL,
+    metadata JSONB NOT NULL DEFAULT '{}'::jsonb,
+    embedding vector(768),
+    source_type TEXT,
+    scale_rank INTEGER,
+    is_gold_anchor BOOLEAN NOT NULL DEFAULT FALSE,
+    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE (url, chunk_index)
+);
+
+CREATE UNIQUE INDEX IF NOT EXISTS idx_chunks_ollama_doc_id
+ON document_chunks_ollama (doc_id) WHERE doc_id IS NOT NULL;
+CREATE INDEX IF NOT EXISTS idx_chunks_ollama_scale_rank
+ON document_chunks_ollama (scale_rank);
+CREATE INDEX IF NOT EXISTS idx_chunks_ollama_source_type
+ON document_chunks_ollama (source_type);
+
+DO $$ BEGIN
+    CREATE INDEX IF NOT EXISTS idx_chunks_ollama_embedding_hnsw
+    ON document_chunks_ollama USING hnsw (embedding vector_cosine_ops)
+    WITH (m = 16, ef_construction = 64);
+EXCEPTION WHEN undefined_object OR others THEN
+    NULL;
+END $$;
+"""
+
+
+def main() -> int:
+    import psycopg
+
+    url = os.environ.get(
+        "DATABASE_URL",
+        "postgresql://vector_drift:vector_drift@localhost:5432/vector_drift",
+    ).replace("postgresql+asyncpg://", "postgresql://")
+    with psycopg.connect(url) as conn:
+        conn.execute(DDL)
+        conn.commit()
+    print("document_chunks_ollama ready (vector 768)")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

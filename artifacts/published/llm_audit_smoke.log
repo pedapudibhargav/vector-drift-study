@@ -1,0 +1,19 @@
+==> Provider: ollama
+==> Ollama model=qwen2.5:7b-instruct base=http://127.0.0.1:11434/v1 num_gpu=0 (cost $0)
+==> Running wide audit (5% of corrected matrix)…
+wide_universe=3294 target>=180 (5.0%) picked=180 source=erb_full_primary_corrected.json
+samples_csv=180 unique=1 questions=500 chunks_bundle=5325 doc_files=184963 anomalies=0
+LLM client: urllib fallback
+LLM fail qst_0380: OpenAI HTTP 500: {"error":{"message":"llama-server process has terminated: exit status 1: error: failed to create command queue\nerror: failed to allocate context\nllama_init_from_model: failed to initialize the context: failed to initialize  backend\nerror: failed to allocate buffer, size =     0.02 MiB\nggml_backend_metal_buffer_type_alloc_buffer: failed to allocate Metal buffer of 14336 bytes (out of memory)\na
+wrote artifacts/published/llm_audit_report.json
+db_persist=skipped:no_psycopg
+LLM L4 assist (qwen2.5:7b-instruct) labeled 1 stratified audit rows (y=0, n=0, unsure=1; spend $0.000 of $50.00). Top pipeline issues: {'llm_call_failed': 1}. CSV anomalies detected: 0. Human confirmation remains authoritative for camera-ready counts.
+
+==> Done.
+    JSON: artifacts/published/llm_audit_report.json
+    MD:   artifacts/published/llm_audit_report.md
+    evaluated=1 spent_usd=0.0 labels={'unsure': 1}
+    flagged=1 issues={'llm_call_failed': 1}
+    draft: LLM L4 assist (qwen2.5:7b-instruct) labeled 1 stratified audit rows (y=0, n=0, unsure=1; spend $0.000 of $50.00). Top pipeline issues: {'llm_call_failed': 1}. CSV anomalies detected: 0. Human confirmation remains authoritative for camera-re…
+
+Open Review UI → LLM results: http://localhost:5173/review

@@ -1,0 +1,733 @@
+{
+  "created_at": "2026-09-18T21:23:11Z",
+  "n_questions": 40,
+  "scales": [
+    5000,
+    40000
+  ],
+  "condition": "meta",
+  "seed": 42,
+  "join_hint": "JOIN llm_eval_results ler ON ler.question_id = vdr.question_id JOIN experiment_runs er ON er.id = ler.experiment_run_id WHERE er.corpus_scale_size = vdr.corpus_scale_size AND er.condition = vdr.condition",
+  "results": [
+    {
+      "question_id": "qst_0247",
+      "question_type": "semantic",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 0.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0053",
+      "question_type": "metadata",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0055",
+      "question_type": "metadata",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0282",
+      "question_type": "semantic",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 2.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0038",
+      "question_type": "metadata",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 0.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0034",
+      "question_type": "basic",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0102",
+      "question_type": "basic",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0170",
+      "question_type": "basic",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 2.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0284",
+      "question_type": "semantic",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 0.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0413",
+      "question_type": "conflicting_info",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0350",
+      "question_type": "project_related",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0288",
+      "question_type": "semantic",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0426",
+      "question_type": "conflicting_info",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0144",
+      "question_type": "basic",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 1.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0156",
+      "question_type": "basic",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 1.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0194",
+      "question_type": "semantic",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0382",
+      "question_type": "constrained",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0022",
+      "question_type": "metadata",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 0.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0089",
+      "question_type": "basic",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0085",
+      "question_type": "basic",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0445",
+      "question_type": "completeness",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0327",
+      "question_type": "intra_document_reasoning",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0470",
+      "question_type": "miscellaneous",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0020",
+      "question_type": "basic",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0056",
+      "question_type": "metadata",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0313",
+      "question_type": "intra_document_reasoning",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0135",
+      "question_type": "basic",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0161",
+      "question_type": "basic",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0065",
+      "question_type": "basic",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 0.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0166",
+      "question_type": "basic",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 0.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0363",
+      "question_type": "project_related",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0252",
+      "question_type": "semantic",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 1.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0294",
+      "question_type": "semantic",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0271",
+      "question_type": "semantic",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0079",
+      "question_type": "metadata",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 0.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0297",
+      "question_type": "semantic",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 1.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0091",
+      "question_type": "basic",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0408",
+      "question_type": "constrained",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0043",
+      "question_type": "metadata",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0091",
+      "question_type": "metadata",
+      "scale": 5000,
+      "condition": "meta",
+      "relevance": 0.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "58217d33-ea50-473d-bd17-4da532b5674a"
+    },
+    {
+      "question_id": "qst_0247",
+      "question_type": "semantic",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 1.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0053",
+      "question_type": "metadata",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 0.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0055",
+      "question_type": "metadata",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0282",
+      "question_type": "semantic",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 2.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0038",
+      "question_type": "metadata",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 0.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0034",
+      "question_type": "basic",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0102",
+      "question_type": "basic",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0170",
+      "question_type": "basic",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 2.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0284",
+      "question_type": "semantic",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 0.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0413",
+      "question_type": "conflicting_info",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 0.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0350",
+      "question_type": "project_related",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 0.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0288",
+      "question_type": "semantic",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0426",
+      "question_type": "conflicting_info",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0144",
+      "question_type": "basic",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 0.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0156",
+      "question_type": "basic",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 0.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0194",
+      "question_type": "semantic",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0382",
+      "question_type": "constrained",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0022",
+      "question_type": "metadata",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 0.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0089",
+      "question_type": "basic",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 1.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0085",
+      "question_type": "basic",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 1.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0445",
+      "question_type": "completeness",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0327",
+      "question_type": "intra_document_reasoning",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0470",
+      "question_type": "miscellaneous",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 0.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0020",
+      "question_type": "basic",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0056",
+      "question_type": "metadata",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 0.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0313",
+      "question_type": "intra_document_reasoning",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0135",
+      "question_type": "basic",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0161",
+      "question_type": "basic",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0065",
+      "question_type": "basic",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 0.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0166",
+      "question_type": "basic",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 0.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0363",
+      "question_type": "project_related",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 0.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0252",
+      "question_type": "semantic",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 1.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0294",
+      "question_type": "semantic",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 1.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0271",
+      "question_type": "semantic",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0079",
+      "question_type": "metadata",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 0.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0297",
+      "question_type": "semantic",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 1.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0091",
+      "question_type": "basic",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0408",
+      "question_type": "constrained",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0043",
+      "question_type": "metadata",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 3.0,
+      "label_hit_at_3": true,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    },
+    {
+      "question_id": "qst_0091",
+      "question_type": "metadata",
+      "scale": 40000,
+      "condition": "meta",
+      "relevance": 0.0,
+      "label_hit_at_3": false,
+      "experiment_run_id": "1dcae1c5-7664-4ce6-94ad-748a53214404"
+    }
+  ]
+}

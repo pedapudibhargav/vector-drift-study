@@ -1,0 +1,101 @@
+# Deploy GitHub Pages from gh-pages branch on every push to main.
+# Repo Settings → Pages → Source: Deploy from a branch → gh-pages / (root)
+
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gh-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Prepare verification + published JSON for Pages
+        run: |
+          mkdir -p docs/data/verification docs/data/published
+
+          # Prefer committed Option-B bundle (built locally with ERB documents/)
+          if [ -f artifacts/verification/per_query.jsonl ]; then
+            cp -f artifacts/verification/* docs/data/verification/
+          fi
+
+          # Core OpenAI + Titan reviewer JSON (small / medium)
+          for f in \
+            CANONICAL_METRICS.json \
+            landing_summary.json \
+            erb_full_primary200_to100k_fit.json \
+            primary_questions_200.json \
+            paper_metrics_for_tex.json \
+            openai_vs_titan_primary200.json \
+            openai_vs_titan_bootstrap.json \
+            openai_vs_titan_primary200.md \
+            openai_vs_titan_bootstrap.md \
+            TITAN_A8_STATUS.md \
+            exact_control_titan.json \
+            exact_control_titan.md \
+            exact_control_mvp.json
+          do
+            if [ -f "artifacts/published/$f" ]; then
+              cp -f "artifacts/published/$f" docs/data/published/
+            elif [ -f "docs/data/published/$f" ]; then
+              echo "keep existing docs/data/published/$f"
+            fi
+          done
+
+          # Full sweep JSON is large; include when present in the deploying clone
+          for f in erb_full_primary200_to100k.json erb_titan_primary200_to100k.json; do
+            if [ -f "artifacts/published/$f" ]; then
+              cp -f "artifacts/published/$f" docs/data/published/
+            fi
+          done
+
+          test -f docs/index.html
+          test -f docs/styles.css
+          test -f docs/data/published/landing_summary.json
+          test -f docs/data/published/openai_vs_titan_primary200.json
+          test -f docs/data/published/CANONICAL_METRICS.json
+          # Verification bundle is optional if not checked in, but preferred
+          if [ -f docs/data/verification/per_query.jsonl ]; then
+            test -f docs/data/verification/chunks_by_id.json
+            test -f docs/verify/index.html
+          else
+            echo "WARNING: docs/data/verification/ missing — verify UI will be incomplete"
+          fi
+
+      - name: Assemble site
+        run: |
+          mkdir -p _site
+          cp -R docs/. _site/
+          # Drop accidental local-only docs if present
+          rm -f _site/CORP-NETWORK.md _site/PERSONAL_NOTES.md
+          rm -rf _site/private
+          # Single landing page: keep verify/ as the interactive tool only
+          test -f _site/index.html
+          test -f _site/data/published/landing_summary.json
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          publish_branch: gh-pages
+          force_orphan: true
+          user_name: github-actions[bot]
+          user_email: github-actions[bot]@users.noreply.github.com

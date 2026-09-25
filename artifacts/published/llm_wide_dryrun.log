@@ -1,0 +1,5 @@
+wide_universe=3294 target>=180 (5.0%) picked=180 source=erb_full_primary_corrected.json
+samples_csv=180 unique=180 questions=500 chunks_bundle=5325 doc_files=184963 anomalies=0
+wrote artifacts/published/llm_audit_report.json
+db_persist=skipped:dry-run
+LLM L4 assist (gpt-4o) labeled 180 stratified audit rows (y=148, n=0, unsure=32; spend $0.000 of $2.00). Top pipeline issues: {'missing_retrieved_doc_ids': 21, 'empty_or_missing_gold_chunk_text': 13}. CSV anomalies detected: 0. Human confirmation remains authoritative for camera-ready counts.

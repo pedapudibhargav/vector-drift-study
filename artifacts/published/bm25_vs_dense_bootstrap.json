@@ -1,0 +1,50 @@
+{
+  "created_at": "bootstrap",
+  "B": 5000,
+  "seed": 42,
+  "comparisons": [
+    {
+      "N": 5000,
+      "n": 200,
+      "dense_hit10": 0.795,
+      "bm25_hit10": 0.855,
+      "delta_bm25_minus_dense": 0.06,
+      "delta_ci95": [
+        0.0,
+        0.115
+      ]
+    },
+    {
+      "N": 50000,
+      "n": 200,
+      "dense_hit10": 0.555,
+      "bm25_hit10": 0.745,
+      "delta_bm25_minus_dense": 0.19,
+      "delta_ci95": [
+        0.12,
+        0.265
+      ]
+    },
+    {
+      "N": 100000,
+      "n": 200,
+      "dense_hit10": 0.51,
+      "bm25_hit10": 0.7,
+      "delta_bm25_minus_dense": 0.19,
+      "delta_ci95": [
+        0.12,
+        0.26
+      ],
+      "dense_drop_5k_to_100k": 0.285,
+      "dense_drop_ci95": [
+        0.225,
+        0.35
+      ],
+      "bm25_drop_5k_to_100k": 0.155,
+      "bm25_drop_ci95": [
+        0.105,
+        0.21
+      ]
+    }
+  ]
+}

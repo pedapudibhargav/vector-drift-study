@@ -1,0 +1,4 @@
+unique_questions=200
+fit_hit_at_10={'a': 0.0, 'b': -0.0, 'form': 'a - b*log(N)'}
+N*(tau=0.10) corrected=5000
+wrote erb_full_primary_corrected.json (+ _fit + integrity summary)

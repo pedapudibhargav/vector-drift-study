@@ -1,0 +1,36 @@
+{
+  "name": "vector-drift-web",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "deploy": "npm run build && gh-pages -d dist"
+  },
+  "dependencies": {
+    "@heroicons/react": "2.2.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "react-router-dom": "7.18.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "4.3.3",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.1.6",
+    "@vitejs/plugin-react": "4.7.0",
+    "gh-pages": "6.3.0",
+    "oxlint": "1.81.0",
+    "tailwindcss": "4.3.3",
+    "typescript": "5.8.3",
+    "vite": "6.4.3"
+  },
+  "overrides": {
+    "postcss": "8.5.19",
+    "electron-to-chromium": "1.5.393",
+    "baseline-browser-mapping": "2.11.20",
+    "browserslist": "4.28.8"
+  }
+}

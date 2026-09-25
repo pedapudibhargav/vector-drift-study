@@ -1,0 +1,23 @@
+backed up polluted sweep → erb_full_primary200_to100k.POLLUTED.json
+erb variants loaded for 500 raw question_ids
+N=5000 raw: 200→187 hit@10=0.455 quarantined=13
+N=5000 meta: 200→200 hit@10=0.750 quarantined=0
+N=10000 raw: 200→196 hit@10=0.434 quarantined=4
+N=10000 meta: 200→200 hit@10=0.695 quarantined=0
+N=15000 raw: 200→199 hit@10=0.427 quarantined=1
+N=15000 meta: 200→169 hit@10=0.645 quarantined=31
+N=20000 raw: 200→200 hit@10=0.425 quarantined=0
+N=20000 meta: 200→161 hit@10=0.602 quarantined=39
+N=25000 raw: 200→200 hit@10=0.425 quarantined=0
+N=25000 meta: 200→153 hit@10=0.601 quarantined=47
+N=40000 raw: 200→200 hit@10=0.400 quarantined=0
+N=40000 meta: 200→142 hit@10=0.563 quarantined=58
+N=50000 raw: 200→200 hit@10=0.395 quarantined=0
+N=50000 meta: 200→142 hit@10=0.563 quarantined=58
+N=75000 raw: 200→200 hit@10=0.370 quarantined=0
+N=75000 meta: 200→143 hit@10=0.538 quarantined=57
+N=100000 raw: 200→200 hit@10=0.370 quarantined=0
+N=100000 meta: 200→145 hit@10=0.524 quarantined=55
+N*=None fit={'a': 0.7079057970383387, 'b': 0.02918010244101762, 'form': 'a - b*log(N)'}
+quarantine=363 by {'empty_retrieved': 363}
+wrote canonical published sweep + fit + sweep_repair_report.json

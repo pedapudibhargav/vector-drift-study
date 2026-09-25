@@ -1,0 +1,3 @@
+wrote data/erb_scale_manifest.json docs=184966 anchors=627 questions=462 missing_gold=0
+manifest ok: 462 unique eval_ids
+wrote artifacts/published/primary_questions_200.json count=200 unique=200

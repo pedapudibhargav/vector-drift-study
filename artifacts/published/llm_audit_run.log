@@ -1,0 +1,10 @@
+samples_csv=80 unique=5 questions=500 chunks_bundle=5325 doc_files=184963 anomalies=1
+LLM client: urllib fallback
+LLM fail qst_0458: <urlopen error Tunnel connection failed: 403 Forbidden>
+LLM fail qst_0469: <urlopen error Tunnel connection failed: 403 Forbidden>
+LLM fail qst_0333: <urlopen error Tunnel connection failed: 403 Forbidden>
+LLM fail qst_0013: <urlopen error Tunnel connection failed: 403 Forbidden>
+LLM fail qst_0247: <urlopen error Tunnel connection failed: 403 Forbidden>
+wrote artifacts/published/llm_audit_report.json
+db_persist=skipped:no_psycopg
+LLM L4 assist (gpt-4o) labeled 5 stratified audit rows (y=0, n=0, unsure=5; spend $0.000 of $2.00). Top pipeline issues: {'llm_call_failed': 5}. CSV anomalies detected: 1. Human confirmation remains authoritative for camera-ready counts.

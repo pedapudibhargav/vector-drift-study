@@ -1,0 +1,12 @@
+{
+  "status": "waiting",
+  "message": "Nomic Ollama sweep not available; re-run after erb_ollama ingest + run_scale_sweep_ollama.py complete.",
+  "created_at": "2026-09-23T02:58:02Z",
+  "openai_source": "artifacts/published/erb_full_primary200_to100k.json",
+  "nomic_source": null,
+  "nomic_search": "erb_ollama_primary200_to100k.json or data/results/erb_ollama_sweep_*.json",
+  "outputs": {
+    "json": "artifacts/published/openai_vs_nomic_primary200.json",
+    "markdown": "artifacts/published/openai_vs_nomic_primary200.md"
+  }
+}
