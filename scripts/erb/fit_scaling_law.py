@@ -3,7 +3,7 @@
 
 Canonical definitions (IEEE protocol):
   Δ_meta(N) = Hit@10_meta(N) − Hit@10_raw(N)
-  N★(τ)     = min{ N : Δ_meta(N) < τ }   # first scale where meta lift collapses below τ
+  N★(τ)     = min{ N : Δ_meta(N') < τ  ∀ N' ≥ N }   # sustained collapse (paper Eq. 5)
   Also report n_star_last_ge = max{ N : Δ_meta(N) ≥ τ } when it exists.
 
 CI policy: prefer per_question flags from the sweep JSON (same run that produced

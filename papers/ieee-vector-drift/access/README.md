@@ -19,14 +19,15 @@
 
 - Abstract: **150–250 words**, single paragraph, **no citations** (enforced by validator).
 - Index terms: **4–6** Thesaurus-aligned keywords currently set to:  
-  *Artificial intelligence, Databases, Information retrieval, Machine learning, Metadata, Search methods*  
+  *Information retrieval, Nearest neighbor searches, Semantic search, Metadata, Vectors, Benchmark testing*  
   Confirm at https://www.ieee.org/publications/services/thesaurus.html or `keywords@ieee.org`.
 
 ## Local tooling
 
 ```bash
-# Recommended (macOS)
-brew install --cask mactex-no-gui   # provides pdflatex + chktex
+# Lightweight option (macOS, ~250 MB): TinyTeX — build_pdf.sh finds it automatically
+curl -sL "https://yihui.org/tinytex/install-bin-unix.sh" | sh
+# or the full distribution (~7 GB): brew install --cask mactex-no-gui
 brew install poppler               # pdfinfo, pdftotext, pdffonts
 
 # Drop official Access class next to main.tex (browser download if CDN blocks curl)

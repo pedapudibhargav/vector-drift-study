@@ -28,7 +28,7 @@ This note stores the **submission-quality bar** so we can drive the manuscript a
 
 | Tool | URL / install | What it checks |
 |------|---------------|----------------|
-| **IEEE PDF eXpress®** | https://ieee-pdf-express.org/ | Required Xplore PDF spec: font embedding, margins, color space; produces Pass/Fail report |
+| **IEEE LaTeX Analyzer** | https://latexqc.ieee.org/ | Upload the article zip; flags incomplete files / LaTeX version issues and returns a compiled PDF. (IEEE PDF eXpress requires a *conference* ID and is not used for IEEE Access.) |
 | LaTeX Workshop (VS Code/Cursor) | Extension marketplace | Live compile, cross-refs vs Access/IEEEtran class |
 | **ChkTeX / Lacheck** | `chktex` (TinyTeX / TeX Live) | Typographic lint (cite spacing, caption style, math) |
 | Local Access gate | `python3 papers/ieee-vector-drift/access/validate_access.py` | Abstract 150–250w, 4–6 keywords, page band warn, fonts |

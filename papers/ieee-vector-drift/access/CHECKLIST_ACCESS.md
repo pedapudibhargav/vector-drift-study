@@ -25,10 +25,10 @@
 - [x] Word twin **scaffold** `main_word_twin.docx` + official `IEEE_Access_Template_2024.docx` — **finish body match after PDF rebuild** (see PACKAGING_SUBMISSION.md)
 - [x] Abstract 150–250 words (local validator OK after trim)
 - [x] 4–6 keywords (confirm Thesaurus on portal)
-- [ ] PDF eXpress Pass — **author login required**
+- [ ] IEEE LaTeX Analyzer (https://latexqc.ieee.org/) on `ieee_access_latexqc.zip` — PDF eXpress needs a *conference* ID and does not apply to IEEE Access
 - [ ] CrossCheck / similarity — **author login / portal**
 - [x] AI disclosure in Acknowledgment (systems + sections + L3/L4)
-- [x] M.S. biography line — United States, 2015
+- [x] M.S. biography line — Northwest Missouri State University, Maryville, MO, 2015
 - [x] Page depth target 8–16 — rebuild PDF after latest TeX edits
 - [x] Strict IEEE review artifact — `artifacts/published/IEEE_STRICT_REVIEW_2026.md`
 

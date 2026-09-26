@@ -56,7 +56,7 @@ Information retrieval, Nearest neighbor searches, Semantic search, Metadata, Vec
 \label{sec:introduction}
 \PARstart{E}{nterprise} retrieval-augmented generation (RAG) stacks typically embed documents into a vector index and retrieve top-$k$ neighbors for generation~\cite{lewis2020rag,karpukhin2020dpr}. As organizations continuously ingest content, the index cardinality $N$ increases even when historical answer documents remain indexed. Practitioners often report that ``the same question used to work''---retrieval quality drifts downward without label changes. We call this phenomenon \emph{vector retrieval drift under corpus growth}.
 
-Prior IR scaling work largely studies web-scale training or \emph{model} capacity~\cite{ni2021large,fang2024drscale}. A complementary line enlarges the \emph{retriever corpus} to improve end-to-end RAG via answer-passage coverage~\cite{lessllm2025docs}. That finding does \emph{not} imply labeled first-stage Hit@$k$ is monotone in $N$ when gold documents are already indexed: coverage gains and near-neighbor crowding are distinct effects. Controlled measurements of enterprise document Hit@$k$ under \emph{gold-anchor pinning} as distractors grow remain scarce. Concurrent systems evaluations emphasize HNSW and filtered-search quality as indexes grow~\cite{shahri2026rcheck,icaiset2026vectordb}, while industry deployments treat metadata filtering as an operational first-stage lever~\cite{ragfusion2026}.
+Prior IR scaling work largely studies web-scale training or \emph{model} capacity~\cite{ni2021large,fang2024drscale}. A complementary line enlarges the \emph{retriever corpus} to improve end-to-end RAG via answer-passage coverage~\cite{lessllm2025docs}. That finding does \emph{not} imply labeled first-stage Hit@$k$ is monotone in $N$ when gold documents are already indexed: coverage gains and near-neighbor crowding are distinct effects. Controlled measurements of enterprise document Hit@$k$ under \emph{gold-anchor pinning} as distractors grow remain scarce. Concurrent systems evaluations study filtered-search strategies inside production vector databases, including pgvector and PostgreSQL~\cite{amanbayev2026fanns,lu2026pgfvs}, and query-wise recall inequality in vector similarity search~\cite{shahri2026rcheck}, while industry deployments treat metadata filtering as an operational first-stage lever~\cite{ragfusion2026}.
 
 \paragraph{Research questions.}
 \begin{enumerate}
@@ -79,17 +79,17 @@ Prior IR scaling work largely studies web-scale training or \emph{model} capacit
 \label{sec:related}
 
 \subsection{Model- versus Corpus-Side Scaling}
-Dense passage retrieval~\cite{karpukhin2020dpr} and dual encoders~\cite{ni2021large} established neural first-stage retrieval. Fang \emph{et al.}~\cite{fang2024drscale} fit power laws in retriever parameters and annotations. Coverage-oriented corpus scaling for RAG argues that more documents can substitute for larger generators~\cite{lessllm2025docs}. Our protocol freezes the embedder and measures labeled Hit@$k$ while gold documents remain present, isolating crowding rather than coverage acquisition.
+Dense passage retrieval~\cite{karpukhin2020dpr} and dual encoders~\cite{ni2021large} established neural first-stage retrieval. Fang \emph{et al.}~\cite{fang2024drscale} fit power laws in retriever parameters and annotations. Heterogeneous zero-shot benchmarks~\cite{thakur2021beir} and embedding leaderboards~\cite{muennighoff2023mteb} compare retrievers on fixed corpora; they do not vary $N$ while holding labels fixed. Most directly related, Reimers and Gurevych~\cite{reimers2021curse} showed that dense retrieval quality degrades faster than sparse retrieval as the index grows, to the point where sparse methods can overtake dense ones, and attributed this to false positives from low-dimensional representations. We measure the same pressure on an enterprise benchmark with gold documents pinned and production ANN settings frozen, and our BM25 control (Sec.~\ref{sec:bm25}) likewise declines less steeply than dense retrieval. Coverage-oriented corpus scaling for RAG argues that more documents can substitute for larger generators~\cite{lessllm2025docs}. Our protocol freezes the embedder and measures labeled Hit@$k$ while gold documents remain present, isolating crowding rather than coverage acquisition.
 
-A practical distinction follows. When a question previously failed because no supporting document existed, ingesting more content can raise end-to-end answer rates. When supporting documents already exist and are correctly labeled, additional distractors can only reduce or preserve first-stage Hit@$k$ under a fixed embedding space. Published RAG scaling curves that optimize answer $F_1$ therefore cannot be read as guarantees that Hit@10 on a frozen gold bank will improve with $N$.
+A practical distinction follows. When a question previously failed because no supporting document existed, ingesting more content can raise end-to-end answer rates. When supporting documents already exist and are correctly labeled, additional distractors can only reduce or preserve first-stage Hit@$k$ under exact search in a fixed embedding space. Published RAG scaling curves that optimize answer $F_1$ therefore cannot be read as guarantees that Hit@10 on a frozen gold bank will improve with $N$.
 
 \subsection{ANN Systems and Filtered Search}
-HNSW~\cite{malkov2018hnsw} underpins production vector databases. Recent systems work studies filtered search, churn, and warm-restart behavior~\cite{icaiset2026vectordb} and query-wise recall inequality under mean-recall targets~\cite{shahri2026rcheck}. These motivate reporting Hit@$k(N)$ under fixed ANN hyperparameters and treating metadata filters as first-class experimental conditions, not only latency SLOs.
+HNSW~\cite{malkov2018hnsw} underpins production vector databases, alongside quantization- and disk-based alternatives such as FAISS~\cite{johnson2021faiss} and DiskANN~\cite{subramanya2019diskann}; ANN-Benchmarks~\cite{aumuller2020annb} standardizes recall--throughput comparisons at fixed dataset sizes. Vector database systems such as Milvus~\cite{wang2021milvus} expose attribute-filtered search, Filtered-DiskANN~\cite{gollapudi2023filtered} builds label-aware graph indexes for filter predicates, and Pan \emph{et al.}~\cite{pan2024vdbms} survey vector database management systems. Recent systems work compares filtering strategies for approximate search in FAISS, Milvus, and pgvector~\cite{amanbayev2026fanns}, shows that filtered vector search inside a production PostgreSQL system behaves differently from specialized libraries~\cite{lu2026pgfvs}, and documents query-wise recall inequality under mean-recall targets~\cite{shahri2026rcheck}. These motivate reporting Hit@$k(N)$ under fixed ANN hyperparameters and treating metadata filters as first-class experimental conditions, not only latency SLOs.
 
 Filtered approximate nearest neighbor (ANN) search is especially relevant to enterprise RAG: production queries often carry tenant, product-line, or document-type constraints. Oracle filters in offline studies upper-bound the benefit of perfect filter prediction. As each filtered partition grows, the same crowding pressure reappears inside the partition, which is precisely the regime our $\Delta_{\mathrm{meta}}(N)$ curve quantifies.
 
 \subsection{Enterprise RAG Evaluation}
-EnterpriseRAG-Bench~\cite{sun2026erb} provides company-internal-style documents and questions with expected document IDs. Industry deployments report knowledge-base Hit@$k$ with metadata scoping~\cite{ragfusion2026}. We use ERB labels for a retrieval-only scale ladder with explicit $\Delta_{\mathrm{meta}}$ and $N^\star$, complementary to end-to-end answer scoring. Hybrid and sparse--dense comparisons~\cite{nguyen2025sparse} further motivate including a lexical baseline when available.
+EnterpriseRAG-Bench~\cite{sun2026erb} provides company-internal-style documents and questions with expected document IDs. Industry deployments report knowledge-base Hit@$k$ with metadata scoping~\cite{ragfusion2026}. We use ERB labels for a retrieval-only scale ladder with explicit $\Delta_{\mathrm{meta}}$ and $N^\star$, complementary to end-to-end answer scoring such as reference-free RAG evaluation~\cite{es2024ragas} and the retrieval designs catalogued in RAG surveys~\cite{gao2023ragsurvey}. Hybrid and sparse--dense comparisons~\cite{zeng2025sparse} further motivate including a lexical baseline when available.
 
 Relative to end-to-end RAG leaderboards, our evaluation intentionally stops at labeled document retrieval. Generation faithfulness, citation accuracy, and multi-hop reasoning are out of scope; they inherit first-stage failures when gold documents leave the top-$k$, but they also introduce judge noise that would obscure the scale-ladder signal we target.
 
@@ -118,9 +118,9 @@ Let $\mathcal{D}_N$ be a corpus of $N$ documents with fixed embeddings $e(d)\in\
 \begin{align}
 \mathrm{Hit@}k &= \mathbf{1}\!\left[G(q)\cap R_k(q)\neq\emptyset\right], \\
 \mathrm{DocRecall@}k &= |G(q)\cap R_k(q)|/|G(q)|, \\
-\mathrm{MRR} &= 1/\mathrm{rank}\!\left(\min\{i: r_i\in G(q)\}\right),
+\mathrm{MRR} &= 1/\min\{i: r_i\in G(q)\},
 \end{align}
-averaged over the question bank $\mathcal{Q}$.
+averaged over the question bank $\mathcal{Q}$, with MRR $=0$ when no gold document is retrieved.
 
 \paragraph{Scale construction.}
 Gold anchors (union of all $G(q)$) receive ranks $0..A{-}1$. Distractors are stratified by \texttt{source\_type} with seed $42$. The corpus at scale $N$ is $\{d:\mathrm{scale\_rank}(d)<N\}$. This matches the operational constraint that answer documents remain indexed as the enterprise corpus grows.
@@ -153,7 +153,7 @@ The primary embedder is OpenAI \texttt{text-embedding-3-small} ($d{=}1536$)~\cit
 Query embeddings for the primary-200 bank are computed once and cached, so cross-scale comparisons do not reintroduce query-side embedding noise. Document embeddings are also computed once and reused; scale changes only the searchable subset defined by \texttt{scale\_rank}. This design matches a common enterprise pattern in which re-embedding the full corpus is rare and expensive relative to ingesting new documents into an existing index.
 
 \subsection{Ladder, Metrics, and Confidence Intervals}
-$N\in\{5\text{k},10\text{k},15\text{k},20\text{k},25\text{k},40\text{k},50\text{k},75\text{k},100\text{k}\}$, evaluation $k{=}10$. Per-query rows are persisted with experiment run identifiers. Bootstrap 95\% CIs are computed from this sweep's per-question flags ($n{=}200$) only; unscoped database mixes of older runs are rejected for CI construction. Fits use planned ladder points only.
+$N\in\{5\text{k},10\text{k},15\text{k},20\text{k},25\text{k},40\text{k},50\text{k},75\text{k},100\text{k}\}$, evaluation $k{=}10$. Per-query rows are persisted with experiment run identifiers. Percentile bootstrap~\cite{efron1993bootstrap} 95\% CIs are computed from this sweep's per-question flags ($n{=}200$) only; unscoped database mixes of older runs are rejected for CI construction. Fits use planned ladder points only.
 
 \begin{algorithm}[t]
 \caption{Gold-pinned scale ladder evaluation}
@@ -195,26 +195,25 @@ Table~\ref{tab:full} and Fig.~\ref{fig:curves} summarize the integrity-clean lad
 
 Across the ladder, Doc-Recall@10 tracks Hit@10 closely because most questions have a small gold set (often a single expected document). The practical implication is that operators watching only Hit@10 will under-detect early capacity problems that already appear in Hit@1 and MRR. We therefore recommend publishing all three metrics in capacity reports, not Hit@10 alone.
 
-Confidence intervals in Table~\ref{tab:full} are bootstrap percentile intervals from the Phase-1/2 sweep JSON. Intervals widen slightly at the middle of the ladder, where per-query variance is highest, but the declines in Hit@1 and Hit@10 between the $5\text{k}$ and $100\text{k}$ endpoints remain well outside sampling noise.
+Confidence intervals in Table~\ref{tab:full} are bootstrap percentile intervals computed from the per-question flags of the published sweep (\texttt{erb\_full\_primary200\_to100k\_fit.json}). Intervals widen slightly at the middle of the ladder, where per-query variance is highest, but the declines in Hit@1 and Hit@10 between the $5\text{k}$ and $100\text{k}$ endpoints remain well outside sampling noise.
 
 \begin{table*}[t]
 \centering
 \caption{Primary-200 dense metrics (integrity-clean unique-eval-id sweep). Bootstrap 95\% CI on Hit@10 from per-query flags ($n{=}200$).}
 \label{tab:full}
-\resizebox{\textwidth}{!}{%
 \begin{tabular}{@{}lccccccc@{}}
 \toprule
 Cond. & $N$ & Hit@1 & Hit@5 & Hit@10 & CI$_{95}$(Hit@10) & DocR@10 & MRR \\
 \midrule
-raw & 5k & 0.600 & 0.740 & 0.795 & $[0.740,0.850]$ & 0.765 & 0.658 \\
-raw & 10k & 0.425 & 0.590 & 0.660 & $[0.590,0.730]$ & 0.634 & 0.506 \\
-raw & 15k & 0.415 & 0.570 & 0.625 & $[0.555,0.695]$ & 0.598 & 0.487 \\
-raw & 20k & 0.410 & 0.560 & 0.600 & $[0.530,0.670]$ & 0.570 & 0.473 \\
-raw & 25k & 0.395 & 0.545 & 0.590 & $[0.520,0.660]$ & 0.560 & 0.458 \\
-raw & 40k & 0.350 & 0.500 & 0.565 & $[0.490,0.635]$ & 0.532 & 0.416 \\
-raw & 50k & 0.325 & 0.490 & 0.555 & $[0.485,0.625]$ & 0.523 & 0.396 \\
-raw & 75k & 0.310 & 0.470 & 0.515 & $[0.445,0.585]$ & 0.483 & 0.374 \\
-raw & 100k & 0.305 & 0.460 & 0.510 & $[0.440,0.575]$ & 0.476 & 0.365 \\
+raw & 5k & 0.600 & 0.740 & 0.795 & $[0.735,0.845]$ & 0.765 & 0.658 \\
+raw & 10k & 0.425 & 0.590 & 0.660 & $[0.590,0.720]$ & 0.634 & 0.506 \\
+raw & 15k & 0.415 & 0.570 & 0.625 & $[0.560,0.690]$ & 0.598 & 0.487 \\
+raw & 20k & 0.410 & 0.560 & 0.600 & $[0.530,0.665]$ & 0.570 & 0.473 \\
+raw & 25k & 0.395 & 0.545 & 0.590 & $[0.520,0.655]$ & 0.560 & 0.458 \\
+raw & 40k & 0.350 & 0.500 & 0.565 & $[0.495,0.630]$ & 0.532 & 0.416 \\
+raw & 50k & 0.325 & 0.490 & 0.555 & $[0.485,0.620]$ & 0.523 & 0.396 \\
+raw & 75k & 0.310 & 0.470 & 0.515 & $[0.440,0.585]$ & 0.483 & 0.374 \\
+raw & 100k & 0.305 & 0.460 & 0.510 & $[0.435,0.580]$ & 0.476 & 0.365 \\
 \midrule
 meta & 5k & 0.665 & 0.825 & 0.875 & --- & 0.811 & 0.732 \\
 meta & 10k & 0.565 & 0.765 & 0.835 & --- & 0.770 & 0.654 \\
@@ -226,14 +225,13 @@ meta & 50k & 0.395 & 0.615 & 0.690 & --- & 0.625 & 0.491 \\
 meta & 75k & 0.375 & 0.575 & 0.650 & --- & 0.586 & 0.460 \\
 meta & 100k & 0.360 & 0.575 & 0.640 & --- & 0.576 & 0.444 \\
 \bottomrule
-\end{tabular}%
-}
+\end{tabular}
 \end{table*}
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\columnwidth]{figures/fig1_hit_vs_logN.png}
-\caption{Hit@10 (raw/meta), Hit@1 (raw), and log-linear Hit@10 fit versus $\log N$. Shaded band: bootstrap 95\% CI on raw Hit@10.}
+\includegraphics[width=\columnwidth]{figures/fig1_hit_vs_logN.pdf}
+\caption{OpenAI arm: raw and meta Hit@10, raw Hit@1, and the log-linear raw Hit@10 fit (dashed) versus corpus size $N$ (log scale). Shaded band: bootstrap 95\% CI on raw Hit@10.}
 \label{fig:curves}
 \end{figure}
 
@@ -269,8 +267,8 @@ $N$ & Hit@10 raw & Hit@10 meta & $\Delta_{\mathrm{meta}}$ \\
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\columnwidth]{figures/fig2_delta_meta.png}
-\caption{$\Delta_{\mathrm{meta}}(N)$ with threshold $\tau{=}0.10$. Sustained collapse onset $N^\star$ is not observed through $100\text{k}$.}
+\includegraphics[width=\columnwidth]{figures/fig2_delta_meta.pdf}
+\caption{Metadata rescue $\Delta_{\mathrm{meta}}(N)$ for both embedders with threshold $\tau{=}0.10$. OpenAI never falls below $\tau$ after $5\text{k}$ ($N^\star$ undefined); Titan ends below $\tau$ at $100\text{k}$ ($N^\star{=}100\text{k}$, borderline).}
 \label{fig:delta}
 \end{figure}
 
@@ -285,8 +283,8 @@ The three absolute log-slopes are nearly identical ($b\approx0.086$--$0.088$), b
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\columnwidth]{figures/fig3_rank_erosion.png}
-\caption{Raw Hit@1 and MRR versus $\log N$ with log-linear fits.}
+\includegraphics[width=\columnwidth]{figures/fig3_rank_erosion.pdf}
+\caption{OpenAI arm: raw Hit@1 and MRR versus corpus size $N$ (log scale) with their log-linear fits (dashed).}
 \label{fig:rank}
 \end{figure}
 
@@ -351,7 +349,7 @@ An exploratory stratified subsample of 40 questions, run on the legacy bank \emp
 
 \subsection{Sparse Controls (BM25 and Postgres FTS)}
 \label{sec:bm25}
-Table~\ref{tab:bm25} reports Okapi BM25 (\texttt{rank\_bm25.BM25Okapi}, defaults $k_1{=}1.5$, $b{=}0.75$, tokenizer $[a\text{-}z0\text{-}9]+$, title$+$body truncated to $4$k characters) on the same primary-200 bank and gold-pinned ladder as dense retrieval (artifact \texttt{erb\_bm25\_baseline\_primary200.json}). BM25 Hit@10 declines from $0.855$ at $5\text{k}$ to $0.700$ at $100\text{k}$ (Hit@1 $0.740{\to}0.510$; MRR $0.772{\to}0.575$). Dense raw Hit@10 falls farther on the same endpoints ($0.795{\to}0.510$). Paired bootstrap 95\% intervals on the $5\text{k}{\to}100\text{k}$ Hit@10 drop are $[0.225,0.350]$ (dense) versus $[0.105,0.210]$ (BM25); at $100\text{k}$ the BM25$-$dense Hit@10 gap is $+0.190$ with CI $[0.120,0.260]$ (\texttt{bm25\_vs\_dense\_bootstrap.json}). Thus corpus growth harms both sparse and dense first-stage retrieval on this bank; the dense stack shows a steeper Hit@10 drop.
+Table~\ref{tab:bm25} reports Okapi BM25~\cite{robertson2009bm25} (\texttt{rank\_bm25.BM25Okapi}, defaults $k_1{=}1.5$, $b{=}0.75$, tokenizer $[a\text{-}z0\text{-}9]+$, title$+$body truncated to $4$k characters) on the same primary-200 bank and gold-pinned ladder as dense retrieval (artifact \texttt{erb\_bm25\_baseline\_primary200.json}). BM25 Hit@10 declines from $0.855$ at $5\text{k}$ to $0.700$ at $100\text{k}$ (Hit@1 $0.740{\to}0.510$; MRR $0.772{\to}0.575$). Dense raw Hit@10 falls farther on the same endpoints ($0.795{\to}0.510$). Paired bootstrap 95\% intervals on the $5\text{k}{\to}100\text{k}$ Hit@10 drop are $[0.225,0.350]$ (dense) versus $[0.105,0.210]$ (BM25); at $100\text{k}$ the BM25$-$dense Hit@10 gap is $+0.190$ with CI $[0.120,0.260]$ (\texttt{bm25\_vs\_dense\_bootstrap.json}). Thus corpus growth harms both sparse and dense first-stage retrieval on this bank; the dense stack shows a steeper Hit@10 drop.
 
 Industrial PostgreSQL FTS (\texttt{ts\_rank\_cd}+\texttt{plainto\_tsquery}) remains near the floor (Hit@10 $=0.045$ on a partial ladder) and is retained only as a weak operational negative control---it does \emph{not} answer RQ2.
 
@@ -378,7 +376,7 @@ $N$ & Hit@1 & Hit@5 & Hit@10 & MRR \\
 
 \subsection{Secondary Embedder (Amazon Titan V2)}
 \label{sec:titan}
-Table~\ref{tab:titan-endpoints} compares OpenAI and Titan endpoints on the same primary-200 bank, gold pins, and HNSW settings, under both HNSW and exact search. Confidence intervals are paired bootstraps over the 200 eval IDs ($B{=}5000$, seed $42$; \texttt{openai\_vs\_titan\_bootstrap.json}).
+Table~\ref{tab:titan-endpoints} compares OpenAI and Titan endpoints on the same primary-200 bank, gold pins, and HNSW settings, under both HNSW and exact search. Confidence intervals are paired bootstraps over the 200 eval IDs ($B{=}5000$, seed $42$; \texttt{openai\_vs\_titan\_bootstrap.json}); in IR evaluation the bootstrap agrees closely with randomization and paired $t$ tests~\cite{smucker2007significance}.
 
 \paragraph{The decline replicates.}
 Titan raw Hit@10 falls from $0.785$ to $0.610$ (drop $-0.175$, 95\% CI $[-0.230,-0.120]$), Hit@1 from $0.620$ to $0.385$ ($-0.235$, $[-0.295,-0.180]$), and MRR from $0.671$ to $0.465$ ($-0.206$, $[-0.250,-0.164]$); every interval excludes zero. The Titan log-linear fits are Hit@1 $\approx1.382-0.087\log N$ (the same slope as OpenAI), Hit@10 $\approx1.334-0.064\log N$, and MRR $\approx1.312-0.074\log N$.
@@ -396,7 +394,6 @@ Table~\ref{tab:titan-delta} lists $\Delta_{\mathrm{meta}}$ for both arms. Titan'
 \centering
 \caption{Raw endpoint comparison, $5\text{k}{\to}100\text{k}$ (primary-200). Drop $=$ value at $100\text{k}$ minus value at $5\text{k}$. Last column: paired-bootstrap difference in drop (Titan $-$ OpenAI) with 95\% CI; positive means Titan declines less.}
 \label{tab:titan-endpoints}
-\resizebox{\textwidth}{!}{%
 \begin{tabular}{@{}llccccccc@{}}
 \toprule
 Search & Metric & OpenAI 5k & OpenAI 100k & OpenAI drop & Titan 5k & Titan 100k & Titan drop & Titan$-$OpenAI drop \\
@@ -409,15 +406,13 @@ Exact & Hit@1 & 0.600 & 0.340 & $-0.260$ & 0.620 & 0.385 & $-0.235$ & $+0.025$ $
 Exact & Hit@10 & 0.795 & 0.585 & $-0.210$ & 0.785 & 0.610 & $-0.175$ & $+0.035$ $[-0.025,0.100]$ \\
 Exact & MRR & 0.658 & 0.408 & $-0.249$ & 0.671 & 0.465 & $-0.206$ & $+0.043$ $[-0.008,0.092]$ \\
 \bottomrule
-\end{tabular}%
-}
+\end{tabular}
 \end{table*}
 
 \begin{table}[t]
 \centering
 \caption{Metadata rescue $\Delta_{\mathrm{meta}}$ (Hit@10) by embedder (primary-200). Values below $\tau{=}0.10$ are marked~$^\dagger$.}
 \label{tab:titan-delta}
-\resizebox{\columnwidth}{!}{%
 \begin{tabular}{@{}lcccc@{}}
 \toprule
 $N$ & Titan raw & Titan meta & $\Delta_{\mathrm{meta}}$ Titan & $\Delta_{\mathrm{meta}}$ OpenAI \\
@@ -432,8 +427,7 @@ $N$ & Titan raw & Titan meta & $\Delta_{\mathrm{meta}}$ Titan & $\Delta_{\mathrm
 75k & 0.615 & 0.715 & $+0.100$ & $+0.135$ \\
 100k & 0.610 & 0.690 & $+0.080^\dagger$ & $+0.130$ \\
 \bottomrule
-\end{tabular}%
-}
+\end{tabular}
 \end{table}
 
 \subsection{Answers to Research Questions}
@@ -490,13 +484,13 @@ Primary $n{=}200$ with bootstrap CIs from this sweep's per-query flags only. Pos
 
 \section{Reproducibility Notes}
 \label{sec:repro}
-Code, published metrics JSON, LLM L4 fairness reports and optional human spot-check worksheets, and a restoreable pgvector dump are hosted at \url{https://pedapudibhargav.github.io/vector-drift-study/} (GitHub repository \url{https://github.com/pedapudibhargav/vector-drift-study}). Reviewers can restore both embedding arms without re-paying for OpenAI or Titan document embedding. Seed $42$, embedder, HNSW $m{=}16$, ladder, and $\tau{=}0.10$ are frozen in the study protocol. Approximate API spend for embeddings and L3/L4 judging remained under a soft budget in this run.
+Code, published metrics JSON, LLM L4 fairness reports and optional human spot-check worksheets, are hosted at \url{https://pedapudibhargav.github.io/vector-drift-study/} (GitHub repository \url{https://github.com/pedapudibhargav/vector-drift-study}); restorable pgvector dumps are attached to the repository's GitHub Releases. Reviewers can restore both embedding arms without re-paying for OpenAI or Titan document embedding. Seed $42$, embedder, HNSW $m{=}16$, ladder, and $\tau{=}0.10$ are frozen in the study protocol. Approximate API spend for embeddings and L3/L4 judging remained under a soft budget in this run.
 
 Artifacts supporting this manuscript include \texttt{erb\_full\_primary200\_to100k.json}, \texttt{erb\_titan\_primary200\_to100k.json}, \texttt{openai\_vs\_titan\_primary200.json}, \texttt{openai\_vs\_titan\_bootstrap.json}, \texttt{exact\_control\_mvp.json}, \texttt{exact\_control\_titan.json}, the reconciled fit JSON with per-scale CIs sourced from \texttt{sweep\_json\_per\_question}, L3 judge outputs for raw/meta at $5\text{k}$/$40\text{k}$, and Postgres dumps (GitHub Releases) of the OpenAI and Titan document-embedding, run, and per-query result tables, together with the cached primary-200 query embeddings for both embedders. Titan per-query Hit@$k$ rows (with retrieved and gold document IDs) are published in \texttt{erb\_titan\_primary200\_to100k.json} and stored in \texttt{vector\_drift\_results\_titan}, separate from the OpenAI \texttt{vector\_drift\_results}. A static verification bundle (per-query Hit@$k$ rows plus retrieved/gold document text, no embeddings) is published with the GitHub Pages site so readers can inspect results without restoring the full database.
 
 \section{Conclusion}
 \label{sec:conclusion}
-We formalize vector retrieval drift under corpus growth on EnterpriseRAG-Bench through $N{=}100\text{k}$ using unique eval IDs and membership-consistent Hit@$k$ under a frozen \texttt{text-embedding-3-small} + pgvector HNSW stack. Dense rank quality declines with $N$ on this configuration (Hit@1 $0.600{\to}0.305$; MRR $0.658{\to}0.365$), log-linear fits quantify the slope, and oracle metadata provides sustained Hit@10 lift without a $\tau{=}0.10$ threshold crossing through $100\text{k}$ while absolute meta quality still falls. Exact cosine at selected scales confirms the endpoint decline is not solely an ANN artifact, though HNSW contributes an additional $\approx0.07$--$0.09$ Hit@10 gap at $50\text{k}$--$100\text{k}$. Okapi BM25 also declines on the same ladder (Hit@10 $0.855{\to}0.700$) but less steeply than dense, so growth pressure is not dense-only on this bank. A second embedder, Titan V2, on the same pins shows the same significant decline (Hit@10 $0.785{\to}0.610$); its HNSW results equal exact search, and under exact search the two embedders' drops are statistically indistinguishable, so the drift is not an artifact of one embedding model. Metadata rescue, by contrast, is embedder-dependent: Titan's oracle lift is smaller and dips below $\tau$ at $100\text{k}$. Multi-seed insertion-order robustness is not claimed. Future work includes passage-level chunking, open-weight embedders, multi-seed growth orders, diagnosing index-specific ANN recall loss, and learned filters.
+We formalize vector retrieval drift under corpus growth on EnterpriseRAG-Bench through $N{=}100\text{k}$ using unique eval IDs and membership-consistent Hit@$k$ under a frozen \texttt{text-embedding-3-small} + pgvector HNSW stack. Dense rank quality declines with $N$ on this configuration (Hit@1 $0.600{\to}0.305$; MRR $0.658{\to}0.365$), log-linear fits quantify the slope, and oracle metadata provides sustained Hit@10 lift without a $\tau{=}0.10$ threshold crossing through $100\text{k}$ while absolute meta quality still falls. Exact cosine at selected scales confirms the endpoint decline is not solely an ANN artifact, though HNSW contributes an additional $\approx0.07$--$0.09$ Hit@10 gap at $50\text{k}$--$100\text{k}$. Okapi BM25 also declines on the same ladder (Hit@10 $0.855{\to}0.700$) but less steeply than dense, so growth pressure is not dense-only on this bank. A second embedder, Titan V2, on the same pins shows the same significant decline (Hit@10 $0.785{\to}0.610$); its HNSW results equal exact search, and under exact search the two embedders' drops are statistically indistinguishable, so the drift is not an artifact of one embedding model. Metadata rescue, by contrast, is embedder-dependent: Titan's oracle lift is smaller and dips below $\tau$ at $100\text{k}$. Multi-seed insertion-order robustness is not claimed. Future work includes passage-level chunking, multi-vector late-interaction retrievers~\cite{khattab2020colbert}, open-weight embedders, multi-seed growth orders, diagnosing index-specific ANN recall loss, and learned filters.
 
 \appendix
 \section{Complete Metadata Ladder}
@@ -526,7 +520,7 @@ $N$ & Hit@1 & Hit@5 & Hit@10 & MRR \\
 
 \section{CI Construction Policy}
 \label{app:ci}
-For each raw scale point we bootstrap $B{=}1000$ resamples of the $n{=}200$ Hit@10 indicators from the Phase-1/2 sweep JSON. The reported interval is the $2.5$/$97.5$ percentile of resample means. Document-recall and MRR intervals use the corresponding per-query continuous fields from the same JSON. Database fallbacks that select all rows for a $(N,\mathrm{condition})$ pair are disabled because prior exploratory runs polluted those aggregates.
+For each raw scale point we bootstrap $B{=}1000$ resamples (seed $42$) of the $n{=}200$ Hit@10 indicators from the published sweep JSON. The reported interval is the $2.5$/$97.5$ percentile of resample means. Document-recall and MRR intervals use the corresponding per-query continuous fields from the same JSON. Database fallbacks that select all rows for a $(N,\mathrm{condition})$ pair are disabled because prior exploratory runs polluted those aggregates.
 
 \section{Fit Residuals and Protocol Checklist}
 \label{app:fit}
@@ -559,7 +553,7 @@ $N$ & Observed & Predicted & Residual \\
 (3)~Persist a unique \texttt{experiment\_run\_id} per $(N,\mathrm{condition})$ evaluation.
 (4)~Compute bootstrap CIs only from that run's per-question rows.
 (5)~Define $\tau$ before inspecting $\Delta_{\mathrm{meta}}$; report $N^\star(\tau)$ as sustained collapse, else undefined on the ladder.
-(6)~Publish the metrics JSON and a restoreable embedding dump so reviewers need not re-pay for document embedding.
+(6)~Publish the metrics JSON and a restorable embedding dump so reviewers need not re-pay for document embedding.
 (7)~Use unique eval IDs (\texttt{question\_id::question\_type}) and membership Hit@$k$.
 
 \section{Integrity Gate Summary}
@@ -608,40 +602,72 @@ AI systems are not authors. All scientific claims, experimental design choices, 
 This disclosure follows IEEE guidance on AI-assisted manuscripts~\cite{ieee2024aipolicy}.
 
 \begin{thebibliography}{00}
-\bibitem{karpukhin2020dpr}
-V.~Karpukhin et~al., ``Dense passage retrieval for open-domain question answering,'' in \emph{EMNLP}, 2020.
-\bibitem{ni2021large}
-J.~Ni et~al., ``Large dual encoders are generalizable retrievers,'' in \emph{EMNLP}, 2021.
-\bibitem{malkov2018hnsw}
-Y.~A.~Malkov and D.~A.~Yashunin, ``Efficient and robust approximate nearest neighbor search using hierarchical navigable small world graphs,'' \emph{IEEE TPAMI}, 2018.
-\bibitem{sun2026erb}
-Y.~Sun et~al., ``EnterpriseRAG-Bench: A RAG benchmark for company internal knowledge,'' 2026, arXiv:2605.05253.
-\bibitem{fang2024drscale}
-Y.~Fang et~al., ``Scaling laws for dense retrieval,'' in \emph{SIGIR}, 2024.
 \bibitem{lewis2020rag}
-P.~Lewis et~al., ``Retrieval-augmented generation for knowledge-intensive NLP tasks,'' in \emph{NeurIPS}, 2020.
-\bibitem{nguyen2025sparse}
-H.~Nguyen et~al., ``Scaling sparse and dense retrieval in decoder-only LLMs,'' 2025, arXiv:2502.15526.
+P.~Lewis \emph{et al.}, ``Retrieval-augmented generation for knowledge-intensive NLP tasks,'' in \emph{Proc. Adv. Neural Inf. Process. Syst. (NeurIPS)}, vol.~33, 2020, pp.~9459--9474.
+\bibitem{karpukhin2020dpr}
+V.~Karpukhin, B.~O\u{g}uz, S.~Min, P.~Lewis, L.~Wu, S.~Edunov, D.~Chen, and W.-t.~Yih, ``Dense passage retrieval for open-domain question answering,'' in \emph{Proc. Conf. Empirical Methods Natural Lang. Process. (EMNLP)}, 2020, pp.~6769--6781, doi: 10.18653/v1/2020.emnlp-main.550.
+\bibitem{ni2021large}
+J.~Ni \emph{et al.}, ``Large dual encoders are generalizable retrievers,'' in \emph{Proc. Conf. Empirical Methods Natural Lang. Process. (EMNLP)}, 2022, pp.~9844--9855, doi: 10.18653/v1/2022.emnlp-main.669.
+\bibitem{fang2024drscale}
+Y.~Fang, J.~Zhan, Q.~Ai, J.~Mao, W.~Su, J.~Chen, and Y.~Liu, ``Scaling laws for dense retrieval,'' in \emph{Proc. 47th Int. ACM SIGIR Conf. Res. Develop. Inf. Retrieval}, 2024, pp.~1339--1349, doi: 10.1145/3626772.3657743.
 \bibitem{lessllm2025docs}
-``Less LLM, more documents: Searching for improved RAG,'' 2025, arXiv:2510.02657.
-\bibitem{ragfusion2026}
-``Scaling retrieval augmented generation with RAG fusion: Lessons from an industry deployment,'' 2026, arXiv:2603.02153.
-\bibitem{icaiset2026vectordb}
-``Vector databases under realistic workloads: Filtered search, churn, and warm-restart behavior,'' in \emph{ICAISET}, 2026.
+J.~Ning, Y.~Kong, Y.~Long, and J.~Callan, ``Less LLM, more documents: Searching for improved RAG,'' 2025, \emph{arXiv:2510.02657}.
+\bibitem{amanbayev2026fanns}
+A.~Amanbayev, B.~Tsan, T.~Dang, and F.~Rusu, ``Filtered approximate nearest neighbor search in vector databases: System design and performance analysis,'' 2026, \emph{arXiv:2602.11443}.
+\bibitem{lu2026pgfvs}
+D.~Lu \emph{et al.}, ``An in-depth study of filter-agnostic vector search on a PostgreSQL database system: Experiments and analysis,'' 2026, \emph{arXiv:2603.23710}.
 \bibitem{shahri2026rcheck}
-S.~M.~Shahri et~al., ``Analyzing and reducing search quality differences in vector similarity search,'' 2026, arXiv:2608.25185.
+S.~M.~Shahri, M.~Prammer, J.~M.~Patel, and A.~Sriraman, ``Analyzing and reducing search quality differences in vector similarity search,'' 2026, \emph{arXiv:2608.25185}.
+\bibitem{ragfusion2026}
+L.~Medrano, A.~Verma, and M.~Chhabra, ``Scaling retrieval augmented generation with RAG fusion: Lessons from an industry deployment,'' 2026, \emph{arXiv:2603.02153}.
+\bibitem{sun2026erb}
+Y.~Sun, J.~Rahmfeld, C.~Weaver, W.~Chen, R.~Desai, W.~Huang, and M.~H.~Butler, ``EnterpriseRAG-Bench: A RAG benchmark for company internal knowledge,'' 2026, \emph{arXiv:2605.05253}.
+\bibitem{thakur2021beir}
+N.~Thakur, N.~Reimers, A.~R\"{u}ckl\'{e}, A.~Srivastava, and I.~Gurevych, ``BEIR: A heterogeneous benchmark for zero-shot evaluation of information retrieval models,'' in \emph{Proc. NeurIPS Datasets Benchmarks Track}, 2021.
+\bibitem{muennighoff2023mteb}
+N.~Muennighoff, N.~Tazi, L.~Magne, and N.~Reimers, ``MTEB: Massive text embedding benchmark,'' in \emph{Proc. 17th Conf. Eur. Chapter Assoc. Comput. Linguistics (EACL)}, 2023, pp.~2014--2037, doi: 10.18653/v1/2023.eacl-main.148.
+\bibitem{reimers2021curse}
+N.~Reimers and I.~Gurevych, ``The curse of dense low-dimensional information retrieval for large index sizes,'' in \emph{Proc. 59th Annu. Meeting Assoc. Comput. Linguistics (ACL), Short Papers}, 2021, pp.~605--611, doi: 10.18653/v1/2021.acl-short.77.
+\bibitem{malkov2018hnsw}
+Y.~A.~Malkov and D.~A.~Yashunin, ``Efficient and robust approximate nearest neighbor search using hierarchical navigable small world graphs,'' \emph{IEEE Trans. Pattern Anal. Mach. Intell.}, vol.~42, no.~4, pp.~824--836, Apr.~2020, doi: 10.1109/TPAMI.2018.2889473.
+\bibitem{johnson2021faiss}
+J.~Johnson, M.~Douze, and H.~J\'{e}gou, ``Billion-scale similarity search with GPUs,'' \emph{IEEE Trans. Big Data}, vol.~7, no.~3, pp.~535--547, Jul.~2021, doi: 10.1109/TBDATA.2019.2921572.
+\bibitem{subramanya2019diskann}
+S.~Jayaram~Subramanya, F.~Devvrit, H.~V.~Simhadri, R.~Krishnaswamy, and R.~Kadekodi, ``DiskANN: Fast accurate billion-point nearest neighbor search on a single node,'' in \emph{Proc. Adv. Neural Inf. Process. Syst. (NeurIPS)}, vol.~32, 2019.
+\bibitem{aumuller2020annb}
+M.~Aum\"{u}ller, E.~Bernhardsson, and A.~Faithfull, ``ANN-Benchmarks: A benchmarking tool for approximate nearest neighbor algorithms,'' \emph{Inf. Syst.}, vol.~87, Art.~no.~101374, Jan.~2020, doi: 10.1016/j.is.2019.02.006.
+\bibitem{wang2021milvus}
+J.~Wang \emph{et al.}, ``Milvus: A purpose-built vector data management system,'' in \emph{Proc. Int. Conf. Manage. Data (SIGMOD)}, 2021, pp.~2614--2627, doi: 10.1145/3448016.3457550.
+\bibitem{gollapudi2023filtered}
+S.~Gollapudi \emph{et al.}, ``Filtered-DiskANN: Graph algorithms for approximate nearest neighbor search with filters,'' in \emph{Proc. ACM Web Conf. (WWW)}, 2023, pp.~3406--3416, doi: 10.1145/3543507.3583552.
+\bibitem{pan2024vdbms}
+J.~J.~Pan, J.~Wang, and G.~Li, ``Survey of vector database management systems,'' \emph{VLDB J.}, vol.~33, no.~5, pp.~1591--1615, 2024, doi: 10.1007/s00778-024-00864-x.
+\bibitem{es2024ragas}
+S.~Es, J.~James, L.~Espinosa-Anke, and S.~Schockaert, ``RAGAs: Automated evaluation of retrieval augmented generation,'' in \emph{Proc. 18th Conf. Eur. Chapter Assoc. Comput. Linguistics: System Demonstrations}, 2024, pp.~150--158, doi: 10.18653/v1/2024.eacl-demo.16.
+\bibitem{gao2023ragsurvey}
+Y.~Gao \emph{et al.}, ``Retrieval-augmented generation for large language models: A survey,'' 2023, \emph{arXiv:2312.10997}.
+\bibitem{zeng2025sparse}
+H.~Zeng, J.~Killingback, and H.~Zamani, ``Scaling sparse and dense retrieval in decoder-only LLMs,'' 2025, \emph{arXiv:2502.15526}.
 \bibitem{openai2024embed}
 OpenAI, ``New embedding models and API updates,'' Jan.~2024. [Online]. Available: \url{https://openai.com/index/new-embedding-models-and-api-updates/}
-\bibitem{aws2024titan}
-Amazon Web Services, ``Amazon Titan Text Embeddings models,'' \emph{Amazon Bedrock User Guide}, 2024. [Online]. Available: \url{https://docs.aws.amazon.com/bedrock/latest/userguide/titan-embedding-models.html}
 \bibitem{pgvector}
 A.~Kane, ``pgvector: Open-source vector similarity search for Postgres,'' GitHub repository. [Online]. Available: \url{https://github.com/pgvector/pgvector}
+\bibitem{aws2024titan}
+Amazon Web Services, ``Amazon Titan Text Embeddings models,'' \emph{Amazon Bedrock User Guide}. [Online]. Available: \url{https://docs.aws.amazon.com/bedrock/latest/userguide/titan-embedding-models.html}
+\bibitem{efron1993bootstrap}
+B.~Efron and R.~J.~Tibshirani, \emph{An Introduction to the Bootstrap}. New York, NY, USA: Chapman \& Hall, 1993.
+\bibitem{robertson2009bm25}
+S.~Robertson and H.~Zaragoza, ``The probabilistic relevance framework: BM25 and beyond,'' \emph{Found. Trends Inf. Retr.}, vol.~3, no.~4, pp.~333--389, 2009, doi: 10.1561/1500000019.
+\bibitem{smucker2007significance}
+M.~D.~Smucker, J.~Allan, and B.~Carterette, ``A comparison of statistical significance tests for information retrieval evaluation,'' in \emph{Proc. 16th ACM Conf. Inf. Knowl. Manage. (CIKM)}, 2007, pp.~623--632, doi: 10.1145/1321440.1321528.
+\bibitem{khattab2020colbert}
+O.~Khattab and M.~Zaharia, ``ColBERT: Efficient and effective passage search via contextualized late interaction over BERT,'' in \emph{Proc. 43rd Int. ACM SIGIR Conf. Res. Develop. Inf. Retrieval}, 2020, pp.~39--48, doi: 10.1145/3397271.3401075.
 \bibitem{ieee2024aipolicy}
-IEEE, ``Author guidelines for artificial intelligence (AI)--generated text,'' IEEE Open, Apr.~2024. [Online]. Available: \url{https://open.ieee.org/author-guidelines-for-artificial-intelligence-ai-generated-text/}
+IEEE, ``Author guidelines for artificial intelligence (AI)-generated text,'' Apr.~2024. [Online]. Available: \url{https://open.ieee.org/author-guidelines-for-artificial-intelligence-ai-generated-text/}
 \end{thebibliography}
 
 \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{author.jpg}}]{Bhargava Chary Peddapudi}
-received the M.S.\ degree in Computer Science from the United States in 2015.
+received the M.S.\ degree in applied computer science from Northwest Missouri State University, Maryville, MO, USA, in 2015.
 He is an independent researcher based in the San Francisco Bay Area, CA, USA.
 His professional background includes enterprise web platform development, digital architecture, and large-scale system optimization.
 His research interests include retrieval-augmented generation (RAG) evaluation, metadata-aware vector retrieval, and scaling behavior of approximate nearest-neighbor indexes under corpus growth.

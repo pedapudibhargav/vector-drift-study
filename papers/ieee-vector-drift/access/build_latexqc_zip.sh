@@ -14,7 +14,7 @@ mkdir -p "$STAGE/figures"
 cp main.tex ieeeaccess.cls IEEEtran.cls IEEEtran.bst spotcolor.sty author.jpg \
    logo.png bullet.png notaglinelogo.png \
    t1-*.pfb t1-*.tfm t1-*.map t1*.fd "$STAGE/"
-cp "$FIGSRC"/fig1_hit_vs_logN.png "$FIGSRC"/fig2_delta_meta.png "$FIGSRC"/fig3_rank_erosion.png \
+cp "$FIGSRC"/fig1_hit_vs_logN.pdf "$FIGSRC"/fig2_delta_meta.pdf "$FIGSRC"/fig3_rank_erosion.pdf \
    "$STAGE/figures/"
 
 rm -f "$OUT"
@@ -25,6 +25,6 @@ echo "Created: $OUT"
 echo "Size: $(du -h "$OUT" | awk '{print $1}')"
 echo ""
 echo "Zip must contain main.tex at root (not PDF-only). Verify:"
-unzip -l "$OUT" | rg 'main\.tex|figures/'
+unzip -l "$OUT" | grep -E 'main\.tex|figures/'
 echo ""
 echo "Upload: https://latexqc.ieee.org/upload"

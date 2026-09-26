@@ -21,19 +21,29 @@ def test_fit_log_linear_known_curve() -> None:
     assert abs(b - 0.05) < 1e-6
 
 
-def test_fit_payload_n_star() -> None:
-    payload = {
-        "runs": [
-            {"condition": "raw", "corpus_scale_size": 1000, "hit_at_10": 0.80, "document_recall": 0.70, "mrr": 0.5},
-            {"condition": "meta", "corpus_scale_size": 1000, "hit_at_10": 0.82, "document_recall": 0.72, "mrr": 0.52},
-            {"condition": "raw", "corpus_scale_size": 5000, "hit_at_10": 0.60, "document_recall": 0.50, "mrr": 0.4},
-            {"condition": "meta", "corpus_scale_size": 5000, "hit_at_10": 0.75, "document_recall": 0.65, "mrr": 0.55},
-        ],
-        "deltas": [
-            {"corpus_scale_size": 1000, "delta_hit_at_10": 0.02, "delta_document_recall": 0.02},
-            {"corpus_scale_size": 5000, "delta_hit_at_10": 0.15, "delta_document_recall": 0.15},
-        ],
-    }
-    fitted = fit_payload(payload, tau=0.10)
+def _payload(lift_1k: float, lift_5k: float) -> dict:
+    raw = {1000: 0.80, 5000: 0.60}
+    lift = {1000: lift_1k, 5000: lift_5k}
+    runs = []
+    for n, h10 in raw.items():
+        runs.append({"condition": "raw", "corpus_scale_size": n, "hit_at_1": h10 - 0.2,
+                     "hit_at_10": h10, "document_recall": h10 - 0.1, "mrr": h10 - 0.3})
+        m10 = h10 + lift[n]
+        runs.append({"condition": "meta", "corpus_scale_size": n, "hit_at_1": m10 - 0.2,
+                     "hit_at_10": m10, "document_recall": m10 - 0.1, "mrr": m10 - 0.3})
+    deltas = [{"corpus_scale_size": n, "delta_hit_at_10": lift[n], "delta_document_recall": lift[n]}
+              for n in raw]
+    return {"runs": runs, "deltas": deltas}
+
+
+def test_fit_payload_n_star_sustained() -> None:
+    # Lift falls below tau at 5k and stays below through the end of the ladder -> N* = 5k.
+    fitted = fit_payload(_payload(0.15, 0.02), tau=0.10)
     assert fitted["n_star"] == 5000
     assert "a" in fitted["fit_hit_at_10"]
+
+
+def test_fit_payload_n_star_undefined_when_lift_recovers() -> None:
+    # Below tau only at the first point, then recovers -> no sustained collapse on the ladder.
+    fitted = fit_payload(_payload(0.02, 0.15), tau=0.10)
+    assert fitted["n_star"] is None

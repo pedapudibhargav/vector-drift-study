@@ -37,7 +37,7 @@ Official checklist: https://ieeeaccess.ieee.org/authors/submission-guidelines/
 ### 4. Thesaurus / portal keywords
 On submission select **3–10** keywords aligned with IEEE Thesaurus (portal search). Current draft set:
 
-`Information retrieval, Nearest neighbor searches, Semantic search, Databases, Metadata, Artificial intelligence`
+`Information retrieval, Nearest neighbor searches, Semantic search, Metadata, Vectors, Benchmark testing` (matches main.tex)
 
 ### 5. Word twin (if portal insists)
 Prefer **LaTeX + matching PDF**. If Word required: paste full body into `IEEE_Access_Template_2024.docx`, insert photo, match PDF page-by-page. `main_word_twin.docx` is only a scaffold.
