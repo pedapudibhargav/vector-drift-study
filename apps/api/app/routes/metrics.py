@@ -1,16 +1,13 @@
-from pathlib import Path
-
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy import select, text
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.config import PROJECT_ROOT
 from app.db.models import CorpusRun, RetrievalEvent
 from app.db.repository import get_scaling_summary
 from app.db.session import SessionLocal
 
 router = APIRouter()
-
-PROJECT_ROOT = Path(__file__).resolve().parents[4]
 
 
 async def get_db() -> AsyncSession:

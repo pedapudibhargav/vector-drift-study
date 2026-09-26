@@ -86,3 +86,6 @@ data/erb_titan_query_embed_cache.json
 # LaTeX build leftovers / local backups
 *.aux
 *.bak_*
+
+# Local Claude Code state (worktrees, launch configs)
+.claude/
