@@ -122,7 +122,8 @@ def eval_scale(
     exact_fallbacks = 0
     per_q: list[dict] = []
 
-    conn.execute("SET hnsw.ef_search = 200")
+    ef = int(os.environ.get("HNSW_EF_SEARCH", "200"))
+    conn.execute(f"SET hnsw.ef_search = {ef}")
     conn.execute("SET hnsw.iterative_scan = relaxed_order")
 
     for q in questions:

@@ -1,0 +1,80 @@
+{
+  "created_at": "2026-09-27T07:04:05.829014+00:00",
+  "protocol": "primary-400 stratified sample (question seed=42) on seed-42 distractor ranks; OpenAI HNSW ef_search=200 raw endpoints",
+  "primary_n": 400,
+  "question_sample_seed": 42,
+  "distractor_seed": 42,
+  "scales": [
+    5000,
+    50000,
+    100000
+  ],
+  "conditions": [
+    "raw"
+  ],
+  "ef_search": 200,
+  "runs": [
+    {
+      "condition": "raw",
+      "corpus_scale_size": 5000,
+      "ef_search": 200,
+      "questions_evaluated": 400,
+      "hit_at_1": 0.5225,
+      "hit_at_5": 0.6575,
+      "hit_at_10": 0.71,
+      "mrr": 0.5832,
+      "document_recall": 0.6843,
+      "elapsed_s": 8.5,
+      "overlap_primary200_n": 200,
+      "overlap_primary200_hit_at_10": 0.795
+    },
+    {
+      "condition": "raw",
+      "corpus_scale_size": 50000,
+      "ef_search": 200,
+      "questions_evaluated": 400,
+      "hit_at_1": 0.305,
+      "hit_at_5": 0.4475,
+      "hit_at_10": 0.5075,
+      "mrr": 0.3671,
+      "document_recall": 0.4736,
+      "elapsed_s": 2.6,
+      "overlap_primary200_n": 200,
+      "overlap_primary200_hit_at_10": 0.555
+    },
+    {
+      "condition": "raw",
+      "corpus_scale_size": 100000,
+      "ef_search": 200,
+      "questions_evaluated": 400,
+      "hit_at_1": 0.29,
+      "hit_at_5": 0.4175,
+      "hit_at_10": 0.4675,
+      "mrr": 0.3426,
+      "document_recall": 0.4335,
+      "elapsed_s": 2.8,
+      "overlap_primary200_n": 200,
+      "overlap_primary200_hit_at_10": 0.51
+    }
+  ],
+  "comparisons_vs_primary200_published": [
+    {
+      "corpus_scale_size": 5000,
+      "primary400_hit_at_10": 0.71,
+      "primary200_published_hit_at_10": 0.795,
+      "overlap200_hit_at_10": 0.795
+    },
+    {
+      "corpus_scale_size": 50000,
+      "primary400_hit_at_10": 0.5075,
+      "primary200_published_hit_at_10": 0.555,
+      "overlap200_hit_at_10": 0.555
+    },
+    {
+      "corpus_scale_size": 100000,
+      "primary400_hit_at_10": 0.4675,
+      "primary200_published_hit_at_10": 0.51,
+      "overlap200_hit_at_10": 0.51
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "created_at": "2026-09-27T06:21:13.463171+00:00",
+  "protocol": "OpenAI text-embedding-3-small, primary-200, raw, pgvector HNSW",
+  "corpus_scale_size": 100000,
+  "default_ef_search": 200,
+  "ef_values": [
+    200,
+    400,
+    800
+  ],
+  "published_baseline": {
+    "artifact": "artifacts/published/erb_full_primary200_to100k.json",
+    "hit_at_10": 0.51
+  },
+  "comparisons": [
+    {
+      "ef_search": 200,
+      "corpus_scale_size": 100000,
+      "condition": "raw",
+      "hit_at_1": 0.3,
+      "hit_at_5": 0.465,
+      "hit_at_10": 0.51,
+      "mrr": 0.3644,
+      "document_recall": 0.4757,
+      "questions_evaluated": 200,
+      "exact_fallbacks": 0,
+      "elapsed_s": 1.6,
+      "published_hit_at_10": 0.51,
+      "delta_hit_at_10_vs_published_ef200": 0.0
+    },
+    {
+      "ef_search": 400,
+      "corpus_scale_size": 100000,
+      "condition": "raw",
+      "hit_at_1": 0.34,
+      "hit_at_5": 0.515,
+      "hit_at_10": 0.585,
+      "mrr": 0.4114,
+      "document_recall": 0.5398,
+      "questions_evaluated": 200,
+      "exact_fallbacks": 0,
+      "elapsed_s": 41.1,
+      "published_hit_at_10": 0.51,
+      "delta_hit_at_10_vs_published_ef200": 0.075
+    },
+    {
+      "ef_search": 800,
+      "corpus_scale_size": 100000,
+      "condition": "raw",
+      "hit_at_1": 0.34,
+      "hit_at_5": 0.515,
+      "hit_at_10": 0.585,
+      "mrr": 0.4114,
+      "document_recall": 0.5398,
+      "questions_evaluated": 200,
+      "exact_fallbacks": 0,
+      "elapsed_s": 40.1,
+      "published_hit_at_10": 0.51,
+      "delta_hit_at_10_vs_published_ef200": 0.075
+    }
+  ],
+  "runs": [
+    {
+      "condition": "raw",
+      "corpus_scale_size": 100000,
+      "ef_search": 200,
+      "questions_evaluated": 200,
+      "exact_fallbacks": 0,
+      "hit_at_1": 0.3,
+      "hit_at_5": 0.465,
+      "hit_at_10": 0.51,
+      "document_recall": 0.4757,
+      "mrr": 0.3644,
+      "elapsed_s": 1.6
+    },
+    {
+      "condition": "raw",
+      "corpus_scale_size": 100000,
+      "ef_search": 400,
+      "questions_evaluated": 200,
+      "exact_fallbacks": 0,
+      "hit_at_1": 0.34,
+      "hit_at_5": 0.515,
+      "hit_at_10": 0.585,
+      "document_recall": 0.5398,
+      "mrr": 0.4114,
+      "elapsed_s": 41.1
+    },
+    {
+      "condition": "raw",
+      "corpus_scale_size": 100000,
+      "ef_search": 800,
+      "questions_evaluated": 200,
+      "exact_fallbacks": 0,
+      "hit_at_1": 0.34,
+      "hit_at_5": 0.515,
+      "hit_at_10": 0.585,
+      "document_recall": 0.5398,
+      "mrr": 0.4114,
+      "elapsed_s": 40.1
+    }
+  ],
+  "interpretation_note": "If Hit@10 rises materially as ef_search increases toward exact search, part of the dense decline at 100k may be ANN recall loss rather than true semantic drift."
+}

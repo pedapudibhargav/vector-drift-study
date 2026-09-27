@@ -1,0 +1,20 @@
+{
+  "restored_at": "2026-09-27T06:57:56.205121+00:00",
+  "seed42_manifest": "data/erb_scale_manifest.json",
+  "seed42_digest": "145f645dbb74d192f875ad270de05ae35f1f1278833cd3f95e7e6e6541dbf10a",
+  "rank_check": {
+    "manifest": "data/erb_scale_manifest.json",
+    "manifest_digest": "145f645dbb74d192f875ad270de05ae35f1f1278833cd3f95e7e6e6541dbf10a",
+    "rows_checked": 103033,
+    "rank_mismatches": 0,
+    "ok": true
+  },
+  "hit10_spot_check": {
+    "scale": 5000,
+    "expected_hit_at_10": 0.795,
+    "observed_hit_at_10": 0.795,
+    "delta": 0.0,
+    "tolerance": 0.01,
+    "ok": true
+  }
+}

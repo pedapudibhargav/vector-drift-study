@@ -2,25 +2,39 @@
 
 from __future__ import annotations
 
+import os
+
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 # HNSW + post-filters (scale_rank / source_type) can return 0 rows even when
 # matching chunks exist — the index returns unfiltered neighbors, then WHERE
 # drops them. pgvector 0.8+ iterative scans + higher ef_search fix this.
-_HNSW_SESSION_SQL = (
-    "SELECT set_config('hnsw.iterative_scan', 'relaxed_order', true), "
-    "set_config('hnsw.ef_search', '200', true)"
-)
+_DEFAULT_EF_SEARCH = 200
+
+
+def hnsw_ef_search() -> int:
+    """Published protocol default 200; override via HNSW_EF_SEARCH for ablations."""
+    raw = os.environ.get("HNSW_EF_SEARCH", str(_DEFAULT_EF_SEARCH))
+    try:
+        val = int(raw)
+    except ValueError:
+        val = _DEFAULT_EF_SEARCH
+    return val if val >= 1 else _DEFAULT_EF_SEARCH
 
 
 async def _configure_filtered_hnsw(db: AsyncSession) -> None:
+    ef = hnsw_ef_search()
+    session_sql = (
+        "SELECT set_config('hnsw.iterative_scan', 'relaxed_order', true), "
+        f"set_config('hnsw.ef_search', '{ef}', true)"
+    )
     try:
-        await db.execute(text(_HNSW_SESSION_SQL))
+        await db.execute(text(session_sql))
     except Exception:
         # Older builds may lack iterative_scan; ef_search alone still helps.
         try:
-            await db.execute(text("SELECT set_config('hnsw.ef_search', '400', true)"))
+            await db.execute(text(f"SELECT set_config('hnsw.ef_search', '{ef}', true)"))
         except Exception:
             pass
 

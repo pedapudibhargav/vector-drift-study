@@ -20,10 +20,17 @@ from question_identity import stratified_unique  # noqa: E402
 
 
 def main() -> int:
-    # Rebuild manifest via existing builder
-    rc = subprocess.call([sys.executable, str(Path(__file__).parent / "build_scale_manifest.py")])
-    if rc != 0:
-        return rc
+    import argparse
+
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--primary-n", type=int, default=200, help="Primary bank size (default: 200)")
+    parser.add_argument("--skip-manifest", action="store_true", help="Skip manifest rebuild")
+    args = parser.parse_args()
+
+    if not args.skip_manifest:
+        rc = subprocess.call([sys.executable, str(Path(__file__).parent / "build_scale_manifest.py")])
+        if rc != 0:
+            return rc
 
     man = json.loads(ERB_MANIFEST.read_text(encoding="utf-8"))
     questions = list(man.get("questions") or [])
@@ -34,7 +41,8 @@ def main() -> int:
         return 2
     print(f"manifest ok: {len(questions)} unique eval_ids")
 
-    primary = stratified_unique(questions, 200, seed=42)
+    primary_n = int(args.primary_n)
+    primary = stratified_unique(questions, primary_n, seed=42)
     pub = ROOT / "artifacts" / "published"
     pub.mkdir(parents=True, exist_ok=True)
     payload = {
@@ -46,10 +54,10 @@ def main() -> int:
         "erb_question_ids": [q.get("erb_question_id") for q in primary],
         "question_types": [q.get("question_type") for q in primary],
     }
-    out = pub / "primary_questions_200.json"
+    out = pub / f"primary_questions_{primary_n}.json"
     out.write_text(json.dumps(payload, indent=2), encoding="utf-8")
-    # Keep explicit eval copy too
-    (pub / "primary_questions_eval.json").write_text(json.dumps(payload, indent=2), encoding="utf-8")
+    if primary_n == 200:
+        (pub / "primary_questions_eval.json").write_text(json.dumps(payload, indent=2), encoding="utf-8")
     print(f"wrote {out} count={len(primary)} unique={len(set(payload['question_ids']))}")
 
     ERB_RESULTS_DIR.mkdir(parents=True, exist_ok=True)

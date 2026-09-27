@@ -5,7 +5,6 @@
 \documentclass{ieeeaccess}
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
-\usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{booktabs}
 \usepackage{multirow}
@@ -42,7 +41,7 @@
 {Peddapudi: Vector Retrieval Drift under Corpus Growth}
 
 \begin{abstract}
-Dense vector retrieval is a common first stage in enterprise retrieval-augmented generation (RAG), yet labeled document Hit@$k$ can fall as the index grows even when gold answer documents remain present. We measure this vector retrieval drift on EnterpriseRAG-Bench by growing the index from $N{=}5\text{k}$ to $100\text{k}$ while pinning every gold document, with frozen document-level embeddings and frozen pgvector HNSW settings. With \texttt{text-embedding-3-small} on 200 unique eval IDs, raw Hit@1 falls from 0.600 to 0.305, MRR from 0.658 to 0.365, and Hit@10 from 0.795 to 0.510. Exact cosine search at $5\text{k}$/$50\text{k}$/$100\text{k}$ shows that the decline persists without approximate search (Hit@10 $0.795{\to}0.585$); HNSW adds $\approx0.08$ Hit@10 loss at large $N$ on this index. A second embedder, Amazon Titan Text Embeddings V2 ($d{=}1024$), on the same pins declines from 0.785 to 0.610 Hit@10 and from 0.620 to 0.385 Hit@1; its HNSW results are identical to exact search, and under exact search we cannot reject equal $5\text{k}{\to}100\text{k}$ drops between the two embedders (Hit@10 difference $+0.035$, 95\% CI $[-0.025,0.10]$; five gold anchors were truncated in the Titan arm). Okapi BM25 also declines (Hit@10 $0.855{\to}0.700$), less steeply than dense retrieval. Oracle source-type filtering lifts Hit@10 by $+0.08$ to $+0.18$ under OpenAI but only $+0.07$ to $+0.115$ under Titan, and absolute filtered quality falls for both. The results characterize these frozen stacks, not a universal law.
+Dense vector retrieval is a common first stage in enterprise RAG, yet labeled document Hit@$k$ can fall as the index grows even when gold documents remain indexed. We measure this drift on EnterpriseRAG-Bench from $N{=}5\text{k}$ to $100\text{k}$ with gold-anchor pinning, frozen document-level embeddings, and frozen pgvector HNSW. With \texttt{text-embedding-3-small} on 200 unique eval IDs, raw Hit@1 falls $0.600{\to}0.305$, MRR $0.658{\to}0.365$, Hit@10 $0.795{\to}0.510$. Exact cosine at $5\text{k}$/$50\text{k}$/$100\text{k}$ retains most of the decline (Hit@10 $0.795{\to}0.585$); HNSW adds $\approx0.08$ Hit@10 at large $N$. Titan V2 ($d{=}1024$) on the same pins declines (Hit@10 $0.785{\to}0.610$); its HNSW equals exact search, and we cannot reject equal exact-search $5\text{k}{\to}100\text{k}$ drops (Hit@10 difference $+0.035$, 95\% CI $[-0.025,0.10]$; five gold anchors truncated in Titan). BM25 on $4$k-character text also declines ($0.855{\to}0.700$), less steeply than dense on longer embedded text. Oracle \texttt{source\_type} filtering lifts Hit@10 by $+0.08$--$+0.18$ (OpenAI) and $+0.07$--$+0.115$ (Titan), but absolute filtered quality still falls. Gold-first distractors use seed $42$; deployed OpenAI curves mix crowding with index-specific ANN recall loss. Results characterize these frozen stacks, not a universal law.
 \end{abstract}
 
 % IEEE Access: 3--10 keywords. All terms are preferred entries in the January 2026 IEEE Thesaurus.
@@ -71,9 +70,10 @@ Prior IR scaling work largely studies web-scale training or \emph{model} capacit
 \begin{itemize}
 \item A reproducible scale-ladder protocol on EnterpriseRAG-Bench~\cite{sun2026erb} with gold-anchor--pinned $N$, frozen embedder/ANN settings, and a primary stratified question bank of $n{=}200$.
 \item Empirical dense raw versus metadata-filtered curves for Hit@1/5/10, Doc-Recall@10, and MRR through $N{=}100\text{k}$, with bootstrap 95\% CIs from this sweep's per-query rows.
-\item An operational definition of metadata rescue $\Delta_{\mathrm{meta}}(N)$ and the collapse-onset threshold $N^\star(\tau{=}0.10)$, which is \emph{not} reached on the OpenAI arm of the integrity-clean primary-200 bank but is reached, borderline, at the last ladder point under Titan.
-\item Fitted log-linear \emph{trend} forms for Hit@1, Hit@10, and MRR (descriptive fits, not claimed universal scaling laws), plus secondary LLM-judge corroboration on a stratified subsample.
+\item An operational definition of metadata rescue $\Delta_{\mathrm{meta}}(N)$ and the collapse-onset threshold $N^\star(\tau{=}0.10)$, which is \emph{not} reached on the OpenAI arm of the integrity-clean primary-200 bank; under Titan a single borderline sub-$\tau$ point at $100\text{k}$ is not treated as a stable collapse onset.
+\item Fitted log-linear \emph{trend} forms for Hit@1, Hit@10, and MRR (descriptive fits on nine ladder points, not claimed universal scaling laws).
 \item Cross-embedder confirmation: Titan Text Embeddings V2 on the same gold-pinned ladder with its own exact-cosine control (Sec.~\ref{sec:titan}), showing that the decline is not specific to one embedding model and that part of the apparent cross-embedder difference is ANN recall loss.
+\item Robustness checks: alternate distractor seed~$0$, stratified $n{=}400$ endpoints, $\mathrm{ef\_search}$ ablation, and length-matched BM25 (Sec.~\ref{sec:robust},~\ref{sec:exact},~\ref{sec:bm25}).
 \end{itemize}
 
 \section{Related Work}
@@ -101,14 +101,16 @@ Table~\ref{tab:position} summarizes how this study differs from common alternati
 \centering
 \caption{Positioning relative to related evaluation styles.}
 \label{tab:position}
-\begin{tabular}{@{}lp{0.55\columnwidth}@{}}
+\small
+\begin{tabular}{@{}p{0.36\columnwidth}p{0.52\columnwidth}@{}}
 \toprule
 Style & Typical question answered \\
 \midrule
 Model scaling & How does retriever capacity change quality? \\
 Coverage scaling & Does adding documents raise end-to-end QA? \\
+Dense-vs-sparse scaling~\cite{reimers2021curse} & Does dense Hit degrade faster than BM25 as $N$ grows (MS MARCO, exact)? \\
 ANN systems & How do latency/recall trade off under load? \\
-\textbf{This work} & How does labeled Hit@$k$ drift when gold docs stay indexed as $N$ grows? \\
+\textbf{This work} & How does labeled Hit@$k$ drift under gold pinning, production pgvector HNSW, exact/ANN decomposition, and oracle metadata on an enterprise benchmark? \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -290,11 +292,11 @@ The three absolute log-slopes are nearly identical ($b\approx0.086$--$0.088$), b
 \end{figure}
 
 \subsection{Stratified Drift by Question Type}
-Table~\ref{tab:bytype} breaks raw Hit@1/Hit@10 by \texttt{question\_type} at the ladder endpoints. Drift is \emph{not} uniform: \texttt{semantic} and \texttt{metadata} questions start weaker and fall hardest (semantic Hit@10 $0.622{\to}0.267$; metadata $0.718{\to}0.385$), while \texttt{project\_related} and \texttt{intra\_document\_reasoning} remain comparatively robust. Absolute miss counts rise from $41/200$ at $5\text{k}$ to $98/200$ at $100\text{k}$. Among Hit@10 successes, mean gold rank worsens only modestly ($1.86{\to}2.39$), so the dominant failure mode is gold documents leaving the top-$k$ entirely rather than sliding from rank~1 to rank~9.
+Table~\ref{tab:bytype} breaks raw Hit@1/Hit@10 by \texttt{question\_type} at the ladder endpoints. Drift is \emph{not} uniform: among strata with $n{\ge}20$, \texttt{semantic} and \texttt{metadata} questions start weaker and fall hardest (semantic Hit@10 $0.622{\to}0.267$; metadata $0.718{\to}0.385$), while \texttt{basic} remains comparatively robust. Absolute miss counts rise from $41/200$ at $5\text{k}$ to $98/200$ at $100\text{k}$. Among Hit@10 successes, mean gold rank worsens only modestly ($1.86{\to}2.39$), so the dominant failure mode is gold documents leaving the top-$k$ entirely rather than sliding from rank~1 to rank~9.
 
 \begin{table}[t]
 \centering
-\caption{Raw Hit@$k$ by question type at ladder endpoints (primary-200; $n$ is type count).}
+\caption{Raw Hit@$k$ by question type at ladder endpoints (primary-200; $n$ is type count). Rows with $n{<}20$ are exploratory only; primary type claims use basic, semantic, and metadata.}
 \label{tab:bytype}
 \setlength{\tabcolsep}{4pt}
 \begin{tabular}{@{}lrrrrr@{}}
@@ -315,7 +317,7 @@ miscellaneous & 6 & 0.833 & 1.000 & 0.667 & 0.833 \\
 \end{table}
 
 \paragraph{Operational reading.}
-Capacity dashboards that average over mixed question banks will understate risk for semantic and metadata-heavy workloads. Operators should stratify frozen gold sets by intent class when estimating when to deepen taxonomy, add hybrid retrieval, or re-embed.
+Capacity dashboards that average over mixed question banks will understate risk for semantic and metadata-heavy workloads. Operators should stratify frozen gold sets by intent class when estimating when to deepen taxonomy, add hybrid retrieval, or re-embed. Rates in rows with $n{<}20$ are shown for transparency only and do not support standalone type-level claims.
 
 \subsection{Integrity Ablation (Eval-ID Collision)}
 Before unique \texttt{question\_id::question\_type} keys, duplicate raw IDs across question types produced opposing Hit@10 flags on the same retrieval list and inflated empty-retrieval / membership mismatches. An exploratory repair that treated empties as quarantine also depressed raw Hit@10 and \emph{falsely} suggested $N^\star(\tau{=}0.10)\approx20\text{k}$. After (i)~unique eval IDs, (ii)~Hit@$k$ redefined as gold$\in$top-$k$ membership, and (iii)~HNSW filtered-search hardening with exact fallback, the integrity-clean re-sweep reports $0$ empty cells, $0$ membership mismatches, and \emph{no} sustained $N^\star$ through $100\text{k}$ (Appendix~\ref{app:integrity}). Published claims use only the clean ladder.
@@ -324,7 +326,7 @@ Before unique \texttt{question\_id::question\_type} keys, duplicate raw IDs acro
 \label{sec:exact}
 Approximate nearest-neighbor (ANN) indexes such as HNSW trade a small amount of recall for speed: they may miss a true nearest neighbor that exact (brute-force) cosine search would return. To separate this ANN effect from crowding, we re-ran the primary-200 \emph{raw} bank at $N\in\{5\text{k},50\text{k},100\text{k}\}$ with exact cosine search (index scans disabled) over the same cached query embeddings and gold IDs, for both embedders (artifacts \texttt{exact\_control\_mvp.json}, \texttt{exact\_control\_titan.json}). Table~\ref{tab:exact} compares exact search with the published HNSW ladders.
 
-For OpenAI, the two agree at $5\text{k}$ (Hit@10 $=0.795$, $0$ disagreements). At $50\text{k}$/$100\text{k}$, exact Hit@10 is higher than HNSW by $+0.085$/$+0.075$ (17/15 per-query Hit@10 disagreements), yet \emph{exact} Hit@10 still declines $0.795{\to}0.640{\to}0.585$ and Hit@1 $0.600{\to}0.370{\to}0.340$. About $74\%$ of the OpenAI Hit@10 drop ($0.210$ of $0.285$) therefore survives exact search. For Titan, HNSW returns top-10 lists identical to exact search for all 200 questions at all three scales, so the entire Titan decline is an exact-search effect. The HNSW recall loss is thus a property of the OpenAI index at these settings, not of HNSW on this corpus in general; we did not isolate its cause (candidates include dimensionality, $1536$ vs.\ $1024$, and index construction history).
+For OpenAI, the two agree at $5\text{k}$ (Hit@10 $=0.795$, $0$ disagreements). At $50\text{k}$/$100\text{k}$, exact Hit@10 is higher than HNSW by $+0.085$/$+0.075$ (17/15 per-query Hit@10 disagreements), yet \emph{exact} Hit@10 still declines $0.795{\to}0.640{\to}0.585$ and Hit@1 $0.600{\to}0.370{\to}0.340$. About $74\%$ of the OpenAI Hit@10 drop ($0.210$ of $0.285$) therefore survives exact search. For Titan, HNSW returns top-10 lists identical to exact search for all 200 questions at all three scales, so the entire Titan decline is an exact-search effect. The HNSW recall loss is thus a property of the OpenAI index at these frozen settings, not of HNSW on this corpus in general. An $\mathrm{ef\_search}$ ablation at $N{=}100\text{k}$ (Table~\ref{tab:ef}) shows that raising $\mathrm{ef\_search}$ from $200$ to $400$ recovers $+0.075$ Hit@10 ($0.510{\to}0.585$), matching the exact-control Hit@10 at that scale, with no further gain at $800$. Thus about $7.5$ percentage points of the published OpenAI HNSW drop at $100\text{k}$ is ANN recall under frozen $\mathrm{ef\_search}{=}200$; the remaining decline aligns with exact search. Primary crowding claims therefore rest on exact-search columns in Table~\ref{tab:exact}; deployed OpenAI HNSW numbers in Sec.~\ref{sec:results} additionally reflect this index-specific recall gap. Re-running the published $\mathrm{ef\_search}{=}200$ configuration for this ablation reproduced Hit@10 exactly ($0.510$) but not Hit@1/MRR ($0.300$/$0.364$ vs.\ published $0.305$/$0.365$), a $\pm0.001$--$0.005$ run-to-run HNSW variation at the tightest rank margins that does not affect any reported conclusion.
 
 \begin{table*}[t]
 \centering
@@ -345,12 +347,27 @@ Titan V2 & 100k & 0.385 & 0.385 & 0.610 & 0.610 & 0.000 & 0 \\
 \end{tabular}
 \end{table*}
 
+\begin{table}[t]
+\centering
+\caption{OpenAI HNSW $\mathrm{ef\_search}$ ablation at $N{=}100\text{k}$ (primary-200, raw; artifact \texttt{ef\_search\_ablation\_100k.json}).}
+\label{tab:ef}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+$\mathrm{ef\_search}$ & Hit@1 & Hit@10 & MRR \\
+\midrule
+200 (rerun) & 0.300 & 0.510 & 0.364 \\
+400 & 0.340 & 0.585 & 0.411 \\
+800 & 0.340 & 0.585 & 0.411 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \subsection{L3 Judge Corroboration}
 An exploratory stratified subsample of 40 questions, run on the legacy bank \emph{before} the integrity re-sweep, showed mean \texttt{gpt-4o-mini} relevance (0--3) for metadata dropping from $2.15$ at $5\text{k}$ to $1.53$ at $40\text{k}$ while raw stayed near $1.75$. Separately, a wide \texttt{gpt-4o} audit on $180$ stratified cells ($\approx5\%$ of the $3600$-cell matrix) was used only as secondary triage toward L4; it does \emph{not} override integrity-clean L1. L3/L4 never replace labeled Hit@$k$, and the legacy 40-question result carries no weight in any RQ answer.
 
 \subsection{Sparse Controls (BM25 and Postgres FTS)}
 \label{sec:bm25}
-Table~\ref{tab:bm25} reports Okapi BM25~\cite{robertson2009bm25} (\texttt{rank\_bm25.BM25Okapi}, defaults $k_1{=}1.5$, $b{=}0.75$, tokenizer $[a\text{-}z0\text{-}9]+$, title$+$body truncated to $4$k characters) on the same primary-200 bank and gold-pinned ladder as dense retrieval (artifact \texttt{erb\_bm25\_baseline\_primary200.json}). BM25 Hit@10 declines from $0.855$ at $5\text{k}$ to $0.700$ at $100\text{k}$ (Hit@1 $0.740{\to}0.510$; MRR $0.772{\to}0.575$). Dense raw Hit@10 falls farther on the same endpoints ($0.795{\to}0.510$). Paired bootstrap 95\% intervals on the $5\text{k}{\to}100\text{k}$ Hit@10 drop are $[0.225,0.350]$ (dense) versus $[0.105,0.210]$ (BM25); at $100\text{k}$ the BM25$-$dense Hit@10 gap is $+0.190$ with CI $[0.120,0.260]$ (\texttt{bm25\_vs\_dense\_bootstrap.json}). Thus corpus growth harms both sparse and dense first-stage retrieval on this bank; the dense stack shows a steeper Hit@10 drop. The two retrievers do not see equal text: dense embeds up to $8{,}191$ tokens ($\approx32$k characters) while BM25 truncates to $4$k characters (Sec.~\ref{sec:setup}); a length-matched sparse baseline could score differently, so the $+0.190$ endpoint gap is a property of this configuration, not a text-length-controlled sparse-versus-dense result.
+Table~\ref{tab:bm25} reports Okapi BM25~\cite{robertson2009bm25} (\texttt{rank\_bm25.BM25Okapi}, defaults $k_1{=}1.5$, $b{=}0.75$, tokenizer $[a\text{-}z0\text{-}9]+$, title$+$body truncated to $4$k characters) on the same primary-200 bank and gold-pinned ladder as dense retrieval (artifact \texttt{erb\_bm25\_baseline\_primary200.json}). BM25 Hit@10 declines from $0.855$ at $5\text{k}$ to $0.700$ at $100\text{k}$ (Hit@1 $0.740{\to}0.510$; MRR $0.772{\to}0.575$). Dense raw Hit@10 falls farther on the same endpoints ($0.795{\to}0.510$). Paired bootstrap 95\% intervals on the $5\text{k}{\to}100\text{k}$ Hit@10 drop are $[0.225,0.350]$ (dense) versus $[0.105,0.210]$ (BM25); at $100\text{k}$ the BM25$-$dense Hit@10 gap is $+0.190$ with CI $[0.120,0.260]$ (\texttt{bm25\_vs\_dense\_bootstrap.json}). Thus corpus growth harms both sparse and dense first-stage retrieval on this bank; the dense stack shows a steeper Hit@10 drop. The two retrievers do not see equal text: dense embeds up to $8{,}191$ tokens while BM25 truncates to $4$k characters (Sec.~\ref{sec:setup}). A length-matched BM25 control truncating title$+$body at $8{,}191$ characters (artifact \texttt{erb\_bm25\_baseline\_primary200\_chars8191.json}) yields Hit@10 $0.825{\to}0.705$ at $5\text{k}{\to}100\text{k}$---still well above dense $0.510$ at $100\text{k}$---so the steeper dense drop is not an artifact of the $4$k BM25 truncation alone. We report the $4$k ladder in Table~\ref{tab:bm25} as the published sparse control and treat the $8{,}191$-character run as a sensitivity check.
 
 Industrial PostgreSQL FTS (\texttt{ts\_rank\_cd}+\texttt{plainto\_tsquery}) remains near the floor (Hit@10 $=0.045$ on a partial ladder) and is retained only as a weak operational negative control---it does \emph{not} answer RQ2.
 
@@ -431,12 +448,37 @@ $N$ & Titan raw & Titan meta & $\Delta_{\mathrm{meta}}$ Titan & $\Delta_{\mathrm
 \end{tabular}
 \end{table}
 
+\subsection{Robustness: Distractor Seed and Larger Eval Bank}
+\label{sec:robust}
+Two checks address the most likely protocol objections (artifact \texttt{erb\_seed0\_endpoints\_primary200.json}, \texttt{erb\_endpoints\_primary400.json}).
+
+\paragraph{Alternate distractor seed.}
+Rebuilding the gold-first ladder with distractor seed~$0$ (instead of~$42$), syncing ranks, and re-evaluating the same primary-200 queries under OpenAI HNSW ($\mathrm{ef\_search}{=}200$) yields Hit@10 $0.790$/$0.560$/$0.525$ at $5\text{k}$/$50\text{k}$/$100\text{k}$ versus published seed-$42$ values $0.795$/$0.555$/$0.510$ (Table~\ref{tab:seed}; max $|\Delta|{=}0.015$). After evaluation we restored seed-$42$ ranks and confirmed Hit@10 $=0.795$ at $5\text{k}$. Insertion order under gold-first pinning does not drive the published decline on this bank.
+
+\paragraph{Larger stratified bank.}
+A stratified sample of $n{=}400$ unique eval IDs (question-sample seed~$42$; superset of primary-200) on the published seed-$42$ ranks shows Hit@10 $0.710{\to}0.468$ from $5\text{k}{\to}100\text{k}$. The overlapping primary-200 subset reproduces the published Hit@10 ladder ($0.795$/$0.555$/$0.510$) exactly, so the steeper absolute levels on $n{=}400$ reflect harder additional questions rather than a protocol bug. The same-direction decline supports that $n{=}200$ is not an artifact of a single small sample.
+
+\begin{table*}[t]
+\centering
+\caption{Robustness endpoints (OpenAI HNSW, raw, $\mathrm{ef\_search}{=}200$). Seed columns: primary-200 under alternate distractor order. Primary-400: larger stratified bank on seed-$42$ ranks.}
+\label{tab:seed}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+$N$ & Seed~$42$ Hit@10 (published) & Seed~$0$ Hit@10 & Primary-400 Hit@10 & Overlap-200 Hit@10 \\
+\midrule
+5k & 0.795 & 0.790 & 0.710 & 0.795 \\
+50k & 0.555 & 0.560 & 0.508 & 0.555 \\
+100k & 0.510 & 0.525 & 0.468 & 0.510 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
 \subsection{Answers to Research Questions}
 \paragraph{RQ1.}
-Under gold-anchor pinning on this frozen stack, labeled dense Hit@1, Hit@10, and MRR all decline monotonically with $\log N$ through $100\text{k}$. Hit@1 and MRR lose the largest share of their starting values ($49\%$ and $45\%$ vs.\ $36\%$ for Hit@10), so capacity monitors should not rely on Hit@10 alone. Stratified analysis shows the decline concentrates in semantic and metadata question types. Exact cosine search (Sec.~\ref{sec:exact}) retains most of the decline; frozen-parameter HNSW adds $\approx0.08$ Hit@10 loss at large $N$ on the OpenAI index.
+Under gold-anchor pinning on this frozen stack, labeled dense Hit@1, Hit@10, and MRR all decline monotonically with $\log N$ through $100\text{k}$. Hit@1 and MRR lose the largest share of their starting values ($49\%$ and $45\%$ vs.\ $36\%$ for Hit@10), so capacity monitors should not rely on Hit@10 alone. Stratified analysis shows the decline concentrates in semantic and metadata question types. Exact cosine search (Sec.~\ref{sec:exact}) retains most of the decline; frozen-parameter HNSW adds $\approx0.08$ Hit@10 loss at large $N$ on the OpenAI index, of which $+0.075$ is recoverable by raising $\mathrm{ef\_search}$ to $400$ at $100\text{k}$ (Table~\ref{tab:ef}). Distractor-seed and $n{=}400$ checks (Sec.~\ref{sec:robust}) leave the direction of the decline unchanged.
 
 \paragraph{RQ2.}
-Okapi BM25 on the full ladder also declines (Hit@10 $0.855{\to}0.700$), so corpus growth is not unique to dense retrieval on this bank. Dense raw Hit@10 falls more steeply ($0.795{\to}0.510$), though BM25 and dense do not see equal amounts of text (Sec.~\ref{sec:bm25}). Postgres FTS stays near floor and must not be confused with BM25.
+Okapi BM25 on the full ladder also declines (Hit@10 $0.855{\to}0.700$), so corpus growth is not unique to dense retrieval on this bank. Dense raw Hit@10 falls more steeply ($0.795{\to}0.510$), though BM25 and dense do not see equal amounts of text; a length-matched BM25 check at $8{,}191$ characters still ends at Hit@10 $0.705$ (Sec.~\ref{sec:bm25}). Postgres FTS stays near floor and must not be confused with BM25.
 
 \paragraph{RQ3.}
 Oracle metadata filtering yields sustained Hit@10 gains ($\Delta_{\mathrm{meta}}\in[+0.08,+0.18]$; $+0.130$ at $100\text{k}$) without a $\tau{=}0.10$ threshold crossing on this bank. Absolute meta Hit@10 still declines ($0.875{\to}0.640$), so oracle filtering is an upper-bound partial defense---not a production filter guarantee. The answer is embedder-dependent: under Titan the lift is smaller ($+0.070$ to $+0.115$) and falls below $\tau$ at $100\text{k}$.
@@ -472,26 +514,26 @@ Table~\ref{tab:bytype} shows that semantic and metadata intents absorb most of t
 \section{Threats to Validity}
 \label{sec:threats}
 \paragraph{Internal validity.}
-Gold-first ranking with a single distractor seed ($42$) may differ from random or reverse-pin growth; we treat gold-first as an operational evaluation protocol, not a claim that every insertion order yields the same slope. Oracle \texttt{source\_type} upper-bounds production filters that may be incomplete or noisy. Question-type strata with small $n$ (Table~\ref{tab:bytype}) are exploratory. Document-level vectors may understate drift relative to passage-chunked RAG. Primary claims use OpenAI \texttt{text-embedding-3-small}; a secondary Titan V2 arm ($d{=}1024$) tests replication on the same bank under frozen HNSW $(m{=}16,\mathrm{ef\_construction}{=}64,\mathrm{ef\_search}{=}200)$. Two commercial API embedders do not cover open-weight or instruction-tuned models. Long documents were truncated differently per arm ($11$ OpenAI documents at $8{,}191$ tokens; $90$ Titan documents at a $24$k-character cap, including $5$ gold anchors), so a few vectors represent slightly different text; ranks and gold membership otherwise match the OpenAI under-$100\text{k}$ set ($99{,}998$ shared documents). We did not isolate why the OpenAI HNSW index loses recall at large $N$ while the Titan index does not.
+Gold-first ranking with distractor seed $42$ is the published protocol; an alternate distractor seed ($0$) at the same endpoints yields Hit@10 within $0.015$ of seed~$42$ (Sec.~\ref{sec:robust}), so insertion-order sensitivity appears small on this bank. Oracle \texttt{source\_type} upper-bounds production filters that may be incomplete or noisy. Question-type strata with small $n$ (Table~\ref{tab:bytype}) are exploratory. Document-level vectors may understate drift relative to passage-chunked RAG. Primary claims use OpenAI \texttt{text-embedding-3-small}; a secondary Titan V2 arm ($d{=}1024$) tests replication on the same bank under frozen HNSW $(m{=}16,\mathrm{ef\_construction}{=}64,\mathrm{ef\_search}{=}200)$. Two commercial API embedders do not cover open-weight or instruction-tuned models. Long documents were truncated differently per arm ($11$ OpenAI documents at $8{,}191$ tokens; $90$ Titan documents at a $24$k-character cap, including $5$ gold anchors), so a few vectors represent slightly different text; ranks and gold membership otherwise match the OpenAI under-$100\text{k}$ set ($99{,}998$ shared documents). The OpenAI HNSW recall gap at large $N$ shrinks when $\mathrm{ef\_search}$ is raised to $400$ (Table~\ref{tab:ef}) and disappears under exact search (Table~\ref{tab:exact}); Titan's HNSW already matches exact search at the frozen settings.
 
 \paragraph{External validity.}
 EnterpriseRAG-Bench is curated/synthetic English text; coefficients must be re-fit before transfer to proprietary corpora, other languages, multimodal content, or alternate ANN libraries. Industry deployments with heavier near-duplicate rates may exhibit steeper slopes than reported here.
 
 \paragraph{Construct validity.}
-Hit@$k$ and Doc-Recall measure labeled document retrieval, not grounded answer faithfulness, citation correctness, or multi-hop reasoning. L3 LLM relevance scores and L4 LLM-assisted Hit@10-fairness audits are secondary corroboration only. The lexical baseline is Okapi BM25 with default parameters on truncated title$+$body text, not a tuned or field-weighted variant.
+Hit@$k$ and Doc-Recall measure labeled document retrieval, not grounded answer faithfulness, citation correctness, or multi-hop reasoning. L3 LLM relevance scores and L4 LLM-assisted Hit@10-fairness audits are secondary corroboration only. The lexical baseline is Okapi BM25 with default parameters on truncated title$+$body text, not a tuned or field-weighted variant; a length-matched $8{,}191$-character BM25 check (Sec.~\ref{sec:bm25}) does not reverse the dense-versus-sparse gap.
 
 \paragraph{Statistical conclusion validity.}
-Primary $n{=}200$ with bootstrap CIs from this sweep's per-query flags only. Post-$40\text{k}$ $\Delta_{\mathrm{meta}}$ fluctuations of $\pm0.015$ are within sampling noise. $\tau{=}0.10$ is an operational threshold, not an externally pre-registered value, and Titan's single late sub-$\tau$ point ($+0.080$ at $100\text{k}$) should be read as borderline. Small question-type strata (e.g., completeness $n{=}6$) have high variance and are reported for transparency, not as standalone claims. Fits use the nine planned ladder points only; accidental full-corpus points outside the ladder are excluded. Cross-embedder comparisons in Sec.~\ref{sec:titan} report confidence intervals that include zero as failure to reject equal drops, not as a pre-registered equivalence test; no TOST-style margin was specified in advance.
+Primary $n{=}200$ with bootstrap CIs from this sweep's per-query flags only; a stratified $n{=}400$ endpoint check (Sec.~\ref{sec:robust}) shows the same-direction Hit@10 decline. Post-$40\text{k}$ $\Delta_{\mathrm{meta}}$ fluctuations of $\pm0.015$ are within sampling noise. $\tau{=}0.10$ is an operational threshold, not an externally pre-registered value, and Titan's single late sub-$\tau$ point ($+0.080$ at $100\text{k}$) should be read as borderline. Small question-type strata (e.g., completeness $n{=}6$) have high variance and are reported for transparency, not as standalone claims. Fits use the nine planned ladder points only; accidental full-corpus points outside the ladder are excluded. Cross-embedder comparisons in Sec.~\ref{sec:titan} report confidence intervals that include zero as failure to reject equal drops, not as a pre-registered equivalence test; no TOST-style margin was specified in advance.
 
 \section{Reproducibility Notes}
 \label{sec:repro}
 Code, published metrics JSON, LLM L4 fairness reports and optional human spot-check worksheets, are hosted at \url{https://pedapudibhargav.github.io/vector-drift-study/} (GitHub repository \url{https://github.com/pedapudibhargav/vector-drift-study}); restorable pgvector dumps are attached to the repository's GitHub Releases. Reviewers can restore both embedding arms without re-paying for OpenAI or Titan document embedding. Seed $42$, embedder, HNSW $m{=}16$, ladder, and $\tau{=}0.10$ are frozen in the study protocol. Approximate API spend for embeddings and L3/L4 judging remained under a soft budget in this run.
 
-Artifacts supporting this manuscript include \texttt{erb\_full\_primary200\_to100k.json}, \texttt{erb\_titan\_primary200\_to100k.json}, \texttt{openai\_vs\_titan\_primary200.json}, \texttt{openai\_vs\_titan\_bootstrap.json}, \texttt{exact\_control\_mvp.json}, \texttt{exact\_control\_titan.json}, the reconciled fit JSON with per-scale CIs sourced from \texttt{sweep\_json\_per\_question}, L3 judge outputs for raw/meta at $5\text{k}$/$40\text{k}$, and Postgres dumps (GitHub Releases) of the OpenAI and Titan document-embedding, run, and per-query result tables, together with the cached primary-200 query embeddings for both embedders. Titan per-query Hit@$k$ rows (with retrieved and gold document IDs) are published in \texttt{erb\_titan\_primary200\_to100k.json} and stored in \texttt{vector\_drift\_results\_titan}, separate from the OpenAI \texttt{vector\_drift\_results}. A static verification bundle (per-query Hit@$k$ rows plus retrieved/gold document text, no embeddings) is published with the GitHub Pages site so readers can inspect results without restoring the full database.
+Artifacts supporting this manuscript include \texttt{erb\_full\_primary200\_to100k.json}, \texttt{erb\_titan\_primary200\_to100k.json}, \texttt{openai\_vs\_titan\_primary200.json}, \texttt{openai\_vs\_titan\_bootstrap.json}, \texttt{exact\_control\_mvp.json}, \texttt{exact\_control\_titan.json}, \texttt{erb\_seed0\_endpoints\_primary200.json}, \texttt{erb\_endpoints\_primary400.json}, \texttt{ef\_search\_ablation\_100k.json}, \texttt{erb\_bm25\_baseline\_primary200\_chars8191.json}, the reconciled fit JSON with per-scale CIs sourced from \texttt{sweep\_json\_per\_question}, L3 judge outputs for raw/meta at $5\text{k}$/$40\text{k}$, and Postgres dumps (GitHub Releases) of the OpenAI and Titan document-embedding, run, and per-query result tables, together with the cached primary-200 query embeddings for both embedders. Titan per-query Hit@$k$ rows (with retrieved and gold document IDs) are published in \texttt{erb\_titan\_primary200\_to100k.json} and stored in \texttt{vector\_drift\_results\_titan}, separate from the OpenAI \texttt{vector\_drift\_results}. A static verification bundle (per-query Hit@$k$ rows plus retrieved/gold document text, no embeddings) is published with the GitHub Pages site so readers can inspect results without restoring the full database.
 
 \section{Conclusion}
 \label{sec:conclusion}
-We formalize vector retrieval drift under corpus growth on EnterpriseRAG-Bench through $N{=}100\text{k}$ using unique eval IDs and membership-consistent Hit@$k$ under a frozen \texttt{text-embedding-3-small} + pgvector HNSW stack. Dense rank quality declines with $N$ on this configuration (Hit@1 $0.600{\to}0.305$; MRR $0.658{\to}0.365$), log-linear fits quantify the slope, and oracle metadata provides sustained Hit@10 lift without a $\tau{=}0.10$ threshold crossing through $100\text{k}$ while absolute meta quality still falls. Exact cosine at selected scales confirms the endpoint decline is not solely an ANN artifact, though HNSW contributes an additional $\approx0.07$--$0.09$ Hit@10 gap at $50\text{k}$--$100\text{k}$. Okapi BM25 also declines on the same ladder (Hit@10 $0.855{\to}0.700$) but less steeply than dense, so growth pressure is not dense-only on this bank. A second embedder, Titan V2, on the same pins shows the same significant decline (Hit@10 $0.785{\to}0.610$); its HNSW results equal exact search, and under exact search we cannot reject equal drops between the two embedders, so the decline is not specific to one embedding model (a small number of Titan gold anchors were truncated, Sec.~\ref{sec:threats}). Metadata rescue, by contrast, is embedder-dependent: Titan's oracle lift is smaller and dips below $\tau$ at $100\text{k}$. Multi-seed insertion-order robustness is not claimed. Future work includes passage-level chunking, multi-vector late-interaction retrievers~\cite{khattab2020colbert}, open-weight embedders, multi-seed growth orders, diagnosing index-specific ANN recall loss, and learned filters.
+We formalize vector retrieval drift under corpus growth on EnterpriseRAG-Bench through $N{=}100\text{k}$ using unique eval IDs and membership-consistent Hit@$k$ under a frozen \texttt{text-embedding-3-small} + pgvector HNSW stack. Dense rank quality declines with $N$ on this configuration (Hit@1 $0.600{\to}0.305$; MRR $0.658{\to}0.365$), log-linear fits quantify the slope, and oracle metadata provides sustained Hit@10 lift without a $\tau{=}0.10$ threshold crossing through $100\text{k}$ while absolute meta quality still falls. Exact cosine at selected scales confirms the endpoint decline is not solely an ANN artifact; an $\mathrm{ef\_search}$ ablation shows that raising search breadth from $200$ to $400$ recovers $+0.075$ Hit@10 at $100\text{k}$, leaving the exact-search decline as the primary crowding signal. Okapi BM25 also declines on the same ladder (Hit@10 $0.855{\to}0.700$) but less steeply than dense---including under a length-matched $8{,}191$-character check---so growth pressure is not dense-only on this bank. A second embedder, Titan V2, on the same pins shows the same significant decline (Hit@10 $0.785{\to}0.610$); its HNSW results equal exact search, and under exact search we cannot reject equal drops between the two embedders, so the decline is not specific to one embedding model (a small number of Titan gold anchors were truncated, Sec.~\ref{sec:threats}). Metadata rescue, by contrast, is embedder-dependent: Titan's oracle lift is smaller and dips below $\tau$ at $100\text{k}$. Alternate distractor seed~$0$ and a stratified $n{=}400$ bank leave the decline direction unchanged (Sec.~\ref{sec:robust}). Future work includes passage-level chunking, multi-vector late-interaction retrievers~\cite{khattab2020colbert}, open-weight embedders, and learned filters.
 
 \appendices
 \section{Complete Metadata Ladder}

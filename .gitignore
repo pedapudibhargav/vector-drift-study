@@ -47,7 +47,7 @@ data/enterprise_rag_bench/zips/
 data/enterprise_rag_bench/documents/
 data/erb_ingest_checkpoint.json
 data/erb_query_embed_cache.json
-data/erb_scale_manifest.json
+data/erb_scale_manifest*.json
 data/erb_cost_tracker.json
 data/results/
 *.log
@@ -157,3 +157,11 @@ data/erb_titan_query_embed_cache.json
 /papers/ieee-vector-drift/access/main_word_twin.docx
 /papers/ieee-vector-drift/access/IEEE_Access_Template_2024.docx
 /papers/ieee-vector-drift/LITERATURE_2025_2026.md
+
+# Cursor/Claude agent internal strategy/review docs (author-only, not for public repo)
+/.cursor/
+/papers/ieee-vector-drift/access/AGENT_REVIEW_*.md
+/papers/ieee-vector-drift/access/RESEARCH_STRENGTHENING_PLAN.md
+/papers/ieee-vector-drift/access/REVIEWER_RESPONSE.md
+/papers/ieee-vector-drift/access/SUBMISSION_READY.md
+/papers/ieee-vector-drift/access/VALIDATION_*.md

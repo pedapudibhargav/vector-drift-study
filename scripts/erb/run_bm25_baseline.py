@@ -69,6 +69,12 @@ def main() -> int:
     )
     parser.add_argument("--top-k", type=int, default=10)
     parser.add_argument("--max-chars", type=int, default=4000, help="Truncate doc text for BM25")
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=None,
+        help="JSON output path (default: artifacts/published/erb_bm25_baseline_primary200.json)",
+    )
     args = parser.parse_args()
     _load_env()
 
@@ -231,7 +237,8 @@ def main() -> int:
         ),
     }
     PUB.mkdir(parents=True, exist_ok=True)
-    out = PUB / "erb_bm25_baseline_primary200.json"
+    out = args.output or (PUB / "erb_bm25_baseline_primary200.json")
+    out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(report, indent=2), encoding="utf-8")
     md = [
         "# Okapi BM25 baseline (primary-200)",
@@ -246,7 +253,7 @@ def main() -> int:
             f"| {r['corpus_scale_size']} | {r['n_docs']} | {r['hit_at_1']} | "
             f"{r['hit_at_5']} | {r['hit_at_10']} | {r['mrr']} |"
         )
-    md_path = PUB / "erb_bm25_baseline_primary200.md"
+    md_path = out.with_suffix(".md")
     md_path.write_text("\n".join(md) + "\n", encoding="utf-8")
     print(f"wrote {out}")
     print(f"wrote {md_path}")
