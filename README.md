@@ -1,6 +1,6 @@
 # Vector Drift Study
 
-Empirical scaling laws for dense retrieval Hit@$k$ as an EnterpriseRAG-Bench corpus grows from 5k → 100k documents (gold-anchor pinning, frozen HNSW).
+Controlled study of how dense-retrieval Hit@$k$ drifts as an EnterpriseRAG-Bench corpus grows from 5k → 100k documents (gold-anchor pinning, frozen HNSW, two embedders, exact-search and BM25 controls). Companion code and data for the IEEE Access manuscript *Vector Retrieval Drift under Corpus Growth*.
 
 | Link | URL |
 |------|-----|
@@ -10,7 +10,7 @@ Empirical scaling laws for dense retrieval Hit@$k$ as an EnterpriseRAG-Bench cor
 | **Full DB dump (embeddings)** | [GitHub Releases](https://github.com/pedapudibhargav/vector-drift-study/releases): `erb_tables.dump.gz` (OpenAI arm) + `erb_titan_tables.dump.gz` (Titan V2 arm) + cached query embeddings |
 | **Study protocol** | [docs/STUDY_PROTOCOL.md](docs/STUDY_PROTOCOL.md) |
 | **Replication** | [docs/REPLICATE.md](docs/REPLICATE.md) |
-| **IEEE Access draft** | [papers/ieee-vector-drift/access/](papers/ieee-vector-drift/access/) |
+| **IEEE Access manuscript** | [papers/ieee-vector-drift/access/](papers/ieee-vector-drift/access/) |
 
 ## What you can do on GitHub Pages (no Postgres)
 
@@ -82,7 +82,7 @@ Fit: Hit@10 ≈ `1.474 − 0.086 log N`. Source: `artifacts/published/CANONICAL_
 |-------|----------|----------|
 | **A** Metrics | `artifacts/published/*.json` | Aggregates + per-query Hit@k / ids |
 | **B** Verify bundle | `artifacts/verification/` (+ mirrored under `docs/data/verification/`) | `per_query.jsonl`, `chunks_by_id.json` (text only) |
-| **C** Full dump | GitHub **Releases** (not git) | `erb_tables.dump.gz` ≈ 1.1 GB with embeddings |
+| **C** Full dumps | GitHub **Releases** (not git) | `erb_tables.dump.gz` (OpenAI, 1.19 GB) + `erb_titan_tables.dump.gz` (Titan, 0.74 GB) + query-embedding caches |
 
 Rebuild B after changing published metrics:
 
@@ -107,7 +107,7 @@ Defaults are **public** registries. Optional private mirrors belong only in loca
 | `apps/api` | FastAPI + pgvector |
 | `apps/web` | Study UI (Docker) |
 | `scripts/erb/` | Ingest, sweep, fit, backup/restore, verification export |
-| `artifacts/published/` | Camera-ready metrics |
+| `artifacts/published/` | Published metrics behind every table/figure (see its README) |
 | `artifacts/verification/` | Static verify bundle (no embeddings) |
 | `docs/` | GitHub Pages site |
 | `papers/ieee-vector-drift/access/` | IEEE Access LaTeX |

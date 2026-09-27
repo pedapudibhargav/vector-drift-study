@@ -3,7 +3,7 @@
 
 Guidelines encoded here:
   - Abstract: one paragraph, 150--250 words, no \\cite
-  - Index terms: 4--6 comma-separated keywords
+  - Index terms: 3--10 comma-separated keywords (IEEE Access submission guidelines)
   - Target length: 8--16 double-column pages (warn if PDF outside)
   - Prefer ieeeaccess.cls; allow IEEEtran journal fallback with warning
 
@@ -51,7 +51,7 @@ def keywords_stats(tex: str) -> dict:
     body = re.sub(r"\s+", " ", body).strip()
     kws = [k.strip() for k in body.split(",") if k.strip() and "Enter key" not in k]
     return {
-        "ok": 4 <= len(kws) <= 6,
+        "ok": 3 <= len(kws) <= 10,
         "count": len(kws),
         "keywords": kws,
         "note": "Confirm each term against the IEEE Thesaurus before submission",
@@ -70,7 +70,7 @@ def check_tex(path: Path) -> dict:
         issues.append(f"abstract words={abs_s.get('words')} cite={abs_s.get('has_cite')} (need 150-250, no cites)")
     kw_s = keywords_stats(tex)
     if not kw_s.get("ok"):
-        issues.append(f"keywords count={kw_s.get('count')} (need 4-6)")
+        issues.append(f"keywords count={kw_s.get('count')} (need 3-10)")
     for fig in re.findall(r"\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}", tex):
         p = (path.parent / fig).resolve()
         if not p.exists():
@@ -121,6 +121,17 @@ def check_pdf(pdf: Path) -> dict:
         out["font_rows"] = len(lines)
     else:
         issues.append("pdffonts not installed (brew install poppler)")
+    pdftotext = shutil.which("pdftotext")
+    if pdftotext:
+        # Labels that resolve to an empty string (e.g. unnumbered \appendix) render as "Appendix )"
+        # without any LaTeX warning; unresolved ones render as "??".
+        text = subprocess.run([pdftotext, str(pdf), "-"], capture_output=True, text=True).stdout
+        text = re.sub(r"\s+", " ", text)
+        empty = re.findall(r"(?:Appendix|Sec\.|Section|Table|Fig\.|Eq\.|Algorithm)\s*[),.;:]", text)
+        if empty:
+            issues.append(f"empty cross-references in PDF: {sorted(set(empty))[:5]}")
+        if "??" in text:
+            issues.append("unresolved reference '??' in PDF")
     out["issues"] = issues
     return out
 

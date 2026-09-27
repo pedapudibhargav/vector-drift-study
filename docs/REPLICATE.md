@@ -17,12 +17,12 @@ the IEEE paper results on a local machine with **minimal friction**.
 |----------|--------|---------|
 | Code + Docker stack | this repo | API, pgvector, sweep scripts |
 | Published metrics | `artifacts/published/` | Paper tables / fits (no DB needed) |
-| Embedding DB dump | GitHub **Releases** (`erb_tables.dump.gz`) | Skip OpenAI re-embed of ~100k docs |
+| Embedding DB dumps | GitHub **Releases** (`erb_tables.dump.gz`, `erb_titan_tables.dump.gz`) | Skip re-embedding ~100k docs (OpenAI and Titan arms) |
 | Questions | `data/enterprise_rag_bench/questions.jsonl` | ERB question bank |
 | Primary-200 list | `artifacts/published/primary_questions_200.json` | Stratified eval set (seed 42) |
-| Human-audit CSVs | `artifacts/published/human_audit_*.csv` | L4 labeling worksheet |
+| L3/L4 audit outputs | `artifacts/published/llm_audit_report_openai.json`, `l4_hit_fairness_llm.*`, `L4_SPOTCHECK_HUMAN.md` | Secondary LLM audits + author spot-check |
 
-Frozen study constants: seed **42**, embedder **`text-embedding-3-small`**, HNSW **m=16**, eval **k=10**, ladder **5k…100k**, τ**=0.10**. See [STUDY_PROTOCOL.md](STUDY_PROTOCOL.md).
+Frozen study constants: seed **42**, primary embedder **`text-embedding-3-small`** (secondary: Titan Text Embeddings V2), HNSW **m=16 / ef_construction=64 / ef_search=200**, eval **k=10**, ladder **5k…100k**, τ**=0.10**. See [STUDY_PROTOCOL.md](STUDY_PROTOCOL.md).
 
 ---
 
@@ -34,7 +34,7 @@ Frozen study constants: seed **42**, embedder **`text-embedding-3-small`**, HNSW
 - Optional: Python 3.12+ on the host for `validate_study.py` / fit scripts
 - Optional: `OPENAI_API_KEY` only if you re-embed, re-query without cache, or run L3 judge
 
-You do **not** need NVIDIA GPUs. Ollama / nomic is optional (appendix only).
+You do **not** need NVIDIA GPUs or any cloud credentials to restore and validate the published results.
 
 ---
 
@@ -71,7 +71,8 @@ Health checks:
 
 ```bash
 curl -s http://localhost:8000/api/health
-# → {"status":"ok","study":"enterprise_rag_bench"}
+# → {"status":"...","vector_db":"connected:<rows>_chunks","postgres":"connected",...}
+#   "openai":"error" is expected when OPENAI_API_KEY is blank; it is not needed for restore/validate.
 ```
 
 - API docs: http://localhost:8000/api/docs  
@@ -131,7 +132,7 @@ docker exec \
     --top-k 10
 ```
 
-Fit the scaling law:
+Fit the log-linear trend (descriptive, not a universal law):
 
 ```bash
 python3 scripts/erb/fit_scaling_law.py data/results/erb_scale_sweep_*.json
@@ -191,19 +192,25 @@ Expect hours of wall time and non-trivial OpenAI embedding cost. Prefer the Rele
 
 ---
 
-## 8. Lexical baseline & L3 judge
+## 8. BM25 baseline & LLM judges
+
+Okapi BM25 (RQ2) runs on the host over the ERB document text, so it needs the ERB documents
+(`python3 scripts/erb/download_erb.py --extract`) and the scale manifest:
+
+```bash
+python3 scripts/erb/run_bm25_baseline.py            # full ladder, k=10, title+body truncated to 4k chars
+```
+
+Published: `artifacts/published/erb_bm25_baseline_primary200.json` (Hit@10 0.855→0.700) and
+`bm25_vs_dense_bootstrap.json`. The Postgres FTS negative control is `erb_lexical_baseline_primary200.json`
+(Hit@10 ≈ 0.045 on a partial ladder); it is not a BM25 substitute.
+
+Optional LLM judge (needs `OPENAI_API_KEY`):
 
 ```bash
 docker exec -e DATABASE_URL=postgresql+asyncpg://postgres:postgres@vector-drift-postgres:5432/vector_drift_db \
-  vector-drift-api python /app/scripts/erb/run_lexical_baseline.py --primary-questions
-
-# Optional LLM judge (needs OPENAI_API_KEY):
-docker exec -e DATABASE_URL=postgresql+asyncpg://postgres:postgres@vector-drift-postgres:5432/vector_drift_db \
   vector-drift-api python /app/scripts/erb/run_l3_judge.py
 ```
-
-Published lexical JSON (partial ladder): `artifacts/published/erb_lexical_baseline_primary200.json`  
-(Hit@10 ≈ 0.045 at 5k–25k; dense ≫ FTS).
 
 ---
 
@@ -234,7 +241,7 @@ Published lexical JSON (partial ladder): `artifacts/published/erb_lexical_baseli
 Minimum bar:
 
 1. Restore dump → `validate_study.py` passes  
-2. Published fit JSON matches paper Table I / Δ_meta within 0.01  
+2. `python3 scripts/erb/verify_paper_numbers.py` and `python3 scripts/erb/verify_paper_tables.py` pass (published JSON ↔ every table in the paper)  
 3. Optional: re-sweep one scale (e.g. 5k + 100k) and compare Hit@10  
 
-Human L4 labeling is an **author** camera-ready step, not required to re-run automated metrics ([HUMAN_AUDIT.md](HUMAN_AUDIT.md)).
+The L4 LLM-assisted audit and the author spot-check are already published ([HUMAN_AUDIT.md](HUMAN_AUDIT.md)); they are secondary and not needed to reproduce the metrics.

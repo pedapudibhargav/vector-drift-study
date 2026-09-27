@@ -339,7 +339,7 @@ export default function ReviewPage() {
       if (conditionFilter) params.set('condition', conditionFilter)
       if (queueFilter === 'high') params.set('priority', 'high')
       const data = await apiGet<{ items: QueueItem[] }>(`/api/audit/queue?${params}`)
-      let items = data.items.map((it) => {
+      let items: QueueItem[] = data.items.map((it) => {
         const t = triageMap.get(rowKey(it.question_id, it.corpus_scale_size, it.condition))
         const s = spotMap.get(rowKey(it.question_id, it.corpus_scale_size, it.condition))
         return {
@@ -1160,10 +1160,6 @@ export default function ReviewPage() {
                 <code className="text-brand-400">artifacts/published/CANONICAL_METRICS.json</code>
               </li>
               <li>Tick each item below as you confirm it (status → done).</li>
-              <li>
-                Full list also in{' '}
-                <code className="text-brand-400">papers/ieee-vector-drift/access/CHECKLIST_ACCESS.md</code>
-              </li>
             </ol>
           </div>
           {checklist.map((item) => (

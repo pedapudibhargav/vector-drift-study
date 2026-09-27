@@ -1242,11 +1242,13 @@ async def save_checklist(body: ChecklistBody, db: AsyncSession = Depends(get_db)
 async def llm_report(db: AsyncSession = Depends(get_db)) -> dict:
     """Serve latest batch LLM audit report (file + DB summary)."""
     report: dict[str, Any] = {}
-    for base in (
-        PROJECT_ROOT / "artifacts" / "published",
-        Path("/app/artifacts/published"),
-    ):
-        path = base / "llm_audit_report.json"
+    # Prefer the OpenAI wide audit cited in the paper; llm_audit_report.json is the legacy batch output.
+    candidates = [
+        base / name
+        for base in (PROJECT_ROOT / "artifacts" / "published", Path("/app/artifacts/published"))
+        for name in ("llm_audit_report_openai.json", "llm_audit_report.json")
+    ]
+    for path in candidates:
         if path.exists():
             report = _load_json(path)
             report["_source_file"] = str(path)

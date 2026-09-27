@@ -1,7 +1,7 @@
 """Budget-capped LLM auditor for L4 (pipeline + chunk + Hit@10 fairness).
 
-Model choice: gpt-4o (reasoning). Cursor "Luna" is not an OpenAI API model in this
-stack — use AUDIT_LLM_BASE_URL only if you have an OpenAI-compatible Luna endpoint.
+Model choice: gpt-4o (reasoning). Set AUDIT_LLM_BASE_URL only for another
+OpenAI-compatible endpoint.
 gpt-4o-mini is reserved for L3 relevance; L4 needs stronger reasoning on text+IDs.
 """
 

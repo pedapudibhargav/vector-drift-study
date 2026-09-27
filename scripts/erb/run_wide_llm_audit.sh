@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Wide L4 LLM audit — runs OUTSIDE the Cursor agent sandbox.
+# Wide LLM audit — run from a shell with outbound access to the model endpoint.
 #
-# Alternative when the agent cannot reach api.openai.com (proxy 403):
+# Alternative when api.openai.com is unreachable from this machine:
 #   1) Prefer local Ollama (OpenAI-compatible, $0, no proxy)
 #   2) Else OpenAI with AUDIT_LLM_BUDGET_USD cap (default $2)
 #
@@ -112,7 +112,7 @@ openai_reachable() {
   if [[ -z "$key" || "$key" == sk-your* ]]; then
     return 1
   fi
-  # Direct call; do not force corp proxy if it 403s CONNECT
+  # Direct call; bypass any HTTP proxy for the local Ollama endpoint
   env -u HTTP_PROXY -u HTTPS_PROXY -u ALL_PROXY -u http_proxy -u https_proxy -u all_proxy \
     curl -sf --connect-timeout 8 \
       -H "Authorization: Bearer ${key}" \
@@ -135,7 +135,7 @@ pick_provider() {
     return
   fi
   echo "ERROR: Neither Ollama (localhost:11434) nor OpenAI is reachable." >&2
-  echo "  Fix: brew services start ollama   OR   ensure OPENAI_API_KEY works outside Cursor." >&2
+  echo "  Fix: brew services start ollama   OR   ensure OPENAI_API_KEY is set and the endpoint is reachable." >&2
   exit 1
 }
 

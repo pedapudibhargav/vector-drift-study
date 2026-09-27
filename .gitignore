@@ -2,7 +2,7 @@
 .env
 .env.local
 
-# Local-only notes (employer network, personal planning — never publish)
+# Local-only notes (personal planning — never publish)
 private/
 docker-compose.corp.yml
 
@@ -89,3 +89,71 @@ data/erb_titan_query_embed_cache.json
 
 # Local Claude Code state (worktrees, launch configs)
 .claude/
+
+# ---------------------------------------------------------------------------
+# Local-only working files (kept on disk, never published)
+# ---------------------------------------------------------------------------
+/artifacts/published/IEEE_STRICT_REVIEW_2026.md
+/artifacts/published/IEEE_STRICT_REVIEW_RESCORE.md
+/artifacts/published/IEEE_FIXES_PLAIN_ENGLISH.md
+/artifacts/published/READY_FOR_AUTHOR.md
+/artifacts/published/NOMIC_PAPER_PATCH_PLAN.md
+/artifacts/published/NOMIC_A8_STATUS.md
+/artifacts/published/GRAMMAR_PASS_REPORT.md
+/artifacts/published/PUBLISH_READY.md
+/artifacts/published/GEMINI_L4_RESPONSE_SCHEMA.md
+/artifacts/published/GEMINI_L4_REVIEW_PACK.md
+/artifacts/published/HUMAN_REVIEW_PACK_FOR_GEMINI.md
+/artifacts/published/HUMAN_REVIEW_PACK_HIGH_PRIORITY.md
+/artifacts/published/LLM_AUDIT_FINDINGS.md
+/artifacts/published/HUMAN_AUDIT_TEMPLATE.md
+/artifacts/published/human_audit_n5000_raw.csv
+/artifacts/published/human_audit_n20000_raw.csv
+/artifacts/published/openai_vs_nomic_primary200.json
+/artifacts/published/openai_vs_nomic_primary200.md
+/artifacts/published/llm_audit_report_ollama.json
+/artifacts/published/llm_audit_report_ollama.md
+/artifacts/published/llm_audit_report_ollama.QUARANTINE.md
+/artifacts/published/llm_audit_report.json
+/artifacts/published/llm_audit_report.md
+/artifacts/published/llm_audit_run.log
+/artifacts/published/llm_audit_smoke.log
+/artifacts/published/llm_wide_dryrun.log
+/artifacts/published/author_photo_source.jpg
+/docs/data/published/PUBLISH_READY.md
+/.cursorrules
+/clean_text_artifacts.py
+/fix_chunk_quality.py
+/polish_chunk_quality.py
+/recrawl_dynamic_pages.py
+/refresh_validation_sample.py
+/sanitize_chunks.py
+/validate_chunk_quality.py
+/reclassify_manifest.py
+/refine_meta_questions.py
+/generate_validation_sample.py
+/verify_embeddings.py
+/verify_ollama.py
+/scripts/erb/compare_openai_vs_nomic.py
+/scripts/erb/run_scale_sweep_ollama.py
+/scripts/erb/ingest_erb_ollama.py
+/scripts/erb/migrate_ollama_schema.py
+/scripts/erb/resume_ollama_ingest.sh
+/scripts/erb/stop_ollama_ingest.sh
+/scripts/erb/watch_ollama_ingest_and_eval.sh
+/__pycache__/
+/audit_corpus_gates.py
+/backfill_g7_gold_clean.py
+/generate_g7_quality_sample.py
+/refine_corpus_quality.py
+/regrade_feedstock.py
+/run_corpus_quality_*.py
+/run_gold_chunk_pilot.py
+/validate_audit_sample.py
+/docs/PAPER_QUALITY_VERIFICATION.md
+/papers/ieee-vector-drift/access/CHECKLIST_ACCESS.md
+/papers/ieee-vector-drift/access/PACKAGING_SUBMISSION.md
+/papers/ieee-vector-drift/access/WORD_TWIN_README.md
+/papers/ieee-vector-drift/access/main_word_twin.docx
+/papers/ieee-vector-drift/access/IEEE_Access_Template_2024.docx
+/papers/ieee-vector-drift/LITERATURE_2025_2026.md

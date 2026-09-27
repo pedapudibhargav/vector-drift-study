@@ -11,7 +11,7 @@ IEEE Access expects honest methods: state the model, prompt version, sample size
 | Item | Value |
 |------|--------|
 | Queue | 62 high-priority rows (`human_review_queue_openai.csv`) |
-| Model | OpenAI `gpt-4o` via `OPENAI_API_KEY` (Cursor “Luna” is not an OpenAI API model ID) |
+| Model | OpenAI `gpt-4o` via `OPENAI_API_KEY` |
 | Prompt | `l4-hit-fairness-v1` in `scripts/erb/run_l4_hit_fairness_llm.py` |
 | Inputs per row | Question + **full gold .txt** + truncated top-10 previews |
 | Judgment | `y`/`n`/`unsure` = is auto Hit@10 **fair**? + does gold text answer? |

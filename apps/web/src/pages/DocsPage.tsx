@@ -39,7 +39,7 @@ export default function DocsPage() {
           <ul className="mt-2 list-disc space-y-1 pl-5 font-mono text-xs text-gray-800">
             <li>docs/STUDY_PROTOCOL.md</li>
             <li>docs/REPLICATE.md</li>
-            <li>docs/PAPER_QUALITY_VERIFICATION.md</li>
+            <li>docs/THREATS_TO_VALIDITY.md</li>
             <li>docs/VERIFICATION_UI_AND_STATIC_HOSTING.md</li>
             <li>docs/HUMAN_AUDIT.md</li>
             <li>artifacts/published/*.json</li>
@@ -55,7 +55,7 @@ docker compose up -d
           </pre>
           <p className="mt-2 text-xs text-gray-500">
             Per-query Hit@k rows: OpenAI in <span className="font-mono">vector_drift_results</span>;
-            Titan A8 in <span className="font-mono">vector_drift_results_titan</span>. Compare arms on{' '}
+            Titan V2 in <span className="font-mono">vector_drift_results_titan</span>. Compare arms on{' '}
             <a className="text-brand-400 hover:underline" href={`${import.meta.env.BASE_URL}compare`}>
               Compare
             </a>

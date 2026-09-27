@@ -10,9 +10,9 @@
 |-------|----------|-------------------------|
 | **A** Metrics | `artifacts/published/` + Pages | Hit@1/5/10 aggregates + per-query flags/ids |
 | **B** Verify bundle | `artifacts/verification/` → `docs/data/verification/` | Paginated UI with **question text + chunk text** + scores |
-| **C** Full dump | **GitHub Releases** (`erb_tables.dump.gz` ≈ 1.1 GB) | Restore Postgres+pgvector incl. **embeddings** for local re-runs |
+| **C** Full dumps | **GitHub Releases** ([v1.0.0-artifacts](https://github.com/pedapudibhargav/vector-drift-study/releases/tag/v1.0.0-artifacts): OpenAI + Titan dumps, query caches) | Restore Postgres+pgvector incl. **embeddings** for local re-runs |
 
-**DB (author machine / restored dump):** `vector_drift_results`, `retrieval_hit_details`, `document_chunks` (text + vectors).
+**DB (author machine / restored dump):** `vector_drift_results`, `retrieval_hit_details`, `document_chunks` (OpenAI text + vectors); `document_chunks_titan`, `vector_drift_results_titan` (Titan arm).
 
 ---
 
@@ -26,13 +26,16 @@ Without a DB, reviewers can still validate **every published query row**: Hit@1/
 
 ---
 
-## 3. Where the ~1 GB dump goes
+## 3. Where the DB dumps go
 
 **GitHub Releases**, not the `gh-pages` branch and not git history.
 
 ```bash
 ./scripts/erb/package_release_artifacts.sh data/backups/<dir>
 gh release create v1.0.0-artifacts data/backups/release/erb_tables.dump.gz \
+  data/backups/release/erb_titan_tables.dump.gz \
+  data/backups/release/erb_query_embed_cache.json.gz \
+  data/backups/release/erb_titan_query_embed_cache.json.gz \
   --title "DB snapshot (embeddings + metrics)" \
   --notes "Restore with ./scripts/erb/restore_from_backup.sh"
 ```

@@ -38,7 +38,7 @@
       <div class="cta-row">
         <a class="btn btn-primary" href="#data">Static JSON for reviewers</a>
         <a class="btn btn-secondary" href="verify/">Verify every query</a>
-        <a class="btn btn-secondary" href="#titan">Titan A8 results</a>
+        <a class="btn btn-secondary" href="#titan">Titan V2 results</a>
       </div>
       <ul class="stats">
         <li><strong>100k</strong><span>indexed documents</span></li>
@@ -67,7 +67,7 @@
           <em>N</em>★(τ&nbsp;=&nbsp;0.10) appears on this bank.
         </li>
         <li>
-          <strong>Replicate on a second embedder (A8).</strong> Rerun the identical gold-pinned
+          <strong>Replicate on a second embedder.</strong> Rerun the identical gold-pinned
           ladder with Amazon Titan Text Embeddings&nbsp;V2 and test whether endpoint decline
           (5k→100k) is negative for Hit@1, Hit@10, and MRR.
         </li>
@@ -77,7 +77,7 @@
         </li>
       </ol>
       <p class="note">
-        Protocol constants, seed 42, and camera-ready checklist:
+        Protocol constants, seed 42, and headline results:
         <a href="https://github.com/pedapudibhargav/vector-drift-study/blob/main/docs/STUDY_PROTOCOL.md">STUDY_PROTOCOL.md</a>.
         Threats:
         <a href="https://github.com/pedapudibhargav/vector-drift-study/blob/main/docs/THREATS_TO_VALIDITY.md">THREATS_TO_VALIDITY.md</a>.
@@ -121,7 +121,7 @@
     </section>
 
     <section class="wrap" id="titan">
-      <h2>Titan A8 — second-embedder replication</h2>
+      <h2>Titan V2 — second-embedder replication</h2>
       <p>
         Same gold anchors, same scales, same primary-200 questions.
         Titan model: <code>amazon.titan-embed-text-v2:0</code>.
@@ -215,7 +215,7 @@
         <tbody>
           <tr>
             <td><a href="data/published/landing_summary.json"><code>landing_summary.json</code></a></td>
-            <td>Compact study goal, OpenAI headlines, Titan A8 endpoints, bootstrap, catalog</td>
+            <td>Compact study goal, OpenAI headlines, Titan V2 endpoints, bootstrap, catalog</td>
           </tr>
           <tr>
             <td><a href="data/published/CANONICAL_METRICS.json"><code>CANONICAL_METRICS.json</code></a></td>
@@ -287,20 +287,20 @@
       <p>
         Step-by-step:
         <a href="https://github.com/pedapudibhargav/vector-drift-study/blob/main/docs/REPLICATE.md">REPLICATE.md</a>.
-        Human L4 audit worksheet:
+        L4 audit (LLM-assisted + author spot-check):
         <a href="https://github.com/pedapudibhargav/vector-drift-study/blob/main/docs/HUMAN_AUDIT.md">HUMAN_AUDIT.md</a>.
       </p>
     </section>
 
     <section class="wrap" id="cite">
       <h2>Cite &amp; links</h2>
-      <pre>@inproceedings{vector-drift-2026,
-  title     = {Vector Retrieval Drift under Corpus Growth:
-               Empirical Scaling Laws and Metadata Rescue on EnterpriseRAG-Bench},
-  author    = {Anonymous},
-  booktitle = {IEEE Access (venue TBD)},
-  year      = {2026},
-  note      = {Artifacts: https://pedapudibhargav.github.io/vector-drift-study/}
+      <pre>@misc{peddapudi2026vectordrift,
+  title  = {Vector Retrieval Drift under Corpus Growth: A Controlled Empirical
+            Study with Metadata Filtering on EnterpriseRAG-Bench},
+  author = {Peddapudi, Bhargava Chary},
+  year   = {2026},
+  note   = {Manuscript submitted to IEEE Access.
+            Artifacts: https://pedapudibhargav.github.io/vector-drift-study/}
 }</pre>
       <ul class="clean">
         <li><a href="https://github.com/pedapudibhargav/vector-drift-study">Source repository</a></li>

@@ -84,7 +84,6 @@ jobs:
           mkdir -p _site
           cp -R docs/. _site/
           # Drop accidental local-only docs if present
-          rm -f _site/CORP-NETWORK.md _site/PERSONAL_NOTES.md
           rm -rf _site/private
           # Single landing page: keep verify/ as the interactive tool only
           test -f _site/index.html

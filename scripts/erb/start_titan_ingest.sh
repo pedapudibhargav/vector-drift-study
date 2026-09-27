@@ -29,7 +29,7 @@ fi
 BATCH="${ERB_TITAN_BATCH:-24}"
 WORKERS="${ERB_TITAN_WORKERS:-8}"
 
-# Detach into a new session so Cursor/IDE shell exit does not kill ingest.
+# Detach into a new session so closing the shell does not kill ingest.
 # Linux: setsid. macOS: Python start_new_session (setsid is often absent).
 {
   echo "==== START $(date -u +%Y-%m-%dT%H:%M:%SZ) ===="

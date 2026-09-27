@@ -6,7 +6,7 @@ Evaluates the 62 high-priority rows from human_review_queue_openai.csv using:
   - retrieved top-10 IDs + truncated previews
   - clear rules: agree with Hit@10 when ID membership matches; label_noise when HIT but gold cannot answer
 
-Cursor IDE \"Luna\" is not an OpenAI API model. This script uses OPENAI_API_KEY +
+This script uses OPENAI_API_KEY +
 AUDIT_LLM_MODEL (default gpt-4o). Optional AUDIT_LLM_BASE_URL for OpenAI-compatible proxies.
 
 Outputs (does not require Postgres):
