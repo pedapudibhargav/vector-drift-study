@@ -91,7 +91,7 @@ HNSW~\cite{malkov2018hnsw} underpins production vector databases, alongside quan
 Filtered approximate nearest neighbor (ANN) search is especially relevant to enterprise RAG: production queries often carry tenant, product-line, or document-type constraints. Oracle filters in offline studies upper-bound the benefit of perfect filter prediction. As each filtered partition grows, the same crowding pressure reappears inside the partition, which is precisely the regime our $\Delta_{\mathrm{meta}}(N)$ curve quantifies.
 
 \subsection{Enterprise RAG Evaluation}
-EnterpriseRAG-Bench~\cite{sun2026erb} provides company-internal-style documents and questions with expected document IDs. Industry deployments report knowledge-base Hit@$k$ with metadata scoping~\cite{ragfusion2026}. We use ERB labels for a retrieval-only scale ladder with explicit $\Delta_{\mathrm{meta}}$ and $N^\star$, complementary to end-to-end answer scoring such as reference-free RAG evaluation~\cite{es2024ragas} and the retrieval designs catalogued in RAG surveys~\cite{gao2023ragsurvey}. Hybrid and sparse--dense comparisons~\cite{zeng2025sparse} further motivate including a lexical baseline when available.
+EnterpriseRAG-Bench~\cite{sun2026erb} provides company-internal-style documents and questions with expected document IDs. Industry deployments report knowledge-base Hit@$k$ with metadata scoping~\cite{ragfusion2026}. We use ERB labels for a retrieval-only scale ladder with explicit $\Delta_{\mathrm{meta}}$ and $N^\star$, complementary to end-to-end answer scoring such as reference-free RAG evaluation~\cite{es2024ragas} and the retrieval designs catalogued in RAG surveys~\cite{gao2023ragsurvey}. Sparse-versus-dense scaling comparisons~\cite{zeng2025sparse} further motivate including a lexical baseline when available.
 
 Relative to end-to-end RAG leaderboards, our evaluation intentionally stops at labeled document retrieval. Generation faithfulness, citation accuracy, and multi-hop reasoning are out of scope; they inherit first-stage failures when gold documents leave the top-$k$, but they also introduce judge noise that would obscure the scale-ladder signal we target.
 
@@ -657,9 +657,9 @@ A.~Kane, ``pgvector: Open-source vector similarity search for Postgres,'' GitHub
 \bibitem{aws2024titan}
 Amazon Web Services, ``Amazon Titan Text Embeddings models,'' \emph{Amazon Bedrock User Guide}. [Online]. Available: \url{https://docs.aws.amazon.com/bedrock/latest/userguide/titan-embedding-models.html}
 \bibitem{efron1993bootstrap}
-B.~Efron and R.~J.~Tibshirani, \emph{An Introduction to the Bootstrap}. New York, NY, USA: Chapman \& Hall, 1993.
+B.~Efron and R.~J.~Tibshirani, \emph{An Introduction to the Bootstrap}. New York, NY, USA: Chapman \& Hall/CRC, 1994, doi: 10.1201/9780429246593.
 \bibitem{robertson2009bm25}
-S.~Robertson and H.~Zaragoza, ``The probabilistic relevance framework: BM25 and beyond,'' \emph{Found. Trends Inf. Retr.}, vol.~3, no.~4, pp.~333--389, 2009, doi: 10.1561/1500000019.
+S.~Robertson and H.~Zaragoza, ``The probabilistic relevance framework: BM25 and beyond,'' \emph{Found. Trends Inf. Retr.}, vol.~4, nos.~1--2, pp.~1--174, 2009, doi: 10.1561/1500000019.
 \bibitem{smucker2007significance}
 M.~D.~Smucker, J.~Allan, and B.~Carterette, ``A comparison of statistical significance tests for information retrieval evaluation,'' in \emph{Proc. 16th ACM Conf. Inf. Knowl. Manage. (CIKM)}, 2007, pp.~623--632, doi: 10.1145/1321440.1321528.
 \bibitem{khattab2020colbert}
