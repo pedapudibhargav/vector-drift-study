@@ -10,7 +10,6 @@
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage{url}
-\usepackage{xcolor}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 % Allow line breaks after underscores in long \texttt identifiers (text mode only).
@@ -18,10 +17,13 @@
 \DeclareRobustCommand{\_}{\ifmmode\nfss@text{\textunderscore}\else\textunderscore\allowbreak\fi}
 \makeatother
 \setlength{\emergencystretch}{2em}
+% ieeeaccess.cls uses a Formata-specific series ``n''; map it to medium Courier for \texttt.
+{\fontencoding{T1}\fontfamily{pcr}\selectfont}
+\DeclareFontShape{T1}{pcr}{n}{n}{<->ssub * pcr/m/n}{}
+\DeclareFontShape{T1}{pcr}{n}{it}{<->ssub * pcr/m/it}{}
 \usepackage{graphicx}
 % hyperref is loaded by ieeeaccess.cls — do not load again
 
-\newcommand{\TBD}[1]{\textcolor{red}{\textbf{[TBD: #1]}}}
 
 \begin{document}
 \history{Date of publication xxxx 00, 0000, date of current version xxxx 00, 0000.}
@@ -32,7 +34,7 @@
 \author{\uppercase{Bhargava Chary Peddapudi}\authorrefmark{1},
 \IEEEmembership{Member, IEEE}}
 \address[1]{Independent Researcher, San Francisco Bay Area, CA, USA (e-mail: pedapudibhargav@gmail.com)}
-\tfootnote{This work has no external funding to declare. ORCID: \url{https://orcid.org/0009-0002-8523-8415}.}
+\tfootnote{This work has no external funding to declare. ORCID: {\urlstyle{same}\url{https://orcid.org/0009-0002-8523-8415}}.}
 \corresp{Corresponding author: Bhargava Chary Peddapudi (e-mail: pedapudibhargav@gmail.com).}
 
 \markboth
