@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this software or data, please cite it as below."
+title: "Vector Drift Study: companion code and data for 'Vector Retrieval Drift under Corpus Growth'"
+type: software
+authors:
+  - family-names: Peddapudi
+    given-names: Bhargava Chary
+    orcid: "https://orcid.org/0009-0002-8523-8415"
+repository-code: "https://github.com/pedapudibhargav/vector-drift-study"
+url: "https://pedapudibhargav.github.io/vector-drift-study/"
+keywords:
+  - retrieval-augmented generation
+  - dense retrieval
+  - vector search
+  - HNSW
+  - corpus growth
+  - reproducibility
