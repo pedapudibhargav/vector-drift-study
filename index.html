@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vector Retrieval Drift — Study Artifacts</title>
+  <meta name="description" content="Replication landing page for the IEEE study on vector retrieval drift under corpus growth on EnterpriseRAG-Bench, including Amazon Titan Text Embeddings V2 replication." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header wrap">
+    <div class="brand-row">
+      <a class="brand" href="./">Vector Retrieval Drift</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#goal">Goal</a>
+        <a href="#findings">Findings</a>
+        <a href="#titan">Titan</a>
+        <a href="#data">Data</a>
+        <a href="#reproduce">Reproduce</a>
+        <a href="verify/">Verify</a>
+        <a href="https://github.com/pedapudibhargav/vector-drift-study">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <p class="eyebrow">IEEE Access · EnterpriseRAG-Bench artifacts</p>
+      <h1>Vector retrieval drift under corpus growth</h1>
+      <p class="lede">
+        Dense Hit@<em>k</em> falls as an enterprise RAG corpus grows from 5k to 100k documents.
+        Metadata still helps. The decline <strong>replicates</strong> on Amazon Titan Text
+        Embeddings&nbsp;V2 — with an important HNSW vs exact-search caveat for reviewers.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#data">Static JSON for reviewers</a>
+        <a class="btn btn-secondary" href="verify/">Verify every query</a>
+        <a class="btn btn-secondary" href="#titan">Titan V2 results</a>
+      </div>
+      <ul class="stats">
+        <li><strong>100k</strong><span>indexed documents</span></li>
+        <li><strong>200</strong><span>primary questions</span></li>
+        <li><strong>2</strong><span>embedders (OpenAI + Titan)</span></li>
+        <li><strong>yes</strong><span>raw drift replicates</span></li>
+      </ul>
+    </section>
+
+    <section class="wrap" id="goal">
+      <h2>Research goal</h2>
+      <p>
+        Enterprise RAG systems keep adding documents. Practitioners often assume dense retrieval
+        quality stays roughly stable if the gold answer document remains in the index. This study
+        asks whether that holds on a controlled enterprise bench, and what metadata can rescue.
+      </p>
+      <ol class="setup">
+        <li>
+          <strong>Measure drift.</strong> Hold a fixed primary-200 question bank and gold-pinned
+          ladder; grow the distractor corpus from 5k → 100k (9 points) and track Hit@1 / Hit@5 /
+          Hit@10 / MRR under raw dense search.
+        </li>
+        <li>
+          <strong>Measure rescue.</strong> Compare the same ladder with lightweight metadata
+          conditioning; report Δ<sub>meta</sub> and whether a collapse onset
+          <em>N</em>★(τ&nbsp;=&nbsp;0.10) appears on this bank.
+        </li>
+        <li>
+          <strong>Replicate on a second embedder.</strong> Rerun the identical gold-pinned
+          ladder with Amazon Titan Text Embeddings&nbsp;V2 and test whether endpoint decline
+          (5k→100k) is negative for Hit@1, Hit@10, and MRR.
+        </li>
+        <li>
+          <strong>Separate embedding drift from ANN error.</strong> Exact cosine controls show
+          whether HNSW recall loss — not the embedder — drives apparent OpenAI–Titan gaps.
+        </li>
+      </ol>
+      <p class="note">
+        Protocol constants, seed 42, and headline results:
+        <a href="https://github.com/pedapudibhargav/vector-drift-study/blob/main/docs/STUDY_PROTOCOL.md">STUDY_PROTOCOL.md</a>.
+        Threats:
+        <a href="https://github.com/pedapudibhargav/vector-drift-study/blob/main/docs/THREATS_TO_VALIDITY.md">THREATS_TO_VALIDITY.md</a>.
+      </p>
+    </section>
+
+    <section class="wrap" id="findings">
+      <h2>Primary findings (OpenAI, n&nbsp;=&nbsp;200)</h2>
+      <p>
+        On <code>text-embedding-3-small</code> with HNSW (m&nbsp;=&nbsp;16), raw dense Hit@1 falls
+        <strong>0.600 → 0.305</strong> and Hit@10 <strong>0.795 → 0.510</strong> as
+        <em>N</em> grows from 5k to 100k. MRR falls <strong>0.658 → 0.365</strong>.
+        Metadata Hit@10 lift stays <strong>≥&nbsp;+0.13</strong> from 10k–100k
+        (<em>N</em>★(τ&nbsp;=&nbsp;0.10) is <strong>undefined</strong> on this ladder;
+        last Δ<sub>meta</sub>≥0.10 point is 100k).
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>N</th>
+            <th>Hit@1 raw</th>
+            <th>Hit@10 raw</th>
+            <th>Hit@10 meta</th>
+            <th>Δ<sub>meta</sub></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>5k</td><td>0.600</td><td>0.795</td><td>0.875</td><td>+0.080</td></tr>
+          <tr><td>20k</td><td>0.410</td><td>0.600</td><td>0.775</td><td>+0.175</td></tr>
+          <tr><td>40k</td><td>0.350</td><td>0.565</td><td>0.700</td><td>+0.135</td></tr>
+          <tr><td>100k</td><td>0.305</td><td>0.510</td><td>0.640</td><td>+0.130</td></tr>
+        </tbody>
+      </table>
+      <p>
+        Log-linear fit for raw Hit@10: <code>a − b·log(N)</code> with
+        <em>a</em>≈1.474, <em>b</em>≈0.086
+        (<a href="data/published/erb_full_primary200_to100k_fit.json"><code>erb_full_primary200_to100k_fit.json</code></a>.
+        Promotion record:
+        <a href="data/published/CANONICAL_METRICS.json"><code>CANONICAL_METRICS.json</code></a>.
+      </p>
+    </section>
+
+    <section class="wrap" id="titan">
+      <h2>Titan V2 — second-embedder replication</h2>
+      <p>
+        Same gold anchors, same scales, same primary-200 questions.
+        Titan model: <code>amazon.titan-embed-text-v2:0</code>.
+        Status: <strong>complete</strong> (2026-09-23).
+        Raw Hit@1, Hit@10, and MRR all decline 5k→100k on both embedders
+        (<code>all_three_replicate = true</code>).
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Metric (raw)</th>
+            <th>OpenAI 5k</th>
+            <th>OpenAI 100k</th>
+            <th>Δ</th>
+            <th>Titan 5k</th>
+            <th>Titan 100k</th>
+            <th>Δ</th>
+            <th>Rep?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Hit@1</td>
+            <td>0.600</td><td>0.305</td><td>−0.295</td>
+            <td>0.620</td><td>0.385</td><td>−0.235</td>
+            <td>yes</td>
+          </tr>
+          <tr>
+            <td>Hit@5</td>
+            <td>0.740</td><td>0.460</td><td>−0.280</td>
+            <td>0.730</td><td>0.565</td><td>−0.165</td>
+            <td>yes</td>
+          </tr>
+          <tr>
+            <td>Hit@10</td>
+            <td>0.795</td><td>0.510</td><td>−0.285</td>
+            <td>0.785</td><td>0.610</td><td>−0.175</td>
+            <td>yes</td>
+          </tr>
+          <tr>
+            <td>MRR</td>
+            <td>0.658</td><td>0.365</td><td>−0.293</td>
+            <td>0.671</td><td>0.465</td><td>−0.206</td>
+            <td>yes</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Exact cosine vs HNSW (reviewer-critical)</h3>
+      <p>
+        On the <strong>deployed HNSW</strong> curves, Titan’s 5k→100k Hit@10 drop is milder than
+        OpenAI’s (paired bootstrap B&nbsp;=&nbsp;5000, seed&nbsp;42:
+        Titan−OpenAI drop ≈&nbsp;+0.110, 95%&nbsp;CI&nbsp;[+0.040,&nbsp;+0.175]).
+        Under <strong>exact</strong> cosine search that gap shrinks to ≈&nbsp;+0.035
+        [−0.025,&nbsp;+0.100] — statistically indistinguishable.
+      </p>
+      <ul class="clean">
+        <li>
+          Titan exact search returns <strong>identical top-10 lists</strong> to Titan HNSW for
+          200/200 questions at 5k, 50k, and 100k (Δ&nbsp;=&nbsp;0 disagreements).
+        </li>
+        <li>
+          OpenAI HNSW loses Hit@10 vs exact by <strong>0.085</strong> at 50k and
+          <strong>0.075</strong> at 100k.
+        </li>
+        <li>
+          Takeaway: do not cite “Titan drifts less” as an embedder property without the exact
+          control; most of the HNSW gap is ANN recall loss on the OpenAI index.
+        </li>
+      </ul>
+      <p class="note">
+        Sources:
+        <a href="data/published/openai_vs_titan_primary200.json"><code>openai_vs_titan_primary200.json</code></a>,
+        <a href="data/published/openai_vs_titan_bootstrap.json"><code>openai_vs_titan_bootstrap.json</code></a>,
+        <a href="data/published/exact_control_titan.json"><code>exact_control_titan.json</code></a>,
+        <a href="data/published/TITAN_A8_STATUS.md"><code>TITAN_A8_STATUS.md</code></a>.
+      </p>
+    </section>
+
+    <section class="wrap" id="data">
+      <h2>Static JSON for reviewers</h2>
+      <p>
+        Everything below is served from this GitHub Pages site (no database required).
+        Start with <a href="data/published/landing_summary.json"><code>landing_summary.json</code></a>
+        for headline numbers, then drill into the comparison files.
+      </p>
+      <table class="files">
+        <thead>
+          <tr><th>File</th><th>What it contains</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="data/published/landing_summary.json"><code>landing_summary.json</code></a></td>
+            <td>Compact study goal, OpenAI headlines, Titan V2 endpoints, bootstrap, catalog</td>
+          </tr>
+          <tr>
+            <td><a href="data/published/CANONICAL_METRICS.json"><code>CANONICAL_METRICS.json</code></a></td>
+            <td>Integrity-clean promotion record + Hit@10 fit coefficients</td>
+          </tr>
+          <tr>
+            <td><a href="data/published/erb_full_primary200_to100k_fit.json"><code>erb_full_primary200_to100k_fit.json</code></a></td>
+            <td>OpenAI ladder fit + bootstrap CIs</td>
+          </tr>
+          <tr>
+            <td><a href="data/published/openai_vs_titan_primary200.json"><code>openai_vs_titan_primary200.json</code></a></td>
+            <td>Full OpenAI vs Titan ladder + drift replication flags</td>
+          </tr>
+          <tr>
+            <td><a href="data/published/openai_vs_titan_bootstrap.json"><code>openai_vs_titan_bootstrap.json</code></a></td>
+            <td>Paired bootstrap (B=5000) HNSW vs exact</td>
+          </tr>
+          <tr>
+            <td><a href="data/published/exact_control_titan.json"><code>exact_control_titan.json</code></a></td>
+            <td>Titan exact cosine ≡ HNSW identity check</td>
+          </tr>
+          <tr>
+            <td><a href="data/published/exact_control_mvp.json"><code>exact_control_mvp.json</code></a></td>
+            <td>OpenAI exact cosine vs HNSW (ANN gap)</td>
+          </tr>
+          <tr>
+            <td><a href="data/published/primary_questions_200.json"><code>primary_questions_200.json</code></a></td>
+            <td>Primary-200 question bank (seed 42)</td>
+          </tr>
+          <tr>
+            <td><a href="data/published/paper_metrics_for_tex.json"><code>paper_metrics_for_tex.json</code></a></td>
+            <td>Numbers wired into the Access LaTeX draft</td>
+          </tr>
+          <tr>
+            <td><a href="verify/">Verify UI</a> + <code>data/verification/</code></td>
+            <td>Per-query Hit@k, ranks, retrieved ids, chunk text (no DB)</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="note warn">
+        Full multi-MB sweep dumps (<code>erb_full_primary200_to100k.json</code>,
+        <code>erb_titan_primary200_to100k.json</code>) are included on Pages when present in the
+        deploying clone. Embeddings live in the
+        <a href="https://github.com/pedapudibhargav/vector-drift-study/releases">GitHub Release</a>
+        Postgres dump (~1&nbsp;GB), not on this static site.
+      </p>
+    </section>
+
+    <section class="wrap" id="reproduce">
+      <h2>Reproduce (no re-embedding required)</h2>
+      <p>
+        Download the published Postgres dump, restore it, and re-run sweeps against frozen vectors.
+        You do <strong>not</strong> need to re-embed 100k documents.
+      </p>
+      <ol class="setup">
+        <li>Clone the repo and create <code>.env</code> from <code>.env.example</code>.</li>
+        <li>Start Postgres + API:
+          <code>docker compose up -d --build vector-drift-postgres vector-drift-api</code></li>
+        <li>Download <code>erb_tables.dump.gz</code> from the latest
+          <a href="https://github.com/pedapudibhargav/vector-drift-study/releases">GitHub Release</a>
+          into <code>data/backups/</code>.</li>
+        <li>Restore: <code>./scripts/erb/restore_from_backup.sh data/backups/erb_tables.dump.gz</code></li>
+        <li>Validate: <code>python3 scripts/erb/validate_study.py</code></li>
+        <li>Optional OpenAI re-sweep:
+          <code>python /app/scripts/erb/run_scale_sweep.py --primary-questions …</code>
+          (see REPLICATE.md). Titan tables:
+          <code>document_chunks_titan</code> / <code>vector_drift_results_titan</code>.</li>
+      </ol>
+      <p>
+        Step-by-step:
+        <a href="https://github.com/pedapudibhargav/vector-drift-study/blob/main/docs/REPLICATE.md">REPLICATE.md</a>.
+        L4 audit (LLM-assisted + author spot-check):
+        <a href="https://github.com/pedapudibhargav/vector-drift-study/blob/main/docs/HUMAN_AUDIT.md">HUMAN_AUDIT.md</a>.
+      </p>
+    </section>
+
+    <section class="wrap" id="cite">
+      <h2>Cite &amp; links</h2>
+      <pre>@misc{peddapudi2026vectordrift,
+  title  = {Vector Retrieval Drift under Corpus Growth: A Controlled Empirical
+            Study with Metadata Filtering on EnterpriseRAG-Bench},
+  author = {Peddapudi, Bhargava Chary},
+  year   = {2026},
+  note   = {Manuscript submitted to IEEE Access.
+            Artifacts: https://pedapudibhargav.github.io/vector-drift-study/}
+}</pre>
+      <ul class="clean">
+        <li><a href="https://github.com/pedapudibhargav/vector-drift-study">Source repository</a></li>
+        <li><a href="https://github.com/pedapudibhargav/vector-drift-study/tree/main/papers/ieee-vector-drift">LaTeX paper (<code>papers/ieee-vector-drift/</code>)</a></li>
+        <li>EnterpriseRAG-Bench: Sun et al., arXiv:2605.05253</li>
+        <li>Pages deploy: push to <code>main</code> → workflow
+          <code>Deploy GitHub Pages</code> → branch <code>gh-pages</code></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer wrap">
+    <p>
+      Single landing page for the vector-drift study.
+      Source: <code>docs/</code> · published via GitHub Actions on every push to
+      <code>main</code> (orphan deploy to <code>gh-pages</code>).
+      Interactive query check remains at <a href="verify/">/verify/</a>.
+    </p>
+  </footer>
+</body>
+</html>

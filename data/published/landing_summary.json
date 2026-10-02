@@ -1,0 +1,169 @@
+{
+  "generated_at": "2026-09-25T04:55:32Z",
+  "study": {
+    "title": "Vector Retrieval Drift under Corpus Growth",
+    "venue_target": "IEEE Access",
+    "bench": "EnterpriseRAG-Bench",
+    "primary_n": 200,
+    "ladder": [
+      5000,
+      10000,
+      15000,
+      20000,
+      25000,
+      40000,
+      50000,
+      75000,
+      100000
+    ],
+    "seed": 42,
+    "goal": "Measure how dense retrieval Hit@k declines as an enterprise RAG corpus grows from 5k to 100k documents, quantify metadata rescue (\u0394_meta), and test whether the drift pattern replicates on a second embedding model (Amazon Titan Text Embeddings V2) under the same gold-pinned ladder."
+  },
+  "openai_primary": {
+    "model": "text-embedding-3-small",
+    "raw_hit_at_1_5k_to_100k": [
+      0.6,
+      0.305
+    ],
+    "raw_hit_at_10_5k_to_100k": [
+      0.795,
+      0.51
+    ],
+    "raw_mrr_5k_to_100k": [
+      0.658,
+      0.365
+    ],
+    "delta_meta_hit10_at_100k": 0.13,
+    "n_star_tau_0_10": null,
+    "n_star_last_ge": 100000,
+    "fit_hit_at_10": {
+      "a": 1.4740926693219225,
+      "b": 0.08578610511454804,
+      "form": "a - b*log(N)"
+    }
+  },
+  "titan_a8": {
+    "model": "amazon.titan-embed-text-v2:0",
+    "status": "complete",
+    "all_three_raw_metrics_replicate": true,
+    "endpoint_raw": {
+      "hit_at_1": {
+        "openai_5k": 0.6,
+        "openai_100k": 0.305,
+        "openai_delta": -0.295,
+        "titan_5k": 0.62,
+        "titan_100k": 0.385,
+        "titan_delta": -0.235,
+        "replicates": true
+      },
+      "hit_at_5": {
+        "openai_5k": 0.74,
+        "openai_100k": 0.46,
+        "openai_delta": -0.28,
+        "titan_5k": 0.73,
+        "titan_100k": 0.565,
+        "titan_delta": -0.165,
+        "replicates": true
+      },
+      "hit_at_10": {
+        "openai_5k": 0.795,
+        "openai_100k": 0.51,
+        "openai_delta": -0.285,
+        "titan_5k": 0.785,
+        "titan_100k": 0.61,
+        "titan_delta": -0.175,
+        "replicates": true
+      },
+      "mrr": {
+        "openai_5k": 0.6576,
+        "openai_100k": 0.3647,
+        "openai_delta": -0.2929,
+        "titan_5k": 0.6714,
+        "titan_100k": 0.465,
+        "titan_delta": -0.2064,
+        "replicates": true
+      }
+    },
+    "exact_control": {
+      "titan_identical_top10_at_5k_50k_100k": true,
+      "titan_hit10_disagreements": 0,
+      "openai_hit10_exact_minus_hnsw_at_50k": 0.085,
+      "openai_hit10_exact_minus_hnsw_at_100k": 0.075,
+      "note": "Titan HNSW matches exact cosine top-10 for 200/200 questions at 5k/50k/100k. Most of the OpenAI\u2013Titan HNSW gap is ANN recall loss on the OpenAI index; under exact search the embedder drops are statistically indistinguishable."
+    },
+    "bootstrap": {
+      "B": 5000,
+      "seed": 42,
+      "hnsw_hit10_drop_titan_minus_openai": {
+        "estimate": 0.11,
+        "ci95": [
+          0.04,
+          0.175
+        ]
+      },
+      "exact_hit10_drop_titan_minus_openai": {
+        "estimate": 0.035,
+        "ci95": [
+          -0.025,
+          0.1
+        ]
+      }
+    }
+  },
+  "static_json_catalog": [
+    {
+      "path": "data/published/landing_summary.json",
+      "role": "This file \u2014 compact study + Titan headline numbers"
+    },
+    {
+      "path": "data/published/CANONICAL_METRICS.json",
+      "role": "OpenAI integrity-clean promotion record + fit coeffs"
+    },
+    {
+      "path": "data/published/erb_full_primary200_to100k_fit.json",
+      "role": "OpenAI ladder fit + bootstrap CIs"
+    },
+    {
+      "path": "data/published/openai_vs_titan_primary200.json",
+      "role": "Full OpenAI vs Titan ladder comparison"
+    },
+    {
+      "path": "data/published/openai_vs_titan_bootstrap.json",
+      "role": "Paired bootstrap (B=5000) HNSW vs exact"
+    },
+    {
+      "path": "data/published/exact_control_titan.json",
+      "role": "Titan exact cosine vs HNSW identity check"
+    },
+    {
+      "path": "data/published/exact_control_mvp.json",
+      "role": "OpenAI exact cosine vs HNSW (ANN gap)"
+    },
+    {
+      "path": "data/published/primary_questions_200.json",
+      "role": "Primary-200 question bank"
+    },
+    {
+      "path": "data/published/paper_metrics_for_tex.json",
+      "role": "Numbers wired into Access LaTeX"
+    },
+    {
+      "path": "data/verification/",
+      "role": "Per-query verify bundle for /verify/ UI"
+    }
+  ],
+  "artifacts_not_on_pages": [
+    {
+      "path": "artifacts/published/erb_full_primary200_to100k.json",
+      "role": "Full OpenAI sweep (~4MB; copied to Pages when present in clone)"
+    },
+    {
+      "path": "artifacts/published/erb_titan_primary200_to100k.json",
+      "role": "Full Titan sweep (~3.6MB; copied to Pages when present)"
+    },
+    {
+      "path": "GitHub Releases erb_tables.dump.gz",
+      "role": "Postgres+pgvector dump with embeddings (~1GB)"
+    }
+  ]
+}
