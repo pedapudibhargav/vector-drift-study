@@ -1,0 +1,22 @@
+\begin{table}[t]
+\caption{OpenAI exact search (primary-200, raw): Hit@$k$ by \texttt{question\_type} at ladder endpoints.}
+\label{tab:bytype}
+\centering
+\small
+\fitcolumn{\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+Type & $n$ & H@1$_{5\mathrm{k}}$ & H@10$_{5\mathrm{k}}$ & H@1$_{100\mathrm{k}}$ & H@10$_{100\mathrm{k}}$ \\
+\midrule
+basic & 63 & 0.619 & 0.825 & 0.333 & 0.619 \\
+semantic & 45 & 0.311 & 0.622 & 0.089 & 0.311 \\
+metadata & 39 & 0.538 & 0.718 & 0.205 & 0.436 \\
+constrained$^{\ast}$ & 12 & 0.750 & 0.917 & 0.583 & 0.750 \\
+project\_related$^{\ast}$ & 11 & 1.000 & 1.000 & 0.909 & 1.000 \\
+intra\_doc.\ reasoning$^{\ast}$ & 10 & 0.900 & 1.000 & 0.700 & 0.900 \\
+conflicting\_info$^{\ast}$ & 8 & 0.750 & 0.875 & 0.375 & 0.750 \\
+completeness$^{\ast}$ & 6 & 1.000 & 1.000 & 0.667 & 1.000 \\
+miscellaneous$^{\ast}$ & 6 & 0.833 & 1.000 & 0.667 & 1.000 \\
+\bottomrule
+\end{tabular}}
+\par\smallskip\footnotesize{$^{\ast}$Exploratory ($n{<}20$); not used for primary type-level claims.}
+\end{table}

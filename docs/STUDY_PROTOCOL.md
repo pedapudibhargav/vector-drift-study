@@ -20,20 +20,22 @@
 | Eval identity | `question_id::question_type` (200 unique eval IDs) |
 | Metadata threshold | τ = 0.10 (operational, not pre-registered) |
 
-## Headline results (primary-200)
+## Headline results (primary-200, exact search; revision 1)
 
 | Result | Value | Source |
 |--------|-------|--------|
-| OpenAI raw Hit@10 / Hit@1 / MRR, 5k → 100k | 0.795→0.510 / 0.600→0.305 / 0.658→0.365 | `erb_full_primary200_to100k.json` |
-| Exact-cosine control, OpenAI Hit@10 | 0.795→0.585 (HNSW adds ≈0.08 loss at 50k–100k) | `exact_control_mvp.json` |
-| Titan raw Hit@10 / Hit@1, 5k → 100k | 0.785→0.610 / 0.620→0.385 (HNSW = exact) | `erb_titan_primary200_to100k.json`, `exact_control_titan.json` |
-| Exact-vs-exact cross-embedder drop difference (Hit@10) | +0.035, 95% CI [−0.025, 0.100] | `openai_vs_titan_bootstrap.json` |
-| Okapi BM25 Hit@10, 5k → 100k | 0.855→0.700 | `erb_bm25_baseline_primary200.json` |
-| Δ_meta (OpenAI) | +0.08 to +0.18; N★ undefined on the ladder | `erb_full_primary200_to100k_fit.json` |
-| Δ_meta (Titan) | +0.070 to +0.115; N★ = 100k (borderline) | `openai_vs_titan_bootstrap.json` |
-| Log-linear fit, OpenAI Hit@10 | 1.474 − 0.086 ln N | `erb_full_primary200_to100k_fit.json` |
+| OpenAI raw Hit@10 / Hit@1 / MRR, 5k → 100k (exact) | 0.795→0.585 / 0.600→0.340 / 0.658→0.408 | `revision1/exact_ladder_openai_primary200.json` |
+| Hit@10 drop, OpenAI (paired 95% interval) | 0.210 [0.155, 0.270] | `revision1/analysis_exact.json` |
+| Titan raw Hit@10 / Hit@1, 5k → 100k (exact) | 0.785→0.610 / 0.620→0.385 | `revision1/exact_ladder_titan_primary200.json` |
+| Difference in drop, OpenAI − Titan (90% interval) | +0.035 [−0.020, +0.090]: equivalent within ±0.10, not within ±0.05 | `revision1/analysis_equivalence.json` |
+| Okapi BM25 (text the dense model saw) Hit@10, 5k → 100k | 0.810→0.685 | `revision1/bm25_dense_text.json` |
+| Δ_meta (oracle filter vs. exact baseline) | OpenAI +0.075 to +0.100; Titan +0.070 to +0.115; no detectable trend; N★ not used | `revision1/analysis_exact.json` |
+| Reciprocal rank fusion (k=60) Hit@10, 5k → 100k | 0.905→0.720 | `revision1/rrf_hybrid_openai_primary200.json` |
+| Log-linear fit, OpenAI raw Hit@10 | 1.369 − 0.068 ln N | `revision1/analysis_exact.json` |
 
-All numbers are checked against the manuscript by `scripts/erb/verify_paper_numbers.py` and `scripts/erb/verify_paper_tables.py`.
+The first-version HNSW numbers (Hit@10 0.795→0.510; +0.130 lift at 100k) mixed exact and approximate search and are superseded (manuscript Sec. V-F). Equivalence margins (0.05 primary, 0.10 sensitivity) are operational choices of the authors, not externally registered.
+
+All numbers are checked against the manuscript by `scripts/erb/verify_paper_numbers.py` and `scripts/erb/verify_paper_tables.py` (which delegate to `scripts/erb/revision1/validate_all.py`).
 
 ## Question sets
 

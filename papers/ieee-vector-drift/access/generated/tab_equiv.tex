@@ -1,0 +1,24 @@
+\begin{table*}[t]
+\caption{Equivalence analysis: paired $90\%$ bootstrap intervals; a quantity is called equivalent when its interval lies inside $[-\delta,+\delta]$.}
+\label{tab:equiv}
+\centering
+\small
+\fittext{\begin{tabular}{lrlcc}
+\toprule
+Quantity & Est. & 90\% CI & Equivalent, $\delta{=}0.05$ & Equivalent, $\delta{=}0.10$ \\
+\midrule
+Raw Hit@10 drop 5k$\to$100k, OpenAI $-$ Titan & 0.035 & $[$-$0.020, 0.090]$ & no & yes \\
+Filtered Hit@10 drop 5k$\to$100k, OpenAI $-$ Titan & 0.025 & $[$-$0.025, 0.075]$ & no & yes \\
+Metadata lift at 5k, OpenAI $-$ Titan & $-$0.005 & $[$-$0.045, 0.035]$ & yes & yes \\
+Metadata lift at 50k, OpenAI $-$ Titan & $-$0.025 & $[$-$0.070, 0.015]$ & no & yes \\
+Metadata lift at 100k, OpenAI $-$ Titan & 0.005 & $[$-$0.030, 0.045]$ & yes & yes \\
+Raw Hit@10 level at 100k, OpenAI $-$ Titan & $-$0.025 & $[$-$0.075, 0.020]$ & no & yes \\
+Raw drop, OpenAI $-$ BM25 & 0.085 & $[0.025, 0.145]$ & no & no \\
+Raw drop, Titan $-$ BM25 & 0.050 & $[$-$0.005, 0.105]$ & no & no \\
+Lift change 100k$-$5k, OpenAI $n{=}200$ & 0.000 & $[$-$0.040, 0.040]$ & yes & yes \\
+Lift change 100k$-$5k, Titan $n{=}200$ & $-$0.010 & $[$-$0.055, 0.035]$ & no & yes \\
+Lift change 100k$-$5k, OpenAI $n{=}400$ & $-$0.018 & $[$-$0.045, 0.010]$ & yes & yes \\
+Lift slope per tenfold $N$, OpenAI $n{=}400$ & $-$0.017 & $[$-$0.041, 0.006]$ & yes & yes \\
+\bottomrule
+\end{tabular}}
+\end{table*}

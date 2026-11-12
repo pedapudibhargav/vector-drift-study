@@ -1,0 +1,21 @@
+\begin{table*}[t]
+\caption{Metadata-filtered HNSW cells: recall and Hit@10 loss at selected scales.}
+\label{tab:perNmeta}
+\centering
+\small
+\fittext{\begin{tabular}{@{}llrrrrrl@{}}
+\toprule
+Embedder & Condition & ef & 5k & 25k & 50k & 100k & Plan \\
+\midrule
+OpenAI & \texttt{meta\_first} & 200 & 1.000 / 0.000 & 1.000 / 0.000 & 1.000 / 0.000 & 0.959 / 0.025 & exact-btree \\
+OpenAI & \texttt{meta\_first} & 800 & 1.000 / 0.000 & 1.000 / 0.000 & 1.000 / 0.000 & 0.984 / 0.010 & exact-btree \\
+OpenAI & \texttt{meta\_in} & 200 & 1.000 / 0.000 & 0.999 / 0.000 & 0.996 / 0.010 & 0.955 / 0.030 & exact-btree \\
+OpenAI & \texttt{meta\_in} & 800 & 1.000 / 0.000 & 1.000 / 0.000 & 0.999 / 0.000 & 0.984 / 0.010 & exact-btree \\
+Titan & \texttt{meta\_first} & 200 & 1.000 / 0.000 & 1.000 / 0.000 & 1.000 / 0.000 & 0.971 / 0.015 & exact-btree \\
+Titan & \texttt{meta\_first} & 800 & 1.000 / 0.000 & 1.000 / 0.000 & 1.000 / 0.000 & 0.993 / 0.005 & exact-btree \\
+Titan & \texttt{meta\_in} & 200 & 1.000 / 0.000 & 1.000 / 0.005 & 0.999 / 0.005 & 0.970 / 0.020 & exact-btree \\
+Titan & \texttt{meta\_in} & 800 & 1.000 / 0.000 & 1.000 / 0.000 & 1.000 / 0.005 & 0.993 / 0.010 & exact-btree \\
+\bottomrule
+\end{tabular}}
+\par\smallskip\footnotesize{Plan kind from the first-question probe; planner choice varies with metadata-filter selectivity (often \texttt{exact-btree} at these scales).}
+\end{table*}

@@ -145,16 +145,16 @@ diff -u artifacts/published/erb_full_primary200_to100k_fit.json \
         data/results/*_fit.json | head
 ```
 
-Published headline numbers (primary-200, **integrity-clean** re-sweep):
+Published headline numbers (revision 1: primary-200, **exact search**; the first-version HNSW sweep is superseded):
 
-| N | Hit@1 raw | Hit@10 raw | Hit@10 meta | Δ_meta |
+| N | Hit@1 raw | Hit@10 raw | Hit@10 meta (oracle) | Δ_meta |
 |---|-----------|------------|-------------|--------|
 | 5k | 0.600 | 0.795 | 0.875 | +0.080 |
-| 20k | 0.410 | 0.600 | 0.775 | +0.175 |
-| 100k | 0.305 | 0.510 | 0.640 | +0.130 |
+| 20k | 0.465 | 0.680 | 0.770 | +0.090 |
+| 100k | 0.340 | 0.585 | 0.665 | +0.080 |
 
-\(N^\star(\tau{=}0.10)\): **not observed** (lift stays ≥0.10 for \(N\geq10\)k). Fits: Hit@10 ≈ `1.474 − 0.086 log N`.  
-Source: `artifacts/published/CANONICAL_METRICS.json` + `erb_full_primary200_to100k*.json`.
+Fit: Hit@10 ≈ `1.369 − 0.068 ln N`. N★ is no longer reported (unstable across banks). Source: `artifacts/published/revision1/`; full reproduction guide: [`REPRODUCE_REVISION1.md`](REPRODUCE_REVISION1.md).
+
 
 ---
 
@@ -230,6 +230,7 @@ docker exec -e DATABASE_URL=postgresql+asyncpg://postgres:postgres@vector-drift-
 |---------|-----|
 | `pg_restore: connection refused` | Wait for `docker compose ps` healthy; re-run restore |
 | Empty `document_chunks` | Confirm dump path; check `restore_from_backup.sh` logs |
+| `restore_failed: no HNSW index` | Docker's default shared memory (64 MB) is too small for the index builds in `pg_restore`; the compose file sets `shm_size: 1gb`. Re-create the container and restore again (exact-search results do not need the index, the approximate-search arms do). |
 | Compose build fails pulling packages | Ensure `.env` has blank `PYPI_INDEX_URL` / `NPM_REGISTRY` (public registries) |
 | API TLS errors behind a local intercepting proxy | Install the proxy CA locally; do not commit PEMs |
 | Hit@k far from paper | Confirm `--primary-questions`, ladder points only, seed 42 manifest |

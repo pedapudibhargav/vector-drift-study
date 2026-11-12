@@ -1,0 +1,26 @@
+\begin{table*}[t]
+\caption{Metadata lift (\texttt{meta\_in}$-$raw) with paired 95\% bootstrap CIs; the text quotes the $90\%$ intervals of the summary rows from Table~\ref{tab:equiv}.}
+\label{tab:lift}
+\centering
+\small
+\fittext{\begin{tabular}{lrrr}
+\toprule
+$N$ & OpenAI $n{=}$200 & Titan $n{=}$200 & OpenAI $n{=}$400 \\
+\midrule
+5k & 0.080 $[0.045, 0.120]$ & 0.085 $[0.050, 0.125]$ & 0.077 $[0.052, 0.105]$ \\
+10k & 0.100 $[0.060, 0.145]$ & 0.070 $[0.035, 0.105]$ & 0.095 $[0.068, 0.125]$ \\
+15k & 0.095 $[0.055, 0.140]$ & 0.075 $[0.040, 0.115]$ & 0.085 $[0.058, 0.113]$ \\
+20k & 0.090 $[0.055, 0.130]$ & 0.095 $[0.055, 0.140]$ & 0.080 $[0.055, 0.107]$ \\
+25k & 0.090 $[0.050, 0.130]$ & 0.095 $[0.055, 0.140]$ & 0.077 $[0.052, 0.105]$ \\
+40k & 0.075 $[0.040, 0.115]$ & 0.115 $[0.075, 0.160]$ & 0.072 $[0.048, 0.098]$ \\
+50k & 0.075 $[0.040, 0.115]$ & 0.100 $[0.060, 0.140]$ & 0.070 $[0.048, 0.095]$ \\
+75k & 0.090 $[0.055, 0.130]$ & 0.100 $[0.060, 0.145]$ & 0.072 $[0.048, 0.098]$ \\
+100k & 0.080 $[0.045, 0.120]$ & 0.075 $[0.040, 0.115]$ & 0.060 $[0.037, 0.085]$ \\
+\midrule
+\multicolumn{4}{l}{OpenAI $n{=}$200: $\Delta$lift(100k$-$5k)=0.000 $[$-$0.050, 0.050]$; slope/tenfold=-0.008 $[$-$0.048, 0.032]$} \\
+\multicolumn{4}{l}{Titan $n{=}$200: $\Delta$lift(100k$-$5k)=-0.010 $[$-$0.065, 0.040]$; slope/tenfold=0.013 $[$-$0.031, 0.057]$} \\
+\multicolumn{4}{l}{OpenAI $n{=}$400: $\Delta$lift(100k$-$5k)=-0.018 $[$-$0.050, 0.015]$; slope/tenfold=-0.017 $[$-$0.045, 0.010]$} \\
+\bottomrule
+\end{tabular}}
+\par\smallskip\footnotesize{Legacy \texttt{meta\_first} lift (meta$-$raw): OpenAI @ 5k: \texttt{meta\_first} lift 0.080, OpenAI @ 100k: \texttt{meta\_first} lift 0.085, Titan @ 5k: \texttt{meta\_first} lift 0.085, Titan @ 100k: \texttt{meta\_first} lift 0.080.}
+\end{table*}

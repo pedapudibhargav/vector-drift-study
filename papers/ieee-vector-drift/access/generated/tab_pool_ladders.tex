@@ -1,0 +1,14 @@
+\begin{table*}[!t]
+\caption{Full-pool exact ladders (OpenAI, primary-200): raw / \texttt{meta\_in} Hit@10 at selected sizes and the lift $\Delta_{\mathrm{meta}}$ at $5\text{k}$, $100\text{k}$, and the full pool ($184{,}963$ documents).}
+\label{tab:poolladders}
+\fittext{\begin{tabular}{@{}lcccccccc@{}}
+\toprule
+Schedule & $5\text{k}$ & $50\text{k}$ & $100\text{k}$ & $150\text{k}$ & Full & $\Delta_{5\text{k}}$ & $\Delta_{100\text{k}}$ & $\Delta_{\text{full}}$ \\
+\midrule
+round-robin & 0.795 / 0.875 & 0.640 / 0.715 & 0.585 / 0.665 & 0.540 / 0.650 & 0.515 / 0.645 & +0.080 & +0.080 & +0.130 \\
+proportional, seed 42 & 0.825 / 0.900 & 0.655 / 0.755 & 0.595 / 0.680 & 0.520 / 0.660 & 0.515 / 0.645 & +0.075 & +0.085 & +0.130 \\
+proportional, seed 0 & 0.800 / 0.875 & 0.650 / 0.740 & 0.575 / 0.685 & 0.520 / 0.660 & 0.515 / 0.645 & +0.075 & +0.110 & +0.130 \\
+proportional, evaluated-bank gold pinned only & 0.810 / 0.895 & 0.655 / 0.730 & 0.570 / 0.670 & 0.530 / 0.660 & 0.515 / 0.645 & +0.085 & +0.100 & +0.130 \\
+\bottomrule
+\end{tabular}}
+\end{table*}

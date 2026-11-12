@@ -1,0 +1,319 @@
+{
+  "generated_at": "2026-11-10T20:21:20Z",
+  "embedder": "titan",
+  "scales_requested": [
+    5000,
+    10000,
+    15000,
+    20000,
+    25000,
+    40000,
+    50000,
+    75000,
+    100000
+  ],
+  "server": {
+    "server_version": "16.15 (Debian 16.15-1.pgdg12+2)",
+    "maintenance_work_mem": "2GB",
+    "max_parallel_maintenance_workers": "2",
+    "shared_buffers": "2GB",
+    "effective_cache_size": "4GB",
+    "extensions": {
+      "plpgsql": "1.0",
+      "vector": "0.8.6"
+    }
+  },
+  "docker_system_df": null,
+  "tables_built_this_run": [
+    {
+      "embedder": "titan",
+      "scale_n": 5000,
+      "skipped": true,
+      "row_count": 5000,
+      "expected_row_count": 5000,
+      "hnsw_build_seconds": 1.5729673329624347,
+      "sizes_bytes": {
+        "table_bytes": 483328,
+        "hnsw_index_bytes": 40968192,
+        "btree_index_bytes": 57344,
+        "total_bytes": 69607424
+      },
+      "vacuum_analyze_done": true
+    },
+    {
+      "embedder": "titan",
+      "scale_n": 10000,
+      "skipped": true,
+      "row_count": 10000,
+      "expected_row_count": 10000,
+      "hnsw_build_seconds": 3.5993451669928618,
+      "sizes_bytes": {
+        "table_bytes": 966656,
+        "hnsw_index_bytes": 81928192,
+        "btree_index_bytes": 90112,
+        "total_bytes": 139116544
+      },
+      "vacuum_analyze_done": true
+    },
+    {
+      "embedder": "titan",
+      "scale_n": 15000,
+      "skipped": true,
+      "row_count": 15000,
+      "expected_row_count": 15000,
+      "hnsw_build_seconds": 6.331370708998293,
+      "sizes_bytes": {
+        "table_bytes": 1449984,
+        "hnsw_index_bytes": 122888192,
+        "btree_index_bytes": 122880,
+        "total_bytes": 208633856
+      },
+      "vacuum_analyze_done": true
+    },
+    {
+      "embedder": "titan",
+      "scale_n": 20000,
+      "skipped": true,
+      "row_count": 20000,
+      "expected_row_count": 20000,
+      "hnsw_build_seconds": 8.736642416974064,
+      "sizes_bytes": {
+        "table_bytes": 1933312,
+        "hnsw_index_bytes": 163848192,
+        "btree_index_bytes": 163840,
+        "total_bytes": 278142976
+      },
+      "vacuum_analyze_done": true
+    },
+    {
+      "embedder": "titan",
+      "scale_n": 25000,
+      "skipped": true,
+      "row_count": 25000,
+      "expected_row_count": 25000,
+      "hnsw_build_seconds": 11.541784374974668,
+      "sizes_bytes": {
+        "table_bytes": 2416640,
+        "hnsw_index_bytes": 204808192,
+        "btree_index_bytes": 196608,
+        "total_bytes": 347742208
+      },
+      "vacuum_analyze_done": true
+    },
+    {
+      "embedder": "titan",
+      "scale_n": 40000,
+      "skipped": true,
+      "row_count": 39999,
+      "expected_row_count": 39999,
+      "hnsw_build_seconds": 19.20522212499054,
+      "sizes_bytes": {
+        "table_bytes": 3858432,
+        "hnsw_index_bytes": 327680000,
+        "btree_index_bytes": 303104,
+        "total_bytes": 556146688
+      },
+      "vacuum_analyze_done": true
+    },
+    {
+      "embedder": "titan",
+      "scale_n": 50000,
+      "skipped": true,
+      "row_count": 49999,
+      "expected_row_count": 49999,
+      "hnsw_build_seconds": 27.33575412502978,
+      "sizes_bytes": {
+        "table_bytes": 4825088,
+        "hnsw_index_bytes": 409600000,
+        "btree_index_bytes": 368640,
+        "total_bytes": 695320576
+      },
+      "vacuum_analyze_done": true
+    },
+    {
+      "embedder": "titan",
+      "scale_n": 75000,
+      "skipped": true,
+      "row_count": 74999,
+      "expected_row_count": 74999,
+      "hnsw_build_seconds": 39.5007890840061,
+      "sizes_bytes": {
+        "table_bytes": 7233536,
+        "hnsw_index_bytes": 614383616,
+        "btree_index_bytes": 540672,
+        "total_bytes": 1042767872
+      },
+      "vacuum_analyze_done": true
+    },
+    {
+      "embedder": "titan",
+      "scale_n": 100000,
+      "skipped": true,
+      "row_count": 99998,
+      "expected_row_count": 99998,
+      "hnsw_build_seconds": 13.238616166985594,
+      "sizes_bytes": {
+        "table_bytes": 9633792,
+        "hnsw_index_bytes": 819175424,
+        "btree_index_bytes": 712704,
+        "total_bytes": 1390452736
+      },
+      "vacuum_analyze_done": true
+    }
+  ],
+  "build_log": [
+    {
+      "embedder": "titan",
+      "scale_n": 5000,
+      "table_name": "n_titan_5000",
+      "status": "complete",
+      "row_count": 5000,
+      "expected_row_count": 5000,
+      "hnsw_build_seconds": 1.5729673329624347,
+      "table_bytes": 483328,
+      "hnsw_index_bytes": 40968192,
+      "btree_index_bytes": 57344,
+      "total_bytes": 69591040,
+      "vacuum_analyze_done": true,
+      "started_at": "2026-11-10 20:11:08+00:00",
+      "completed_at": "2026-11-10 20:11:10+00:00",
+      "error_message": null
+    },
+    {
+      "embedder": "titan",
+      "scale_n": 10000,
+      "table_name": "n_titan_10000",
+      "status": "complete",
+      "row_count": 10000,
+      "expected_row_count": 10000,
+      "hnsw_build_seconds": 3.5993451669928618,
+      "table_bytes": 966656,
+      "hnsw_index_bytes": 81928192,
+      "btree_index_bytes": 90112,
+      "total_bytes": 139100160,
+      "vacuum_analyze_done": true,
+      "started_at": "2026-11-10 20:11:10+00:00",
+      "completed_at": "2026-11-10 20:11:14+00:00",
+      "error_message": null
+    },
+    {
+      "embedder": "titan",
+      "scale_n": 15000,
+      "table_name": "n_titan_15000",
+      "status": "complete",
+      "row_count": 15000,
+      "expected_row_count": 15000,
+      "hnsw_build_seconds": 6.331370708998293,
+      "table_bytes": 1449984,
+      "hnsw_index_bytes": 122888192,
+      "btree_index_bytes": 122880,
+      "total_bytes": 208617472,
+      "vacuum_analyze_done": true,
+      "started_at": "2026-11-10 20:11:14+00:00",
+      "completed_at": "2026-11-10 20:11:21+00:00",
+      "error_message": null
+    },
+    {
+      "embedder": "titan",
+      "scale_n": 20000,
+      "table_name": "n_titan_20000",
+      "status": "complete",
+      "row_count": 20000,
+      "expected_row_count": 20000,
+      "hnsw_build_seconds": 8.736642416974064,
+      "table_bytes": 1933312,
+      "hnsw_index_bytes": 163848192,
+      "btree_index_bytes": 163840,
+      "total_bytes": 278126592,
+      "vacuum_analyze_done": true,
+      "started_at": "2026-11-10 20:11:21+00:00",
+      "completed_at": "2026-11-10 20:11:31+00:00",
+      "error_message": null
+    },
+    {
+      "embedder": "titan",
+      "scale_n": 25000,
+      "table_name": "n_titan_25000",
+      "status": "complete",
+      "row_count": 25000,
+      "expected_row_count": 25000,
+      "hnsw_build_seconds": 11.541784374974668,
+      "table_bytes": 2416640,
+      "hnsw_index_bytes": 204808192,
+      "btree_index_bytes": 196608,
+      "total_bytes": 347725824,
+      "vacuum_analyze_done": true,
+      "started_at": "2026-11-10 20:11:31+00:00",
+      "completed_at": "2026-11-10 20:11:43+00:00",
+      "error_message": null
+    },
+    {
+      "embedder": "titan",
+      "scale_n": 40000,
+      "table_name": "n_titan_40000",
+      "status": "complete",
+      "row_count": 39999,
+      "expected_row_count": 39999,
+      "hnsw_build_seconds": 19.20522212499054,
+      "table_bytes": 3858432,
+      "hnsw_index_bytes": 327680000,
+      "btree_index_bytes": 303104,
+      "total_bytes": 556138496,
+      "vacuum_analyze_done": true,
+      "started_at": "2026-11-10 20:11:43+00:00",
+      "completed_at": "2026-11-10 20:12:04+00:00",
+      "error_message": null
+    },
+    {
+      "embedder": "titan",
+      "scale_n": 50000,
+      "table_name": "n_titan_50000",
+      "status": "complete",
+      "row_count": 49999,
+      "expected_row_count": 49999,
+      "hnsw_build_seconds": 27.33575412502978,
+      "table_bytes": 4825088,
+      "hnsw_index_bytes": 409600000,
+      "btree_index_bytes": 368640,
+      "total_bytes": 695296000,
+      "vacuum_analyze_done": true,
+      "started_at": "2026-11-10 20:12:04+00:00",
+      "completed_at": "2026-11-10 20:12:33+00:00",
+      "error_message": null
+    },
+    {
+      "embedder": "titan",
+      "scale_n": 75000,
+      "table_name": "n_titan_75000",
+      "status": "complete",
+      "row_count": 74999,
+      "expected_row_count": 74999,
+      "hnsw_build_seconds": 39.5007890840061,
+      "table_bytes": 7233536,
+      "hnsw_index_bytes": 614383616,
+      "btree_index_bytes": 540672,
+      "total_bytes": 1042759680,
+      "vacuum_analyze_done": true,
+      "started_at": "2026-11-10 20:12:33+00:00",
+      "completed_at": "2026-11-10 20:13:17+00:00",
+      "error_message": null
+    },
+    {
+      "embedder": "titan",
+      "scale_n": 100000,
+      "table_name": "n_titan_100000",
+      "status": "complete",
+      "row_count": 99998,
+      "expected_row_count": 99998,
+      "hnsw_build_seconds": 13.238616166985594,
+      "table_bytes": 9633792,
+      "hnsw_index_bytes": 819175424,
+      "btree_index_bytes": 712704,
+      "total_bytes": 1390419968,
+      "vacuum_analyze_done": true,
+      "started_at": "2026-11-10 20:13:17+00:00",
+      "completed_at": "2026-11-10 20:13:33+00:00",
+      "error_message": null
+    }
+  ]
+}

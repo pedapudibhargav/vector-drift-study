@@ -1,0 +1,3073 @@
+{
+  "confluence_first_n": 41,
+  "confluence_first_question_ids": [
+    "qst_0102::basic",
+    "qst_0252::semantic",
+    "qst_0344::project_related",
+    "qst_0426::conflicting_info",
+    "qst_0327::intra_document_reasoning",
+    "qst_0234::semantic",
+    "qst_0439::completeness",
+    "qst_0418::conflicting_info",
+    "qst_0024::metadata",
+    "qst_0422::conflicting_info",
+    "qst_0363::project_related",
+    "qst_0435::completeness",
+    "qst_0037::metadata",
+    "qst_0248::semantic",
+    "qst_0458::miscellaneous",
+    "qst_0445::completeness",
+    "qst_0371::project_related",
+    "qst_0294::semantic",
+    "qst_0016::basic",
+    "qst_0259::semantic",
+    "qst_0408::constrained",
+    "qst_0404::constrained",
+    "qst_0369::project_related",
+    "qst_0403::constrained",
+    "qst_0420::conflicting_info",
+    "qst_0236::semantic",
+    "qst_0373::project_related",
+    "qst_0382::constrained",
+    "qst_0040::basic",
+    "qst_0150::basic",
+    "qst_0045::metadata",
+    "qst_0415::conflicting_info",
+    "qst_0197::semantic",
+    "qst_0270::semantic",
+    "qst_0381::constrained",
+    "qst_0393::constrained",
+    "qst_0023::metadata",
+    "qst_0444::completeness",
+    "qst_0359::project_related",
+    "qst_0057::metadata",
+    "qst_0424::conflicting_info"
+  ],
+  "n_questions_aligned": 200,
+  "bootstrap": {
+    "B": 10000,
+    "seed": 42
+  },
+  "skipped_ladders": [],
+  "composition": {
+    "extracted_pool_source_counts": {
+      "confluence": 5189,
+      "fireflies": 10173,
+      "github": 8052,
+      "gmail": 14067,
+      "google_drive": 14122,
+      "hubspot": 14098,
+      "jira": 6118,
+      "linear": 14117,
+      "slack": 14062
+    },
+    "extracted_pool_source_shares": {
+      "confluence": 0.0519,
+      "fireflies": 0.1017,
+      "github": 0.0805,
+      "gmail": 0.1407,
+      "google_drive": 0.1412,
+      "hubspot": 0.141,
+      "jira": 0.0612,
+      "linear": 0.1412,
+      "slack": 0.1406
+    },
+    "extracted_pool_source_shares_exact": {
+      "confluence": 0.051891037820756415,
+      "fireflies": 0.10173203464069282,
+      "github": 0.08052161043220864,
+      "gmail": 0.1406728134562691,
+      "google_drive": 0.14122282445648912,
+      "hubspot": 0.14098281965639312,
+      "jira": 0.06118122362447249,
+      "linear": 0.14117282345646914,
+      "slack": 0.14062281245624914
+    },
+    "round_robin_manifest": {
+      "5000": {
+        "confluence": 683,
+        "fireflies": 518,
+        "github": 551,
+        "gmail": 504,
+        "google_drive": 559,
+        "hubspot": 536,
+        "jira": 596,
+        "linear": 554,
+        "slack": 499
+      },
+      "10000": {
+        "confluence": 1239,
+        "fireflies": 1074,
+        "github": 1107,
+        "gmail": 1060,
+        "google_drive": 1114,
+        "hubspot": 1091,
+        "jira": 1151,
+        "linear": 1109,
+        "slack": 1055
+      },
+      "100000": {
+        "confluence": 5189,
+        "fireflies": 10173,
+        "github": 8052,
+        "gmail": 14067,
+        "google_drive": 14122,
+        "hubspot": 14098,
+        "jira": 6118,
+        "linear": 14117,
+        "slack": 14062
+      }
+    },
+    "note": "extracted_pool_* is the original 100k-schedule unique-doc source mix. union composition (when pool_ext is present) is under each ladder's by_scale full row.",
+    "prop_s0": {
+      "by_scale": {
+        "5000": {
+          "counts": {
+            "confluence": 309,
+            "fireflies": 277,
+            "github": 246,
+            "gmail": 923,
+            "google_drive": 695,
+            "hubspot": 406,
+            "jira": 262,
+            "linear": 923,
+            "slack": 959
+          },
+          "n_docs": 5000,
+          "shares_rounded": {
+            "confluence": 0.0618,
+            "fireflies": 0.0554,
+            "github": 0.0492,
+            "gmail": 0.1846,
+            "google_drive": 0.139,
+            "hubspot": 0.0812,
+            "jira": 0.0524,
+            "linear": 0.1846,
+            "slack": 0.1918
+          },
+          "shares": {
+            "confluence": 0.0618,
+            "fireflies": 0.0554,
+            "github": 0.0492,
+            "gmail": 0.1846,
+            "google_drive": 0.139,
+            "hubspot": 0.0812,
+            "jira": 0.0524,
+            "linear": 0.1846,
+            "slack": 0.1918
+          }
+        },
+        "10000": {
+          "counts": {
+            "confluence": 450,
+            "fireflies": 545,
+            "github": 485,
+            "gmail": 2033,
+            "google_drive": 1341,
+            "hubspot": 823,
+            "jira": 422,
+            "linear": 1864,
+            "slack": 2037
+          },
+          "n_docs": 10000,
+          "shares_rounded": {
+            "confluence": 0.045,
+            "fireflies": 0.0545,
+            "github": 0.0485,
+            "gmail": 0.2033,
+            "google_drive": 0.1341,
+            "hubspot": 0.0823,
+            "jira": 0.0422,
+            "linear": 0.1864,
+            "slack": 0.2037
+          },
+          "shares": {
+            "confluence": 0.045,
+            "fireflies": 0.0545,
+            "github": 0.0485,
+            "gmail": 0.2033,
+            "google_drive": 0.1341,
+            "hubspot": 0.0823,
+            "jira": 0.0422,
+            "linear": 0.1864,
+            "slack": 0.2037
+          }
+        },
+        "15000": {
+          "counts": {
+            "confluence": 568,
+            "fireflies": 825,
+            "github": 701,
+            "gmail": 3135,
+            "google_drive": 2016,
+            "hubspot": 1250,
+            "jira": 583,
+            "linear": 2811,
+            "slack": 3111
+          },
+          "n_docs": 15000,
+          "shares_rounded": {
+            "confluence": 0.0379,
+            "fireflies": 0.055,
+            "github": 0.0467,
+            "gmail": 0.209,
+            "google_drive": 0.1344,
+            "hubspot": 0.0833,
+            "jira": 0.0389,
+            "linear": 0.1874,
+            "slack": 0.2074
+          },
+          "shares": {
+            "confluence": 0.037866666666666667,
+            "fireflies": 0.055,
+            "github": 0.046733333333333335,
+            "gmail": 0.209,
+            "google_drive": 0.1344,
+            "hubspot": 0.08333333333333333,
+            "jira": 0.03886666666666667,
+            "linear": 0.1874,
+            "slack": 0.2074
+          }
+        },
+        "20000": {
+          "counts": {
+            "confluence": 705,
+            "fireflies": 1102,
+            "github": 914,
+            "gmail": 4222,
+            "google_drive": 2691,
+            "hubspot": 1653,
+            "jira": 741,
+            "linear": 3766,
+            "slack": 4206
+          },
+          "n_docs": 20000,
+          "shares_rounded": {
+            "confluence": 0.0352,
+            "fireflies": 0.0551,
+            "github": 0.0457,
+            "gmail": 0.2111,
+            "google_drive": 0.1346,
+            "hubspot": 0.0827,
+            "jira": 0.037,
+            "linear": 0.1883,
+            "slack": 0.2103
+          },
+          "shares": {
+            "confluence": 0.03525,
+            "fireflies": 0.0551,
+            "github": 0.0457,
+            "gmail": 0.2111,
+            "google_drive": 0.13455,
+            "hubspot": 0.08265,
+            "jira": 0.03705,
+            "linear": 0.1883,
+            "slack": 0.2103
+          }
+        },
+        "25000": {
+          "counts": {
+            "confluence": 842,
+            "fireflies": 1348,
+            "github": 1131,
+            "gmail": 5293,
+            "google_drive": 3366,
+            "hubspot": 2044,
+            "jira": 916,
+            "linear": 4741,
+            "slack": 5319
+          },
+          "n_docs": 25000,
+          "shares_rounded": {
+            "confluence": 0.0337,
+            "fireflies": 0.0539,
+            "github": 0.0452,
+            "gmail": 0.2117,
+            "google_drive": 0.1346,
+            "hubspot": 0.0818,
+            "jira": 0.0366,
+            "linear": 0.1896,
+            "slack": 0.2128
+          },
+          "shares": {
+            "confluence": 0.03368,
+            "fireflies": 0.05392,
+            "github": 0.04524,
+            "gmail": 0.21172,
+            "google_drive": 0.13464,
+            "hubspot": 0.08176,
+            "jira": 0.03664,
+            "linear": 0.18964,
+            "slack": 0.21276
+          }
+        },
+        "40000": {
+          "counts": {
+            "confluence": 1261,
+            "fireflies": 2110,
+            "github": 1766,
+            "gmail": 8640,
+            "google_drive": 5408,
+            "hubspot": 3266,
+            "jira": 1417,
+            "linear": 7611,
+            "slack": 8521
+          },
+          "n_docs": 40000,
+          "shares_rounded": {
+            "confluence": 0.0315,
+            "fireflies": 0.0527,
+            "github": 0.0442,
+            "gmail": 0.216,
+            "google_drive": 0.1352,
+            "hubspot": 0.0817,
+            "jira": 0.0354,
+            "linear": 0.1903,
+            "slack": 0.213
+          },
+          "shares": {
+            "confluence": 0.031525,
+            "fireflies": 0.05275,
+            "github": 0.04415,
+            "gmail": 0.216,
+            "google_drive": 0.1352,
+            "hubspot": 0.08165,
+            "jira": 0.035425,
+            "linear": 0.190275,
+            "slack": 0.213025
+          }
+        },
+        "50000": {
+          "counts": {
+            "confluence": 1498,
+            "fireflies": 2633,
+            "github": 2200,
+            "gmail": 10861,
+            "google_drive": 6746,
+            "hubspot": 4079,
+            "jira": 1726,
+            "linear": 9515,
+            "slack": 10742
+          },
+          "n_docs": 50000,
+          "shares_rounded": {
+            "confluence": 0.03,
+            "fireflies": 0.0527,
+            "github": 0.044,
+            "gmail": 0.2172,
+            "google_drive": 0.1349,
+            "hubspot": 0.0816,
+            "jira": 0.0345,
+            "linear": 0.1903,
+            "slack": 0.2148
+          },
+          "shares": {
+            "confluence": 0.02996,
+            "fireflies": 0.05266,
+            "github": 0.044,
+            "gmail": 0.21722,
+            "google_drive": 0.13492,
+            "hubspot": 0.08158,
+            "jira": 0.03452,
+            "linear": 0.1903,
+            "slack": 0.21484
+          }
+        },
+        "75000": {
+          "counts": {
+            "confluence": 2178,
+            "fireflies": 4026,
+            "github": 3313,
+            "gmail": 16255,
+            "google_drive": 10089,
+            "hubspot": 6083,
+            "jira": 2504,
+            "linear": 14287,
+            "slack": 16265
+          },
+          "n_docs": 75000,
+          "shares_rounded": {
+            "confluence": 0.029,
+            "fireflies": 0.0537,
+            "github": 0.0442,
+            "gmail": 0.2167,
+            "google_drive": 0.1345,
+            "hubspot": 0.0811,
+            "jira": 0.0334,
+            "linear": 0.1905,
+            "slack": 0.2169
+          },
+          "shares": {
+            "confluence": 0.02904,
+            "fireflies": 0.05368,
+            "github": 0.044173333333333335,
+            "gmail": 0.21673333333333333,
+            "google_drive": 0.13452,
+            "hubspot": 0.08110666666666666,
+            "jira": 0.03338666666666667,
+            "linear": 0.19049333333333332,
+            "slack": 0.21686666666666668
+          }
+        },
+        "100000": {
+          "counts": {
+            "confluence": 2848,
+            "fireflies": 5387,
+            "github": 4364,
+            "gmail": 21666,
+            "google_drive": 13534,
+            "hubspot": 8169,
+            "jira": 3341,
+            "linear": 19058,
+            "slack": 21633
+          },
+          "n_docs": 100000,
+          "shares_rounded": {
+            "confluence": 0.0285,
+            "fireflies": 0.0539,
+            "github": 0.0436,
+            "gmail": 0.2167,
+            "google_drive": 0.1353,
+            "hubspot": 0.0817,
+            "jira": 0.0334,
+            "linear": 0.1906,
+            "slack": 0.2163
+          },
+          "shares": {
+            "confluence": 0.02848,
+            "fireflies": 0.05387,
+            "github": 0.04364,
+            "gmail": 0.21666,
+            "google_drive": 0.13534,
+            "hubspot": 0.08169,
+            "jira": 0.03341,
+            "linear": 0.19058,
+            "slack": 0.21633
+          }
+        },
+        "150000": {
+          "counts": {
+            "confluence": 4248,
+            "fireflies": 8164,
+            "github": 6519,
+            "gmail": 32504,
+            "google_drive": 20290,
+            "hubspot": 12144,
+            "jira": 5004,
+            "linear": 28670,
+            "slack": 32457
+          },
+          "n_docs": 150000,
+          "shares_rounded": {
+            "confluence": 0.0283,
+            "fireflies": 0.0544,
+            "github": 0.0435,
+            "gmail": 0.2167,
+            "google_drive": 0.1353,
+            "hubspot": 0.081,
+            "jira": 0.0334,
+            "linear": 0.1911,
+            "slack": 0.2164
+          },
+          "shares": {
+            "confluence": 0.02832,
+            "fireflies": 0.054426666666666665,
+            "github": 0.04346,
+            "gmail": 0.21669333333333332,
+            "google_drive": 0.13526666666666667,
+            "hubspot": 0.08096,
+            "jira": 0.03336,
+            "linear": 0.19113333333333332,
+            "slack": 0.21638
+          }
+        },
+        "full": {
+          "counts": {
+            "confluence": 5189,
+            "fireflies": 10173,
+            "github": 8052,
+            "gmail": 40000,
+            "google_drive": 25107,
+            "hubspot": 15016,
+            "jira": 6118,
+            "linear": 35308,
+            "slack": 40000
+          },
+          "n_docs": 184963,
+          "shares_rounded": {
+            "confluence": 0.0281,
+            "fireflies": 0.055,
+            "github": 0.0435,
+            "gmail": 0.2163,
+            "google_drive": 0.1357,
+            "hubspot": 0.0812,
+            "jira": 0.0331,
+            "linear": 0.1909,
+            "slack": 0.2163
+          },
+          "shares": {
+            "confluence": 0.028054259500548757,
+            "fireflies": 0.0550001892270346,
+            "github": 0.043533030930510426,
+            "gmail": 0.21625946810983818,
+            "google_drive": 0.13574066164584267,
+            "hubspot": 0.08118380432843325,
+            "jira": 0.03307688564739975,
+            "linear": 0.19089223250055418,
+            "slack": 0.21625946810983818
+          }
+        }
+      },
+      "union_document_count": 184963,
+      "pool_filter": "rev1.emb_all_openai UNION document_chunks(+pool_ext if present)",
+      "table": "rev1.emb_all_openai",
+      "rank_table": "rev1.prop_rank_s0"
+    },
+    "prop_s42": {
+      "by_scale": {
+        "5000": {
+          "counts": {
+            "confluence": 316,
+            "fireflies": 272,
+            "github": 245,
+            "gmail": 960,
+            "google_drive": 691,
+            "hubspot": 392,
+            "jira": 260,
+            "linear": 938,
+            "slack": 926
+          },
+          "n_docs": 5000,
+          "shares_rounded": {
+            "confluence": 0.0632,
+            "fireflies": 0.0544,
+            "github": 0.049,
+            "gmail": 0.192,
+            "google_drive": 0.1382,
+            "hubspot": 0.0784,
+            "jira": 0.052,
+            "linear": 0.1876,
+            "slack": 0.1852
+          },
+          "shares": {
+            "confluence": 0.0632,
+            "fireflies": 0.0544,
+            "github": 0.049,
+            "gmail": 0.192,
+            "google_drive": 0.1382,
+            "hubspot": 0.0784,
+            "jira": 0.052,
+            "linear": 0.1876,
+            "slack": 0.1852
+          }
+        },
+        "10000": {
+          "counts": {
+            "confluence": 439,
+            "fireflies": 546,
+            "github": 451,
+            "gmail": 2066,
+            "google_drive": 1369,
+            "hubspot": 811,
+            "jira": 441,
+            "linear": 1886,
+            "slack": 1991
+          },
+          "n_docs": 10000,
+          "shares_rounded": {
+            "confluence": 0.0439,
+            "fireflies": 0.0546,
+            "github": 0.0451,
+            "gmail": 0.2066,
+            "google_drive": 0.1369,
+            "hubspot": 0.0811,
+            "jira": 0.0441,
+            "linear": 0.1886,
+            "slack": 0.1991
+          },
+          "shares": {
+            "confluence": 0.0439,
+            "fireflies": 0.0546,
+            "github": 0.0451,
+            "gmail": 0.2066,
+            "google_drive": 0.1369,
+            "hubspot": 0.0811,
+            "jira": 0.0441,
+            "linear": 0.1886,
+            "slack": 0.1991
+          }
+        },
+        "15000": {
+          "counts": {
+            "confluence": 578,
+            "fireflies": 810,
+            "github": 642,
+            "gmail": 3134,
+            "google_drive": 2058,
+            "hubspot": 1245,
+            "jira": 604,
+            "linear": 2868,
+            "slack": 3061
+          },
+          "n_docs": 15000,
+          "shares_rounded": {
+            "confluence": 0.0385,
+            "fireflies": 0.054,
+            "github": 0.0428,
+            "gmail": 0.2089,
+            "google_drive": 0.1372,
+            "hubspot": 0.083,
+            "jira": 0.0403,
+            "linear": 0.1912,
+            "slack": 0.2041
+          },
+          "shares": {
+            "confluence": 0.038533333333333336,
+            "fireflies": 0.054,
+            "github": 0.0428,
+            "gmail": 0.20893333333333333,
+            "google_drive": 0.1372,
+            "hubspot": 0.083,
+            "jira": 0.040266666666666666,
+            "linear": 0.1912,
+            "slack": 0.20406666666666667
+          }
+        },
+        "20000": {
+          "counts": {
+            "confluence": 722,
+            "fireflies": 1106,
+            "github": 865,
+            "gmail": 4251,
+            "google_drive": 2737,
+            "hubspot": 1643,
+            "jira": 750,
+            "linear": 3780,
+            "slack": 4146
+          },
+          "n_docs": 20000,
+          "shares_rounded": {
+            "confluence": 0.0361,
+            "fireflies": 0.0553,
+            "github": 0.0432,
+            "gmail": 0.2125,
+            "google_drive": 0.1368,
+            "hubspot": 0.0822,
+            "jira": 0.0375,
+            "linear": 0.189,
+            "slack": 0.2073
+          },
+          "shares": {
+            "confluence": 0.0361,
+            "fireflies": 0.0553,
+            "github": 0.04325,
+            "gmail": 0.21255,
+            "google_drive": 0.13685,
+            "hubspot": 0.08215,
+            "jira": 0.0375,
+            "linear": 0.189,
+            "slack": 0.2073
+          }
+        },
+        "25000": {
+          "counts": {
+            "confluence": 841,
+            "fireflies": 1394,
+            "github": 1098,
+            "gmail": 5313,
+            "google_drive": 3403,
+            "hubspot": 2065,
+            "jira": 911,
+            "linear": 4692,
+            "slack": 5283
+          },
+          "n_docs": 25000,
+          "shares_rounded": {
+            "confluence": 0.0336,
+            "fireflies": 0.0558,
+            "github": 0.0439,
+            "gmail": 0.2125,
+            "google_drive": 0.1361,
+            "hubspot": 0.0826,
+            "jira": 0.0364,
+            "linear": 0.1877,
+            "slack": 0.2113
+          },
+          "shares": {
+            "confluence": 0.03364,
+            "fireflies": 0.05576,
+            "github": 0.04392,
+            "gmail": 0.21252,
+            "google_drive": 0.13612,
+            "hubspot": 0.0826,
+            "jira": 0.03644,
+            "linear": 0.18768,
+            "slack": 0.21132
+          }
+        },
+        "40000": {
+          "counts": {
+            "confluence": 1276,
+            "fireflies": 2269,
+            "github": 1751,
+            "gmail": 8547,
+            "google_drive": 5304,
+            "hubspot": 3317,
+            "jira": 1387,
+            "linear": 7591,
+            "slack": 8558
+          },
+          "n_docs": 40000,
+          "shares_rounded": {
+            "confluence": 0.0319,
+            "fireflies": 0.0567,
+            "github": 0.0438,
+            "gmail": 0.2137,
+            "google_drive": 0.1326,
+            "hubspot": 0.0829,
+            "jira": 0.0347,
+            "linear": 0.1898,
+            "slack": 0.214
+          },
+          "shares": {
+            "confluence": 0.0319,
+            "fireflies": 0.056725,
+            "github": 0.043775,
+            "gmail": 0.213675,
+            "google_drive": 0.1326,
+            "hubspot": 0.082925,
+            "jira": 0.034675,
+            "linear": 0.189775,
+            "slack": 0.21395
+          }
+        },
+        "50000": {
+          "counts": {
+            "confluence": 1544,
+            "fireflies": 2800,
+            "github": 2191,
+            "gmail": 10675,
+            "google_drive": 6714,
+            "hubspot": 4073,
+            "jira": 1733,
+            "linear": 9499,
+            "slack": 10771
+          },
+          "n_docs": 50000,
+          "shares_rounded": {
+            "confluence": 0.0309,
+            "fireflies": 0.056,
+            "github": 0.0438,
+            "gmail": 0.2135,
+            "google_drive": 0.1343,
+            "hubspot": 0.0815,
+            "jira": 0.0347,
+            "linear": 0.19,
+            "slack": 0.2154
+          },
+          "shares": {
+            "confluence": 0.03088,
+            "fireflies": 0.056,
+            "github": 0.04382,
+            "gmail": 0.2135,
+            "google_drive": 0.13428,
+            "hubspot": 0.08146,
+            "jira": 0.03466,
+            "linear": 0.18998,
+            "slack": 0.21542
+          }
+        },
+        "75000": {
+          "counts": {
+            "confluence": 2190,
+            "fireflies": 4139,
+            "github": 3300,
+            "gmail": 16072,
+            "google_drive": 10103,
+            "hubspot": 6084,
+            "jira": 2560,
+            "linear": 14319,
+            "slack": 16233
+          },
+          "n_docs": 75000,
+          "shares_rounded": {
+            "confluence": 0.0292,
+            "fireflies": 0.0552,
+            "github": 0.044,
+            "gmail": 0.2143,
+            "google_drive": 0.1347,
+            "hubspot": 0.0811,
+            "jira": 0.0341,
+            "linear": 0.1909,
+            "slack": 0.2164
+          },
+          "shares": {
+            "confluence": 0.0292,
+            "fireflies": 0.05518666666666667,
+            "github": 0.044,
+            "gmail": 0.21429333333333334,
+            "google_drive": 0.13470666666666667,
+            "hubspot": 0.08112,
+            "jira": 0.034133333333333335,
+            "linear": 0.19092,
+            "slack": 0.21644
+          }
+        },
+        "100000": {
+          "counts": {
+            "confluence": 2842,
+            "fireflies": 5499,
+            "github": 4410,
+            "gmail": 21563,
+            "google_drive": 13546,
+            "hubspot": 8150,
+            "jira": 3348,
+            "linear": 19016,
+            "slack": 21626
+          },
+          "n_docs": 100000,
+          "shares_rounded": {
+            "confluence": 0.0284,
+            "fireflies": 0.055,
+            "github": 0.0441,
+            "gmail": 0.2156,
+            "google_drive": 0.1355,
+            "hubspot": 0.0815,
+            "jira": 0.0335,
+            "linear": 0.1902,
+            "slack": 0.2163
+          },
+          "shares": {
+            "confluence": 0.02842,
+            "fireflies": 0.05499,
+            "github": 0.0441,
+            "gmail": 0.21563,
+            "google_drive": 0.13546,
+            "hubspot": 0.0815,
+            "jira": 0.03348,
+            "linear": 0.19016,
+            "slack": 0.21626
+          }
+        },
+        "150000": {
+          "counts": {
+            "confluence": 4231,
+            "fireflies": 8241,
+            "github": 6516,
+            "gmail": 32394,
+            "google_drive": 20365,
+            "hubspot": 12164,
+            "jira": 4991,
+            "linear": 28629,
+            "slack": 32469
+          },
+          "n_docs": 150000,
+          "shares_rounded": {
+            "confluence": 0.0282,
+            "fireflies": 0.0549,
+            "github": 0.0434,
+            "gmail": 0.216,
+            "google_drive": 0.1358,
+            "hubspot": 0.0811,
+            "jira": 0.0333,
+            "linear": 0.1909,
+            "slack": 0.2165
+          },
+          "shares": {
+            "confluence": 0.028206666666666668,
+            "fireflies": 0.05494,
+            "github": 0.04344,
+            "gmail": 0.21596,
+            "google_drive": 0.13576666666666667,
+            "hubspot": 0.08109333333333334,
+            "jira": 0.033273333333333335,
+            "linear": 0.19086,
+            "slack": 0.21646
+          }
+        },
+        "full": {
+          "counts": {
+            "confluence": 5189,
+            "fireflies": 10173,
+            "github": 8052,
+            "gmail": 40000,
+            "google_drive": 25107,
+            "hubspot": 15016,
+            "jira": 6118,
+            "linear": 35308,
+            "slack": 40000
+          },
+          "n_docs": 184963,
+          "shares_rounded": {
+            "confluence": 0.0281,
+            "fireflies": 0.055,
+            "github": 0.0435,
+            "gmail": 0.2163,
+            "google_drive": 0.1357,
+            "hubspot": 0.0812,
+            "jira": 0.0331,
+            "linear": 0.1909,
+            "slack": 0.2163
+          },
+          "shares": {
+            "confluence": 0.028054259500548757,
+            "fireflies": 0.0550001892270346,
+            "github": 0.043533030930510426,
+            "gmail": 0.21625946810983818,
+            "google_drive": 0.13574066164584267,
+            "hubspot": 0.08118380432843325,
+            "jira": 0.03307688564739975,
+            "linear": 0.19089223250055418,
+            "slack": 0.21625946810983818
+          }
+        }
+      },
+      "union_document_count": 184963,
+      "pool_filter": "rev1.emb_all_openai UNION document_chunks(+pool_ext if present)",
+      "table": "rev1.emb_all_openai",
+      "rank_table": "rev1.prop_rank_s42"
+    },
+    "rr_full": {
+      "by_scale": {
+        "5000": {
+          "counts": {
+            "confluence": 683,
+            "fireflies": 518,
+            "github": 551,
+            "gmail": 504,
+            "google_drive": 559,
+            "hubspot": 536,
+            "jira": 596,
+            "linear": 554,
+            "slack": 499
+          },
+          "n_docs": 5000,
+          "shares_rounded": {
+            "confluence": 0.1366,
+            "fireflies": 0.1036,
+            "github": 0.1102,
+            "gmail": 0.1008,
+            "google_drive": 0.1118,
+            "hubspot": 0.1072,
+            "jira": 0.1192,
+            "linear": 0.1108,
+            "slack": 0.0998
+          },
+          "shares": {
+            "confluence": 0.1366,
+            "fireflies": 0.1036,
+            "github": 0.1102,
+            "gmail": 0.1008,
+            "google_drive": 0.1118,
+            "hubspot": 0.1072,
+            "jira": 0.1192,
+            "linear": 0.1108,
+            "slack": 0.0998
+          }
+        },
+        "10000": {
+          "counts": {
+            "confluence": 1239,
+            "fireflies": 1074,
+            "github": 1107,
+            "gmail": 1060,
+            "google_drive": 1114,
+            "hubspot": 1091,
+            "jira": 1151,
+            "linear": 1109,
+            "slack": 1055
+          },
+          "n_docs": 10000,
+          "shares_rounded": {
+            "confluence": 0.1239,
+            "fireflies": 0.1074,
+            "github": 0.1107,
+            "gmail": 0.106,
+            "google_drive": 0.1114,
+            "hubspot": 0.1091,
+            "jira": 0.1151,
+            "linear": 0.1109,
+            "slack": 0.1055
+          },
+          "shares": {
+            "confluence": 0.1239,
+            "fireflies": 0.1074,
+            "github": 0.1107,
+            "gmail": 0.106,
+            "google_drive": 0.1114,
+            "hubspot": 0.1091,
+            "jira": 0.1151,
+            "linear": 0.1109,
+            "slack": 0.1055
+          }
+        },
+        "15000": {
+          "counts": {
+            "confluence": 1794,
+            "fireflies": 1629,
+            "github": 1662,
+            "gmail": 1615,
+            "google_drive": 1670,
+            "hubspot": 1647,
+            "jira": 1707,
+            "linear": 1665,
+            "slack": 1611
+          },
+          "n_docs": 15000,
+          "shares_rounded": {
+            "confluence": 0.1196,
+            "fireflies": 0.1086,
+            "github": 0.1108,
+            "gmail": 0.1077,
+            "google_drive": 0.1113,
+            "hubspot": 0.1098,
+            "jira": 0.1138,
+            "linear": 0.111,
+            "slack": 0.1074
+          },
+          "shares": {
+            "confluence": 0.1196,
+            "fireflies": 0.1086,
+            "github": 0.1108,
+            "gmail": 0.10766666666666666,
+            "google_drive": 0.11133333333333334,
+            "hubspot": 0.1098,
+            "jira": 0.1138,
+            "linear": 0.111,
+            "slack": 0.1074
+          }
+        },
+        "20000": {
+          "counts": {
+            "confluence": 2350,
+            "fireflies": 2185,
+            "github": 2218,
+            "gmail": 2171,
+            "google_drive": 2226,
+            "hubspot": 2202,
+            "jira": 2262,
+            "linear": 2220,
+            "slack": 2166
+          },
+          "n_docs": 20000,
+          "shares_rounded": {
+            "confluence": 0.1175,
+            "fireflies": 0.1092,
+            "github": 0.1109,
+            "gmail": 0.1085,
+            "google_drive": 0.1113,
+            "hubspot": 0.1101,
+            "jira": 0.1131,
+            "linear": 0.111,
+            "slack": 0.1083
+          },
+          "shares": {
+            "confluence": 0.1175,
+            "fireflies": 0.10925,
+            "github": 0.1109,
+            "gmail": 0.10855,
+            "google_drive": 0.1113,
+            "hubspot": 0.1101,
+            "jira": 0.1131,
+            "linear": 0.111,
+            "slack": 0.1083
+          }
+        },
+        "25000": {
+          "counts": {
+            "confluence": 2907,
+            "fireflies": 2740,
+            "github": 2773,
+            "gmail": 2726,
+            "google_drive": 2781,
+            "hubspot": 2758,
+            "jira": 2817,
+            "linear": 2776,
+            "slack": 2722
+          },
+          "n_docs": 25000,
+          "shares_rounded": {
+            "confluence": 0.1163,
+            "fireflies": 0.1096,
+            "github": 0.1109,
+            "gmail": 0.109,
+            "google_drive": 0.1112,
+            "hubspot": 0.1103,
+            "jira": 0.1127,
+            "linear": 0.111,
+            "slack": 0.1089
+          },
+          "shares": {
+            "confluence": 0.11628,
+            "fireflies": 0.1096,
+            "github": 0.11092,
+            "gmail": 0.10904,
+            "google_drive": 0.11124,
+            "hubspot": 0.11032,
+            "jira": 0.11268,
+            "linear": 0.11104,
+            "slack": 0.10888
+          }
+        },
+        "40000": {
+          "counts": {
+            "confluence": 4572,
+            "fireflies": 4407,
+            "github": 4440,
+            "gmail": 4393,
+            "google_drive": 4448,
+            "hubspot": 4425,
+            "jira": 4484,
+            "linear": 4442,
+            "slack": 4388
+          },
+          "n_docs": 39999,
+          "shares_rounded": {
+            "confluence": 0.1143,
+            "fireflies": 0.1102,
+            "github": 0.111,
+            "gmail": 0.1098,
+            "google_drive": 0.1112,
+            "hubspot": 0.1106,
+            "jira": 0.1121,
+            "linear": 0.1111,
+            "slack": 0.1097
+          },
+          "shares": {
+            "confluence": 0.11430285757143929,
+            "fireflies": 0.1101777544438611,
+            "github": 0.11100277506937674,
+            "gmail": 0.10982774569364234,
+            "google_drive": 0.11120278006950174,
+            "hubspot": 0.11062776569414236,
+            "jira": 0.11210280257006425,
+            "linear": 0.11105277631940799,
+            "slack": 0.10970274256856422
+          }
+        },
+        "50000": {
+          "counts": {
+            "confluence": 5189,
+            "fireflies": 5580,
+            "github": 5613,
+            "gmail": 5566,
+            "google_drive": 5621,
+            "hubspot": 5598,
+            "jira": 5656,
+            "linear": 5615,
+            "slack": 5561
+          },
+          "n_docs": 49999,
+          "shares_rounded": {
+            "confluence": 0.1038,
+            "fireflies": 0.1116,
+            "github": 0.1123,
+            "gmail": 0.1113,
+            "google_drive": 0.1124,
+            "hubspot": 0.112,
+            "jira": 0.1131,
+            "linear": 0.1123,
+            "slack": 0.1112
+          },
+          "shares": {
+            "confluence": 0.10378207564151283,
+            "fireflies": 0.1116022320446409,
+            "github": 0.1122622452449049,
+            "gmail": 0.1113222264445289,
+            "google_drive": 0.1124222484449689,
+            "hubspot": 0.11196223924478489,
+            "jira": 0.11312226244524891,
+            "linear": 0.1123022460449209,
+            "slack": 0.11122222444448888
+          }
+        },
+        "75000": {
+          "counts": {
+            "confluence": 5189,
+            "fireflies": 9263,
+            "github": 8052,
+            "gmail": 9249,
+            "google_drive": 9304,
+            "hubspot": 9281,
+            "jira": 6118,
+            "linear": 9299,
+            "slack": 9244
+          },
+          "n_docs": 74999,
+          "shares_rounded": {
+            "confluence": 0.0692,
+            "fireflies": 0.1235,
+            "github": 0.1074,
+            "gmail": 0.1233,
+            "google_drive": 0.1241,
+            "hubspot": 0.1237,
+            "jira": 0.0816,
+            "linear": 0.124,
+            "slack": 0.1233
+          },
+          "shares": {
+            "confluence": 0.06918758916785557,
+            "fireflies": 0.12350831344417926,
+            "github": 0.10736143148575314,
+            "gmail": 0.12332164428859052,
+            "google_drive": 0.12405498739983199,
+            "hubspot": 0.12374831664422192,
+            "jira": 0.08157442099227989,
+            "linear": 0.12398831984426459,
+            "slack": 0.1232549767330231
+          }
+        },
+        "100000": {
+          "counts": {
+            "confluence": 5189,
+            "fireflies": 10173,
+            "github": 8052,
+            "gmail": 14067,
+            "google_drive": 14122,
+            "hubspot": 14098,
+            "jira": 6118,
+            "linear": 14117,
+            "slack": 14062
+          },
+          "n_docs": 99998,
+          "shares_rounded": {
+            "confluence": 0.0519,
+            "fireflies": 0.1017,
+            "github": 0.0805,
+            "gmail": 0.1407,
+            "google_drive": 0.1412,
+            "hubspot": 0.141,
+            "jira": 0.0612,
+            "linear": 0.1412,
+            "slack": 0.1406
+          },
+          "shares": {
+            "confluence": 0.051891037820756415,
+            "fireflies": 0.10173203464069282,
+            "github": 0.08052161043220864,
+            "gmail": 0.1406728134562691,
+            "google_drive": 0.14122282445648912,
+            "hubspot": 0.14098281965639312,
+            "jira": 0.06118122362447249,
+            "linear": 0.14117282345646914,
+            "slack": 0.14062281245624914
+          }
+        },
+        "150000": {
+          "counts": {
+            "confluence": 5189,
+            "fireflies": 10173,
+            "github": 8052,
+            "gmail": 26766,
+            "google_drive": 25107,
+            "hubspot": 15016,
+            "jira": 6118,
+            "linear": 26815,
+            "slack": 26761
+          },
+          "n_docs": 149997,
+          "shares_rounded": {
+            "confluence": 0.0346,
+            "fireflies": 0.0678,
+            "github": 0.0537,
+            "gmail": 0.1784,
+            "google_drive": 0.1674,
+            "hubspot": 0.1001,
+            "jira": 0.0408,
+            "linear": 0.1788,
+            "slack": 0.1784
+          },
+          "shares": {
+            "confluence": 0.03459402521383761,
+            "fireflies": 0.06782135642712854,
+            "github": 0.05368107362147243,
+            "gmail": 0.17844356887137744,
+            "google_drive": 0.16738334766695334,
+            "hubspot": 0.10010866884004346,
+            "jira": 0.040787482416314996,
+            "linear": 0.1787702420715081,
+            "slack": 0.1784102348713641
+          }
+        },
+        "full": {
+          "counts": {
+            "confluence": 5189,
+            "fireflies": 10173,
+            "github": 8052,
+            "gmail": 40000,
+            "google_drive": 25107,
+            "hubspot": 15016,
+            "jira": 6118,
+            "linear": 35308,
+            "slack": 40000
+          },
+          "n_docs": 184963,
+          "shares_rounded": {
+            "confluence": 0.0281,
+            "fireflies": 0.055,
+            "github": 0.0435,
+            "gmail": 0.2163,
+            "google_drive": 0.1357,
+            "hubspot": 0.0812,
+            "jira": 0.0331,
+            "linear": 0.1909,
+            "slack": 0.2163
+          },
+          "shares": {
+            "confluence": 0.028054259500548757,
+            "fireflies": 0.0550001892270346,
+            "github": 0.043533030930510426,
+            "gmail": 0.21625946810983818,
+            "google_drive": 0.13574066164584267,
+            "hubspot": 0.08118380432843325,
+            "jira": 0.03307688564739975,
+            "linear": 0.19089223250055418,
+            "slack": 0.21625946810983818
+          }
+        }
+      },
+      "union_document_count": 184963,
+      "pool_filter": "rev1.emb_all_openai UNION document_chunks(+pool_ext if present)",
+      "table": "rev1.emb_all_openai",
+      "rank_table": "rev1.rr_full_rank"
+    }
+  },
+  "hit_at_10_ladders": {
+    "prop_s0": {
+      "raw": {
+        "5000": 0.8,
+        "10000": 0.77,
+        "15000": 0.755,
+        "20000": 0.72,
+        "25000": 0.7,
+        "40000": 0.66,
+        "50000": 0.65,
+        "75000": 0.615,
+        "100000": 0.575,
+        "150000": 0.52,
+        "full": 0.515
+      },
+      "meta_first": {
+        "5000": 0.875,
+        "10000": 0.86,
+        "15000": 0.82,
+        "20000": 0.8,
+        "25000": 0.79,
+        "40000": 0.755,
+        "50000": 0.745,
+        "75000": 0.725,
+        "100000": 0.695,
+        "150000": 0.675,
+        "full": 0.655
+      },
+      "meta_in": {
+        "5000": 0.875,
+        "10000": 0.86,
+        "15000": 0.82,
+        "20000": 0.8,
+        "25000": 0.79,
+        "40000": 0.75,
+        "50000": 0.74,
+        "75000": 0.72,
+        "100000": 0.685,
+        "150000": 0.66,
+        "full": 0.645
+      }
+    },
+    "prop_s42": {
+      "raw": {
+        "5000": 0.825,
+        "10000": 0.765,
+        "15000": 0.745,
+        "20000": 0.72,
+        "25000": 0.69,
+        "40000": 0.66,
+        "50000": 0.655,
+        "75000": 0.61,
+        "100000": 0.595,
+        "150000": 0.52,
+        "full": 0.515
+      },
+      "meta_first": {
+        "5000": 0.9,
+        "10000": 0.855,
+        "15000": 0.82,
+        "20000": 0.805,
+        "25000": 0.79,
+        "40000": 0.765,
+        "50000": 0.76,
+        "75000": 0.725,
+        "100000": 0.69,
+        "150000": 0.675,
+        "full": 0.655
+      },
+      "meta_in": {
+        "5000": 0.9,
+        "10000": 0.855,
+        "15000": 0.82,
+        "20000": 0.805,
+        "25000": 0.79,
+        "40000": 0.76,
+        "50000": 0.755,
+        "75000": 0.715,
+        "100000": 0.68,
+        "150000": 0.66,
+        "full": 0.645
+      }
+    },
+    "rr_full": {
+      "raw": {
+        "5000": 0.795,
+        "10000": 0.735,
+        "15000": 0.71,
+        "20000": 0.68,
+        "25000": 0.67,
+        "40000": 0.645,
+        "50000": 0.64,
+        "75000": 0.595,
+        "100000": 0.585,
+        "150000": 0.54,
+        "full": 0.515
+      },
+      "meta_first": {
+        "5000": 0.875,
+        "10000": 0.835,
+        "15000": 0.805,
+        "20000": 0.775,
+        "25000": 0.765,
+        "40000": 0.72,
+        "50000": 0.715,
+        "75000": 0.685,
+        "100000": 0.67,
+        "150000": 0.66,
+        "full": 0.655
+      },
+      "meta_in": {
+        "5000": 0.875,
+        "10000": 0.835,
+        "15000": 0.805,
+        "20000": 0.77,
+        "25000": 0.76,
+        "40000": 0.72,
+        "50000": 0.715,
+        "75000": 0.685,
+        "100000": 0.665,
+        "150000": 0.65,
+        "full": 0.645
+      }
+    }
+  },
+  "confluence_hit_at_10": {
+    "prop_s0": {
+      "raw": {
+        "5000": 0.8780487804878049,
+        "10000": 0.8536585365853658,
+        "15000": 0.8536585365853658,
+        "20000": 0.8048780487804879,
+        "25000": 0.7804878048780488,
+        "40000": 0.7560975609756098,
+        "50000": 0.7560975609756098,
+        "75000": 0.7560975609756098,
+        "100000": 0.7317073170731707,
+        "150000": 0.6829268292682927,
+        "full": 0.6585365853658537
+      },
+      "meta_first": {
+        "5000": 0.9512195121951219,
+        "10000": 0.9512195121951219,
+        "15000": 0.9512195121951219,
+        "20000": 0.9512195121951219,
+        "25000": 0.9512195121951219,
+        "40000": 0.9024390243902439,
+        "50000": 0.9024390243902439,
+        "75000": 0.9024390243902439,
+        "100000": 0.8780487804878049,
+        "150000": 0.8536585365853658,
+        "full": 0.8292682926829268
+      },
+      "meta_in": {
+        "5000": 0.9512195121951219,
+        "10000": 0.9512195121951219,
+        "15000": 0.9512195121951219,
+        "20000": 0.9512195121951219,
+        "25000": 0.9512195121951219,
+        "40000": 0.8536585365853658,
+        "50000": 0.8536585365853658,
+        "75000": 0.8536585365853658,
+        "100000": 0.8048780487804879,
+        "150000": 0.7560975609756098,
+        "full": 0.7560975609756098
+      }
+    },
+    "prop_s42": {
+      "raw": {
+        "5000": 0.8780487804878049,
+        "10000": 0.8536585365853658,
+        "15000": 0.8048780487804879,
+        "20000": 0.8048780487804879,
+        "25000": 0.7560975609756098,
+        "40000": 0.7560975609756098,
+        "50000": 0.7560975609756098,
+        "75000": 0.7317073170731707,
+        "100000": 0.7317073170731707,
+        "150000": 0.6585365853658537,
+        "full": 0.6585365853658537
+      },
+      "meta_first": {
+        "5000": 0.9512195121951219,
+        "10000": 0.9512195121951219,
+        "15000": 0.9512195121951219,
+        "20000": 0.926829268292683,
+        "25000": 0.926829268292683,
+        "40000": 0.926829268292683,
+        "50000": 0.926829268292683,
+        "75000": 0.9024390243902439,
+        "100000": 0.8780487804878049,
+        "150000": 0.8536585365853658,
+        "full": 0.8292682926829268
+      },
+      "meta_in": {
+        "5000": 0.9512195121951219,
+        "10000": 0.9512195121951219,
+        "15000": 0.9512195121951219,
+        "20000": 0.926829268292683,
+        "25000": 0.926829268292683,
+        "40000": 0.8780487804878049,
+        "50000": 0.8780487804878049,
+        "75000": 0.8292682926829268,
+        "100000": 0.8048780487804879,
+        "150000": 0.7560975609756098,
+        "full": 0.7560975609756098
+      }
+    },
+    "rr_full": {
+      "raw": {
+        "5000": 0.8536585365853658,
+        "10000": 0.8292682926829268,
+        "15000": 0.8048780487804879,
+        "20000": 0.7804878048780488,
+        "25000": 0.7560975609756098,
+        "40000": 0.7317073170731707,
+        "50000": 0.7317073170731707,
+        "75000": 0.7073170731707317,
+        "100000": 0.7073170731707317,
+        "150000": 0.6829268292682927,
+        "full": 0.6585365853658537
+      },
+      "meta_first": {
+        "5000": 0.9512195121951219,
+        "10000": 0.926829268292683,
+        "15000": 0.9024390243902439,
+        "20000": 0.8780487804878049,
+        "25000": 0.8780487804878049,
+        "40000": 0.8292682926829268,
+        "50000": 0.8292682926829268,
+        "75000": 0.8292682926829268,
+        "100000": 0.8292682926829268,
+        "150000": 0.8292682926829268,
+        "full": 0.8292682926829268
+      },
+      "meta_in": {
+        "5000": 0.9512195121951219,
+        "10000": 0.926829268292683,
+        "15000": 0.9024390243902439,
+        "20000": 0.8536585365853658,
+        "25000": 0.8536585365853658,
+        "40000": 0.8048780487804879,
+        "50000": 0.8048780487804879,
+        "75000": 0.8048780487804879,
+        "100000": 0.7804878048780488,
+        "150000": 0.7560975609756098,
+        "full": 0.7560975609756098
+      }
+    }
+  },
+  "slopes": {
+    "prop_s0|raw": {
+      "up_to_100k": {
+        "slope": -0.0761712228914044,
+        "intercept": 1.4685336336966457,
+        "n_points": 9,
+        "x": [
+          5000,
+          10000,
+          15000,
+          20000,
+          25000,
+          40000,
+          50000,
+          75000,
+          100000
+        ],
+        "y": [
+          0.8,
+          0.77,
+          0.755,
+          0.72,
+          0.7,
+          0.66,
+          0.65,
+          0.615,
+          0.575
+        ]
+      },
+      "including_150k_and_full": {
+        "slope": -0.08417718548127072,
+        "intercept": 1.546247523523752,
+        "n_points": 11,
+        "x": [
+          5000,
+          10000,
+          15000,
+          20000,
+          25000,
+          40000,
+          50000,
+          75000,
+          100000,
+          150000,
+          184963
+        ],
+        "y": [
+          0.8,
+          0.77,
+          0.755,
+          0.72,
+          0.7,
+          0.66,
+          0.65,
+          0.615,
+          0.575,
+          0.52,
+          0.515
+        ]
+      }
+    },
+    "prop_s0|meta_first": {
+      "up_to_100k": {
+        "slope": -0.06186233582250229,
+        "intercept": 1.4141264801505733,
+        "n_points": 9,
+        "x": [
+          5000,
+          10000,
+          15000,
+          20000,
+          25000,
+          40000,
+          50000,
+          75000,
+          100000
+        ],
+        "y": [
+          0.875,
+          0.86,
+          0.82,
+          0.8,
+          0.79,
+          0.755,
+          0.745,
+          0.725,
+          0.695
+        ]
+      },
+      "including_150k_and_full": {
+        "slope": -0.06314685240622032,
+        "intercept": 1.4266505334293544,
+        "n_points": 11,
+        "x": [
+          5000,
+          10000,
+          15000,
+          20000,
+          25000,
+          40000,
+          50000,
+          75000,
+          100000,
+          150000,
+          184963
+        ],
+        "y": [
+          0.875,
+          0.86,
+          0.82,
+          0.8,
+          0.79,
+          0.755,
+          0.745,
+          0.725,
+          0.695,
+          0.675,
+          0.655
+        ]
+      }
+    },
+    "prop_s0|meta_in": {
+      "up_to_100k": {
+        "slope": -0.06505178040714435,
+        "intercept": 1.4437846590577885,
+        "n_points": 9,
+        "x": [
+          5000,
+          10000,
+          15000,
+          20000,
+          25000,
+          40000,
+          50000,
+          75000,
+          100000
+        ],
+        "y": [
+          0.875,
+          0.86,
+          0.82,
+          0.8,
+          0.79,
+          0.75,
+          0.74,
+          0.72,
+          0.685
+        ]
+      },
+      "including_150k_and_full": {
+        "slope": -0.06716711653912955,
+        "intercept": 1.4643450224056818,
+        "n_points": 11,
+        "x": [
+          5000,
+          10000,
+          15000,
+          20000,
+          25000,
+          40000,
+          50000,
+          75000,
+          100000,
+          150000,
+          184963
+        ],
+        "y": [
+          0.875,
+          0.86,
+          0.82,
+          0.8,
+          0.79,
+          0.75,
+          0.74,
+          0.72,
+          0.685,
+          0.66,
+          0.645
+        ]
+      }
+    },
+    "prop_s42|raw": {
+      "up_to_100k": {
+        "slope": -0.0769272087408633,
+        "intercept": 1.4784440673352353,
+        "n_points": 9,
+        "x": [
+          5000,
+          10000,
+          15000,
+          20000,
+          25000,
+          40000,
+          50000,
+          75000,
+          100000
+        ],
+        "y": [
+          0.825,
+          0.765,
+          0.745,
+          0.72,
+          0.69,
+          0.66,
+          0.655,
+          0.61,
+          0.595
+        ]
+      },
+      "including_150k_and_full": {
+        "slope": -0.08512061321626588,
+        "intercept": 1.5579780725212118,
+        "n_points": 11,
+        "x": [
+          5000,
+          10000,
+          15000,
+          20000,
+          25000,
+          40000,
+          50000,
+          75000,
+          100000,
+          150000,
+          184963
+        ],
+        "y": [
+          0.825,
+          0.765,
+          0.745,
+          0.72,
+          0.69,
+          0.66,
+          0.655,
+          0.61,
+          0.595,
+          0.52,
+          0.515
+        ]
+      }
+    },
+    "prop_s42|meta_first": {
+      "up_to_100k": {
+        "slope": -0.06590606655622083,
+        "intercept": 1.4602503408867802,
+        "n_points": 9,
+        "x": [
+          5000,
+          10000,
+          15000,
+          20000,
+          25000,
+          40000,
+          50000,
+          75000,
+          100000
+        ],
+        "y": [
+          0.9,
+          0.855,
+          0.82,
+          0.805,
+          0.79,
+          0.765,
+          0.76,
+          0.725,
+          0.69
+        ]
+      },
+      "including_150k_and_full": {
+        "slope": -0.06661058523049479,
+        "intercept": 1.4671340460992779,
+        "n_points": 11,
+        "x": [
+          5000,
+          10000,
+          15000,
+          20000,
+          25000,
+          40000,
+          50000,
+          75000,
+          100000,
+          150000,
+          184963
+        ],
+        "y": [
+          0.9,
+          0.855,
+          0.82,
+          0.805,
+          0.79,
+          0.765,
+          0.76,
+          0.725,
+          0.69,
+          0.675,
+          0.655
+        ]
+      }
+    },
+    "prop_s42|meta_in": {
+      "up_to_100k": {
+        "slope": -0.06979412433434887,
+        "intercept": 1.4964577082407626,
+        "n_points": 9,
+        "x": [
+          5000,
+          10000,
+          15000,
+          20000,
+          25000,
+          40000,
+          50000,
+          75000,
+          100000
+        ],
+        "y": [
+          0.9,
+          0.855,
+          0.82,
+          0.805,
+          0.79,
+          0.76,
+          0.755,
+          0.715,
+          0.68
+        ]
+      },
+      "including_150k_and_full": {
+        "slope": -0.0709030689577526,
+        "intercept": 1.5072341351017213,
+        "n_points": 11,
+        "x": [
+          5000,
+          10000,
+          15000,
+          20000,
+          25000,
+          40000,
+          50000,
+          75000,
+          100000,
+          150000,
+          184963
+        ],
+        "y": [
+          0.9,
+          0.855,
+          0.82,
+          0.805,
+          0.79,
+          0.76,
+          0.755,
+          0.715,
+          0.68,
+          0.66,
+          0.645
+        ]
+      }
+    },
+    "rr_full|raw": {
+      "up_to_100k": {
+        "slope": -0.06847485891961498,
+        "intercept": 1.3691521774530393,
+        "n_points": 9,
+        "x": [
+          5000,
+          10000,
+          15000,
+          20000,
+          25000,
+          40000,
+          50000,
+          75000,
+          100000
+        ],
+        "y": [
+          0.795,
+          0.735,
+          0.71,
+          0.68,
+          0.67,
+          0.645,
+          0.64,
+          0.595,
+          0.585
+        ]
+      },
+      "including_150k_and_full": {
+        "slope": -0.07278076139652181,
+        "intercept": 1.4110535047969073,
+        "n_points": 11,
+        "x": [
+          5000,
+          10000,
+          15000,
+          20000,
+          25000,
+          40000,
+          50000,
+          75000,
+          100000,
+          150000,
+          184963
+        ],
+        "y": [
+          0.795,
+          0.735,
+          0.71,
+          0.68,
+          0.67,
+          0.645,
+          0.64,
+          0.595,
+          0.585,
+          0.54,
+          0.515
+        ]
+      }
+    },
+    "rr_full|meta_first": {
+      "up_to_100k": {
+        "slope": -0.07115610800495585,
+        "intercept": 1.4841976743856096,
+        "n_points": 9,
+        "x": [
+          5000,
+          10000,
+          15000,
+          20000,
+          25000,
+          40000,
+          50000,
+          75000,
+          100000
+        ],
+        "y": [
+          0.875,
+          0.835,
+          0.805,
+          0.775,
+          0.765,
+          0.72,
+          0.715,
+          0.685,
+          0.67
+        ]
+      },
+      "including_150k_and_full": {
+        "slope": -0.06445358311455404,
+        "intercept": 1.4190164007732897,
+        "n_points": 11,
+        "x": [
+          5000,
+          10000,
+          15000,
+          20000,
+          25000,
+          40000,
+          50000,
+          75000,
+          100000,
+          150000,
+          184963
+        ],
+        "y": [
+          0.875,
+          0.835,
+          0.805,
+          0.775,
+          0.765,
+          0.72,
+          0.715,
+          0.685,
+          0.67,
+          0.66,
+          0.655
+        ]
+      }
+    },
+    "rr_full|meta_in": {
+      "up_to_100k": {
+        "slope": -0.07184031578722719,
+        "intercept": 1.4894892518270713,
+        "n_points": 9,
+        "x": [
+          5000,
+          10000,
+          15000,
+          20000,
+          25000,
+          40000,
+          50000,
+          75000,
+          100000
+        ],
+        "y": [
+          0.875,
+          0.835,
+          0.805,
+          0.77,
+          0.76,
+          0.72,
+          0.715,
+          0.685,
+          0.665
+        ]
+      },
+      "including_150k_and_full": {
+        "slope": -0.06676033280077533,
+        "intercept": 1.4400710439889381,
+        "n_points": 11,
+        "x": [
+          5000,
+          10000,
+          15000,
+          20000,
+          25000,
+          40000,
+          50000,
+          75000,
+          100000,
+          150000,
+          184963
+        ],
+        "y": [
+          0.875,
+          0.835,
+          0.805,
+          0.77,
+          0.76,
+          0.72,
+          0.715,
+          0.685,
+          0.665,
+          0.65,
+          0.645
+        ]
+      }
+    }
+  },
+  "metadata_lift": [
+    {
+      "ladder": "prop_s0",
+      "condition": "meta_first",
+      "scale": "5000",
+      "n_docs": 5000,
+      "lift": 0.075,
+      "ci_lo": 0.04,
+      "ci_hi": 0.115,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s0",
+      "condition": "meta_first",
+      "scale": "10000",
+      "n_docs": 10000,
+      "lift": 0.09,
+      "ci_lo": 0.055,
+      "ci_hi": 0.13,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s0",
+      "condition": "meta_first",
+      "scale": "15000",
+      "n_docs": 15000,
+      "lift": 0.065,
+      "ci_lo": 0.035,
+      "ci_hi": 0.1,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s0",
+      "condition": "meta_first",
+      "scale": "20000",
+      "n_docs": 20000,
+      "lift": 0.08,
+      "ci_lo": 0.045,
+      "ci_hi": 0.12,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s0",
+      "condition": "meta_first",
+      "scale": "25000",
+      "n_docs": 25000,
+      "lift": 0.09,
+      "ci_lo": 0.05,
+      "ci_hi": 0.13,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s0",
+      "condition": "meta_first",
+      "scale": "40000",
+      "n_docs": 40000,
+      "lift": 0.095,
+      "ci_lo": 0.055,
+      "ci_hi": 0.14,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s0",
+      "condition": "meta_first",
+      "scale": "50000",
+      "n_docs": 50000,
+      "lift": 0.095,
+      "ci_lo": 0.055,
+      "ci_hi": 0.14,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s0",
+      "condition": "meta_first",
+      "scale": "75000",
+      "n_docs": 75000,
+      "lift": 0.11,
+      "ci_lo": 0.065,
+      "ci_hi": 0.155,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s0",
+      "condition": "meta_first",
+      "scale": "100000",
+      "n_docs": 100000,
+      "lift": 0.12,
+      "ci_lo": 0.075,
+      "ci_hi": 0.17,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s0",
+      "condition": "meta_first",
+      "scale": "150000",
+      "n_docs": 150000,
+      "lift": 0.155,
+      "ci_lo": 0.105,
+      "ci_hi": 0.21,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s0",
+      "condition": "meta_first",
+      "scale": "full",
+      "n_docs": 184963,
+      "lift": 0.14,
+      "ci_lo": 0.09,
+      "ci_hi": 0.19,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s0",
+      "condition": "meta_in",
+      "scale": "5000",
+      "n_docs": 5000,
+      "lift": 0.075,
+      "ci_lo": 0.04,
+      "ci_hi": 0.115,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s0",
+      "condition": "meta_in",
+      "scale": "10000",
+      "n_docs": 10000,
+      "lift": 0.09,
+      "ci_lo": 0.055,
+      "ci_hi": 0.13,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s0",
+      "condition": "meta_in",
+      "scale": "15000",
+      "n_docs": 15000,
+      "lift": 0.065,
+      "ci_lo": 0.035,
+      "ci_hi": 0.1,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s0",
+      "condition": "meta_in",
+      "scale": "20000",
+      "n_docs": 20000,
+      "lift": 0.08,
+      "ci_lo": 0.045,
+      "ci_hi": 0.12,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s0",
+      "condition": "meta_in",
+      "scale": "25000",
+      "n_docs": 25000,
+      "lift": 0.09,
+      "ci_lo": 0.05,
+      "ci_hi": 0.13,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s0",
+      "condition": "meta_in",
+      "scale": "40000",
+      "n_docs": 40000,
+      "lift": 0.09,
+      "ci_lo": 0.05,
+      "ci_hi": 0.13,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s0",
+      "condition": "meta_in",
+      "scale": "50000",
+      "n_docs": 50000,
+      "lift": 0.09,
+      "ci_lo": 0.05,
+      "ci_hi": 0.13,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s0",
+      "condition": "meta_in",
+      "scale": "75000",
+      "n_docs": 75000,
+      "lift": 0.105,
+      "ci_lo": 0.065,
+      "ci_hi": 0.15,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s0",
+      "condition": "meta_in",
+      "scale": "100000",
+      "n_docs": 100000,
+      "lift": 0.11,
+      "ci_lo": 0.07,
+      "ci_hi": 0.155,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s0",
+      "condition": "meta_in",
+      "scale": "150000",
+      "n_docs": 150000,
+      "lift": 0.14,
+      "ci_lo": 0.095,
+      "ci_hi": 0.19,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s0",
+      "condition": "meta_in",
+      "scale": "full",
+      "n_docs": 184963,
+      "lift": 0.13,
+      "ci_lo": 0.085,
+      "ci_hi": 0.18,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s42",
+      "condition": "meta_first",
+      "scale": "5000",
+      "n_docs": 5000,
+      "lift": 0.075,
+      "ci_lo": 0.04,
+      "ci_hi": 0.115,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s42",
+      "condition": "meta_first",
+      "scale": "10000",
+      "n_docs": 10000,
+      "lift": 0.09,
+      "ci_lo": 0.055,
+      "ci_hi": 0.13,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s42",
+      "condition": "meta_first",
+      "scale": "15000",
+      "n_docs": 15000,
+      "lift": 0.075,
+      "ci_lo": 0.04,
+      "ci_hi": 0.115,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s42",
+      "condition": "meta_first",
+      "scale": "20000",
+      "n_docs": 20000,
+      "lift": 0.085,
+      "ci_lo": 0.05,
+      "ci_hi": 0.125,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s42",
+      "condition": "meta_first",
+      "scale": "25000",
+      "n_docs": 25000,
+      "lift": 0.1,
+      "ci_lo": 0.06,
+      "ci_hi": 0.145,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s42",
+      "condition": "meta_first",
+      "scale": "40000",
+      "n_docs": 40000,
+      "lift": 0.105,
+      "ci_lo": 0.06,
+      "ci_hi": 0.15,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s42",
+      "condition": "meta_first",
+      "scale": "50000",
+      "n_docs": 50000,
+      "lift": 0.105,
+      "ci_lo": 0.06,
+      "ci_hi": 0.15,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s42",
+      "condition": "meta_first",
+      "scale": "75000",
+      "n_docs": 75000,
+      "lift": 0.115,
+      "ci_lo": 0.07,
+      "ci_hi": 0.16,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s42",
+      "condition": "meta_first",
+      "scale": "100000",
+      "n_docs": 100000,
+      "lift": 0.095,
+      "ci_lo": 0.055,
+      "ci_hi": 0.14,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s42",
+      "condition": "meta_first",
+      "scale": "150000",
+      "n_docs": 150000,
+      "lift": 0.155,
+      "ci_lo": 0.105,
+      "ci_hi": 0.21,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s42",
+      "condition": "meta_first",
+      "scale": "full",
+      "n_docs": 184963,
+      "lift": 0.14,
+      "ci_lo": 0.09,
+      "ci_hi": 0.19,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s42",
+      "condition": "meta_in",
+      "scale": "5000",
+      "n_docs": 5000,
+      "lift": 0.075,
+      "ci_lo": 0.04,
+      "ci_hi": 0.115,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s42",
+      "condition": "meta_in",
+      "scale": "10000",
+      "n_docs": 10000,
+      "lift": 0.09,
+      "ci_lo": 0.055,
+      "ci_hi": 0.13,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s42",
+      "condition": "meta_in",
+      "scale": "15000",
+      "n_docs": 15000,
+      "lift": 0.075,
+      "ci_lo": 0.04,
+      "ci_hi": 0.115,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s42",
+      "condition": "meta_in",
+      "scale": "20000",
+      "n_docs": 20000,
+      "lift": 0.085,
+      "ci_lo": 0.05,
+      "ci_hi": 0.125,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s42",
+      "condition": "meta_in",
+      "scale": "25000",
+      "n_docs": 25000,
+      "lift": 0.1,
+      "ci_lo": 0.06,
+      "ci_hi": 0.145,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s42",
+      "condition": "meta_in",
+      "scale": "40000",
+      "n_docs": 40000,
+      "lift": 0.1,
+      "ci_lo": 0.06,
+      "ci_hi": 0.145,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s42",
+      "condition": "meta_in",
+      "scale": "50000",
+      "n_docs": 50000,
+      "lift": 0.1,
+      "ci_lo": 0.06,
+      "ci_hi": 0.145,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s42",
+      "condition": "meta_in",
+      "scale": "75000",
+      "n_docs": 75000,
+      "lift": 0.105,
+      "ci_lo": 0.065,
+      "ci_hi": 0.15,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s42",
+      "condition": "meta_in",
+      "scale": "100000",
+      "n_docs": 100000,
+      "lift": 0.085,
+      "ci_lo": 0.05,
+      "ci_hi": 0.125,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s42",
+      "condition": "meta_in",
+      "scale": "150000",
+      "n_docs": 150000,
+      "lift": 0.14,
+      "ci_lo": 0.095,
+      "ci_hi": 0.19,
+      "n": 200
+    },
+    {
+      "ladder": "prop_s42",
+      "condition": "meta_in",
+      "scale": "full",
+      "n_docs": 184963,
+      "lift": 0.13,
+      "ci_lo": 0.085,
+      "ci_hi": 0.18,
+      "n": 200
+    },
+    {
+      "ladder": "rr_full",
+      "condition": "meta_first",
+      "scale": "5000",
+      "n_docs": 5000,
+      "lift": 0.08,
+      "ci_lo": 0.045,
+      "ci_hi": 0.12,
+      "n": 200
+    },
+    {
+      "ladder": "rr_full",
+      "condition": "meta_first",
+      "scale": "10000",
+      "n_docs": 10000,
+      "lift": 0.1,
+      "ci_lo": 0.06,
+      "ci_hi": 0.145,
+      "n": 200
+    },
+    {
+      "ladder": "rr_full",
+      "condition": "meta_first",
+      "scale": "15000",
+      "n_docs": 15000,
+      "lift": 0.095,
+      "ci_lo": 0.055,
+      "ci_hi": 0.14,
+      "n": 200
+    },
+    {
+      "ladder": "rr_full",
+      "condition": "meta_first",
+      "scale": "20000",
+      "n_docs": 20000,
+      "lift": 0.095,
+      "ci_lo": 0.055,
+      "ci_hi": 0.135,
+      "n": 200
+    },
+    {
+      "ladder": "rr_full",
+      "condition": "meta_first",
+      "scale": "25000",
+      "n_docs": 25000,
+      "lift": 0.095,
+      "ci_lo": 0.055,
+      "ci_hi": 0.135,
+      "n": 200
+    },
+    {
+      "ladder": "rr_full",
+      "condition": "meta_first",
+      "scale": "40000",
+      "n_docs": 39999,
+      "lift": 0.075,
+      "ci_lo": 0.035,
+      "ci_hi": 0.115,
+      "n": 200
+    },
+    {
+      "ladder": "rr_full",
+      "condition": "meta_first",
+      "scale": "50000",
+      "n_docs": 49999,
+      "lift": 0.075,
+      "ci_lo": 0.035,
+      "ci_hi": 0.115,
+      "n": 200
+    },
+    {
+      "ladder": "rr_full",
+      "condition": "meta_first",
+      "scale": "75000",
+      "n_docs": 74999,
+      "lift": 0.09,
+      "ci_lo": 0.05,
+      "ci_hi": 0.135,
+      "n": 200
+    },
+    {
+      "ladder": "rr_full",
+      "condition": "meta_first",
+      "scale": "100000",
+      "n_docs": 99998,
+      "lift": 0.085,
+      "ci_lo": 0.045,
+      "ci_hi": 0.12512499999999818,
+      "n": 200
+    },
+    {
+      "ladder": "rr_full",
+      "condition": "meta_first",
+      "scale": "150000",
+      "n_docs": 149997,
+      "lift": 0.12,
+      "ci_lo": 0.075,
+      "ci_hi": 0.17,
+      "n": 200
+    },
+    {
+      "ladder": "rr_full",
+      "condition": "meta_first",
+      "scale": "full",
+      "n_docs": 184963,
+      "lift": 0.14,
+      "ci_lo": 0.09,
+      "ci_hi": 0.19,
+      "n": 200
+    },
+    {
+      "ladder": "rr_full",
+      "condition": "meta_in",
+      "scale": "5000",
+      "n_docs": 5000,
+      "lift": 0.08,
+      "ci_lo": 0.045,
+      "ci_hi": 0.12,
+      "n": 200
+    },
+    {
+      "ladder": "rr_full",
+      "condition": "meta_in",
+      "scale": "10000",
+      "n_docs": 10000,
+      "lift": 0.1,
+      "ci_lo": 0.06,
+      "ci_hi": 0.145,
+      "n": 200
+    },
+    {
+      "ladder": "rr_full",
+      "condition": "meta_in",
+      "scale": "15000",
+      "n_docs": 15000,
+      "lift": 0.095,
+      "ci_lo": 0.055,
+      "ci_hi": 0.14,
+      "n": 200
+    },
+    {
+      "ladder": "rr_full",
+      "condition": "meta_in",
+      "scale": "20000",
+      "n_docs": 20000,
+      "lift": 0.09,
+      "ci_lo": 0.055,
+      "ci_hi": 0.13,
+      "n": 200
+    },
+    {
+      "ladder": "rr_full",
+      "condition": "meta_in",
+      "scale": "25000",
+      "n_docs": 25000,
+      "lift": 0.09,
+      "ci_lo": 0.05,
+      "ci_hi": 0.13,
+      "n": 200
+    },
+    {
+      "ladder": "rr_full",
+      "condition": "meta_in",
+      "scale": "40000",
+      "n_docs": 39999,
+      "lift": 0.075,
+      "ci_lo": 0.04,
+      "ci_hi": 0.115,
+      "n": 200
+    },
+    {
+      "ladder": "rr_full",
+      "condition": "meta_in",
+      "scale": "50000",
+      "n_docs": 49999,
+      "lift": 0.075,
+      "ci_lo": 0.04,
+      "ci_hi": 0.115,
+      "n": 200
+    },
+    {
+      "ladder": "rr_full",
+      "condition": "meta_in",
+      "scale": "75000",
+      "n_docs": 74999,
+      "lift": 0.09,
+      "ci_lo": 0.055,
+      "ci_hi": 0.13,
+      "n": 200
+    },
+    {
+      "ladder": "rr_full",
+      "condition": "meta_in",
+      "scale": "100000",
+      "n_docs": 99998,
+      "lift": 0.08,
+      "ci_lo": 0.045,
+      "ci_hi": 0.12,
+      "n": 200
+    },
+    {
+      "ladder": "rr_full",
+      "condition": "meta_in",
+      "scale": "150000",
+      "n_docs": 149997,
+      "lift": 0.11,
+      "ci_lo": 0.07,
+      "ci_hi": 0.155,
+      "n": 200
+    },
+    {
+      "ladder": "rr_full",
+      "condition": "meta_in",
+      "scale": "full",
+      "n_docs": 184963,
+      "lift": 0.13,
+      "ci_lo": 0.085,
+      "ci_hi": 0.18,
+      "n": 200
+    }
+  ],
+  "drop": {
+    "prop_s0": {
+      "raw": {
+        "drop_5k_to_100k": {
+          "estimate": 0.225,
+          "ci_lo": 0.17,
+          "ci_hi": 0.285
+        },
+        "drop_5k_to_100k_minus_original_rr": {
+          "estimate": 0.015,
+          "ci_lo": -0.015,
+          "ci_hi": 0.045,
+          "original_rr_drop": 0.21
+        },
+        "drop_5k_to_full": {
+          "estimate": 0.285,
+          "ci_lo": 0.225,
+          "ci_hi": 0.35,
+          "full_n": 184963
+        },
+        "drop_5k_to_full_minus_original_rr": {
+          "estimate": 0.075,
+          "ci_lo": 0.035,
+          "ci_hi": 0.12,
+          "original_rr_drop": 0.21
+        }
+      },
+      "meta_first": {
+        "drop_5k_to_100k": {
+          "estimate": 0.18,
+          "ci_lo": 0.13,
+          "ci_hi": 0.235
+        },
+        "drop_5k_to_100k_minus_original_rr": {
+          "estimate": -0.025,
+          "ci_lo": -0.055,
+          "ci_hi": 0.005,
+          "original_rr_drop": 0.205
+        },
+        "drop_5k_to_full": {
+          "estimate": 0.22,
+          "ci_lo": 0.165,
+          "ci_hi": 0.28,
+          "full_n": 184963
+        },
+        "drop_5k_to_full_minus_original_rr": {
+          "estimate": 0.015,
+          "ci_lo": -0.01,
+          "ci_hi": 0.04,
+          "original_rr_drop": 0.205
+        }
+      },
+      "meta_in": {
+        "drop_5k_to_100k": {
+          "estimate": 0.19,
+          "ci_lo": 0.135,
+          "ci_hi": 0.245
+        },
+        "drop_5k_to_100k_minus_original_rr": {
+          "estimate": -0.02,
+          "ci_lo": -0.05,
+          "ci_hi": 0.005,
+          "original_rr_drop": 0.21
+        },
+        "drop_5k_to_full": {
+          "estimate": 0.23,
+          "ci_lo": 0.175,
+          "ci_hi": 0.29,
+          "full_n": 184963
+        },
+        "drop_5k_to_full_minus_original_rr": {
+          "estimate": 0.02,
+          "ci_lo": -0.005,
+          "ci_hi": 0.05,
+          "original_rr_drop": 0.21
+        }
+      }
+    },
+    "prop_s42": {
+      "raw": {
+        "drop_5k_to_100k": {
+          "estimate": 0.23,
+          "ci_lo": 0.175,
+          "ci_hi": 0.29
+        },
+        "drop_5k_to_100k_minus_original_rr": {
+          "estimate": 0.02,
+          "ci_lo": -0.01,
+          "ci_hi": 0.055,
+          "original_rr_drop": 0.21
+        },
+        "drop_5k_to_full": {
+          "estimate": 0.31,
+          "ci_lo": 0.245,
+          "ci_hi": 0.375,
+          "full_n": 184963
+        },
+        "drop_5k_to_full_minus_original_rr": {
+          "estimate": 0.1,
+          "ci_lo": 0.06,
+          "ci_hi": 0.145,
+          "original_rr_drop": 0.21
+        }
+      },
+      "meta_first": {
+        "drop_5k_to_100k": {
+          "estimate": 0.21,
+          "ci_lo": 0.155,
+          "ci_hi": 0.27
+        },
+        "drop_5k_to_100k_minus_original_rr": {
+          "estimate": 0.005,
+          "ci_lo": -0.025,
+          "ci_hi": 0.035,
+          "original_rr_drop": 0.205
+        },
+        "drop_5k_to_full": {
+          "estimate": 0.245,
+          "ci_lo": 0.185,
+          "ci_hi": 0.305,
+          "full_n": 184963
+        },
+        "drop_5k_to_full_minus_original_rr": {
+          "estimate": 0.04,
+          "ci_lo": 0.015,
+          "ci_hi": 0.07,
+          "original_rr_drop": 0.205
+        }
+      },
+      "meta_in": {
+        "drop_5k_to_100k": {
+          "estimate": 0.22,
+          "ci_lo": 0.165,
+          "ci_hi": 0.28
+        },
+        "drop_5k_to_100k_minus_original_rr": {
+          "estimate": 0.01,
+          "ci_lo": -0.015,
+          "ci_hi": 0.04,
+          "original_rr_drop": 0.21
+        },
+        "drop_5k_to_full": {
+          "estimate": 0.255,
+          "ci_lo": 0.195,
+          "ci_hi": 0.315,
+          "full_n": 184963
+        },
+        "drop_5k_to_full_minus_original_rr": {
+          "estimate": 0.045,
+          "ci_lo": 0.02,
+          "ci_hi": 0.075,
+          "original_rr_drop": 0.21
+        }
+      }
+    },
+    "rr_full": {
+      "raw": {
+        "drop_5k_to_100k": {
+          "estimate": 0.21,
+          "ci_lo": 0.155,
+          "ci_hi": 0.27
+        },
+        "drop_5k_to_100k_minus_original_rr": {
+          "estimate": 0.0,
+          "ci_lo": 0.0,
+          "ci_hi": 0.0,
+          "original_rr_drop": 0.21
+        },
+        "drop_5k_to_full": {
+          "estimate": 0.28,
+          "ci_lo": 0.22,
+          "ci_hi": 0.345,
+          "full_n": 184963
+        },
+        "drop_5k_to_full_minus_original_rr": {
+          "estimate": 0.07,
+          "ci_lo": 0.035,
+          "ci_hi": 0.105,
+          "original_rr_drop": 0.21
+        }
+      },
+      "meta_first": {
+        "drop_5k_to_100k": {
+          "estimate": 0.205,
+          "ci_lo": 0.15,
+          "ci_hi": 0.26
+        },
+        "drop_5k_to_100k_minus_original_rr": {
+          "estimate": 0.0,
+          "ci_lo": 0.0,
+          "ci_hi": 0.0,
+          "original_rr_drop": 0.205
+        },
+        "drop_5k_to_full": {
+          "estimate": 0.22,
+          "ci_lo": 0.165,
+          "ci_hi": 0.28,
+          "full_n": 184963
+        },
+        "drop_5k_to_full_minus_original_rr": {
+          "estimate": 0.015,
+          "ci_lo": 0.0,
+          "ci_hi": 0.035,
+          "original_rr_drop": 0.205
+        }
+      },
+      "meta_in": {
+        "drop_5k_to_100k": {
+          "estimate": 0.21,
+          "ci_lo": 0.155,
+          "ci_hi": 0.27
+        },
+        "drop_5k_to_100k_minus_original_rr": {
+          "estimate": 0.0,
+          "ci_lo": 0.0,
+          "ci_hi": 0.0,
+          "original_rr_drop": 0.21
+        },
+        "drop_5k_to_full": {
+          "estimate": 0.23,
+          "ci_lo": 0.175,
+          "ci_hi": 0.29,
+          "full_n": 184963
+        },
+        "drop_5k_to_full_minus_original_rr": {
+          "estimate": 0.02,
+          "ci_lo": 0.005,
+          "ci_hi": 0.04,
+          "original_rr_drop": 0.21
+        }
+      }
+    }
+  },
+  "invariants": {
+    "prop_s0": {
+      "containment": 0,
+      "nested_corpus": 0,
+      "score_monotonicity": 0
+    },
+    "prop_s42": {
+      "containment": 0,
+      "nested_corpus": 0,
+      "score_monotonicity": 0
+    },
+    "rr_full": {
+      "containment": 0,
+      "nested_corpus": 0,
+      "score_monotonicity": 0
+    }
+  },
+  "acceptance": [
+    {
+      "name": "invariants_zero_prop_s0",
+      "pass": true,
+      "values": {
+        "containment": 0,
+        "nested_corpus": 0,
+        "score_monotonicity": 0
+      }
+    },
+    {
+      "name": "invariants_zero_prop_s42",
+      "pass": true,
+      "values": {
+        "containment": 0,
+        "nested_corpus": 0,
+        "score_monotonicity": 0
+      }
+    },
+    {
+      "name": "invariants_zero_rr_full",
+      "pass": true,
+      "values": {
+        "containment": 0,
+        "nested_corpus": 0,
+        "score_monotonicity": 0
+      }
+    }
+  ],
+  "inputs": [
+    "<repo>/artifacts/published/revision1/exact_ladder_pool_prop_s0_openai_primary200.json",
+    "<repo>/artifacts/published/revision1/exact_ladder_pool_prop_s42_openai_primary200.json",
+    "<repo>/artifacts/published/revision1/exact_ladder_pool_rr_full_openai_primary200.json"
+  ]
+}

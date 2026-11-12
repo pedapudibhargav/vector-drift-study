@@ -1,0 +1,837 @@
+# Document length and token statistics (revision W6)
+
+## Keys / README
+
+This markdown is the human-readable copy of `doc_length_stats.json`.
+Headline numbers use the **ladder pool** (`n = 99998`): `embedding IS NOT NULL AND scale_rank IS NOT NULL AND scale_rank < 100000`.
+The **all-rows** block is secondary (`n = 103033`), including 3,035 rows with `scale_rank >= 100000`.
+`doc_token_cuts_openai.json` is a `doc_id` map of `title + ' ' + chunk_text` `{chars, tokens, cut_char_8191}` from official tiktoken; see `doc_token_cuts_openai.md`.
+
+### text_definitions
+- `title_plus_chunk`: coalesce(title,'') + ' ' + coalesce(chunk_text,'') (BM25 / task W6)
+- `chunk_text_only`: chunk_text as stored in document_chunks (ingest _read_body; title is a prefix of chunk_text for nearly all rows)
+- `tokenizer`: cl100k_base encode(text, disallowed_special=())
+- `tokenizer_implementation`: tiktoken
+- `tokenizer_note`: Official tiktoken (Docker image vector-drift-research-vector-drift-api). data/rev1_doc_token_cuts.jsonl was produced with official tiktoken and is not regenerated on the host. There is no pure-Python tokenizer fallback.
+- `cut_char_8191`: len(decode(tokens[:8191])) when that string is a prefix of text; else longest prefix with <=8191 tokens
+- `openai_truncate_rule`: tokens > 8191
+- `openai_ingest_cap`: document_chunks.chunk_text was already truncated to 8,191 tokens at ingestion (scripts/erb/ingest_erb.py lines ~108-110: truncate_for_embedding(_read_body(...)); apps/api/app/services/embedding.py MAX_INPUT_TOKENS=8191). Documents at the cap therefore have chunk_text tokens == 8191, not > 8191. title + ' ' + chunk_text can exceed 8191 tokens because the title is prepended again.
+- `title_duplication`: title + ' ' + chunk_text duplicates the title when chunk_text already starts with title (ingest _read_body).
+- `titan_truncate_rule`: chars > 24000
+- `db_token_count_column`: present on document_chunks.token_count in this database; length stats here use tiktoken cuts, not that column
+- `pool_table`: document_chunks
+- `ladder_definition`: embedding IS NOT NULL AND scale_rank IS NOT NULL AND scale_rank < 100000
+- `n_ladder_pool`: 99998
+- `n_all_rows`: 103033
+- `n_beyond_ladder`: 3035
+- `n_pool_export`: 103033
+- `n_ladder_export`: 99998
+- `headline_population`: ladder_pool
+
+Tokenizer: cl100k_base (`tiktoken`). OpenAI cut: 8,191 tokens. Titan cap: 24,000 characters.
+
+Ingest (`scripts/erb/ingest_erb.py` ~108-110) stored `truncate_for_embedding(_read_body(...))`, so `chunk_text` is already capped at 8,191 tokens. Eleven documents sit at exactly that cap (`tokens == 8191` on chunk_text). `title + ' ' + chunk_text` duplicates the title when `chunk_text` starts with `title`.
+
+## Title prefix (`chunk_text` starts with `title`)
+- ladder pool: 99997/99998 (0.999989999799996)
+- all rows: 103032/103033 (0.9999902943717062)
+
+## Ladder pool (`document_chunks`, n=99998)
+### title + space + chunk_text (n=99998)
+- median chars: 5613.0
+- p90 chars: 10118.300000000003
+- max chars: 34387
+- > 4000 chars: 72029/99998 (0.7203)
+- > 8191 chars: 21145/99998 (0.2115)
+- > 24000 chars: 93/99998 (0.0009)
+- > 8191 tokens: 11/99998 (0.0001)
+- >= 8191 tokens: 11/99998 (0.0001)
+### chunk_text only (n=99998)
+- median chars: 5543.0
+- p90 chars: 10058.0
+- max chars: 34284
+- > 4000 chars: 71401/99998 (0.7140)
+- > 8191 chars: 20698/99998 (0.2070)
+- > 24000 chars: 90/99998 (0.0009)
+- > 8191 tokens: 0/99998 (0.0000)
+- >= 8191 tokens: 11/99998 (0.0001)
+
+## All rows (`document_chunks`, n=103033; includes 3035 rows beyond the ladder)
+includes 3035 rows beyond the ladder (scale_rank >= 100000; all still have embeddings).
+### title + space + chunk_text (n=103033)
+- median chars: 5586.0
+- p90 chars: 10049.0
+- max chars: 34387
+- > 4000 chars: 74462/103033 (0.7227)
+- > 8191 chars: 21235/103033 (0.2061)
+- > 24000 chars: 93/103033 (0.0009)
+- > 8191 tokens: 11/103033 (0.0001)
+- >= 8191 tokens: 11/103033 (0.0001)
+### chunk_text only (n=103033)
+- median chars: 5513.0
+- p90 chars: 9992.0
+- max chars: 34284
+- > 4000 chars: 73767/103033 (0.7160)
+- > 8191 chars: 20776/103033 (0.2016)
+- > 24000 chars: 90/103033 (0.0009)
+- > 8191 tokens: 0/103033 (0.0000)
+- >= 8191 tokens: 11/103033 (0.0001)
+
+## Unique gold documents of primary-200 bank
+Union of `expected_doc_ids` over 200 eval ids: **272** (in DB: 272; in ladder pool: 272; missing: []).
+### title + space + chunk_text (n=272)
+- median chars: 5440.5
+- p90 chars: 11244.9
+- max chars: 28666
+- > 4000 chars: 184/272 (0.6765)
+- > 8191 chars: 66/272 (0.2426)
+- > 24000 chars: 2/272 (0.0074)
+- > 8191 tokens: 0/272 (0.0000)
+- >= 8191 tokens: 0/272 (0.0000)
+### chunk_text only (n=272)
+- median chars: 5353.5
+- p90 chars: 11187.3
+- max chars: 28602
+- > 4000 chars: 184/272 (0.6765)
+- > 8191 chars: 66/272 (0.2426)
+- > 24000 chars: 2/272 (0.0074)
+- > 8191 tokens: 0/272 (0.0000)
+- >= 8191 tokens: 0/272 (0.0000)
+
+## By source_type, ladder pool, both text definitions
+#### confluence
+### confluence title + space + chunk_text (n=5189)
+- median chars: 9695.0
+- p90 chars: 12618.2
+- max chars: 24932
+- > 4000 chars: 5014/5189 (0.9663)
+- > 8191 chars: 4531/5189 (0.8732)
+- > 24000 chars: 2/5189 (0.0004)
+- > 8191 tokens: 0/5189 (0.0000)
+- >= 8191 tokens: 0/5189 (0.0000)
+### confluence chunk_text only (n=5189)
+- median chars: 9637.0
+- p90 chars: 12564.599999999999
+- max chars: 24880
+- > 4000 chars: 5013/5189 (0.9661)
+- > 8191 chars: 4501/5189 (0.8674)
+- > 24000 chars: 2/5189 (0.0004)
+- > 8191 tokens: 0/5189 (0.0000)
+- >= 8191 tokens: 0/5189 (0.0000)
+#### fireflies
+### fireflies title + space + chunk_text (n=10173)
+- median chars: 11174.0
+- p90 chars: 14817.0
+- max chars: 34387
+- > 4000 chars: 10128/10173 (0.9956)
+- > 8191 chars: 9461/10173 (0.9300)
+- > 24000 chars: 91/10173 (0.0089)
+- > 8191 tokens: 11/10173 (0.0011)
+- >= 8191 tokens: 11/10173 (0.0011)
+### fireflies chunk_text only (n=10173)
+- median chars: 11116.0
+- p90 chars: 14756.000000000005
+- max chars: 34284
+- > 4000 chars: 10128/10173 (0.9956)
+- > 8191 chars: 9420/10173 (0.9260)
+- > 24000 chars: 88/10173 (0.0087)
+- > 8191 tokens: 0/10173 (0.0000)
+- >= 8191 tokens: 11/10173 (0.0011)
+#### github
+### github title + space + chunk_text (n=8052)
+- median chars: 4705.5
+- p90 chars: 6540.0
+- max chars: 13933
+- > 4000 chars: 5823/8052 (0.7232)
+- > 8191 chars: 41/8052 (0.0051)
+- > 24000 chars: 0/8052 (0.0000)
+- > 8191 tokens: 0/8052 (0.0000)
+- >= 8191 tokens: 0/8052 (0.0000)
+### github chunk_text only (n=8052)
+- median chars: 4632.5
+- p90 chars: 6465.900000000001
+- max chars: 13836
+- > 4000 chars: 5639/8052 (0.7003)
+- > 8191 chars: 38/8052 (0.0047)
+- > 24000 chars: 0/8052 (0.0000)
+- > 8191 tokens: 0/8052 (0.0000)
+- >= 8191 tokens: 0/8052 (0.0000)
+#### gmail
+### gmail title + space + chunk_text (n=14067)
+- median chars: 7039.0
+- p90 chars: 8829.4
+- max chars: 15599
+- > 4000 chars: 13996/14067 (0.9950)
+- > 8191 chars: 2794/14067 (0.1986)
+- > 24000 chars: 0/14067 (0.0000)
+- > 8191 tokens: 0/14067 (0.0000)
+- >= 8191 tokens: 0/14067 (0.0000)
+### gmail chunk_text only (n=14067)
+- median chars: 6972.0
+- p90 chars: 8762.0
+- max chars: 15515
+- > 4000 chars: 13988/14067 (0.9944)
+- > 8191 chars: 2607/14067 (0.1853)
+- > 24000 chars: 0/14067 (0.0000)
+- > 8191 tokens: 0/14067 (0.0000)
+- >= 8191 tokens: 0/14067 (0.0000)
+#### google_drive
+### google_drive title + space + chunk_text (n=14122)
+- median chars: 7109.0
+- p90 chars: 9276.0
+- max chars: 22618
+- > 4000 chars: 13635/14122 (0.9655)
+- > 8191 chars: 3742/14122 (0.2650)
+- > 24000 chars: 0/14122 (0.0000)
+- > 8191 tokens: 0/14122 (0.0000)
+- >= 8191 tokens: 0/14122 (0.0000)
+### google_drive chunk_text only (n=14122)
+- median chars: 7059.0
+- p90 chars: 9213.8
+- max chars: 22574
+- > 4000 chars: 13616/14122 (0.9642)
+- > 8191 chars: 3598/14122 (0.2548)
+- > 24000 chars: 0/14122 (0.0000)
+- > 8191 tokens: 0/14122 (0.0000)
+- >= 8191 tokens: 0/14122 (0.0000)
+#### hubspot
+### hubspot title + space + chunk_text (n=14098)
+- median chars: 3018.0
+- p90 chars: 4339.300000000001
+- max chars: 8185
+- > 4000 chars: 2306/14098 (0.1636)
+- > 8191 chars: 0/14098 (0.0000)
+- > 24000 chars: 0/14098 (0.0000)
+- > 8191 tokens: 0/14098 (0.0000)
+- >= 8191 tokens: 0/14098 (0.0000)
+### hubspot chunk_text only (n=14098)
+- median chars: 2997.0
+- p90 chars: 4314.300000000001
+- max chars: 8176
+- > 4000 chars: 2226/14098 (0.1579)
+- > 8191 chars: 0/14098 (0.0000)
+- > 24000 chars: 0/14098 (0.0000)
+- > 8191 tokens: 0/14098 (0.0000)
+- >= 8191 tokens: 0/14098 (0.0000)
+#### jira
+### jira title + space + chunk_text (n=6118)
+- median chars: 5671.0
+- p90 chars: 6912.0
+- max chars: 10519
+- > 4000 chars: 5808/6118 (0.9493)
+- > 8191 chars: 80/6118 (0.0131)
+- > 24000 chars: 0/6118 (0.0000)
+- > 8191 tokens: 0/6118 (0.0000)
+- >= 8191 tokens: 0/6118 (0.0000)
+### jira chunk_text only (n=6118)
+- median chars: 5564.0
+- p90 chars: 6801.3
+- max chars: 10433
+- > 4000 chars: 5772/6118 (0.9434)
+- > 8191 chars: 68/6118 (0.0111)
+- > 24000 chars: 0/6118 (0.0000)
+- > 8191 tokens: 0/6118 (0.0000)
+- >= 8191 tokens: 0/6118 (0.0000)
+#### linear
+### linear title + space + chunk_text (n=14117)
+- median chars: 5084.0
+- p90 chars: 7052.4
+- max chars: 17478
+- > 4000 chars: 11390/14117 (0.8068)
+- > 8191 chars: 455/14117 (0.0322)
+- > 24000 chars: 0/14117 (0.0000)
+- > 8191 tokens: 0/14117 (0.0000)
+- >= 8191 tokens: 0/14117 (0.0000)
+### linear chunk_text only (n=14117)
+- median chars: 5009.0
+- p90 chars: 6971.4
+- max chars: 17383
+- > 4000 chars: 11136/14117 (0.7888)
+- > 8191 chars: 426/14117 (0.0302)
+- > 24000 chars: 0/14117 (0.0000)
+- > 8191 tokens: 0/14117 (0.0000)
+- >= 8191 tokens: 0/14117 (0.0000)
+#### slack
+### slack title + space + chunk_text (n=14062)
+- median chars: 3288.0
+- p90 chars: 4991.9
+- max chars: 16722
+- > 4000 chars: 3929/14062 (0.2794)
+- > 8191 chars: 41/14062 (0.0029)
+- > 24000 chars: 0/14062 (0.0000)
+- > 8191 tokens: 0/14062 (0.0000)
+- >= 8191 tokens: 0/14062 (0.0000)
+### slack chunk_text only (n=14062)
+- median chars: 3275.0
+- p90 chars: 4981.0
+- max chars: 12889
+- > 4000 chars: 3883/14062 (0.2761)
+- > 8191 chars: 40/14062 (0.0028)
+- > 24000 chars: 0/14062 (0.0000)
+- > 8191 tokens: 0/14062 (0.0000)
+- >= 8191 tokens: 0/14062 (0.0000)
+
+## By source_type, all rows, both text definitions
+#### confluence
+### confluence title + space + chunk_text (n=5189)
+- median chars: 9695.0
+- p90 chars: 12618.2
+- max chars: 24932
+- > 4000 chars: 5014/5189 (0.9663)
+- > 8191 chars: 4531/5189 (0.8732)
+- > 24000 chars: 2/5189 (0.0004)
+- > 8191 tokens: 0/5189 (0.0000)
+- >= 8191 tokens: 0/5189 (0.0000)
+### confluence chunk_text only (n=5189)
+- median chars: 9637.0
+- p90 chars: 12564.599999999999
+- max chars: 24880
+- > 4000 chars: 5013/5189 (0.9661)
+- > 8191 chars: 4501/5189 (0.8674)
+- > 24000 chars: 2/5189 (0.0004)
+- > 8191 tokens: 0/5189 (0.0000)
+- >= 8191 tokens: 0/5189 (0.0000)
+#### fireflies
+### fireflies title + space + chunk_text (n=10173)
+- median chars: 11174.0
+- p90 chars: 14817.0
+- max chars: 34387
+- > 4000 chars: 10128/10173 (0.9956)
+- > 8191 chars: 9461/10173 (0.9300)
+- > 24000 chars: 91/10173 (0.0089)
+- > 8191 tokens: 11/10173 (0.0011)
+- >= 8191 tokens: 11/10173 (0.0011)
+### fireflies chunk_text only (n=10173)
+- median chars: 11116.0
+- p90 chars: 14756.000000000005
+- max chars: 34284
+- > 4000 chars: 10128/10173 (0.9956)
+- > 8191 chars: 9420/10173 (0.9260)
+- > 24000 chars: 88/10173 (0.0087)
+- > 8191 tokens: 0/10173 (0.0000)
+- >= 8191 tokens: 11/10173 (0.0011)
+#### github
+### github title + space + chunk_text (n=8052)
+- median chars: 4705.5
+- p90 chars: 6540.0
+- max chars: 13933
+- > 4000 chars: 5823/8052 (0.7232)
+- > 8191 chars: 41/8052 (0.0051)
+- > 24000 chars: 0/8052 (0.0000)
+- > 8191 tokens: 0/8052 (0.0000)
+- >= 8191 tokens: 0/8052 (0.0000)
+### github chunk_text only (n=8052)
+- median chars: 4632.5
+- p90 chars: 6465.900000000001
+- max chars: 13836
+- > 4000 chars: 5639/8052 (0.7003)
+- > 8191 chars: 38/8052 (0.0047)
+- > 24000 chars: 0/8052 (0.0000)
+- > 8191 tokens: 0/8052 (0.0000)
+- >= 8191 tokens: 0/8052 (0.0000)
+#### gmail
+### gmail title + space + chunk_text (n=14070)
+- median chars: 7039.0
+- p90 chars: 8829.1
+- max chars: 15599
+- > 4000 chars: 13999/14070 (0.9950)
+- > 8191 chars: 2795/14070 (0.1986)
+- > 24000 chars: 0/14070 (0.0000)
+- > 8191 tokens: 0/14070 (0.0000)
+- >= 8191 tokens: 0/14070 (0.0000)
+### gmail chunk_text only (n=14070)
+- median chars: 6972.0
+- p90 chars: 8762.0
+- max chars: 15515
+- > 4000 chars: 13991/14070 (0.9944)
+- > 8191 chars: 2608/14070 (0.1854)
+- > 24000 chars: 0/14070 (0.0000)
+- > 8191 tokens: 0/14070 (0.0000)
+- >= 8191 tokens: 0/14070 (0.0000)
+#### google_drive
+### google_drive title + space + chunk_text (n=14125)
+- median chars: 7109.0
+- p90 chars: 9276.6
+- max chars: 22618
+- > 4000 chars: 13638/14125 (0.9655)
+- > 8191 chars: 3743/14125 (0.2650)
+- > 24000 chars: 0/14125 (0.0000)
+- > 8191 tokens: 0/14125 (0.0000)
+- >= 8191 tokens: 0/14125 (0.0000)
+### google_drive chunk_text only (n=14125)
+- median chars: 7059.0
+- p90 chars: 9214.0
+- max chars: 22574
+- > 4000 chars: 13619/14125 (0.9642)
+- > 8191 chars: 3599/14125 (0.2548)
+- > 24000 chars: 0/14125 (0.0000)
+- > 8191 tokens: 0/14125 (0.0000)
+- >= 8191 tokens: 0/14125 (0.0000)
+#### hubspot
+### hubspot title + space + chunk_text (n=14101)
+- median chars: 3018.0
+- p90 chars: 4340.0
+- max chars: 8185
+- > 4000 chars: 2307/14101 (0.1636)
+- > 8191 chars: 0/14101 (0.0000)
+- > 24000 chars: 0/14101 (0.0000)
+- > 8191 tokens: 0/14101 (0.0000)
+- >= 8191 tokens: 0/14101 (0.0000)
+### hubspot chunk_text only (n=14101)
+- median chars: 2997.0
+- p90 chars: 4315.0
+- max chars: 8176
+- > 4000 chars: 2227/14101 (0.1579)
+- > 8191 chars: 0/14101 (0.0000)
+- > 24000 chars: 0/14101 (0.0000)
+- > 8191 tokens: 0/14101 (0.0000)
+- >= 8191 tokens: 0/14101 (0.0000)
+#### jira
+### jira title + space + chunk_text (n=6118)
+- median chars: 5671.0
+- p90 chars: 6912.0
+- max chars: 10519
+- > 4000 chars: 5808/6118 (0.9493)
+- > 8191 chars: 80/6118 (0.0131)
+- > 24000 chars: 0/6118 (0.0000)
+- > 8191 tokens: 0/6118 (0.0000)
+- >= 8191 tokens: 0/6118 (0.0000)
+### jira chunk_text only (n=6118)
+- median chars: 5564.0
+- p90 chars: 6801.3
+- max chars: 10433
+- > 4000 chars: 5772/6118 (0.9434)
+- > 8191 chars: 68/6118 (0.0111)
+- > 24000 chars: 0/6118 (0.0000)
+- > 8191 tokens: 0/6118 (0.0000)
+- >= 8191 tokens: 0/6118 (0.0000)
+#### linear
+### linear title + space + chunk_text (n=17139)
+- median chars: 5089.0
+- p90 chars: 7048.200000000001
+- max chars: 17478
+- > 4000 chars: 13816/17139 (0.8061)
+- > 8191 chars: 543/17139 (0.0317)
+- > 24000 chars: 0/17139 (0.0000)
+- > 8191 tokens: 0/17139 (0.0000)
+- >= 8191 tokens: 0/17139 (0.0000)
+### linear chunk_text only (n=17139)
+- median chars: 5011.0
+- p90 chars: 6966.0
+- max chars: 17383
+- > 4000 chars: 13495/17139 (0.7874)
+- > 8191 chars: 502/17139 (0.0293)
+- > 24000 chars: 0/17139 (0.0000)
+- > 8191 tokens: 0/17139 (0.0000)
+- >= 8191 tokens: 0/17139 (0.0000)
+#### slack
+### slack title + space + chunk_text (n=14066)
+- median chars: 3288.5
+- p90 chars: 4991.5
+- max chars: 16722
+- > 4000 chars: 3929/14066 (0.2793)
+- > 8191 chars: 41/14066 (0.0029)
+- > 24000 chars: 0/14066 (0.0000)
+- > 8191 tokens: 0/14066 (0.0000)
+- >= 8191 tokens: 0/14066 (0.0000)
+### slack chunk_text only (n=14066)
+- median chars: 3275.0
+- p90 chars: 4981.0
+- max chars: 12889
+- > 4000 chars: 3883/14066 (0.2761)
+- > 8191 chars: 40/14066 (0.0028)
+- > 24000 chars: 0/14066 (0.0000)
+- > 8191 tokens: 0/14066 (0.0000)
+- >= 8191 tokens: 0/14066 (0.0000)
+
+## Truncation vs paper (ladder pool is headline)
+- Paper: OpenAI 11 at 8,191 tokens; Titan 90 at 24,000 chars (5 gold anchors).
+### ladder_pool
+- title + space + chunk_text: OpenAI truncated (tokens > 8191) 11 (gold_anchor 1, primary200_gold 0); Titan truncated (chars > 24000) 93 (gold_anchor 5, primary200_gold 2).
+  - title + space + chunk_text tokens >= 8191: 11 (gold_anchor 1, primary200_gold 0).
+  - OpenAI gold-anchor doc ids (tokens > 8191): ['dsid_9ed01291d81947f49500df5fb28ab724']
+  - OpenAI gold-anchor doc ids (tokens >= 8191): ['dsid_9ed01291d81947f49500df5fb28ab724']
+  - Titan gold-anchor doc ids (chars > 24000): ['dsid_05faa1ab6427403888a06d7083c7f0a9', 'dsid_6c4c1c875e704f09b4d791d64d7bc7e5', 'dsid_7d9551aa21124d70b0e247c390d88622', 'dsid_9ed01291d81947f49500df5fb28ab724', 'dsid_aa97b7293f9f4f3c8180f645e4fe5911']
+  - n_truncated_in_primary200_gold OpenAI: 0 []; Titan: 2 ['dsid_6c4c1c875e704f09b4d791d64d7bc7e5', 'dsid_aa97b7293f9f4f3c8180f645e4fe5911']
+- chunk_text only: OpenAI truncated (tokens > 8191) 0 (gold_anchor 0, primary200_gold 0); Titan truncated (chars > 24000) 90 (gold_anchor 5, primary200_gold 2).
+  - chunk_text only tokens >= 8191: 11 (gold_anchor 1, primary200_gold 0).
+  - OpenAI gold-anchor doc ids (tokens > 8191): []
+  - OpenAI gold-anchor doc ids (tokens >= 8191): ['dsid_9ed01291d81947f49500df5fb28ab724']
+  - Titan gold-anchor doc ids (chars > 24000): ['dsid_05faa1ab6427403888a06d7083c7f0a9', 'dsid_6c4c1c875e704f09b4d791d64d7bc7e5', 'dsid_7d9551aa21124d70b0e247c390d88622', 'dsid_9ed01291d81947f49500df5fb28ab724', 'dsid_aa97b7293f9f4f3c8180f645e4fe5911']
+  - n_truncated_in_primary200_gold OpenAI: 0 []; Titan: 2 ['dsid_6c4c1c875e704f09b4d791d64d7bc7e5', 'dsid_aa97b7293f9f4f3c8180f645e4fe5911']
+### all_rows
+- title + space + chunk_text: OpenAI truncated (tokens > 8191) 11 (gold_anchor 1, primary200_gold 0); Titan truncated (chars > 24000) 93 (gold_anchor 5, primary200_gold 2).
+  - title + space + chunk_text tokens >= 8191: 11 (gold_anchor 1, primary200_gold 0).
+  - OpenAI gold-anchor doc ids (tokens > 8191): ['dsid_9ed01291d81947f49500df5fb28ab724']
+  - OpenAI gold-anchor doc ids (tokens >= 8191): ['dsid_9ed01291d81947f49500df5fb28ab724']
+  - Titan gold-anchor doc ids (chars > 24000): ['dsid_05faa1ab6427403888a06d7083c7f0a9', 'dsid_6c4c1c875e704f09b4d791d64d7bc7e5', 'dsid_7d9551aa21124d70b0e247c390d88622', 'dsid_9ed01291d81947f49500df5fb28ab724', 'dsid_aa97b7293f9f4f3c8180f645e4fe5911']
+  - n_truncated_in_primary200_gold OpenAI: 0 []; Titan: 2 ['dsid_6c4c1c875e704f09b4d791d64d7bc7e5', 'dsid_aa97b7293f9f4f3c8180f645e4fe5911']
+- chunk_text only: OpenAI truncated (tokens > 8191) 0 (gold_anchor 0, primary200_gold 0); Titan truncated (chars > 24000) 90 (gold_anchor 5, primary200_gold 2).
+  - chunk_text only tokens >= 8191: 11 (gold_anchor 1, primary200_gold 0).
+  - OpenAI gold-anchor doc ids (tokens > 8191): []
+  - OpenAI gold-anchor doc ids (tokens >= 8191): ['dsid_9ed01291d81947f49500df5fb28ab724']
+  - Titan gold-anchor doc ids (chars > 24000): ['dsid_05faa1ab6427403888a06d7083c7f0a9', 'dsid_6c4c1c875e704f09b4d791d64d7bc7e5', 'dsid_7d9551aa21124d70b0e247c390d88622', 'dsid_9ed01291d81947f49500df5fb28ab724', 'dsid_aa97b7293f9f4f3c8180f645e4fe5911']
+  - n_truncated_in_primary200_gold OpenAI: 0 []; Titan: 2 ['dsid_6c4c1c875e704f09b4d791d64d7bc7e5', 'dsid_aa97b7293f9f4f3c8180f645e4fe5911']
+
+## Raw-file pre-truncation character lengths
+Character lengths of raw EnterpriseRAG-Bench files for documents at the ingest token cap (chunk_text tokens >= 8191) plus all primary-200 gold documents. No tiktoken. ingest _read_body is applied for raw_body_chars. chars_cut_* reported only for capped documents.
+- raw_dir: `<repo>/data/enterprise_rag_bench/documents`
+- n_capped_chunk_text_ge_8191_tokens: 11
+- capped_doc_ids: ['dsid_21066424d3cc4f3a956a77a7a5f5b0fb', 'dsid_26690647d18349be91cd9c89c516f782', 'dsid_58ca20423ede49fd82466120c6339dd5', 'dsid_5bc9e06d059d43f7aa5c5ff0fc00a5a5', 'dsid_6c5a304df2624649ae057b3d2de3028d', 'dsid_7b0514411b404df4b1fb1d6d137f81ed', 'dsid_9ed01291d81947f49500df5fb28ab724', 'dsid_c4bd1ea6dcc84209b1d4c30aca74caea', 'dsid_c70d8bffc59745ccbcf1770df2ec6152', 'dsid_dc29174c3c6a4aba82630af581c4d772', 'dsid_de5a4cfb2e144c4794ee943c2ec53b72']
+- n_primary200_gold: 272
+- n_raw_files_read: 283
+- missing_raw_files: []
+
+- `dsid_01eaeaf6045941beaeaf74e6170aceea` file=`dsid_01eaeaf6045941beaeaf74e6170aceea__responder-rotation-synthesis-and-deferred-postmortem-protocol-2026.txt` capped=False gold200=True raw_file_chars=7923 raw_body_chars=7923 stored_chunk_text_chars=7923 stored_title_plus_chunk_chars=7985
+- `dsid_02a6857f487642dca0732a4ac480ea5f` file=`dsid_02a6857f487642dca0732a4ac480ea5f__mini-canary-solo-notebook-rp.txt` capped=False gold200=True raw_file_chars=5331 raw_body_chars=5331 stored_chunk_text_chars=5331 stored_title_plus_chunk_chars=5357
+- `dsid_03b2db544a6d4cf886fb9869058a05f2` file=`dsid_03b2db544a6d4cf886fb9869058a05f2__INT-2043-office-inventory-keycard-audit-and-disposal-request.txt` capped=False gold200=True raw_file_chars=3641 raw_body_chars=3641 stored_chunk_text_chars=3641 stored_title_plus_chunk_chars=3735
+- `dsid_03e22d519f9b40a5ac61a03e5c4620d3` file=`dsid_03e22d519f9b40a5ac61a03e5c4620d3__project-orion-weekly-update-2026-01-30.txt` capped=False gold200=True raw_file_chars=995 raw_body_chars=995 stored_chunk_text_chars=995 stored_title_plus_chunk_chars=1045
+- `dsid_045c297ec2ef495abd66cb1f09921fc4` file=`dsid_045c297ec2ef495abd66cb1f09921fc4__2026-12-22-crew-handover-and-momentum-check.txt` capped=False gold200=True raw_file_chars=5694 raw_body_chars=5694 stored_chunk_text_chars=5694 stored_title_plus_chunk_chars=5737
+- `dsid_04e98bd61eac4ec89e3fc13c38de1b8e` file=`dsid_04e98bd61eac4ec89e3fc13c38de1b8e__private-model-version-upgrade-requirements.txt` capped=False gold200=True raw_file_chars=2583 raw_body_chars=2583 stored_chunk_text_chars=2583 stored_title_plus_chunk_chars=2652
+- `dsid_05841423a55e4c35abd276d9899b7134` file=`dsid_05841423a55e4c35abd276d9899b7134__ci-eval-determinism-and-flake-mitigation.txt` capped=False gold200=True raw_file_chars=7569 raw_body_chars=7569 stored_chunk_text_chars=7569 stored_title_plus_chunk_chars=7610
+- `dsid_089917448e654911bd186650ed12feb9` file=`dsid_089917448e654911bd186650ed12feb9__quickstarts-adoption-kpis.txt` capped=False gold200=True raw_file_chars=12024 raw_body_chars=12024 stored_chunk_text_chars=12024 stored_title_plus_chunk_chars=12077
+- `dsid_0a2cd37d53ff47d4aced289cd9a76fe8` file=`dsid_0a2cd37d53ff47d4aced289cd9a76fe8__evidence-driven-offer-evaluation-and-onboarding-trigger-playbook-2028.txt` capped=False gold200=True raw_file_chars=7433 raw_body_chars=7433 stored_chunk_text_chars=7433 stored_title_plus_chunk_chars=7498
+- `dsid_0a6c6e67d89c4cb4b053a7c04d780d97` file=`dsid_0a6c6e67d89c4cb4b053a7c04d780d97__private-deployment-optimization-config-rollback.txt` capped=False gold200=True raw_file_chars=13339 raw_body_chars=13339 stored_chunk_text_chars=13339 stored_title_plus_chunk_chars=13428
+- `dsid_0abbd8a3a39e4cfda70dcc403b22f64c` file=`dsid_0abbd8a3a39e4cfda70dcc403b22f64c__pr-221089-introduce-invocation-cadence-probe-and-token-cost-ribbons.txt` capped=False gold200=True raw_file_chars=6059 raw_body_chars=6059 stored_chunk_text_chars=6059 stored_title_plus_chunk_chars=6117
+- `dsid_0b0595a6d39247ada6238d8311b587f8` file=`dsid_0b0595a6d39247ada6238d8311b587f8__streaming-write-stall-ttl-regression-postmortem-2026-04-25.txt` capped=False gold200=True raw_file_chars=8044 raw_body_chars=8044 stored_chunk_text_chars=8044 stored_title_plus_chunk_chars=8127
+- `dsid_0bebeaedbe794ec38ae1d6f4ddd5c2b6` file=`dsid_0bebeaedbe794ec38ae1d6f4ddd5c2b6__SUP-28577-streaming-endpoint-returns-generic-500-instead-of-residency-error.txt` capped=False gold200=True raw_file_chars=6224 raw_body_chars=6224 stored_chunk_text_chars=6224 stored_title_plus_chunk_chars=6354
+- `dsid_0c8ea3b2a7fd4392b1f480fe5f0c4725` file=`dsid_0c8ea3b2a7fd4392b1f480fe5f0c4725__SUP-92247-service-account-impersonation-scoping-prevents-admin-ops.txt` capped=False gold200=True raw_file_chars=5404 raw_body_chars=5404 stored_chunk_text_chars=5404 stored_title_plus_chunk_chars=5494
+- `dsid_0ea5ce154cb842ee969d8a89d03edd2d` file=`dsid_0ea5ce154cb842ee969d8a89d03edd2d__rollout-pinboard-notes-rt.txt` capped=False gold200=True raw_file_chars=4627 raw_body_chars=4627 stored_chunk_text_chars=4627 stored_title_plus_chunk_chars=4672
+- `dsid_0f9c8d82259c4d5a95bc5865fc492919` file=`dsid_0f9c8d82259c4d5a95bc5865fc492919__pr-28522-fix-regression-in-long-context-prefill-kernel-choice.txt` capped=False gold200=True raw_file_chars=4910 raw_body_chars=4910 stored_chunk_text_chars=4910 stored_title_plus_chunk_chars=5001
+- `dsid_10d018b9cd334ababafa960517492a77` file=`dsid_10d018b9cd334ababafa960517492a77__20261127-postcall-eval-roadmap-streaming-coherence-checks.txt` capped=False gold200=True raw_file_chars=8978 raw_body_chars=8976 stored_chunk_text_chars=8976 stored_title_plus_chunk_chars=9038
+- `dsid_117e5a150aa94adc86295786bd6b7843` file=`dsid_117e5a150aa94adc86295786bd6b7843__hosted-api-model-intake.txt` capped=False gold200=True raw_file_chars=3842 raw_body_chars=3841 stored_chunk_text_chars=3841 stored_title_plus_chunk_chars=3901
+- `dsid_12c56622cee749969076c8dbac19da4d` file=`dsid_12c56622cee749969076c8dbac19da4d__pr-913-overload-shedding-dashboards-and-alerts.txt` capped=False gold200=True raw_file_chars=5015 raw_body_chars=5015 stored_chunk_text_chars=5015 stored_title_plus_chunk_chars=5097
+- `dsid_1415c2463492415693a3d4758847630b` file=`dsid_1415c2463492415693a3d4758847630b__2025-12-03-hardware-tuning-profiles-pack-weekly-sync.txt` capped=False gold200=True raw_file_chars=21073 raw_body_chars=21073 stored_chunk_text_chars=21073 stored_title_plus_chunk_chars=21117
+- `dsid_14a447cb5b1140709c7cb3cc9a88c430` file=`dsid_14a447cb5b1140709c7cb3cc9a88c430__DES-100777-adaptive-sparkline-density-and-compression-mode-prototype.txt` capped=False gold200=True raw_file_chars=3083 raw_body_chars=3083 stored_chunk_text_chars=3083 stored_title_plus_chunk_chars=3150
+- `dsid_1581d9f44c9f453c8d2e912758cf3a2f` file=`dsid_1581d9f44c9f453c8d2e912758cf3a2f__compliance-quickfires-quirky-notes-lucien-2026.txt` capped=False gold200=True raw_file_chars=4792 raw_body_chars=4791 stored_chunk_text_chars=4791 stored_title_plus_chunk_chars=4843
+- `dsid_15dd15bfbd0f42c485a9b5b9ace6a3d1` file=`dsid_15dd15bfbd0f42c485a9b5b9ace6a3d1__company-cobalt-campus-innovations.txt` capped=False gold200=True raw_file_chars=2706 raw_body_chars=2706 stored_chunk_text_chars=2706 stored_title_plus_chunk_chars=2732
+- `dsid_16996cd96c1c4fa1ab399cbc446b186f` file=`dsid_16996cd96c1c4fa1ab399cbc446b186f__incident-classification-policy.txt` capped=False gold200=True raw_file_chars=9494 raw_body_chars=9494 stored_chunk_text_chars=9494 stored_title_plus_chunk_chars=9558
+- `dsid_182c34ee62c54118b48c1390e77cd3ba` file=`dsid_182c34ee62c54118b48c1390e77cd3ba__20280701-priority-handshake-apac-si-cosell-demo-backstop.txt` capped=False gold200=True raw_file_chars=7001 raw_body_chars=7001 stored_chunk_text_chars=7001 stored_title_plus_chunk_chars=7069
+- `dsid_184be937d34a412ab5e61366d54d8ed6` file=`dsid_184be937d34a412ab5e61366d54d8ed6__policy-engine-failover-extensions-draft.txt` capped=False gold200=True raw_file_chars=12526 raw_body_chars=12525 stored_chunk_text_chars=12525 stored_title_plus_chunk_chars=12595
+- `dsid_1867cdf06a00437194b3250c75321a92` file=`dsid_1867cdf06a00437194b3250c75321a92__DES-91235-compact-workspace-chips-micro-rail-prototype.txt` capped=False gold200=True raw_file_chars=3565 raw_body_chars=3565 stored_chunk_text_chars=3565 stored_title_plus_chunk_chars=3663
+- `dsid_189583d1a5ed4513a4d709a037098a24` file=`dsid_189583d1a5ed4513a4d709a037098a24__tenant-egress-isolation-ci-simulator.txt` capped=False gold200=True raw_file_chars=7752 raw_body_chars=7751 stored_chunk_text_chars=7751 stored_title_plus_chunk_chars=7809
+- `dsid_19354d85a1d14a469274135ccb314a20` file=`dsid_19354d85a1d14a469274135ccb314a20__SUP-4844-dedicated-sporadic-upstream-timeouts-tied-to-rate-limiter.txt` capped=False gold200=True raw_file_chars=864 raw_body_chars=864 stored_chunk_text_chars=864 stored_title_plus_chunk_chars=934
+- `dsid_199789e68ef741bca44a24d535ed6c00` file=`dsid_199789e68ef741bca44a24d535ed6c00__1729456000-office-soccer-and-march-bracket.txt` capped=False gold200=True raw_file_chars=1130 raw_body_chars=1130 stored_chunk_text_chars=1130 stored_title_plus_chunk_chars=1137
+- `dsid_1b7a5d6230f84eb0a38a97da0e0ce05c` file=`dsid_1b7a5d6230f84eb0a38a97da0e0ce05c__pr-63789-enrich-model-endpoints-with-runtime-hints-and-openai-shim.txt` capped=False gold200=True raw_file_chars=2804 raw_body_chars=2804 stored_chunk_text_chars=2804 stored_title_plus_chunk_chars=2893
+- `dsid_1c53affffb4f477ca476bec3138b60eb` file=`dsid_1c53affffb4f477ca476bec3138b60eb__pr-96123-chat-v1-param-normalizer-role-alias-stop-dedupe-stream-backpressure.txt` capped=False gold200=True raw_file_chars=4180 raw_body_chars=4180 stored_chunk_text_chars=4180 stored_title_plus_chunk_chars=4310
+- `dsid_1d13149e585f4be398015d748e24e449` file=`dsid_1d13149e585f4be398015d748e24e449__company-briefpulse-llc.txt` capped=False gold200=True raw_file_chars=2123 raw_body_chars=2123 stored_chunk_text_chars=2123 stored_title_plus_chunk_chars=2138
+- `dsid_1d487c52d79a44c2b40eb19a0db51122` file=`dsid_1d487c52d79a44c2b40eb19a0db51122__1751234567-nondet-seed-top-p-ci-gate.txt` capped=False gold200=True raw_file_chars=4904 raw_body_chars=4904 stored_chunk_text_chars=4904 stored_title_plus_chunk_chars=4911
+- `dsid_1d53445cc74b4d7db325cd585736f87f` file=`dsid_1d53445cc74b4d7db325cd585736f87f__SUP-100012-saved-dashboard-filter-presets-reset-on-report-edit.txt` capped=False gold200=True raw_file_chars=4643 raw_body_chars=4643 stored_chunk_text_chars=4643 stored_title_plus_chunk_chars=4713
+- `dsid_1eba87b0b11b4f31a006f0cf164b8509` file=`dsid_1eba87b0b11b4f31a006f0cf164b8509__SUP-28436-disputed-status-accuracy-during-us-east-degradation.txt` capped=False gold200=True raw_file_chars=6465 raw_body_chars=6465 stored_chunk_text_chars=6465 stored_title_plus_chunk_chars=6591
+- `dsid_1f81f208f51a4aacaca226109bbedc72` file=`dsid_1f81f208f51a4aacaca226109bbedc72__ENG-776543-kvcache-ghost-refcount-decay-rolling-heal-playbook.txt` capped=False gold200=True raw_file_chars=5801 raw_body_chars=5801 stored_chunk_text_chars=5801 stored_title_plus_chunk_chars=5891
+- `dsid_1ffa3f05e342408382daa57107ec4297` file=`dsid_1ffa3f05e342408382daa57107ec4297__SUP-845327-field-level-redaction-legal-basis-evidence-request.txt` capped=False gold200=True raw_file_chars=5564 raw_body_chars=5564 stored_chunk_text_chars=5564 stored_title_plus_chunk_chars=5675
+- `dsid_21066424d3cc4f3a956a77a7a5f5b0fb` file=`dsid_21066424d3cc4f3a956a77a7a5f5b0fb__2026-01-14-technical-deep-dive-tail-latency-and-kv-cache.txt` capped=True gold200=False raw_file_chars=33830 raw_body_chars=33830 stored_chunk_text_chars=32891 stored_title_plus_chunk_chars=32967, chars_cut_from_raw_body=939, chars_cut_from_raw_file=939
+- `dsid_21d6b99dc771418287d61444f373852e` file=`dsid_21d6b99dc771418287d61444f373852e__SUP-24871-not-receiving-onboarding-emails.txt` capped=False gold200=True raw_file_chars=6079 raw_body_chars=6079 stored_chunk_text_chars=6079 stored_title_plus_chunk_chars=6179
+- `dsid_2271ae6c393d409093b11b5a6d5b96ed` file=`dsid_2271ae6c393d409093b11b5a6d5b96ed__niko-rogers-interaction-tiering-idea-scrapbook.txt` capped=False gold200=True raw_file_chars=5731 raw_body_chars=5731 stored_chunk_text_chars=5731 stored_title_plus_chunk_chars=5776
+- `dsid_22b0987227cd4fdb94d67e5a62bbde40` file=`dsid_22b0987227cd4fdb94d67e5a62bbde40__taco-tuesday-fridge-inventory-wip.txt` capped=False gold200=True raw_file_chars=2795 raw_body_chars=2795 stored_chunk_text_chars=2795 stored_title_plus_chunk_chars=2829
+- `dsid_25b0de9bfa854d3c9acfa961555c9d45` file=`dsid_25b0de9bfa854d3c9acfa961555c9d45__ten-step-restoration-sprint-and-shadow-mentoring-handbook-2025.txt` capped=False gold200=True raw_file_chars=9527 raw_body_chars=9527 stored_chunk_text_chars=9527 stored_title_plus_chunk_chars=9583
+- `dsid_26690647d18349be91cd9c89c516f782` file=`dsid_26690647d18349be91cd9c89c516f782__2026-02-06-dedicated-overload-mitigation-and-sla-alignment-zenlytics.txt` capped=True gold200=False raw_file_chars=33708 raw_body_chars=33708 stored_chunk_text_chars=33289 stored_title_plus_chunk_chars=33369, chars_cut_from_raw_body=419, chars_cut_from_raw_file=419
+- `dsid_2ad75f27c36b492f847d5b9c63492e4b` file=`dsid_2ad75f27c36b492f847d5b9c63492e4b__hosted-model-rollout-and-fallback.txt` capped=False gold200=True raw_file_chars=3662 raw_body_chars=3661 stored_chunk_text_chars=3661 stored_title_plus_chunk_chars=3703
+- `dsid_2b7848a8491749f8b9b9a8c13f78445f` file=`dsid_2b7848a8491749f8b9b9a8c13f78445f__change-management-policy-model-and-runtime-changes.txt` capped=False gold200=True raw_file_chars=3446 raw_body_chars=3446 stored_chunk_text_chars=3446 stored_title_plus_chunk_chars=3509
+- `dsid_2bb0a4d1958848b0939ed64cc2b911ff` file=`dsid_2bb0a4d1958848b0939ed64cc2b911ff__audit-log-exporter-report-templates.txt` capped=False gold200=True raw_file_chars=11924 raw_body_chars=11923 stored_chunk_text_chars=11923 stored_title_plus_chunk_chars=11969
+- `dsid_2ce9ae40d5d347c1add2b31c4d5a8c3c` file=`dsid_2ce9ae40d5d347c1add2b31c4d5a8c3c__support-process-model-rollout-customer-comms-requirements.txt` capped=False gold200=True raw_file_chars=2502 raw_body_chars=2502 stored_chunk_text_chars=2502 stored_title_plus_chunk_chars=2575
+- `dsid_2d0330be987e4163bfd9c42c69bc1e40` file=`dsid_2d0330be987e4163bfd9c42c69bc1e40__ENG-4833-api-gateway-error-contract-for-residency-violations.txt` capped=False gold200=True raw_file_chars=6992 raw_body_chars=6992 stored_chunk_text_chars=6992 stored_title_plus_chunk_chars=7098
+- `dsid_2dab968306594149a14ef27b2a1641d1` file=`dsid_2dab968306594149a14ef27b2a1641d1__status-page-comms-guidance-rollout-issues.txt` capped=False gold200=True raw_file_chars=2119 raw_body_chars=2119 stored_chunk_text_chars=2119 stored_title_plus_chunk_chars=2187
+- `dsid_2fb08b7571444bdf894607549642498f` file=`dsid_2fb08b7571444bdf894607549642498f__pr-246829-openai-invoke-envelope-normalizer.txt` capped=False gold200=True raw_file_chars=5248 raw_body_chars=5248 stored_chunk_text_chars=5248 stored_title_plus_chunk_chars=5351
+- `dsid_303196c831af4d1bb38a1e2546228a09` file=`dsid_303196c831af4d1bb38a1e2546228a09__ENG-26531-capacity-triage-forensics-and-scaling-rollback-plan.txt` capped=False gold200=True raw_file_chars=6522 raw_body_chars=6522 stored_chunk_text_chars=6522 stored_title_plus_chunk_chars=6605
+- `dsid_30a16502953a4088b59266c8990d52d6` file=`dsid_30a16502953a4088b59266c8990d52d6__company-picoprompt-labs.txt` capped=False gold200=True raw_file_chars=2246 raw_body_chars=2246 stored_chunk_text_chars=2246 stored_title_plus_chunk_chars=2262
+- `dsid_32c5e7ca0e2e4eadac78b01a35cfed7a` file=`dsid_32c5e7ca0e2e4eadac78b01a35cfed7a__rollout-slos-and-alert-thresholds.txt` capped=False gold200=True raw_file_chars=2804 raw_body_chars=2804 stored_chunk_text_chars=2804 stored_title_plus_chunk_chars=2864
+- `dsid_33de625fcfc045dd967dbc9bdde3a8b4` file=`dsid_33de625fcfc045dd967dbc9bdde3a8b4__nordbank-eu-only-temporary-us-failover-exception.txt` capped=False gold200=True raw_file_chars=2045 raw_body_chars=2045 stored_chunk_text_chars=2045 stored_title_plus_chunk_chars=2127
+- `dsid_37c24c697d9d462fad0e3afeeea9d8c0` file=`dsid_37c24c697d9d462fad0e3afeeea9d8c0__INT-332211-access-approval-issuer-mismatch-console-provisioning.txt` capped=False gold200=True raw_file_chars=4565 raw_body_chars=4565 stored_chunk_text_chars=4565 stored_title_plus_chunk_chars=4651
+- `dsid_3ad691e18be849d897506f5276c24a75` file=`dsid_3ad691e18be849d897506f5276c24a75__streaming-event-model-conventions.txt` capped=False gold200=True raw_file_chars=13318 raw_body_chars=13317 stored_chunk_text_chars=13317 stored_title_plus_chunk_chars=13387
+- `dsid_3b9483f629fd423d81ac49a7efff89c9` file=`dsid_3b9483f629fd423d81ac49a7efff89c9__SUP-208471-harmonized-rate-plan-credit-alloc-reconciliation-discrepancy.txt` capped=False gold200=True raw_file_chars=6451 raw_body_chars=6451 stored_chunk_text_chars=6451 stored_title_plus_chunk_chars=6552
+- `dsid_3d745c88c7e4426c9548350824f0d9b8` file=`dsid_3d745c88c7e4426c9548350824f0d9b8__INT-933333-orchestrated-ephemeral-research-sandboxes.txt` capped=False gold200=True raw_file_chars=5294 raw_body_chars=5294 stored_chunk_text_chars=5294 stored_title_plus_chunk_chars=5441
+- `dsid_3e7cf5be42d84f2880858c726b65998f` file=`dsid_3e7cf5be42d84f2880858c726b65998f__PM-912-quickstart-templates-kpi-and-telemetry-requirements.txt` capped=False gold200=True raw_file_chars=9911 raw_body_chars=9911 stored_chunk_text_chars=9911 stored_title_plus_chunk_chars=9989
+- `dsid_3fc14ed9048e4e1f861e0632b06fc39b` file=`dsid_3fc14ed9048e4e1f861e0632b06fc39b__2025-03-11-halotech-marketplace-ref-arch-integration-sync.txt` capped=False gold200=True raw_file_chars=12696 raw_body_chars=12696 stored_chunk_text_chars=12696 stored_title_plus_chunk_chars=12764
+- `dsid_3fd6af404fae48e6b8ea5a57875ef78f` file=`dsid_3fd6af404fae48e6b8ea5a57875ef78f__DES-72681-develop-interactive-tone-derivatives-and-kappa-elevation-scale-for-data-grids.txt` capped=False gold200=True raw_file_chars=4797 raw_body_chars=4797 stored_chunk_text_chars=4797 stored_title_plus_chunk_chars=4875
+- `dsid_40471ba4cd3b430eab3ac0877eef0972` file=`dsid_40471ba4cd3b430eab3ac0877eef0972__third-party-model-risk-review.txt` capped=False gold200=True raw_file_chars=2333 raw_body_chars=2332 stored_chunk_text_chars=2332 stored_title_plus_chunk_chars=2384
+- `dsid_409618a3958944f9b78362ed7e01bb33` file=`dsid_409618a3958944f9b78362ed7e01bb33__dedicated-throughput-slo-escalation.txt` capped=False gold200=True raw_file_chars=15202 raw_body_chars=15202 stored_chunk_text_chars=15202 stored_title_plus_chunk_chars=15247
+- `dsid_410b731e6ab84ea2b1e17ece1db407bf` file=`dsid_410b731e6ab84ea2b1e17ece1db407bf__ENG-334888-adaptive-log-zipper-for-high-throughput-loki-ingest.txt` capped=False gold200=True raw_file_chars=6178 raw_body_chars=6178 stored_chunk_text_chars=6178 stored_title_plus_chunk_chars=6286
+- `dsid_415b72b7d40a405e87b9671946e894d8` file=`dsid_415b72b7d40a405e87b9671946e894d8__pr-998901-introduce-session-decorator-to-simplify-cross-sdk-streams-and-credential-rotation-shim.txt` capped=False gold200=True raw_file_chars=4293 raw_body_chars=4293 stored_chunk_text_chars=4293 stored_title_plus_chunk_chars=4375
+- `dsid_426ca69578a84dd4af512e5a2782086e` file=`dsid_426ca69578a84dd4af512e5a2782086e__pr-20311-safelock-fastpath-precision-toggle-kv-eviction.txt` capped=False gold200=True raw_file_chars=8459 raw_body_chars=8459 stored_chunk_text_chars=8459 stored_title_plus_chunk_chars=8551
+- `dsid_429267fe79c74918a26272f6c0e48f10` file=`dsid_429267fe79c74918a26272f6c0e48f10__INT-999999-service-cron-sso-refresh-failure-blocks-nightly-model-evals.txt` capped=False gold200=True raw_file_chars=6206 raw_body_chars=6206 stored_chunk_text_chars=6206 stored_title_plus_chunk_chars=6314
+- `dsid_42c3e2d70229415d82cac2f9b795bf1d` file=`dsid_42c3e2d70229415d82cac2f9b795bf1d__1764000123-announce-h200-availability.txt` capped=False gold200=True raw_file_chars=2118 raw_body_chars=2118 stored_chunk_text_chars=2118 stored_title_plus_chunk_chars=2132
+- `dsid_431b0713c42847bbac15f3354776db68` file=`dsid_431b0713c42847bbac15f3354776db68__project-orion-weekly-update-2026-02-06.txt` capped=False gold200=True raw_file_chars=1093 raw_body_chars=1093 stored_chunk_text_chars=1093 stored_title_plus_chunk_chars=1143
+- `dsid_43ecb807903f46848e8d099b6c8beb04` file=`dsid_43ecb807903f46848e8d099b6c8beb04__kernel-snapshot-observability-contract-2026.txt` capped=False gold200=True raw_file_chars=10476 raw_body_chars=10476 stored_chunk_text_chars=10476 stored_title_plus_chunk_chars=10539
+- `dsid_44b11e967a5f4029aebb720891f66450` file=`dsid_44b11e967a5f4029aebb720891f66450__evidence-collection-procedure-retention-and-audit-logs.txt` capped=False gold200=True raw_file_chars=13192 raw_body_chars=13191 stored_chunk_text_chars=13191 stored_title_plus_chunk_chars=13281
+- `dsid_44cf2d75d70d4365914aa46947a94b1d` file=`dsid_44cf2d75d70d4365914aa46947a94b1d__pr-28521-fix-duplicate-signup-event-emission.txt` capped=False gold200=True raw_file_chars=4778 raw_body_chars=4778 stored_chunk_text_chars=4778 stored_title_plus_chunk_chars=4842
+- `dsid_45638a5688314bcb969154b2a9dcbe13` file=`dsid_45638a5688314bcb969154b2a9dcbe13__company-rerankly-labs.txt` capped=False gold200=True raw_file_chars=3040 raw_body_chars=3040 stored_chunk_text_chars=3040 stored_title_plus_chunk_chars=3054
+- `dsid_47fa00c889fb4446b0481efea384a7ce` file=`dsid_47fa00c889fb4446b0481efea384a7ce__pr-314159-consolidate-sampled-context-anchors-and-cost-delta-annotations.txt` capped=False gold200=True raw_file_chars=4127 raw_body_chars=4127 stored_chunk_text_chars=4127 stored_title_plus_chunk_chars=4190
+- `dsid_48b40afb54b84af28b13cebf017c0616` file=`dsid_48b40afb54b84af28b13cebf017c0616__risk-thread-notes-aisha-2026.txt` capped=False gold200=True raw_file_chars=5097 raw_body_chars=5097 stored_chunk_text_chars=5097 stored_title_plus_chunk_chars=5137
+- `dsid_497e2620f4ab45f29db9aa4193cf9e2b` file=`dsid_497e2620f4ab45f29db9aa4193cf9e2b__20270218-talentbridge-handshake-priya-rao-scheduling.txt` capped=False gold200=True raw_file_chars=5499 raw_body_chars=5499 stored_chunk_text_chars=5499 stored_title_plus_chunk_chars=5554
+- `dsid_4a2ce3e1be4d4f00a089ccc00ac92b8c` file=`dsid_4a2ce3e1be4d4f00a089ccc00ac92b8c__SUP-126007-client-retry-window-desync-burst-queueing.txt` capped=False gold200=True raw_file_chars=5794 raw_body_chars=5794 stored_chunk_text_chars=5794 stored_title_plus_chunk_chars=5900
+- `dsid_4b15b253ca294377a12d12651ada2168` file=`dsid_4b15b253ca294377a12d12651ada2168__SUP-4821-embedding-dim-mismatch-rerank-timeouts.txt` capped=False gold200=True raw_file_chars=7046 raw_body_chars=7046 stored_chunk_text_chars=7046 stored_title_plus_chunk_chars=7140
+- `dsid_4b2ac6984bdf4737a18520e158b04453` file=`dsid_4b2ac6984bdf4737a18520e158b04453__pr-19422-fix-throughput-metric-double-counting-streaming.txt` capped=False gold200=True raw_file_chars=3765 raw_body_chars=3765 stored_chunk_text_chars=3765 stored_title_plus_chunk_chars=3827
+- `dsid_4c0d5d098d224e7495667823169b521e` file=`dsid_4c0d5d098d224e7495667823169b521e__pr-612-add-time-windowed-exports-and-filters.txt` capped=False gold200=True raw_file_chars=5293 raw_body_chars=5293 stored_chunk_text_chars=5293 stored_title_plus_chunk_chars=5365
+- `dsid_4c1c5fb53ca2432995ea42adc4330fca` file=`dsid_4c1c5fb53ca2432995ea42adc4330fca__company-sparkbarrel-systems.txt` capped=False gold200=True raw_file_chars=3496 raw_body_chars=3496 stored_chunk_text_chars=3496 stored_title_plus_chunk_chars=3516
+- `dsid_4e016427a93c49ffadd31fcdc1dca792` file=`dsid_4e016427a93c49ffadd31fcdc1dca792__2025-02-11-hosted-api-latency-fallback-activated.txt` capped=False gold200=True raw_file_chars=2169 raw_body_chars=2169 stored_chunk_text_chars=2169 stored_title_plus_chunk_chars=2249
+- `dsid_4e65166659394a90922be6a5c7b110a8` file=`dsid_4e65166659394a90922be6a5c7b110a8__operator-fallback-experiment-matrix-and-cost-penalty-catalog-2026.txt` capped=False gold200=True raw_file_chars=10110 raw_body_chars=10109 stored_chunk_text_chars=10109 stored_title_plus_chunk_chars=10170
+- `dsid_509b34ee9a334f68a693e61dfbf558c4` file=`dsid_509b34ee9a334f68a693e61dfbf558c4__company-velora-ai-solutions.txt` capped=False gold200=True raw_file_chars=1437 raw_body_chars=1437 stored_chunk_text_chars=1437 stored_title_plus_chunk_chars=1457
+- `dsid_51183030e764419caca09cfe647048e7` file=`dsid_51183030e764419caca09cfe647048e7__company-banyan-loop-ai.txt` capped=False gold200=True raw_file_chars=2570 raw_body_chars=2570 stored_chunk_text_chars=2570 stored_title_plus_chunk_chars=2585
+- `dsid_521553a072244d199d06a34dd6e1aca0` file=`dsid_521553a072244d199d06a34dd6e1aca0__SUP-314158-prorated-free-tier-redistribution-on-segmented-usage.txt` capped=False gold200=True raw_file_chars=5595 raw_body_chars=5595 stored_chunk_text_chars=5595 stored_title_plus_chunk_chars=5702
+- `dsid_5217b3a64c4a433c89ba2a3186dea82a` file=`dsid_5217b3a64c4a433c89ba2a3186dea82a__incident-ownership-mapping-and-remediation-sla-matrix.txt` capped=False gold200=True raw_file_chars=14958 raw_body_chars=14957 stored_chunk_text_chars=14957 stored_title_plus_chunk_chars=15014
+- `dsid_53035d2eb5024effac3aafd3e6ca6e70` file=`dsid_53035d2eb5024effac3aafd3e6ca6e70__audit-events-for-dedicated-rollout-actions.txt` capped=False gold200=True raw_file_chars=21745 raw_body_chars=21745 stored_chunk_text_chars=21745 stored_title_plus_chunk_chars=21806
+- `dsid_5324918997644ea090703e088b166214` file=`dsid_5324918997644ea090703e088b166214__ENG-4829-remediation-sla-policy-and-breach-alerting.txt` capped=False gold200=True raw_file_chars=9223 raw_body_chars=9223 stored_chunk_text_chars=9223 stored_title_plus_chunk_chars=9293
+- `dsid_5402831508734a51adf649603be4b075` file=`dsid_5402831508734a51adf649603be4b075__ENG-158239-rate-policy-jitter-causing-tenant-capacity-starvation.txt` capped=False gold200=True raw_file_chars=5281 raw_body_chars=5281 stored_chunk_text_chars=5281 stored_title_plus_chunk_chars=5373
+- `dsid_553e1651575a416dae6b92d019d2f9f4` file=`dsid_553e1651575a416dae6b92d019d2f9f4__optimize-cohort-evals-ab-gates-staged-failover-prd-2025.txt` capped=False gold200=True raw_file_chars=10118 raw_body_chars=10118 stored_chunk_text_chars=10118 stored_title_plus_chunk_chars=10218
+- `dsid_5776ac1f724b4f72a084d3e796f0af4a` file=`dsid_5776ac1f724b4f72a084d3e796f0af4a__overload-protection-dashboards.txt` capped=False gold200=True raw_file_chars=12969 raw_body_chars=12969 stored_chunk_text_chars=12969 stored_title_plus_chunk_chars=13031
+- `dsid_58ca20423ede49fd82466120c6339dd5` file=`dsid_58ca20423ede49fd82466120c6339dd5__2025-02-12-technical-deep-dive-safe-rollouts-on-hosted.txt` capped=True gold200=False raw_file_chars=39686 raw_body_chars=39686 stored_chunk_text_chars=32193 stored_title_plus_chunk_chars=32254, chars_cut_from_raw_body=7493, chars_cut_from_raw_file=7493
+- `dsid_59ff5fe3de4c4a3691700ce678801bd2` file=`dsid_59ff5fe3de4c4a3691700ce678801bd2__ENG-712222-slo-sentinel-prefetch-routing-and-graded-circuit-breakers.txt` capped=False gold200=True raw_file_chars=5361 raw_body_chars=5361 stored_chunk_text_chars=5361 stored_title_plus_chunk_chars=5446
+- `dsid_5af1ed23fd2a4bb3984ec368d0e3b23e` file=`dsid_5af1ed23fd2a4bb3984ec368d0e3b23e__devx-onramp-localization-docs-ops-and-canonical-fixes-2026.txt` capped=False gold200=True raw_file_chars=9933 raw_body_chars=9933 stored_chunk_text_chars=9933 stored_title_plus_chunk_chars=10009
+- `dsid_5b0c65ca162a43a0938bebabe9b1d53f` file=`dsid_5b0c65ca162a43a0938bebabe9b1d53f__pr-642-surface-residency-violation-errors.txt` capped=False gold200=True raw_file_chars=3348 raw_body_chars=3348 stored_chunk_text_chars=3348 stored_title_plus_chunk_chars=3427
+- `dsid_5bc9e06d059d43f7aa5c5ff0fc00a5a5` file=`dsid_5bc9e06d059d43f7aa5c5ff0fc00a5a5__2025-12-03-incident-taxonomy-working-session.txt` capped=True gold200=False raw_file_chars=41339 raw_body_chars=41339 stored_chunk_text_chars=33399 stored_title_plus_chunk_chars=33479, chars_cut_from_raw_body=7940, chars_cut_from_raw_file=7940
+- `dsid_5c05d2a74c484906852925d1cf1daa70` file=`dsid_5c05d2a74c484906852925d1cf1daa70__role-launch-hyperonboard-template.txt` capped=False gold200=True raw_file_chars=8676 raw_body_chars=8676 stored_chunk_text_chars=8676 stored_title_plus_chunk_chars=8741
+- `dsid_5cde26f232454906879617dab1800fae` file=`dsid_5cde26f232454906879617dab1800fae__model-launch-eval-gates.txt` capped=False gold200=True raw_file_chars=3094 raw_body_chars=3093 stored_chunk_text_chars=3093 stored_title_plus_chunk_chars=3144
+- `dsid_5cf1a6657f1848968b2fd154066950ae` file=`dsid_5cf1a6657f1848968b2fd154066950ae__SUP-4827-hosted-api-increased-request-timeouts-eu-west.txt` capped=False gold200=True raw_file_chars=1085 raw_body_chars=1085 stored_chunk_text_chars=1085 stored_title_plus_chunk_chars=1146
+- `dsid_5d54f5f89bbc48a5b06b8dead39729b3` file=`dsid_5d54f5f89bbc48a5b06b8dead39729b3__pr-87103-aggregate-artifact-origins-release-index-private-installer.txt` capped=False gold200=True raw_file_chars=6189 raw_body_chars=6189 stored_chunk_text_chars=6189 stored_title_plus_chunk_chars=6257
+- `dsid_5f0ab47fe8de47a89bb6668f8722becf` file=`dsid_5f0ab47fe8de47a89bb6668f8722becf__20251022-quantagov-logging-retention-questionnaire.txt` capped=False gold200=True raw_file_chars=2202 raw_body_chars=2201 stored_chunk_text_chars=2201 stored_title_plus_chunk_chars=2259
+- `dsid_617d538c79334f4b9ddfd5c50c05ee4b` file=`dsid_617d538c79334f4b9ddfd5c50c05ee4b__adr-022-error-contract-for-residency-violations.txt` capped=False gold200=True raw_file_chars=10836 raw_body_chars=10835 stored_chunk_text_chars=10835 stored_title_plus_chunk_chars=10903
+- `dsid_618649e367d24a1eb3bdcacc0a2d7da7` file=`dsid_618649e367d24a1eb3bdcacc0a2d7da7__20250411-conversation-stream-slowdown-action-summary.txt` capped=False gold200=True raw_file_chars=5883 raw_body_chars=5883 stored_chunk_text_chars=5883 stored_title_plus_chunk_chars=5951
+- `dsid_63a1c6c12e1e4d9cae67056673633192` file=`dsid_63a1c6c12e1e4d9cae67056673633192__SUP-882473-undo-optimizer-toggle-stepwise-fallback-walkthrough.txt` capped=False gold200=True raw_file_chars=5352 raw_body_chars=5352 stored_chunk_text_chars=5352 stored_title_plus_chunk_chars=5477
+- `dsid_676625b7b7064b30a00da4f53fd24f88` file=`dsid_676625b7b7064b30a00da4f53fd24f88__company-coppertrail-saas.txt` capped=False gold200=True raw_file_chars=3965 raw_body_chars=3965 stored_chunk_text_chars=3965 stored_title_plus_chunk_chars=3982
+- `dsid_67a8c3300752435296938175e9a1daf5` file=`dsid_67a8c3300752435296938175e9a1daf5__helio-health-log-retention-addendum.txt` capped=False gold200=True raw_file_chars=1143 raw_body_chars=1142 stored_chunk_text_chars=1142 stored_title_plus_chunk_chars=1200
+- `dsid_6933f9241ef140da9d3bf98be52be867` file=`dsid_6933f9241ef140da9d3bf98be52be867__INT-1974-log-retention-exception-quantagov.txt` capped=False gold200=True raw_file_chars=1906 raw_body_chars=1906 stored_chunk_text_chars=1906 stored_title_plus_chunk_chars=1972
+- `dsid_69e745b76aa34eab8721ba0c88482ec0` file=`dsid_69e745b76aa34eab8721ba0c88482ec0__unified-inference-consumption-paradigm-overview-2026.txt` capped=False gold200=True raw_file_chars=8398 raw_body_chars=8397 stored_chunk_text_chars=8397 stored_title_plus_chunk_chars=8467
+- `dsid_6c4c1c875e704f09b4d791d64d7bc7e5` file=`dsid_6c4c1c875e704f09b4d791d64d7bc7e5__2026-01-16-gcp-marketplace-onboarding-and-billing-review.txt` capped=False gold200=True raw_file_chars=28602 raw_body_chars=28602 stored_chunk_text_chars=28602 stored_title_plus_chunk_chars=28666
+- `dsid_6c5a304df2624649ae057b3d2de3028d` file=`dsid_6c5a304df2624649ae057b3d2de3028d__2025-02-18-technical-deep-dive-photon-health-private-deployment-compliance.txt` capped=True gold200=False raw_file_chars=39394 raw_body_chars=39394 stored_chunk_text_chars=34284 stored_title_plus_chunk_chars=34387, chars_cut_from_raw_body=5110, chars_cut_from_raw_file=5110
+- `dsid_6df52fdb96ae4edcb76464738bca3340` file=`dsid_6df52fdb96ae4edcb76464738bca3340__INT-7832-cleanup-stale-test-instances-and-archived-volumes-access.txt` capped=False gold200=True raw_file_chars=4581 raw_body_chars=4581 stored_chunk_text_chars=4581 stored_title_plus_chunk_chars=4665
+- `dsid_6df6cca7e7124f20850ebe9077fd5958` file=`dsid_6df6cca7e7124f20850ebe9077fd5958__company-echoharbor-sales-automation.txt` capped=False gold200=True raw_file_chars=2405 raw_body_chars=2405 stored_chunk_text_chars=2405 stored_title_plus_chunk_chars=2433
+- `dsid_6e790a04abe54ce9a92877679790f915` file=`dsid_6e790a04abe54ce9a92877679790f915__ga-rollout-checklist-hosted-overload-protection.txt` capped=False gold200=True raw_file_chars=12678 raw_body_chars=12678 stored_chunk_text_chars=12678 stored_title_plus_chunk_chars=12763
+- `dsid_6e8ba53c201b4e5b8d77a4fe9e634648` file=`dsid_6e8ba53c201b4e5b8d77a4fe9e634648__SUP-553780-ephemeral-heartbeat-jitter-fragmentation-triggering-autoscale-misclassification.txt` capped=False gold200=True raw_file_chars=6618 raw_body_chars=6618 stored_chunk_text_chars=6618 stored_title_plus_chunk_chars=6742
+- `dsid_6f69a170c5ab486588cf0bd92e0d53db` file=`dsid_6f69a170c5ab486588cf0bd92e0d53db__PM-773880-activation-safeguards-and-initiative-tide-for-private-vpc-waves.txt` capped=False gold200=True raw_file_chars=2812 raw_body_chars=2812 stored_chunk_text_chars=2812 stored_title_plus_chunk_chars=2876
+- `dsid_702bc520c52040428799fed41c63c8ca` file=`dsid_702bc520c52040428799fed41c63c8ca__span-timeline-playbook-grooming-notes.txt` capped=False gold200=True raw_file_chars=6611 raw_body_chars=6609 stored_chunk_text_chars=6609 stored_title_plus_chunk_chars=6647
+- `dsid_74ebb73359364bc791707a92a3227e3a` file=`dsid_74ebb73359364bc791707a92a3227e3a__post-rotation-verification-checklist.txt` capped=False gold200=True raw_file_chars=1983 raw_body_chars=1983 stored_chunk_text_chars=1983 stored_title_plus_chunk_chars=2045
+- `dsid_77351104a57140ac8e065d0a6bcf2046` file=`dsid_77351104a57140ac8e065d0a6bcf2046__developer-shield-sdk-chaos-and-recovery-lab-2026.txt` capped=False gold200=True raw_file_chars=8430 raw_body_chars=8429 stored_chunk_text_chars=8429 stored_title_plus_chunk_chars=8472
+- `dsid_795498b20e9c4d38883c8c46ab3336b4` file=`dsid_795498b20e9c4d38883c8c46ab3336b4__INT-853214-ephemeral-oncall-shadow-account-and-device-staging-checklist.txt` capped=False gold200=True raw_file_chars=5253 raw_body_chars=5253 stored_chunk_text_chars=5253 stored_title_plus_chunk_chars=5354
+- `dsid_7a2cfe4b7e574e6995f33e64bbdbf426` file=`dsid_7a2cfe4b7e574e6995f33e64bbdbf426__fewshot-attenuation-heuristics-lab.txt` capped=False gold200=True raw_file_chars=6254 raw_body_chars=6254 stored_chunk_text_chars=6254 stored_title_plus_chunk_chars=6297
+- `dsid_7a7c04eebb914edab49f734c8e814beb` file=`dsid_7a7c04eebb914edab49f734c8e814beb__ENG-99456-tenant-credit-allocator-and-variant-shadowing-hosted-backfill.txt` capped=False gold200=True raw_file_chars=6029 raw_body_chars=6029 stored_chunk_text_chars=6029 stored_title_plus_chunk_chars=6116
+- `dsid_7b0514411b404df4b1fb1d6d137f81ed` file=`dsid_7b0514411b404df4b1fb1d6d137f81ed__2025-06-12-private-observability-min-pack-technical-deep-dive.txt` capped=True gold200=False raw_file_chars=35505 raw_body_chars=35504 stored_chunk_text_chars=32768 stored_title_plus_chunk_chars=32853, chars_cut_from_raw_body=2736, chars_cut_from_raw_file=2737
+- `dsid_7b2f4b37dfb642e19d78c5f9d2c43f16` file=`dsid_7b2f4b37dfb642e19d78c5f9d2c43f16__fallback-experiment-matrix-cost-penalty-catalog-working-notes.txt` capped=False gold200=True raw_file_chars=13088 raw_body_chars=13087 stored_chunk_text_chars=13087 stored_title_plus_chunk_chars=13153
+- `dsid_7d347905549f4456b0d2226b47e4aa68` file=`dsid_7d347905549f4456b0d2226b47e4aa68__2026-02-12-p1-token-accounting-mismatch-postmortem.txt` capped=False gold200=True raw_file_chars=1545 raw_body_chars=1544 stored_chunk_text_chars=1544 stored_title_plus_chunk_chars=1611
+- `dsid_7e82d2ac51114ca2b1c33ce55a96e499` file=`dsid_7e82d2ac51114ca2b1c33ce55a96e499__saga-router-fallback-matrix.txt` capped=False gold200=True raw_file_chars=9390 raw_body_chars=9390 stored_chunk_text_chars=9390 stored_title_plus_chunk_chars=9446
+- `dsid_7f2a6f2d2de34f94a5b6f3d5d0d1f6a2` file=`dsid_7f2a6f2d2de34f94a5b6f3d5d0d1f6a2__interactive-latency-canvas-design-and-instrumentation-guide.txt` capped=False gold200=True raw_file_chars=9772 raw_body_chars=9771 stored_chunk_text_chars=9771 stored_title_plus_chunk_chars=9879
+- `dsid_7fc490f8522b486c8f4b665d5189066c` file=`dsid_7fc490f8522b486c8f4b665d5189066c__project-orion-weekly-update-2026-01-09.txt` capped=False gold200=True raw_file_chars=875 raw_body_chars=875 stored_chunk_text_chars=875 stored_title_plus_chunk_chars=925
+- `dsid_7fd136dd100c4c9cbbe1958c94c26152` file=`dsid_7fd136dd100c4c9cbbe1958c94c26152__SUP-215478-cookie-domain-rotation-evicts-pinned-sessions-during-canary.txt` capped=False gold200=True raw_file_chars=5488 raw_body_chars=5488 stored_chunk_text_chars=5488 stored_title_plus_chunk_chars=5588
+- `dsid_80a4859760ce4cf4af51f7c570903ab8` file=`dsid_80a4859760ce4cf4af51f7c570903ab8__airgapped-artifact-sync-and-telemetry-proxy-2025.txt` capped=False gold200=True raw_file_chars=8935 raw_body_chars=8934 stored_chunk_text_chars=8934 stored_title_plus_chunk_chars=9017
+- `dsid_8116cb3e580543d7bde1c57df351a3f3` file=`dsid_8116cb3e580543d7bde1c57df351a3f3__project-orion-weekly-update-2026-02-13.txt` capped=False gold200=True raw_file_chars=954 raw_body_chars=954 stored_chunk_text_chars=954 stored_title_plus_chunk_chars=1004
+- `dsid_81208556437644a0a4dedf168baf81b5` file=`dsid_81208556437644a0a4dedf168baf81b5__pr-311-add-dashboard-usage-insights-freshness.txt` capped=False gold200=True raw_file_chars=5355 raw_body_chars=5355 stored_chunk_text_chars=5355 stored_title_plus_chunk_chars=5440
+- `dsid_81323a96121047cf98e958463e33d80a` file=`dsid_81323a96121047cf98e958463e33d80a__fallback-replay-command-log.txt` capped=False gold200=True raw_file_chars=7500 raw_body_chars=7500 stored_chunk_text_chars=7500 stored_title_plus_chunk_chars=7546
+- `dsid_8138b96e181940418cc5067b2630064e` file=`dsid_8138b96e181940418cc5067b2630064e__INT-821407-provisional-license-reclaim-and-grace-window-policy-clarify.txt` capped=False gold200=True raw_file_chars=6188 raw_body_chars=6188 stored_chunk_text_chars=6188 stored_title_plus_chunk_chars=6291
+- `dsid_8412db85d95a45f7bbfb14dacedb4d8b` file=`dsid_8412db85d95a45f7bbfb14dacedb4d8b__PM-921999-model-resilience-propensity-index-and-field-probe-playbook.txt` capped=False gold200=True raw_file_chars=2847 raw_body_chars=2847 stored_chunk_text_chars=2847 stored_title_plus_chunk_chars=2904
+- `dsid_84ec014ad9f14f1481b45484da41181a` file=`dsid_84ec014ad9f14f1481b45484da41181a__20250212-northstar-log-retention-confirmation.txt` capped=False gold200=True raw_file_chars=1586 raw_body_chars=1585 stored_chunk_text_chars=1585 stored_title_plus_chunk_chars=1645
+- `dsid_85b3118bafe84954a004fdf63ff364ba` file=`dsid_85b3118bafe84954a004fdf63ff364ba__ENG-25088-stabilize-embedding-metric-behavior-across-clients.txt` capped=False gold200=True raw_file_chars=5005 raw_body_chars=5005 stored_chunk_text_chars=5005 stored_title_plus_chunk_chars=5086
+- `dsid_865449ae95b044768f33773263bfeaad` file=`dsid_865449ae95b044768f33773263bfeaad__controlled-failover-test-results-2026-01-15.txt` capped=False gold200=True raw_file_chars=10928 raw_body_chars=10928 stored_chunk_text_chars=10928 stored_title_plus_chunk_chars=10985
+- `dsid_8733ed2132dc4232b2797c1d9a167cb9` file=`dsid_8733ed2132dc4232b2797c1d9a167cb9__audit-log-export-role-aware-filtered-dump-2026.txt` capped=False gold200=True raw_file_chars=8659 raw_body_chars=8659 stored_chunk_text_chars=8659 stored_title_plus_chunk_chars=8709
+- `dsid_876b1a31bcc7409ab560b9ccbe5a0d41` file=`dsid_876b1a31bcc7409ab560b9ccbe5a0d41__SUP-835120-historical-panel-staleness-after-retention-compact-warmup.txt` capped=False gold200=True raw_file_chars=6260 raw_body_chars=6260 stored_chunk_text_chars=6260 stored_title_plus_chunk_chars=6361
+- `dsid_88b39d13bd584ef8b1422d76994808c7` file=`dsid_88b39d13bd584ef8b1422d76994808c7__pr-95312-unify-handshake-consumer-ux-and-retry-bump.txt` capped=False gold200=True raw_file_chars=4121 raw_body_chars=4121 stored_chunk_text_chars=4121 stored_title_plus_chunk_chars=4220
+- `dsid_8c15ff526e00491e9ccbde5ef4a4458c` file=`dsid_8c15ff526e00491e9ccbde5ef4a4458c__SUP-1000007-sse-keepalive-suppression-and-duplicate-heartbeat-resume.txt` capped=False gold200=True raw_file_chars=5067 raw_body_chars=5067 stored_chunk_text_chars=5067 stored_title_plus_chunk_chars=5202
+- `dsid_8c60fea2755245de913a78b2e29c617e` file=`dsid_8c60fea2755245de913a78b2e29c617e__SUP-684321-provisioner-migration-stripped-serviceaccount-role-annotation-blocks-batch-workers.txt` capped=False gold200=True raw_file_chars=4561 raw_body_chars=4561 stored_chunk_text_chars=4561 stored_title_plus_chunk_chars=4684
+- `dsid_8cb8070d41604b67901e60da07713d92` file=`dsid_8cb8070d41604b67901e60da07713d92__office-plant-care-policy-2026.txt` capped=False gold200=True raw_file_chars=5216 raw_body_chars=5216 stored_chunk_text_chars=5216 stored_title_plus_chunk_chars=5255
+- `dsid_8dff963a50774cdd84131d9ae5e4f4f3` file=`dsid_8dff963a50774cdd84131d9ae5e4f4f3__SUP-4821-hosted-api-intermittent-504-request-timeouts-us-east.txt` capped=False gold200=True raw_file_chars=1047 raw_body_chars=1047 stored_chunk_text_chars=1047 stored_title_plus_chunk_chars=1126
+- `dsid_8f0301d7b2414031b392da5566f98ce6` file=`dsid_8f0301d7b2414031b392da5566f98ce6__dynamic-quant-handoff-and-latency-budgeting-manifest-2026.txt` capped=False gold200=True raw_file_chars=9862 raw_body_chars=9862 stored_chunk_text_chars=9862 stored_title_plus_chunk_chars=9915
+- `dsid_8f5b801cebc34eb4b233bd0ef7c1b546` file=`dsid_8f5b801cebc34eb4b233bd0ef7c1b546__company-sidecar-streetwear-studio.txt` capped=False gold200=True raw_file_chars=2639 raw_body_chars=2639 stored_chunk_text_chars=2639 stored_title_plus_chunk_chars=2665
+- `dsid_8f80516053a24beba08e603cb1831dd6` file=`dsid_8f80516053a24beba08e603cb1831dd6__SUP-501603-signed-cookie-refresh-loop-ephemeral-worker-429s.txt` capped=False gold200=True raw_file_chars=5151 raw_body_chars=5151 stored_chunk_text_chars=5151 stored_title_plus_chunk_chars=5245
+- `dsid_90218d9a9af84072bcf3ff7bb90b5fa1` file=`dsid_90218d9a9af84072bcf3ff7bb90b5fa1__lexicohealth-embedding-dimension-mismatch-rerank-timeouts.txt` capped=False gold200=True raw_file_chars=6318 raw_body_chars=6317 stored_chunk_text_chars=6317 stored_title_plus_chunk_chars=6419
+- `dsid_912991a0a2ce4000a55b1f67bda8c3a3` file=`dsid_912991a0a2ce4000a55b1f67bda8c3a3__2025-05-09-ironcrest-bio-quickstart-hosting-pathway-discovery.txt` capped=False gold200=True raw_file_chars=9097 raw_body_chars=9097 stored_chunk_text_chars=9097 stored_title_plus_chunk_chars=9153
+- `dsid_91d7f359508c4476a6f717ea2b33aecc` file=`dsid_91d7f359508c4476a6f717ea2b33aecc__partial-result-checkpointing-client-resume-contract-2026.txt` capped=False gold200=True raw_file_chars=10832 raw_body_chars=10831 stored_chunk_text_chars=10831 stored_title_plus_chunk_chars=10887
+- `dsid_929598314f834ad08cf48642b88bde16` file=`dsid_929598314f834ad08cf48642b88bde16__ENG-7420-mixedload-queue-batching-harness-analysis.txt` capped=False gold200=True raw_file_chars=5654 raw_body_chars=5653 stored_chunk_text_chars=5653 stored_title_plus_chunk_chars=5722
+- `dsid_92d0d471ddc941288bcb51b3ded6ec36` file=`dsid_92d0d471ddc941288bcb51b3ded6ec36__hosted-model-performance-bar.txt` capped=False gold200=True raw_file_chars=2389 raw_body_chars=2388 stored_chunk_text_chars=2388 stored_title_plus_chunk_chars=2447
+- `dsid_939eea1a52f84393b0f87492b9aba8c2` file=`dsid_939eea1a52f84393b0f87492b9aba8c2__pr-24108-fix-billing-double-counting-on-burst-retries.txt` capped=False gold200=True raw_file_chars=4552 raw_body_chars=4552 stored_chunk_text_chars=4552 stored_title_plus_chunk_chars=4638
+- `dsid_9550250a59e74f1bbd5612480b2e7100` file=`dsid_9550250a59e74f1bbd5612480b2e7100__pr-129874-timebox-abort-idempotency-resume-openai-compat.txt` capped=False gold200=True raw_file_chars=4153 raw_body_chars=4153 stored_chunk_text_chars=4153 stored_title_plus_chunk_chars=4231
+- `dsid_95c7aa5238f94570a8e0a8684736b666` file=`dsid_95c7aa5238f94570a8e0a8684736b666__burst-capacity-retro-notes.txt` capped=False gold200=True raw_file_chars=11456 raw_body_chars=11456 stored_chunk_text_chars=11456 stored_title_plus_chunk_chars=11511
+- `dsid_96088536cbcc449eb676e94bf800486a` file=`dsid_96088536cbcc449eb676e94bf800486a__1876543210-audit-log-query-snippet-and-link-rot-fix.txt` capped=False gold200=True raw_file_chars=4047 raw_body_chars=4047 stored_chunk_text_chars=4047 stored_title_plus_chunk_chars=4052
+- `dsid_9762ad5c4f7b45e3af5dda76b48752e4` file=`dsid_9762ad5c4f7b45e3af5dda76b48752e4__adr-014-hosted-overload-error-taxonomy.txt` capped=False gold200=True raw_file_chars=11189 raw_body_chars=11188 stored_chunk_text_chars=11188 stored_title_plus_chunk_chars=11246
+- `dsid_9776bd75ffbb4ca7b10669be1512daa3` file=`dsid_9776bd75ffbb4ca7b10669be1512daa3__samir-rahman-account-blitz-log-2026-05-10.txt` capped=False gold200=True raw_file_chars=3492 raw_body_chars=3491 stored_chunk_text_chars=3491 stored_title_plus_chunk_chars=3521
+- `dsid_97992c0043184c7b9c10ed2106482ae1` file=`dsid_97992c0043184c7b9c10ed2106482ae1__SUP-4833-hosted-api-context-deadline-exceeded-streaming-chat-us-west.txt` capped=False gold200=True raw_file_chars=1059 raw_body_chars=1059 stored_chunk_text_chars=1059 stored_title_plus_chunk_chars=1137
+- `dsid_981f4a0281054f9aaaec7887156eebc4` file=`dsid_981f4a0281054f9aaaec7887156eebc4__slo-to-customer-impact-classifier-and-remediation-workflow-2026.txt` capped=False gold200=True raw_file_chars=9414 raw_body_chars=9414 stored_chunk_text_chars=9414 stored_title_plus_chunk_chars=9473
+- `dsid_9a2f440e8f7e4801b76233767fcef945` file=`dsid_9a2f440e8f7e4801b76233767fcef945__SUP-4021-retention-policy-not-applied-to-request-logs-us-east.txt` capped=False gold200=True raw_file_chars=7782 raw_body_chars=7782 stored_chunk_text_chars=7782 stored_title_plus_chunk_chars=7891
+- `dsid_9adc7c1c81f54e0a88d0e0bee59a6588` file=`dsid_9adc7c1c81f54e0a88d0e0bee59a6588__SUP-827459-pinned-model-demoted-by-edge-rate-shedding.txt` capped=False gold200=True raw_file_chars=6646 raw_body_chars=6646 stored_chunk_text_chars=6646 stored_title_plus_chunk_chars=6745
+- `dsid_9c63777c789c4f7db9e391024dd887ae` file=`dsid_9c63777c789c4f7db9e391024dd887ae__2027-01-19-deployment-sterile-window-and-fallback-choreography.txt` capped=False gold200=True raw_file_chars=9672 raw_body_chars=9672 stored_chunk_text_chars=9672 stored_title_plus_chunk_chars=9724
+- `dsid_9cde32cd0645459b80ec513df27d1eb6` file=`dsid_9cde32cd0645459b80ec513df27d1eb6__ENG-78123-audit-retention-filtered-dump-with-role-aware-access.txt` capped=False gold200=True raw_file_chars=4128 raw_body_chars=4128 stored_chunk_text_chars=4128 stored_title_plus_chunk_chars=4175
+- `dsid_9ed01291d81947f49500df5fb28ab724` file=`dsid_9ed01291d81947f49500df5fb28ab724__2025-05-28-private-upgrades-technical-deep-dive.txt` capped=True gold200=False raw_file_chars=32966 raw_body_chars=32966 stored_chunk_text_chars=32799 stored_title_plus_chunk_chars=32887, chars_cut_from_raw_body=167, chars_cut_from_raw_file=167
+- `dsid_9eda2ec9cbda4188936246d888df1d0b` file=`dsid_9eda2ec9cbda4188936246d888df1d0b__crypto-hierarchy-rotation-siem-runbook.txt` capped=False gold200=True raw_file_chars=11183 raw_body_chars=11181 stored_chunk_text_chars=11181 stored_title_plus_chunk_chars=11235
+- `dsid_9f92a42dc8d24c93a0a696a0727063b9` file=`dsid_9f92a42dc8d24c93a0a696a0727063b9__company-diffsmith-labs.txt` capped=False gold200=True raw_file_chars=3546 raw_body_chars=3546 stored_chunk_text_chars=3546 stored_title_plus_chunk_chars=3561
+- `dsid_a134a3fd3c244a52a8d3e1ff515fdf58` file=`dsid_a134a3fd3c244a52a8d3e1ff515fdf58__project-orion-weekly-update-2026-01-16.txt` capped=False gold200=True raw_file_chars=1016 raw_body_chars=1016 stored_chunk_text_chars=1016 stored_title_plus_chunk_chars=1066
+- `dsid_a15c0247e9de4e128293bd820fc4c659` file=`dsid_a15c0247e9de4e128293bd820fc4c659__company-pearlgate-embedlabs.txt` capped=False gold200=True raw_file_chars=1900 raw_body_chars=1900 stored_chunk_text_chars=1900 stored_title_plus_chunk_chars=1921
+- `dsid_a1d8ea3adc68431ebd90cc40a51b5627` file=`dsid_a1d8ea3adc68431ebd90cc40a51b5627__1739173199-openai-compat-tool-call-differences.txt` capped=False gold200=True raw_file_chars=5996 raw_body_chars=5996 stored_chunk_text_chars=5996 stored_title_plus_chunk_chars=6009
+- `dsid_a227a7f316c4452eab4c05567edb9404` file=`dsid_a227a7f316c4452eab4c05567edb9404__1851234567-allhands-weekly-ask-and-key-highlights.txt` capped=False gold200=True raw_file_chars=3595 raw_body_chars=3595 stored_chunk_text_chars=3595 stored_title_plus_chunk_chars=3605
+- `dsid_a277ed2dc74c4bad82bc71b534b6356f` file=`dsid_a277ed2dc74c4bad82bc71b534b6356f__2025-07-22-private-vpc-egress-issue-region-fallback.txt` capped=False gold200=True raw_file_chars=1953 raw_body_chars=1953 stored_chunk_text_chars=1953 stored_title_plus_chunk_chars=2028
+- `dsid_a2c7dc70aacc470894c953b6c7499228` file=`dsid_a2c7dc70aacc470894c953b6c7499228__ENG-51782-external-saml-assertion-ordering-permission-glitch.txt` capped=False gold200=True raw_file_chars=5218 raw_body_chars=5218 stored_chunk_text_chars=5218 stored_title_plus_chunk_chars=5327
+- `dsid_a3fdfc45905f46f3988ad13f55ecce93` file=`dsid_a3fdfc45905f46f3988ad13f55ecce93__ENG-428317-conditional-multitenant-ratelimiter-priority-skew.txt` capped=False gold200=True raw_file_chars=4745 raw_body_chars=4745 stored_chunk_text_chars=4745 stored_title_plus_chunk_chars=4832
+- `dsid_a45c07f3daaf47c18b7bc75d3cbf2112` file=`dsid_a45c07f3daaf47c18b7bc75d3cbf2112__company-pillarhaven-insightworks.txt` capped=False gold200=True raw_file_chars=3761 raw_body_chars=3761 stored_chunk_text_chars=3761 stored_title_plus_chunk_chars=3786
+- `dsid_a54a2f8553804d34986f42a49907b9d0` file=`dsid_a54a2f8553804d34986f42a49907b9d0__runbook-rollouts-canary-ab-fallback.txt` capped=False gold200=True raw_file_chars=3693 raw_body_chars=3693 stored_chunk_text_chars=3693 stored_title_plus_chunk_chars=3755
+- `dsid_a55032c4c2064671a4b0abf975438e1a` file=`dsid_a55032c4c2064671a4b0abf975438e1a__ENG-86347-compact-benchmark-store-and-comparison-canvas-triage-playbook.txt` capped=False gold200=True raw_file_chars=4865 raw_body_chars=4865 stored_chunk_text_chars=4865 stored_title_plus_chunk_chars=4936
+- `dsid_a560a94faf9c40ec9782d125d94fc009` file=`dsid_a560a94faf9c40ec9782d125d94fc009__pr-18472-load-shedding-retry-after-and-client-guidance.txt` capped=False gold200=True raw_file_chars=4475 raw_body_chars=4475 stored_chunk_text_chars=4475 stored_title_plus_chunk_chars=4563
+- `dsid_a56c6ba5a2094d8b83c6c70d025d940e` file=`dsid_a56c6ba5a2094d8b83c6c70d025d940e__SUP-135791-connection-warmup-trailing-silence-on-sse-with-apple-http-proxy.txt` capped=False gold200=True raw_file_chars=5489 raw_body_chars=5489 stored_chunk_text_chars=5489 stored_title_plus_chunk_chars=5610
+- `dsid_a5a5235d973e421c870e11ceea4887ed` file=`dsid_a5a5235d973e421c870e11ceea4887ed__SUP-18510-streaming-throughput-metric-mismatch.txt` capped=False gold200=True raw_file_chars=6201 raw_body_chars=6201 stored_chunk_text_chars=6201 stored_title_plus_chunk_chars=6332
+- `dsid_a673ed031ece43c5bc4a0d27a284c8dc` file=`dsid_a673ed031ece43c5bc4a0d27a284c8dc__SUP-99340-structured-audit-delivery-and-PII-redaction-evidence-request.txt` capped=False gold200=True raw_file_chars=4281 raw_body_chars=4281 stored_chunk_text_chars=4281 stored_title_plus_chunk_chars=4370
+- `dsid_a8815e6f0b05476a8581f98a718fe89f` file=`dsid_a8815e6f0b05476a8581f98a718fe89f__tiered-eval-fidelity-contract-and-shadow-mesh-playbook-2026.txt` capped=False gold200=True raw_file_chars=9594 raw_body_chars=9593 stored_chunk_text_chars=9593 stored_title_plus_chunk_chars=9648
+- `dsid_a8a5eac6e7a243319426769963506277` file=`dsid_a8a5eac6e7a243319426769963506277__brand-meme-and-misc-asset-inventory.txt` capped=False gold200=True raw_file_chars=2647 raw_body_chars=2647 stored_chunk_text_chars=2647 stored_title_plus_chunk_chars=2681
+- `dsid_a92fe998fc534d57a1d54d5a6294c938` file=`dsid_a92fe998fc534d57a1d54d5a6294c938__20281004-q3-sprintback-metrics-readiness-and-actions.txt` capped=False gold200=True raw_file_chars=7030 raw_body_chars=7029 stored_chunk_text_chars=7029 stored_title_plus_chunk_chars=7082
+- `dsid_a98ada14af2142a7a46266584d05c846` file=`dsid_a98ada14af2142a7a46266584d05c846__ENG-4829-sse-resume-strategy-and-hosted-disconnects.txt` capped=False gold200=True raw_file_chars=7762 raw_body_chars=7762 stored_chunk_text_chars=7762 stored_title_plus_chunk_chars=7837
+- `dsid_a990e708840f481795741cfd3fb55691` file=`dsid_a990e708840f481795741cfd3fb55691__SUP-376545-cinderlabs-session-tear-retry-amplification-billing-spike-postincident.txt` capped=False gold200=True raw_file_chars=6075 raw_body_chars=6075 stored_chunk_text_chars=6075 stored_title_plus_chunk_chars=6189
+- `dsid_a9d76bcb3bc1475abc9d6f8f83a6eba8` file=`dsid_a9d76bcb3bc1475abc9d6f8f83a6eba8__2025-03-27-tethys-systems-si-channel-cloud-gpu-fit-discovery.txt` capped=False gold200=True raw_file_chars=10013 raw_body_chars=10013 stored_chunk_text_chars=10013 stored_title_plus_chunk_chars=10067
+- `dsid_aa97b7293f9f4f3c8180f645e4fe5911` file=`dsid_aa97b7293f9f4f3c8180f645e4fe5911__2025-02-11-onprem-backup-restore-and-audit-log-retention-security-review-meddata.txt` capped=False gold200=True raw_file_chars=25861 raw_body_chars=25861 stored_chunk_text_chars=25861 stored_title_plus_chunk_chars=25940
+- `dsid_abfb68dde21f4fd2aa7d70c472447f89` file=`dsid_abfb68dde21f4fd2aa7d70c472447f89__SUP-31842-latency-regression-on-long-context-after-runtime-1-21-canary.txt` capped=False gold200=True raw_file_chars=7348 raw_body_chars=7348 stored_chunk_text_chars=7348 stored_title_plus_chunk_chars=7457
+- `dsid_acc33ff059404020b0ff26e19ad2b107` file=`dsid_acc33ff059404020b0ff26e19ad2b107__weekly-clarity-anchor-journal-maxwell-chen.txt` capped=False gold200=True raw_file_chars=5244 raw_body_chars=5243 stored_chunk_text_chars=5243 stored_title_plus_chunk_chars=5298
+- `dsid_ad14c3cb06c4494093dfcfff5098d89d` file=`dsid_ad14c3cb06c4494093dfcfff5098d89d__company-bramblebox-content-labs.txt` capped=False gold200=True raw_file_chars=3269 raw_body_chars=3269 stored_chunk_text_chars=3269 stored_title_plus_chunk_chars=3293
+- `dsid_ad3961a5bbd846d09d101bfa951ab739` file=`dsid_ad3961a5bbd846d09d101bfa951ab739__SUP-77321-temporary-pause-and-traffic-split-mitigation-for-aggressive-opt-profiles.txt` capped=False gold200=True raw_file_chars=6415 raw_body_chars=6415 stored_chunk_text_chars=6415 stored_title_plus_chunk_chars=6549
+- `dsid_ad58457891774bd7ba480e0bcd13df3a` file=`dsid_ad58457891774bd7ba480e0bcd13df3a__optimize-conductor-4-0-release-notes-and-migration-guide-2028-09-15.txt` capped=False gold200=True raw_file_chars=9998 raw_body_chars=9996 stored_chunk_text_chars=9996 stored_title_plus_chunk_chars=10053
+- `dsid_ad70fa7335294e2988193e2a6645a5ba` file=`dsid_ad70fa7335294e2988193e2a6645a5ba__quant-output-degradation-detect-and-repair-protocol-2026.txt` capped=False gold200=True raw_file_chars=8473 raw_body_chars=8473 stored_chunk_text_chars=8473 stored_title_plus_chunk_chars=8533
+- `dsid_ae455bffe226412c9973991ef2d34a72` file=`dsid_ae455bffe226412c9973991ef2d34a72__pr-21533-gateway-return-409-for-residency-policy-violation.txt` capped=False gold200=True raw_file_chars=6398 raw_body_chars=6398 stored_chunk_text_chars=6398 stored_title_plus_chunk_chars=6479
+- `dsid_aea4790d4bcc45859208d7d705f682a1` file=`dsid_aea4790d4bcc45859208d7d705f682a1__2026-03-21-interview-jordan-lee.txt` capped=False gold200=True raw_file_chars=7996 raw_body_chars=7996 stored_chunk_text_chars=7996 stored_title_plus_chunk_chars=8047
+- `dsid_b097ab5d9e4c41609f47432dfcb1508b` file=`dsid_b097ab5d9e4c41609f47432dfcb1508b__INT-772007-role-lookup-groupid-type-mismatch-modelobservability-access.txt` capped=False gold200=True raw_file_chars=4493 raw_body_chars=4493 stored_chunk_text_chars=4493 stored_title_plus_chunk_chars=4611
+- `dsid_b17470b55308417887920a77bc20a1b5` file=`dsid_b17470b55308417887920a77bc20a1b5__ENG-683219-schema-tug-of-war-constrained-decoder-experiments.txt` capped=False gold200=True raw_file_chars=2829 raw_body_chars=2829 stored_chunk_text_chars=2829 stored_title_plus_chunk_chars=2902
+- `dsid_b72bd7e0c91a4f8c9d9a13daf6ff3d28` file=`dsid_b72bd7e0c91a4f8c9d9a13daf6ff3d28__1739276405-northstar-no-payload-logging.txt` capped=False gold200=True raw_file_chars=545 raw_body_chars=545 stored_chunk_text_chars=545 stored_title_plus_chunk_chars=558
+- `dsid_b793b06789ae4147884e94681c6beae1` file=`dsid_b793b06789ae4147884e94681c6beae1__INT-1907-log-retention-exception-helio-health.txt` capped=False gold200=True raw_file_chars=1402 raw_body_chars=1402 stored_chunk_text_chars=1402 stored_title_plus_chunk_chars=1466
+- `dsid_b837e1140d1a4c3d8efd2f42d9b6a799` file=`dsid_b837e1140d1a4c3d8efd2f42d9b6a799__pr-27416-add-slo-to-customer-impact-classifier-and-remediation-workflow-doc.txt` capped=False gold200=True raw_file_chars=13550 raw_body_chars=13550 stored_chunk_text_chars=13550 stored_title_plus_chunk_chars=13641
+- `dsid_b8691ba2e29542838afae93928ad816a` file=`dsid_b8691ba2e29542838afae93928ad816a__pr-489-add-restore-apply-workflow-and-validation.txt` capped=False gold200=True raw_file_chars=3813 raw_body_chars=3813 stored_chunk_text_chars=3813 stored_title_plus_chunk_chars=3899
+- `dsid_b9025f196ac14b2cb7a2905654dd42d7` file=`dsid_b9025f196ac14b2cb7a2905654dd42d7__2026-09-30-onprem-cutover-readiness-egress-capacity-playbook.txt` capped=False gold200=True raw_file_chars=12714 raw_body_chars=12714 stored_chunk_text_chars=12714 stored_title_plus_chunk_chars=12782
+- `dsid_b9542668ae9b4163a932e4d16d26cd42` file=`dsid_b9542668ae9b4163a932e4d16d26cd42__latency-sculptor-notes-sanjay.txt` capped=False gold200=True raw_file_chars=6599 raw_body_chars=6599 stored_chunk_text_chars=6599 stored_title_plus_chunk_chars=6641
+- `dsid_b993fa19b3d44382b709e3107ab1ba77` file=`dsid_b993fa19b3d44382b709e3107ab1ba77__SUP-3917-audit-log-export-missing-event-types.txt` capped=False gold200=True raw_file_chars=6982 raw_body_chars=6982 stored_chunk_text_chars=6982 stored_title_plus_chunk_chars=7057
+- `dsid_b9eb7e39bc2e4f65814c42358089d49b` file=`dsid_b9eb7e39bc2e4f65814c42358089d49b__company-mariner-prism-software.txt` capped=False gold200=True raw_file_chars=4554 raw_body_chars=4554 stored_chunk_text_chars=4554 stored_title_plus_chunk_chars=4577
+- `dsid_ba7d1565b0694e359983bccaa4bf5977` file=`dsid_ba7d1565b0694e359983bccaa4bf5977__entitlements-and-purchase-pathways-playbook-2030.txt` capped=False gold200=True raw_file_chars=10540 raw_body_chars=10539 stored_chunk_text_chars=10539 stored_title_plus_chunk_chars=10588
+- `dsid_bab6aba4c06e41e9ae46b9355f644a7a` file=`dsid_bab6aba4c06e41e9ae46b9355f644a7a__pr-128765-hetero-bandwidth-allreduce-kv-coalesce.txt` capped=False gold200=True raw_file_chars=4353 raw_body_chars=4353 stored_chunk_text_chars=4353 stored_title_plus_chunk_chars=4450
+- `dsid_be8d2802cf3245088a7e7f861f317b31` file=`dsid_be8d2802cf3245088a7e7f861f317b31__SUP-29458-template-telemetry-header-blocked-by-corporate-proxy.txt` capped=False gold200=True raw_file_chars=6094 raw_body_chars=6094 stored_chunk_text_chars=6094 stored_title_plus_chunk_chars=6211
+- `dsid_bec90d2205534ca9a016f244e13884e5` file=`dsid_bec90d2205534ca9a016f244e13884e5__routing-and-controlplane-runbook-architecture-notes.txt` capped=False gold200=True raw_file_chars=9769 raw_body_chars=9768 stored_chunk_text_chars=9768 stored_title_plus_chunk_chars=9820
+- `dsid_bf7e79dc1331447598c4eebdc5d2897d` file=`dsid_bf7e79dc1331447598c4eebdc5d2897d__2025-06-08-dedicated-cluster-degradation-fallback-to-hosted.txt` capped=False gold200=True raw_file_chars=1762 raw_body_chars=1762 stored_chunk_text_chars=1762 stored_title_plus_chunk_chars=1845
+- `dsid_c054271735b541ba91e42c4dbe8a4883` file=`dsid_c054271735b541ba91e42c4dbe8a4883__2026-08-11-internal-it-finops-oncall-runbook-transfer.txt` capped=False gold200=True raw_file_chars=6694 raw_body_chars=6694 stored_chunk_text_chars=6694 stored_title_plus_chunk_chars=6760
+- `dsid_c1a652436b2e4c949f5de9f5da227cd7` file=`dsid_c1a652436b2e4c949f5de9f5da227cd7__misc-cafeteria-beanbag-and-ambient-noise-guidelines-2024.txt` capped=False gold200=True raw_file_chars=3853 raw_body_chars=3853 stored_chunk_text_chars=3853 stored_title_plus_chunk_chars=3900
+- `dsid_c2ddd5240eb04e16806d82103f7646dd` file=`dsid_c2ddd5240eb04e16806d82103f7646dd__20261002-req-reprioritization-band-exception.txt` capped=False gold200=True raw_file_chars=6657 raw_body_chars=6656 stored_chunk_text_chars=6656 stored_title_plus_chunk_chars=6702
+- `dsid_c336dcdf965d44b0bcf4c8e3930af440` file=`dsid_c336dcdf965d44b0bcf4c8e3930af440__company-ironclad-support-reserve.txt` capped=False gold200=True raw_file_chars=3614 raw_body_chars=3613 stored_chunk_text_chars=3613 stored_title_plus_chunk_chars=3638
+- `dsid_c3be99dbca144db488c037dd2f0831ef` file=`dsid_c3be99dbca144db488c037dd2f0831ef__2025-01-29-private-dr-and-backup-restore-technical-deep-dive-finbank.txt` capped=False gold200=True raw_file_chars=23471 raw_body_chars=23471 stored_chunk_text_chars=23471 stored_title_plus_chunk_chars=23539
+- `dsid_c4bd1ea6dcc84209b1d4c30aca74caea` file=`dsid_c4bd1ea6dcc84209b1d4c30aca74caea__2025-03-19-technical-deep-dive-policy-evaluation-and-latency.txt` capped=True gold200=False raw_file_chars=38290 raw_body_chars=38290 stored_chunk_text_chars=33518 stored_title_plus_chunk_chars=33598, chars_cut_from_raw_body=4772, chars_cut_from_raw_file=4772
+- `dsid_c5288dd4874345adb80f4a71c9a18773` file=`dsid_c5288dd4874345adb80f4a71c9a18773__ENG-4721-misc-chores-office-inventory-and-keycard-cleanup.txt` capped=False gold200=True raw_file_chars=2010 raw_body_chars=2010 stored_chunk_text_chars=2010 stored_title_plus_chunk_chars=2059
+- `dsid_c53d4b486a1e485186a7e4b9d1c3f3ef` file=`dsid_c53d4b486a1e485186a7e4b9d1c3f3ef__ENG-11783-strip-compat-proxy-unify-flag-schemas.txt` capped=False gold200=True raw_file_chars=3748 raw_body_chars=3748 stored_chunk_text_chars=3748 stored_title_plus_chunk_chars=3800
+- `dsid_c669e9bde8764a1a9636674fce02ff52` file=`dsid_c669e9bde8764a1a9636674fce02ff52__company-granite-capital-trading-ai.txt` capped=False gold200=True raw_file_chars=4904 raw_body_chars=4904 stored_chunk_text_chars=4904 stored_title_plus_chunk_chars=4931
+- `dsid_c70d8bffc59745ccbcf1770df2ec6152` file=`dsid_c70d8bffc59745ccbcf1770df2ec6152__2025-10-15-gpu-fleet-provisioning-sync-with-aws.txt` capped=True gold200=False raw_file_chars=32374 raw_body_chars=32374 stored_chunk_text_chars=31454 stored_title_plus_chunk_chars=31514, chars_cut_from_raw_body=920, chars_cut_from_raw_file=920
+- `dsid_c83811391709468fa9534e6495c205e3` file=`dsid_c83811391709468fa9534e6495c205e3__remediation-sla-options-and-customer-tier-mapping.txt` capped=False gold200=True raw_file_chars=12215 raw_body_chars=12214 stored_chunk_text_chars=12214 stored_title_plus_chunk_chars=12307
+- `dsid_c84c8581594e47d49e82d024a6da915d` file=`dsid_c84c8581594e47d49e82d024a6da915d__pr-297345-weight-prepack-int8-smoothquant-allocator.txt` capped=False gold200=True raw_file_chars=3776 raw_body_chars=3776 stored_chunk_text_chars=3776 stored_title_plus_chunk_chars=3845
+- `dsid_c90bd544f3b5437fba711492db31aeea` file=`dsid_c90bd544f3b5437fba711492db31aeea__PM-210777-cohort-driven-eval-harness-and-staged-failover-prd.txt` capped=False gold200=True raw_file_chars=7670 raw_body_chars=7670 stored_chunk_text_chars=7670 stored_title_plus_chunk_chars=7763
+- `dsid_c9e70cb6eee1471baba213a976a8dd05` file=`dsid_c9e70cb6eee1471baba213a976a8dd05__company-daystarter-labs.txt` capped=False gold200=True raw_file_chars=1444 raw_body_chars=1444 stored_chunk_text_chars=1444 stored_title_plus_chunk_chars=1460
+- `dsid_ca09c9594d0f4293b971c96fa9ed647c` file=`dsid_ca09c9594d0f4293b971c96fa9ed647c__SUP-812999-tenant-stickiness-erosion-during-deferred-prewarm.txt` capped=False gold200=True raw_file_chars=5124 raw_body_chars=5124 stored_chunk_text_chars=5124 stored_title_plus_chunk_chars=5207
+- `dsid_cb0d800639e84d68ae035596c7f6f1f8` file=`dsid_cb0d800639e84d68ae035596c7f6f1f8__design-spec-model-version-rollouts-template.txt` capped=False gold200=True raw_file_chars=3461 raw_body_chars=3461 stored_chunk_text_chars=3461 stored_title_plus_chunk_chars=3523
+- `dsid_cc2f84330d014d03b8c49f8e92063b07` file=`dsid_cc2f84330d014d03b8c49f8e92063b07__2026-12-20-orbital-networks-gtm-co-sell-sprint-review.txt` capped=False gold200=True raw_file_chars=17360 raw_body_chars=17360 stored_chunk_text_chars=17360 stored_title_plus_chunk_chars=17424
+- `dsid_cc49c932507c42959ba9e4824f0d6b7f` file=`dsid_cc49c932507c42959ba9e4824f0d6b7f__SUP-4852-private-vpc-request-timeouts-due-to-nlb-idle-timeout.txt` capped=False gold200=True raw_file_chars=1015 raw_body_chars=1015 stored_chunk_text_chars=1015 stored_title_plus_chunk_chars=1081
+- `dsid_ccaf626687b940f3a7309e09c1ed5c1b` file=`dsid_ccaf626687b940f3a7309e09c1ed5c1b__INT-34121-supplier-credit-note-posted-wrong-cost-center.txt` capped=False gold200=True raw_file_chars=3768 raw_body_chars=3768 stored_chunk_text_chars=3768 stored_title_plus_chunk_chars=3856
+- `dsid_ce60931a1aea428b8186228ee40bb497` file=`dsid_ce60931a1aea428b8186228ee40bb497__project-orion-weekly-update-2026-01-23.txt` capped=False gold200=True raw_file_chars=1156 raw_body_chars=1156 stored_chunk_text_chars=1156 stored_title_plus_chunk_chars=1206
+- `dsid_cfc93aaf69bf456cb669f5b99c09b7fa` file=`dsid_cfc93aaf69bf456cb669f5b99c09b7fa__SUP-904821-kv-cache-eviction-and-autoscale-window-mismatch-causing-p99-timeouts.txt` capped=False gold200=True raw_file_chars=5692 raw_body_chars=5692 stored_chunk_text_chars=5692 stored_title_plus_chunk_chars=5794
+- `dsid_d04ffbe63ea44224892533eb0fe95bc6` file=`dsid_d04ffbe63ea44224892533eb0fe95bc6__pr-82145-instrument-gpu-queue-depth-and-scheduler-sample-probes.txt` capped=False gold200=True raw_file_chars=3274 raw_body_chars=3274 stored_chunk_text_chars=3274 stored_title_plus_chunk_chars=3340
+- `dsid_d3edd63b9ec54523ad12bd9be3d7e996` file=`dsid_d3edd63b9ec54523ad12bd9be3d7e996__2025-03-03-eu-west-capacity-shortage-region-fallback.txt` capped=False gold200=True raw_file_chars=2199 raw_body_chars=2199 stored_chunk_text_chars=2199 stored_title_plus_chunk_chars=2270
+- `dsid_d67b4ea2d8834799ae617b1ccddf1f6e` file=`dsid_d67b4ea2d8834799ae617b1ccddf1f6e__PM-1490-error-messaging-contract-for-policy-blocks.txt` capped=False gold200=True raw_file_chars=9657 raw_body_chars=9657 stored_chunk_text_chars=9657 stored_title_plus_chunk_chars=9729
+- `dsid_d7aeb7de2b6c4ae88f46f4b0e4f2aacb` file=`dsid_d7aeb7de2b6c4ae88f46f4b0e4f2aacb__ENG-4821-guardrails-cooldown-and-fairness-enforcement.txt` capped=False gold200=True raw_file_chars=10127 raw_body_chars=10127 stored_chunk_text_chars=10127 stored_title_plus_chunk_chars=10220
+- `dsid_d844cc30147b49c69ea5275b4993b571` file=`dsid_d844cc30147b49c69ea5275b4993b571__postmortem-controlled-failover-test-regression.txt` capped=False gold200=True raw_file_chars=12878 raw_body_chars=12877 stored_chunk_text_chars=12877 stored_title_plus_chunk_chars=12976
+- `dsid_d8a18c9f03de414faeacfda3ad53e315` file=`dsid_d8a18c9f03de414faeacfda3ad53e315__SUP-777202-sse-trimmed-terminal-whitespace-due-to-h2-priority.txt` capped=False gold200=True raw_file_chars=5456 raw_body_chars=5456 stored_chunk_text_chars=5456 stored_title_plus_chunk_chars=5567
+- `dsid_d8d194e311b9482cb38c61134b6d26fa` file=`dsid_d8d194e311b9482cb38c61134b6d26fa__quant-profile-requirements-for-catalog.txt` capped=False gold200=True raw_file_chars=2221 raw_body_chars=2220 stored_chunk_text_chars=2220 stored_title_plus_chunk_chars=2277
+- `dsid_d9702f193090461480911352de3d4e49` file=`dsid_d9702f193090461480911352de3d4e49__compliance-reporting-pack-baseline.txt` capped=False gold200=True raw_file_chars=11949 raw_body_chars=11949 stored_chunk_text_chars=11949 stored_title_plus_chunk_chars=12012
+- `dsid_d9a7de9e7cfc4fe0b7b57765b6d25ad9` file=`dsid_d9a7de9e7cfc4fe0b7b57765b6d25ad9__company-stillwater-dialogue.txt` capped=False gold200=True raw_file_chars=3595 raw_body_chars=3595 stored_chunk_text_chars=3595 stored_title_plus_chunk_chars=3615
+- `dsid_dab17ee5c3924a9998b17b3591bbae28` file=`dsid_dab17ee5c3924a9998b17b3591bbae28__SUP-18477-restore-fails-onprem-missing-crds.txt` capped=False gold200=True raw_file_chars=9232 raw_body_chars=9232 stored_chunk_text_chars=9232 stored_title_plus_chunk_chars=9346
+- `dsid_db87c0dec8444b1d83b06cbbe725d3a8` file=`dsid_db87c0dec8444b1d83b06cbbe725d3a8__INT-42901-offsite-prototyping-lab-temp-access-and-cross-border-device-return.txt` capped=False gold200=True raw_file_chars=3158 raw_body_chars=3158 stored_chunk_text_chars=3158 stored_title_plus_chunk_chars=3252
+- `dsid_db931dec10bf4b10829175533605aa0f` file=`dsid_db931dec10bf4b10829175533605aa0f__company-cobalt-brookline-analytics.txt` capped=False gold200=True raw_file_chars=4442 raw_body_chars=4442 stored_chunk_text_chars=4442 stored_title_plus_chunk_chars=4469
+- `dsid_dc29174c3c6a4aba82630af581c4d772` file=`dsid_dc29174c3c6a4aba82630af581c4d772__2025-01-29-technical-deep-dive-unit-cost-drivers-acmeassist.txt` capped=True gold200=False raw_file_chars=32865 raw_body_chars=32865 stored_chunk_text_chars=32618 stored_title_plus_chunk_chars=32690, chars_cut_from_raw_body=247, chars_cut_from_raw_file=247
+- `dsid_de5a4cfb2e144c4794ee943c2ec53b72` file=`dsid_de5a4cfb2e144c4794ee943c2ec53b72__2025-03-05-security-review-audit-logs-and-change-control.txt` capped=True gold200=False raw_file_chars=35995 raw_body_chars=35994 stored_chunk_text_chars=32833 stored_title_plus_chunk_chars=32923, chars_cut_from_raw_body=3161, chars_cut_from_raw_file=3162
+- `dsid_df79433aa56c489d93efd96e27dc1fc8` file=`dsid_df79433aa56c489d93efd96e27dc1fc8__INT-4821-badge-access-kiosk-blocking.txt` capped=False gold200=True raw_file_chars=2311 raw_body_chars=2311 stored_chunk_text_chars=2311 stored_title_plus_chunk_chars=2384
+- `dsid_e044274a9d184700bb8cdf9ddb6d9d02` file=`dsid_e044274a9d184700bb8cdf9ddb6d9d02__causal-regression-investigation-handbook-2026.txt` capped=False gold200=True raw_file_chars=9131 raw_body_chars=9131 stored_chunk_text_chars=9131 stored_title_plus_chunk_chars=9172
+- `dsid_e17e3ec88d4947bbb53c8190ccc90c54` file=`dsid_e17e3ec88d4947bbb53c8190ccc90c54__SUP-4840-dedicated-request-timeouts-after-autoscaler-scale-up-us-east.txt` capped=False gold200=True raw_file_chars=1124 raw_body_chars=1124 stored_chunk_text_chars=1124 stored_title_plus_chunk_chars=1188
+- `dsid_e190b0de0d27466fa91bfc18b0815311` file=`dsid_e190b0de0d27466fa91bfc18b0815311__2026-02-22-sev2-console-deploy-rollout-ui-bug.txt` capped=False gold200=True raw_file_chars=1793 raw_body_chars=1793 stored_chunk_text_chars=1793 stored_title_plus_chunk_chars=1871
+- `dsid_e33c122264214846a8b7df7701d31482` file=`dsid_e33c122264214846a8b7df7701d31482__dedicated-throughput-slo-definition.txt` capped=False gold200=True raw_file_chars=15059 raw_body_chars=15058 stored_chunk_text_chars=15058 stored_title_plus_chunk_chars=15103
+- `dsid_e37e7b7723e34b8087ef051804bfe85e` file=`dsid_e37e7b7723e34b8087ef051804bfe85e__2026-06-25-unit-cost-investigation-zephyrus-labs.txt` capped=False gold200=True raw_file_chars=14572 raw_body_chars=14572 stored_chunk_text_chars=14572 stored_title_plus_chunk_chars=14612
+- `dsid_e4b8a2a6b6594d77b1880327d506619d` file=`dsid_e4b8a2a6b6594d77b1880327d506619d__SUP-15872-apac-egress-multipath-retries-causing-inference-p99.txt` capped=False gold200=True raw_file_chars=4784 raw_body_chars=4784 stored_chunk_text_chars=4784 stored_title_plus_chunk_chars=4871
+- `dsid_e528bed025b44f71bc37a54f5a9aefcd` file=`dsid_e528bed025b44f71bc37a54f5a9aefcd__template-contrapositives-workbench.txt` capped=False gold200=True raw_file_chars=6631 raw_body_chars=6631 stored_chunk_text_chars=6631 stored_title_plus_chunk_chars=6666
+- `dsid_e5298124a9fd4bee8242a18bdb3829e0` file=`dsid_e5298124a9fd4bee8242a18bdb3829e0__ENG-4827-reconcile-stripe-netsuite-proration-edge-cases.txt` capped=False gold200=True raw_file_chars=6032 raw_body_chars=6032 stored_chunk_text_chars=6032 stored_title_plus_chunk_chars=6109
+- `dsid_e728a420a02a4ddcb125e6adb09d211e` file=`dsid_e728a420a02a4ddcb125e6adb09d211e__INT-738205-wifi-bridge-nat-source-rewrite-breaks-vpn-policy.txt` capped=False gold200=True raw_file_chars=5200 raw_body_chars=5200 stored_chunk_text_chars=5200 stored_title_plus_chunk_chars=5309
+- `dsid_e7d8c585e8594fe481975515246d04f2` file=`dsid_e7d8c585e8594fe481975515246d04f2__SUP-2860-retry-after-header-missing-on-overload-responses.txt` capped=False gold200=True raw_file_chars=6493 raw_body_chars=6493 stored_chunk_text_chars=6493 stored_title_plus_chunk_chars=6592
+- `dsid_e82eadf0700f4e6db8eecc460c4cac44` file=`dsid_e82eadf0700f4e6db8eecc460c4cac44__standard-model-version-readiness-requirements.txt` capped=False gold200=True raw_file_chars=2551 raw_body_chars=2551 stored_chunk_text_chars=2551 stored_title_plus_chunk_chars=2612
+- `dsid_e91e68b31a6f4935b87d6f74dd07e1f6` file=`dsid_e91e68b31a6f4935b87d6f74dd07e1f6__INT-1842-log-retention-exception-northstar-bank.txt` capped=False gold200=True raw_file_chars=1990 raw_body_chars=1990 stored_chunk_text_chars=1990 stored_title_plus_chunk_chars=2066
+- `dsid_e9dd560753924c1e8438cdf9c2afcf68` file=`dsid_e9dd560753924c1e8438cdf9c2afcf68__company-peregrine-crosslingo.txt` capped=False gold200=True raw_file_chars=3574 raw_body_chars=3574 stored_chunk_text_chars=3574 stored_title_plus_chunk_chars=3602
+- `dsid_e9f22ba025e34bb6b7b8c61d26a38a19` file=`dsid_e9f22ba025e34bb6b7b8c61d26a38a19__ENG-72654-incremental-token-latency-allocation-tracing.txt` capped=False gold200=True raw_file_chars=6345 raw_body_chars=6345 stored_chunk_text_chars=6345 stored_title_plus_chunk_chars=6407
+- `dsid_eab7ef95052c4016aff7a3df422131f0` file=`dsid_eab7ef95052c4016aff7a3df422131f0__valehealth-implementation-capture.txt` capped=False gold200=True raw_file_chars=6755 raw_body_chars=6755 stored_chunk_text_chars=6755 stored_title_plus_chunk_chars=6797
+- `dsid_eea41d353de049aa89be98b6f9cf5de1` file=`dsid_eea41d353de049aa89be98b6f9cf5de1__company-silverkite-launchpad.txt` capped=False gold200=True raw_file_chars=1904 raw_body_chars=1904 stored_chunk_text_chars=1904 stored_title_plus_chunk_chars=1925
+- `dsid_ef492479c7dc4a3c9dd55d6771e5df54` file=`dsid_ef492479c7dc4a3c9dd55d6771e5df54__company-saltbloom-payments.txt` capped=False gold200=True raw_file_chars=2356 raw_body_chars=2356 stored_chunk_text_chars=2356 stored_title_plus_chunk_chars=2375
+- `dsid_f02a338c2dd546b3b025b5d5d429ad4e` file=`dsid_f02a338c2dd546b3b025b5d5d429ad4e__DES-195271-console-mini-widgets-keynav-rtl-contrast-audit.txt` capped=False gold200=True raw_file_chars=3072 raw_body_chars=3072 stored_chunk_text_chars=3072 stored_title_plus_chunk_chars=3160
+- `dsid_f039509796f842cd84ba3bfb895c7132` file=`dsid_f039509796f842cd84ba3bfb895c7132__ENG-865432-interactive-latency-canvas-model-route-timelines.txt` capped=False gold200=True raw_file_chars=5322 raw_body_chars=5322 stored_chunk_text_chars=5322 stored_title_plus_chunk_chars=5413
+- `dsid_f3af4a0db68c4b15983439460cc73006` file=`dsid_f3af4a0db68c4b15983439460cc73006__ENG-99601-responses-bridge-handshake-and-runtime-parity-roadmap.txt` capped=False gold200=True raw_file_chars=4339 raw_body_chars=4339 stored_chunk_text_chars=4339 stored_title_plus_chunk_chars=4438
+- `dsid_f3e6edec6f4947a5bd5aa7fd557d7d2b` file=`dsid_f3e6edec6f4947a5bd5aa7fd557d7d2b__SUP-28488-billing-question-burst-usage-metering.txt` capped=False gold200=True raw_file_chars=7098 raw_body_chars=7098 stored_chunk_text_chars=7098 stored_title_plus_chunk_chars=7213
+- `dsid_f76e99464c07482e8ed4084d67c54a72` file=`dsid_f76e99464c07482e8ed4084d67c54a72__company-ridgeview-inference-analytics.txt` capped=False gold200=True raw_file_chars=5361 raw_body_chars=5361 stored_chunk_text_chars=5361 stored_title_plus_chunk_chars=5391
+- `dsid_f7a0934d387d4b129077a8515e60801c` file=`dsid_f7a0934d387d4b129077a8515e60801c__laptop-gpu-driver-sync-debug-notes.txt` capped=False gold200=True raw_file_chars=8841 raw_body_chars=8841 stored_chunk_text_chars=8841 stored_title_plus_chunk_chars=8891
+- `dsid_f7dc91cc70e14c94a6215a13cd829cbf` file=`dsid_f7dc91cc70e14c94a6215a13cd829cbf__INT-23789-release-gpg-verification-failure-after-key-rotation.txt` capped=False gold200=True raw_file_chars=6452 raw_body_chars=6452 stored_chunk_text_chars=6452 stored_title_plus_chunk_chars=6551
+- `dsid_f8529277bd964d6086d49ca2a30c9ac7` file=`dsid_f8529277bd964d6086d49ca2a30c9ac7__company-copper-stone-analytics.txt` capped=False gold200=True raw_file_chars=2927 raw_body_chars=2927 stored_chunk_text_chars=2927 stored_title_plus_chunk_chars=2950
+- `dsid_f8b3bf0c730f44f4a24981a3d4cd9c49` file=`dsid_f8b3bf0c730f44f4a24981a3d4cd9c49__mistral-claims-connector-onramp-notes.txt` capped=False gold200=True raw_file_chars=7500 raw_body_chars=7500 stored_chunk_text_chars=7500 stored_title_plus_chunk_chars=7540
+- `dsid_f90b68cdda834c6fb4c76508d359c72f` file=`dsid_f90b68cdda834c6fb4c76508d359c72f__SUP-100200-console-query-cache-stale-after-api-key-rotation.txt` capped=False gold200=True raw_file_chars=7165 raw_body_chars=7165 stored_chunk_text_chars=7165 stored_title_plus_chunk_chars=7269
+- `dsid_f94b93a4bc7948ddab45c371187dc6c6` file=`dsid_f94b93a4bc7948ddab45c371187dc6c6__PM-862431-emission-stability-tool-orchestration-soft-fail-acceptance.txt` capped=False gold200=True raw_file_chars=8829 raw_body_chars=8829 stored_chunk_text_chars=8829 stored_title_plus_chunk_chars=8905
+- `dsid_fa1c733deb77445da7bc55dc472d233d` file=`dsid_fa1c733deb77445da7bc55dc472d233d__pr-75012-neon-orchestrated-attn-hybrid-flash-lazykv-tiler.txt` capped=False gold200=True raw_file_chars=4784 raw_body_chars=4784 stored_chunk_text_chars=4784 stored_title_plus_chunk_chars=4864
+- `dsid_fad07fd45c964078ba757dfd8d79ee51` file=`dsid_fad07fd45c964078ba757dfd8d79ee51__DES-951337-mesh-connectivity-inspector-compact-panel.txt` capped=False gold200=True raw_file_chars=5481 raw_body_chars=5481 stored_chunk_text_chars=5481 stored_title_plus_chunk_chars=5550
+- `dsid_faf3246a6ce845e6b5df0ae52f439399` file=`dsid_faf3246a6ce845e6b5df0ae52f439399__2025-04-19-router-policy-bug-triggered-model-fallback.txt` capped=False gold200=True raw_file_chars=1903 raw_body_chars=1903 stored_chunk_text_chars=1903 stored_title_plus_chunk_chars=1989
+- `dsid_fc009de77554459b89e6b4340e8eca82` file=`dsid_fc009de77554459b89e6b4340e8eca82__offline-bundle-format-and-manifest.txt` capped=False gold200=True raw_file_chars=15915 raw_body_chars=15914 stored_chunk_text_chars=15914 stored_title_plus_chunk_chars=15986
+- `dsid_fc356e32e9a64c3199be174cb91432eb` file=`dsid_fc356e32e9a64c3199be174cb91432eb__adr-streaming-tool-call-payload-shape.txt` capped=False gold200=True raw_file_chars=10026 raw_body_chars=10026 stored_chunk_text_chars=10026 stored_title_plus_chunk_chars=10084
+- `dsid_fe7a496e795b4baca997e655f9316fc5` file=`dsid_fe7a496e795b4baca997e655f9316fc5__INT-3310-event-tracking-discrepancy-activation-funnel.txt` capped=False gold200=True raw_file_chars=7883 raw_body_chars=7883 stored_chunk_text_chars=7883 stored_title_plus_chunk_chars=8009
+
+## Manager 16% vs database ~20%
+Manager counted raw files over the whole manifest, not title + chunk_text and not the ingested ladder pool.
+- gold_gt_4000: 183/272
+- gold_gt_8191: 66/272
+- pool_gt_4000 (manager raw): 71%
+- pool_gt_8191 (manager raw): 16%
+- why: Different populations. The manager's 16% is the fraction of raw files with more than 8,191 characters across the whole manifest (n=184966 document records; Slack 40000 and Gmail 40000, which are mostly short). The database ladder pool (n=99998) caps Slack and Gmail at about 14,000-17,000 rows each (Slack/Gmail in this pool: see by_source_type.ladder_pool), so longer sources (Fireflies, Confluence, Drive) are over-represented and the share of documents with > 8,191 characters is about 20%.
+- manifest_source_counts: {"confluence": 5192, "fireflies": 10173, "github": 8052, "gmail": 40000, "google_drive": 25107, "hubspot": 15016, "jira": 6118, "linear": 35308, "slack": 40000}
+
+## Spot check (title + space + chunk_text, seed 42)
+{
+  "seed": 42,
+  "encoder": "tiktoken",
+  "n_docs_gt_8191_tokens_title_plus_chunk": 11,
+  "n_tokenized": 103033,
+  "spot_check": {
+    "dsid_58ca20423ede49fd82466120c6339dd5": {
+      "tokens_full": 8205,
+      "cut_char_8191": 32196,
+      "tokens_of_text_prefix": 8191,
+      "prefix_equals_decode": true,
+      "cut_method": "decode_prefix",
+      "delta_from_8191": 0
+    },
+    "dsid_5bc9e06d059d43f7aa5c5ff0fc00a5a5": {
+      "tokens_full": 8205,
+      "cut_char_8191": 33433,
+      "tokens_of_text_prefix": 8191,
+      "prefix_equals_decode": true,
+      "cut_method": "decode_prefix",
+      "delta_from_8191": 0
+    },
+    "dsid_7b0514411b404df4b1fb1d6d137f81ed": {
+      "tokens_full": 8210,
+      "cut_char_8191": 32777,
+      "tokens_of_text_prefix": 8191,
+      "prefix_equals_decode": true,
+      "cut_method": "decode_prefix",
+      "delta_from_8191": 0
+    },
+    "dsid_c4bd1ea6dcc84209b1d4c30aca74caea": {
+      "tokens_full": 8206,
+      "cut_char_8191": 33557,
+      "tokens_of_text_prefix": 8191,
+      "prefix_equals_decode": true,
+      "cut_method": "decode_prefix",
+      "delta_from_8191": 0
+    },
+    "dsid_c70d8bffc59745ccbcf1770df2ec6152": {
+      "tokens_full": 8204,
+      "cut_char_8191": 31455,
+      "tokens_of_text_prefix": 8191,
+      "prefix_equals_decode": true,
+      "cut_method": "decode_prefix",
+      "delta_from_8191": 0
+    }
+  },
+  "spot_ids": [
+    "dsid_c4bd1ea6dcc84209b1d4c30aca74caea",
+    "dsid_5bc9e06d059d43f7aa5c5ff0fc00a5a5",
+    "dsid_58ca20423ede49fd82466120c6339dd5",
+    "dsid_c70d8bffc59745ccbcf1770df2ec6152",
+    "dsid_7b0514411b404df4b1fb1d6d137f81ed"
+  ]
+}
+
+## JSON mirror
+Numeric source of truth is `doc_length_stats.json`, generated from the same dict as this markdown.
+

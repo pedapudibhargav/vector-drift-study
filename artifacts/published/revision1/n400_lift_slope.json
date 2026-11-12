@@ -1,0 +1,10 @@
+{
+  "meta": {
+    "created_at": "2026-11-11T00:46:54.359584+00:00",
+    "script": "write_duplicate_doc_ids.py",
+    "source": "artifacts/published/revision1/paper_tables/tab_equiv.tex"
+  },
+  "estimate": -0.017,
+  "ci90_lo": -0.041,
+  "ci90_hi": 0.006
+}

@@ -1,0 +1,2309 @@
+[
+ {
+  "id": "hygiene.known_duplicate_doc_ids",
+  "description": "Scale manifest contains exactly these three duplicated Confluence doc_ids (same id at two scale_ranks).",
+  "artifact": "artifacts/published/revision1/duplicate_doc_ids.json",
+  "json_path": [
+   "duplicate_doc_ids"
+  ],
+  "expected": [
+   "dsid_8a0c5430bac64f8da21c2cee5a7f4df5",
+   "dsid_f292876dbb47462d85997383af306490",
+   "dsid_feb1e9063ebb4947bb4f935393c01f0f"
+  ],
+  "tolerance": 0
+ },
+ {
+  "id": "exact.openai.primary200.raw.hit10.5k",
+  "description": "OpenAI exact raw Hit@10 at 5k (primary-200).",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "ladder",
+   "openai",
+   "primary200",
+   "conditions",
+   "raw",
+   "5000",
+   "metrics",
+   "hit_at_10"
+  ],
+  "expected": 0.795,
+  "tolerance": 0,
+  "tex_strings": [
+   "$0.795{\\to}0.585$"
+  ]
+ },
+ {
+  "id": "exact.openai.primary200.raw.hit10.50k",
+  "description": "OpenAI exact raw Hit@10 at 50k (primary-200).",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "ladder",
+   "openai",
+   "primary200",
+   "conditions",
+   "raw",
+   "50000",
+   "metrics",
+   "hit_at_10"
+  ],
+  "expected": 0.64,
+  "tolerance": 0,
+  "tex_strings": [
+   "$0.555$ vs.\\ $0.640$ and $0.510$ vs.\\ $0.585$"
+  ]
+ },
+ {
+  "id": "exact.openai.primary200.raw.hit10.100k",
+  "description": "OpenAI exact raw Hit@10 at 100k (primary-200).",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "ladder",
+   "openai",
+   "primary200",
+   "conditions",
+   "raw",
+   "100000",
+   "metrics",
+   "hit_at_10"
+  ],
+  "expected": 0.585,
+  "tolerance": 0,
+  "tex_strings": [
+   "$0.795{\\to}0.585$"
+  ]
+ },
+ {
+  "id": "exact.openai.primary200.meta_first.hit10.5k",
+  "description": "OpenAI exact meta_first Hit@10 at 5k.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "ladder",
+   "openai",
+   "primary200",
+   "conditions",
+   "meta_first",
+   "5000",
+   "metrics",
+   "hit_at_10"
+  ],
+  "expected": 0.875,
+  "tolerance": 0
+ },
+ {
+  "id": "exact.openai.primary200.meta_first.hit10.50k",
+  "description": "OpenAI exact meta_first Hit@10 at 50k.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "ladder",
+   "openai",
+   "primary200",
+   "conditions",
+   "meta_first",
+   "50000",
+   "metrics",
+   "hit_at_10"
+  ],
+  "expected": 0.715,
+  "tolerance": 0
+ },
+ {
+  "id": "exact.openai.primary200.meta_first.hit10.100k",
+  "description": "OpenAI exact meta_first Hit@10 at 100k.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "ladder",
+   "openai",
+   "primary200",
+   "conditions",
+   "meta_first",
+   "100000",
+   "metrics",
+   "hit_at_10"
+  ],
+  "expected": 0.67,
+  "tolerance": 0,
+  "tex_strings": [
+   "first-type-filtered $0.670$"
+  ]
+ },
+ {
+  "id": "exact.openai.primary200.meta_in.hit10.5k",
+  "description": "OpenAI exact meta_in Hit@10 at 5k.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "ladder",
+   "openai",
+   "primary200",
+   "conditions",
+   "meta_in",
+   "5000",
+   "metrics",
+   "hit_at_10"
+  ],
+  "expected": 0.875,
+  "tolerance": 0,
+  "tex_strings": [
+   "Oracle-filtered Hit@10 declines from $0.875$ to $0.665$"
+  ]
+ },
+ {
+  "id": "exact.openai.primary200.meta_in.hit10.50k",
+  "description": "OpenAI exact meta_in Hit@10 at 50k.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "ladder",
+   "openai",
+   "primary200",
+   "conditions",
+   "meta_in",
+   "50000",
+   "metrics",
+   "hit_at_10"
+  ],
+  "expected": 0.715,
+  "tolerance": 0,
+  "tex_strings": [
+   "\\texttt{meta\\_in} & 50k & 0.435 & 0.645 & 0.715"
+  ],
+  "tex_files": [
+   "artifacts/published/revision1/paper_tables/tab_exact_openai.tex"
+  ]
+ },
+ {
+  "id": "exact.openai.primary200.meta_in.hit10.100k",
+  "description": "OpenAI exact meta_in Hit@10 at 100k.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "ladder",
+   "openai",
+   "primary200",
+   "conditions",
+   "meta_in",
+   "100000",
+   "metrics",
+   "hit_at_10"
+  ],
+  "expected": 0.665,
+  "tolerance": 0,
+  "tex_strings": [
+   "Oracle-filtered Hit@10 declines from $0.875$ to $0.665$"
+  ]
+ },
+ {
+  "id": "exact.titan.primary200.raw.hit10.5k",
+  "description": "Titan exact raw Hit@10 at 5k.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "ladder",
+   "titan",
+   "primary200",
+   "conditions",
+   "raw",
+   "5000",
+   "metrics",
+   "hit_at_10"
+  ],
+  "expected": 0.785,
+  "tolerance": 0,
+  "tex_strings": [
+   "$0.785{\\to}0.610$"
+  ]
+ },
+ {
+  "id": "exact.titan.primary200.raw.hit10.50k",
+  "description": "Titan exact raw Hit@10 at 50k.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "ladder",
+   "titan",
+   "primary200",
+   "conditions",
+   "raw",
+   "50000",
+   "metrics",
+   "hit_at_10"
+  ],
+  "expected": 0.645,
+  "tolerance": 0,
+  "tex_strings": [
+   "at $50\\text{k}$ and $100\\text{k}$ the HNSW Hit@10 is $0.085$ and $0.075$ lower than exact ($0.555$ vs.\\ $0.640$ and $0.510$ vs.\\ $0.585$)"
+  ]
+ },
+ {
+  "id": "exact.titan.primary200.raw.hit10.100k",
+  "description": "Titan exact raw Hit@10 at 100k.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "ladder",
+   "titan",
+   "primary200",
+   "conditions",
+   "raw",
+   "100000",
+   "metrics",
+   "hit_at_10"
+  ],
+  "expected": 0.61,
+  "tolerance": 0,
+  "tex_strings": [
+   "$0.785{\\to}0.610$"
+  ]
+ },
+ {
+  "id": "exact.titan.primary200.meta_first.hit10.5k",
+  "description": "Titan exact meta_first Hit@10 at 5k.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "ladder",
+   "titan",
+   "primary200",
+   "conditions",
+   "meta_first",
+   "5000",
+   "metrics",
+   "hit_at_10"
+  ],
+  "expected": 0.87,
+  "tolerance": 0
+ },
+ {
+  "id": "exact.titan.primary200.meta_first.hit10.50k",
+  "description": "Titan exact meta_first Hit@10 at 50k.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "ladder",
+   "titan",
+   "primary200",
+   "conditions",
+   "meta_first",
+   "50000",
+   "metrics",
+   "hit_at_10"
+  ],
+  "expected": 0.75,
+  "tolerance": 0
+ },
+ {
+  "id": "exact.titan.primary200.meta_first.hit10.100k",
+  "description": "Titan exact meta_first Hit@10 at 100k.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "ladder",
+   "titan",
+   "primary200",
+   "conditions",
+   "meta_first",
+   "100000",
+   "metrics",
+   "hit_at_10"
+  ],
+  "expected": 0.69,
+  "tolerance": 0
+ },
+ {
+  "id": "exact.titan.primary200.meta_in.hit10.5k",
+  "description": "Titan exact meta_in Hit@10 at 5k.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "ladder",
+   "titan",
+   "primary200",
+   "conditions",
+   "meta_in",
+   "5000",
+   "metrics",
+   "hit_at_10"
+  ],
+  "expected": 0.87,
+  "tolerance": 0,
+  "tex_strings": [
+   "\\texttt{meta\\_in} & 5k & 0.700 & 0.825 & 0.870"
+  ],
+  "tex_files": [
+   "artifacts/published/revision1/paper_tables/tab_exact_titan.tex"
+  ]
+ },
+ {
+  "id": "exact.titan.primary200.meta_in.hit10.50k",
+  "description": "Titan exact meta_in Hit@10 at 50k.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "ladder",
+   "titan",
+   "primary200",
+   "conditions",
+   "meta_in",
+   "50000",
+   "metrics",
+   "hit_at_10"
+  ],
+  "expected": 0.745,
+  "tolerance": 0,
+  "tex_strings": [
+   "\\texttt{meta\\_in} & 50k & 0.500 & 0.655 & 0.745"
+  ],
+  "tex_files": [
+   "artifacts/published/revision1/paper_tables/tab_exact_titan.tex"
+  ]
+ },
+ {
+  "id": "exact.titan.primary200.meta_in.hit10.100k",
+  "description": "Titan exact meta_in Hit@10 at 100k.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "ladder",
+   "titan",
+   "primary200",
+   "conditions",
+   "meta_in",
+   "100000",
+   "metrics",
+   "hit_at_10"
+  ],
+  "expected": 0.685,
+  "tolerance": 0,
+  "tex_strings": [
+   "\\texttt{meta\\_in} & 100k & 0.470 & 0.635 & 0.685"
+  ],
+  "tex_files": [
+   "artifacts/published/revision1/paper_tables/tab_exact_titan.tex"
+  ]
+ },
+ {
+  "id": "lift.openai.primary200.meta_in.5k.delta",
+  "description": "OpenAI meta_in minus raw Hit@10 at 5k (integer-count delta).",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "metadata_lift",
+   "openai",
+   "primary200",
+   "in",
+   "per_scale",
+   {
+    "where": {
+     "scale": 5000
+    }
+   },
+   "delta"
+  ],
+  "expected": 0.08,
+  "tolerance": 0,
+  "tex_strings": [
+   "$+0.080$"
+  ]
+ },
+ {
+  "id": "lift.openai.primary200.meta_in.100k.delta",
+  "description": "OpenAI meta_in minus raw Hit@10 at 100k.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "metadata_lift",
+   "openai",
+   "primary200",
+   "in",
+   "per_scale",
+   {
+    "where": {
+     "scale": 100000
+    }
+   },
+   "delta"
+  ],
+  "expected": 0.08,
+  "tolerance": 0,
+  "tex_strings": [
+   "$+0.080$"
+  ]
+ },
+ {
+  "id": "lift.titan.primary200.meta_in.5k.delta",
+  "description": "Titan meta_in minus raw Hit@10 at 5k.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "metadata_lift",
+   "titan",
+   "primary200",
+   "in",
+   "per_scale",
+   {
+    "where": {
+     "scale": 5000
+    }
+   },
+   "delta"
+  ],
+  "expected": 0.085,
+  "tolerance": 0,
+  "tex_strings": [
+   "Titan gives the same picture ($+0.070$ to $+0.115$)"
+  ]
+ },
+ {
+  "id": "lift.titan.primary200.meta_in.100k.delta",
+  "description": "Titan meta_in minus raw Hit@10 at 100k.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "metadata_lift",
+   "titan",
+   "primary200",
+   "in",
+   "per_scale",
+   {
+    "where": {
+     "scale": 100000
+    }
+   },
+   "delta"
+  ],
+  "expected": 0.075,
+  "tolerance": 0,
+  "tex_strings": [
+   "100k & 0.080 $[0.045, 0.120]$ & 0.075 $[0.040, 0.115]$ & 0.060 $[0.037, 0.085]$"
+  ],
+  "tex_files": [
+   "artifacts/published/revision1/paper_tables/tab_lift.tex"
+  ]
+ },
+ {
+  "id": "truncation.ladder.title_plus_chunk.openai_8191_tokens",
+  "description": "Ladder-pool title+chunk documents truncated by the OpenAI 8191-token rule.",
+  "artifact": "artifacts/published/revision1/doc_length_stats.json",
+  "json_path": [
+   "truncation",
+   "ladder_pool",
+   "title_plus_chunk",
+   "openai_8191_tokens",
+   "n_truncated"
+  ],
+  "expected": 11,
+  "tolerance": 0,
+  "tex_strings": [
+   "$11$ documents affected"
+  ]
+ },
+ {
+  "id": "truncation.ladder.chunk_text_only.titan_24000_chars",
+  "description": "Ladder-pool chunk_text documents truncated by the Titan 24000-char rule.",
+  "artifact": "artifacts/published/revision1/doc_length_stats.json",
+  "json_path": [
+   "truncation",
+   "ladder_pool",
+   "chunk_text_only",
+   "titan_24000_chars",
+   "n_truncated"
+  ],
+  "expected": 90,
+  "tolerance": 0,
+  "tex_strings": [
+   "$90$ documents, $5$ of them gold anchors"
+  ]
+ },
+ {
+  "id": "truncation.ladder.chunk_text_only.titan_24000_chars.gold_anchors",
+  "description": "Gold-anchor documents among the 90 Titan-truncated chunk_text rows.",
+  "artifact": "artifacts/published/revision1/doc_length_stats.json",
+  "json_path": [
+   "truncation",
+   "ladder_pool",
+   "chunk_text_only",
+   "titan_24000_chars",
+   "n_truncated_is_gold_anchor"
+  ],
+  "expected": 5,
+  "tolerance": 0,
+  "tex_strings": [
+   "$90$ documents, $5$ of them gold anchors"
+  ]
+ },
+ {
+  "id": "bm25.chars4000.hit10.5k",
+  "description": "BM25 chars4000 Hit@10 at 5k.",
+  "artifact": "artifacts/published/revision1/bm25_chars4000.json",
+  "json_path": [
+   "runs",
+   {
+    "where": {
+     "corpus_scale_size": 5000
+    }
+   },
+   "hit_at_10"
+  ],
+  "expected": 0.855,
+  "tolerance": 0,
+  "tex_strings": [
+   "\\texttt{chars4000} (title+chunk) & 0.855"
+  ],
+  "tex_files": [
+   "artifacts/published/revision1/paper_tables/tab_bm25.tex"
+  ]
+ },
+ {
+  "id": "bm25.chars4000.hit10.100k",
+  "description": "BM25 chars4000 Hit@10 at 100k.",
+  "artifact": "artifacts/published/revision1/bm25_chars4000.json",
+  "json_path": [
+   "runs",
+   {
+    "where": {
+     "corpus_scale_size": 100000
+    }
+   },
+   "hit_at_10"
+  ],
+  "expected": 0.7,
+  "tolerance": 0,
+  "tex_strings": [
+   "\\texttt{chars4000} (title+chunk) & 0.855 & 0.745 & 0.700 & 0.155 \\\\"
+  ],
+  "tex_files": [
+   "artifacts/published/revision1/paper_tables/tab_bm25.tex"
+  ]
+ },
+ {
+  "id": "bm25.chars8191.hit10.5k",
+  "description": "BM25 chars8191 Hit@10 at 5k.",
+  "artifact": "artifacts/published/revision1/bm25_chars8191.json",
+  "json_path": [
+   "runs",
+   {
+    "where": {
+     "corpus_scale_size": 5000
+    }
+   },
+   "hit_at_10"
+  ],
+  "expected": 0.825,
+  "tolerance": 0,
+  "tex_strings": [
+   "\\texttt{chars8191} (title+chunk) & 0.825"
+  ],
+  "tex_files": [
+   "artifacts/published/revision1/paper_tables/tab_bm25.tex"
+  ]
+ },
+ {
+  "id": "bm25.chars8191.hit10.100k",
+  "description": "BM25 chars8191 Hit@10 at 100k.",
+  "artifact": "artifacts/published/revision1/bm25_chars8191.json",
+  "json_path": [
+   "runs",
+   {
+    "where": {
+     "corpus_scale_size": 100000
+    }
+   },
+   "hit_at_10"
+  ],
+  "expected": 0.705,
+  "tolerance": 0,
+  "tex_strings": [
+   "\\texttt{chars8191} (title+chunk) & 0.825 & 0.715 & 0.705 & 0.120 \\\\"
+  ],
+  "tex_files": [
+   "artifacts/published/revision1/paper_tables/tab_bm25.tex"
+  ]
+ },
+ {
+  "id": "bm25.dense_text.hit10.5k",
+  "description": "BM25 dense_text Hit@10 at 5k.",
+  "artifact": "artifacts/published/revision1/bm25_dense_text.json",
+  "json_path": [
+   "runs",
+   {
+    "where": {
+     "corpus_scale_size": 5000
+    }
+   },
+   "hit_at_10"
+  ],
+  "expected": 0.81,
+  "tolerance": 0,
+  "tex_strings": [
+   "\\texttt{dense\\_text} & 0.810"
+  ],
+  "tex_files": [
+   "artifacts/published/revision1/paper_tables/tab_bm25.tex"
+  ]
+ },
+ {
+  "id": "bm25.dense_text.hit10.100k",
+  "description": "BM25 dense_text Hit@10 at 100k.",
+  "artifact": "artifacts/published/revision1/bm25_dense_text.json",
+  "json_path": [
+   "runs",
+   {
+    "where": {
+     "corpus_scale_size": 100000
+    }
+   },
+   "hit_at_10"
+  ],
+  "expected": 0.685,
+  "tolerance": 0,
+  "tex_strings": [
+   "\\texttt{dense\\_text} & 0.810 & 0.720 & 0.685 & 0.125 \\\\"
+  ],
+  "tex_files": [
+   "artifacts/published/revision1/paper_tables/tab_bm25.tex"
+  ]
+ },
+ {
+  "id": "bm25.tokens8191.hit10.5k",
+  "description": "BM25 tokens8191 Hit@10 at 5k.",
+  "artifact": "artifacts/published/revision1/bm25_tokens8191.json",
+  "json_path": [
+   "runs",
+   {
+    "where": {
+     "corpus_scale_size": 5000
+    }
+   },
+   "hit_at_10"
+  ],
+  "expected": 0.82,
+  "tolerance": 0,
+  "tex_strings": [
+   "\\texttt{tokens8191} (title+chunk) & 0.820"
+  ],
+  "tex_files": [
+   "artifacts/published/revision1/paper_tables/tab_bm25.tex"
+  ]
+ },
+ {
+  "id": "bm25.tokens8191.hit10.100k",
+  "description": "BM25 tokens8191 Hit@10 at 100k.",
+  "artifact": "artifacts/published/revision1/bm25_tokens8191.json",
+  "json_path": [
+   "runs",
+   {
+    "where": {
+     "corpus_scale_size": 100000
+    }
+   },
+   "hit_at_10"
+  ],
+  "expected": 0.705,
+  "tolerance": 0,
+  "tex_strings": [
+   "\\texttt{tokens8191} (title+chunk) & 0.820 & 0.725 & 0.705 & 0.115 \\\\"
+  ],
+  "tex_files": [
+   "artifacts/published/revision1/paper_tables/tab_bm25.tex"
+  ]
+ },
+ {
+  "id": "bm25.untruncated.hit10.5k",
+  "description": "BM25 untruncated Hit@10 at 5k.",
+  "artifact": "artifacts/published/revision1/bm25_untruncated.json",
+  "json_path": [
+   "runs",
+   {
+    "where": {
+     "corpus_scale_size": 5000
+    }
+   },
+   "hit_at_10"
+  ],
+  "expected": 0.82,
+  "tolerance": 0,
+  "tex_strings": [
+   "\\texttt{untruncated} (title+chunk) & 0.820"
+  ],
+  "tex_files": [
+   "artifacts/published/revision1/paper_tables/tab_bm25.tex"
+  ]
+ },
+ {
+  "id": "bm25.untruncated.hit10.100k",
+  "description": "BM25 untruncated Hit@10 at 100k.",
+  "artifact": "artifacts/published/revision1/bm25_untruncated.json",
+  "json_path": [
+   "runs",
+   {
+    "where": {
+     "corpus_scale_size": 100000
+    }
+   },
+   "hit_at_10"
+  ],
+  "expected": 0.705,
+  "tolerance": 0,
+  "tex_strings": [
+   "\\texttt{untruncated} (title+chunk) & 0.820 & 0.725 & 0.705 & 0.115 \\\\"
+  ],
+  "tex_files": [
+   "artifacts/published/revision1/paper_tables/tab_bm25.tex"
+  ]
+ },
+ {
+  "id": "old.list_containment.first.n_violations",
+  "description": "Old approximate OpenAI HNSW lists: containment violations under first-type filter.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "old_list_containment",
+   "first",
+   "n_violations"
+  ],
+  "expected": 56,
+  "tolerance": 0
+ },
+ {
+  "id": "old.hnsw.nested_corpus.n_violations",
+  "description": "Old approximate OpenAI HNSW lists: nested-corpus violations.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "old_hnsw_openai_invariants",
+   "nested_corpus",
+   "n_violations"
+  ],
+  "expected": 526,
+  "tolerance": 0
+ },
+ {
+  "id": "plan.5434.openai.raw.ef200.5k.n_hnsw",
+  "description": "Original-state server (port 5434): OpenAI raw ef_search=200 at 5k uses HNSW for 0 of 200 queries.",
+  "artifact": "artifacts/published/revision1/plan_audit_5434.json",
+  "json_path": [
+   "cells",
+   {
+    "where": {
+     "embedder": "openai",
+     "condition": "raw",
+     "scale": 5000,
+     "ef_search": 200,
+     "pass": "forward"
+    }
+   },
+   "frac_hnsw"
+  ],
+  "expected": 0.0,
+  "tolerance": 0
+ },
+ {
+  "id": "plan.5434.openai.raw.ef200.10k.frac_hnsw",
+  "description": "Original-state server (port 5434): OpenAI raw ef_search=200 at 10k uses HNSW for 200 of 200 queries.",
+  "artifact": "artifacts/published/revision1/plan_audit_5434.json",
+  "json_path": [
+   "cells",
+   {
+    "where": {
+     "embedder": "openai",
+     "condition": "raw",
+     "scale": 10000,
+     "ef_search": 200,
+     "pass": "forward"
+    }
+   },
+   "frac_hnsw"
+  ],
+  "expected": 1.0,
+  "tolerance": 0
+ },
+ {
+  "id": "plan.5434.openai.raw.ef200.10k.n_plans",
+  "description": "Original-state server: 200 EXPLAIN queries at OpenAI raw ef 200 / 10k.",
+  "artifact": "artifacts/published/revision1/plan_audit_5434.json",
+  "json_path": [
+   "cells",
+   {
+    "where": {
+     "embedder": "openai",
+     "condition": "raw",
+     "scale": 10000,
+     "ef_search": 200,
+     "pass": "forward"
+    }
+   },
+   "n_plans"
+  ],
+  "expected": 200,
+  "tolerance": 0
+ },
+ {
+  "id": "exact.openai.primary200.raw.hit1.5k",
+  "description": "OpenAI exact raw Hit@1 at 5k.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "ladder",
+   "openai",
+   "primary200",
+   "conditions",
+   "raw",
+   "5000",
+   "metrics",
+   "hit_at_1"
+  ],
+  "expected": 0.6,
+  "tolerance": 0,
+  "tex_strings": [
+   "from $0.600$ to $0.340$"
+  ]
+ },
+ {
+  "id": "exact.openai.primary200.raw.hit1.100k",
+  "description": "OpenAI exact raw Hit@1 at 100k.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "ladder",
+   "openai",
+   "primary200",
+   "conditions",
+   "raw",
+   "100000",
+   "metrics",
+   "hit_at_1"
+  ],
+  "expected": 0.34,
+  "tolerance": 0,
+  "tex_strings": [
+   "from $0.600$ to $0.340$"
+  ]
+ },
+ {
+  "id": "exact.openai.primary200.raw.hit10.drop",
+  "description": "OpenAI exact raw Hit@10 drop 5k to 100k.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "cross_embedder",
+   "primary200",
+   "hit10_drop_5k_to_100k",
+   "openai_raw",
+   "estimate"
+  ],
+  "expected": 0.21,
+  "tolerance": 0,
+  "tex_strings": [
+   "drop $0.210$",
+   "$[0.155,0.270]$"
+  ]
+ },
+ {
+  "id": "exact.openai.primary200.raw.hit10.drop.ci_lo",
+  "description": "OpenAI raw Hit@10 drop CI lo.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "cross_embedder",
+   "primary200",
+   "hit10_drop_5k_to_100k",
+   "openai_raw",
+   "ci_lo"
+  ],
+  "expected": 0.155,
+  "tolerance": 0,
+  "tex_strings": [
+   "$[0.155,0.270]$"
+  ]
+ },
+ {
+  "id": "exact.openai.primary200.raw.hit10.drop.ci_hi",
+  "description": "OpenAI raw Hit@10 drop CI hi.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "cross_embedder",
+   "primary200",
+   "hit10_drop_5k_to_100k",
+   "openai_raw",
+   "ci_hi"
+  ],
+  "expected": 0.27,
+  "tolerance": 0,
+  "tex_strings": [
+   "$[0.155,0.270]$"
+  ]
+ },
+ {
+  "id": "exact.titan.primary200.raw.hit1.5k",
+  "description": "Titan exact raw Hit@1 at 5k.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "ladder",
+   "titan",
+   "primary200",
+   "conditions",
+   "raw",
+   "5000",
+   "metrics",
+   "hit_at_1"
+  ],
+  "expected": 0.62,
+  "tolerance": 0,
+  "tex_strings": [
+   "Hit@1 from $0.620$ to $0.385$"
+  ]
+ },
+ {
+  "id": "exact.titan.primary200.raw.hit1.100k",
+  "description": "Titan exact raw Hit@1 at 100k.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "ladder",
+   "titan",
+   "primary200",
+   "conditions",
+   "raw",
+   "100000",
+   "metrics",
+   "hit_at_1"
+  ],
+  "expected": 0.385,
+  "tolerance": 0,
+  "tex_strings": [
+   "Hit@1 from $0.620$ to $0.385$"
+  ]
+ },
+ {
+  "id": "exact.titan.primary200.raw.hit10.drop",
+  "description": "Titan exact raw Hit@10 drop 5k to 100k.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "cross_embedder",
+   "primary200",
+   "hit10_drop_5k_to_100k",
+   "titan_raw",
+   "estimate"
+  ],
+  "expected": 0.175,
+  "tolerance": 0,
+  "tex_strings": [
+   "$0.175$",
+   "$[0.125,0.230]$"
+  ]
+ },
+ {
+  "id": "exact.openai.primary400.raw.hit10.5k",
+  "description": "OpenAI n=400 exact raw Hit@10 at 5k.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "ladder",
+   "openai",
+   "primary400",
+   "conditions",
+   "raw",
+   "5000",
+   "metrics",
+   "hit_at_10"
+  ],
+  "expected": 0.7725,
+  "tolerance": 0,
+  "tex_strings": [
+   "$0.772{\\to}0.568$"
+  ]
+ },
+ {
+  "id": "exact.openai.primary400.raw.hit10.100k",
+  "description": "OpenAI n=400 exact raw Hit@10 at 100k.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "ladder",
+   "openai",
+   "primary400",
+   "conditions",
+   "raw",
+   "100000",
+   "metrics",
+   "hit_at_10"
+  ],
+  "expected": 0.5675,
+  "tolerance": 0,
+  "tex_strings": [
+   "$0.772{\\to}0.568$"
+  ]
+ },
+ {
+  "id": "bm25.dense_minus_openai_drop",
+  "description": "OpenAI dense drop minus BM25 dense_text drop.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "rq2_bm25",
+   "openai",
+   "primary200",
+   "bm25_dense_text",
+   "raw",
+   "dense_drop_minus_bm25_drop",
+   "estimate"
+  ],
+  "expected": 0.085,
+  "tolerance": 0,
+  "tex_strings": [
+   "0.085",
+   "$[0.015,0.155]$"
+  ]
+ },
+ {
+  "id": "bm25.dense_minus_titan_drop",
+  "description": "Titan dense drop minus BM25 dense_text drop.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "rq2_bm25",
+   "titan",
+   "primary200",
+   "bm25_dense_text",
+   "raw",
+   "dense_drop_minus_bm25_drop",
+   "estimate"
+  ],
+  "expected": 0.05,
+  "tolerance": 0,
+  "tex_strings": [
+   "but not for Titan ($0.050$, $[-0.020,0.120]$)"
+  ]
+ },
+ {
+  "id": "lift.openai.n200.change_100k_minus_5k",
+  "description": "OpenAI n=200 lift change 100k-5k.",
+  "artifact": "artifacts/published/revision1/analysis_equivalence.json",
+  "json_path": [
+   "quantities",
+   "f_lift_100k_minus_lift_5k_openai",
+   "estimate"
+  ],
+  "expected": 0.0,
+  "tolerance": 0,
+  "tex_strings": [
+   "it changes by $0.000$ ($90\\%$ interval $[-0.040,+0.040]$)"
+  ]
+ },
+ {
+  "id": "lift.titan.n200.change_100k_minus_5k",
+  "description": "Titan n=200 lift change 100k-5k.",
+  "artifact": "artifacts/published/revision1/analysis_equivalence.json",
+  "json_path": [
+   "quantities",
+   "f_lift_100k_minus_lift_5k_titan",
+   "estimate"
+  ],
+  "expected": -0.01,
+  "tolerance": 0,
+  "tex_strings": [
+   "For Titan the change is $-0.010$ ($[-0.055,+0.035]$)"
+  ]
+ },
+ {
+  "id": "lift.openai.primary400.meta_in.5k.delta",
+  "description": "OpenAI n=400 meta_in lift at 5k.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "metadata_lift",
+   "openai",
+   "primary400",
+   "in",
+   "per_scale",
+   {
+    "where": {
+     "scale": 5000
+    }
+   },
+   "delta"
+  ],
+  "expected": 0.0775,
+  "tolerance": 0,
+  "tex_strings": [
+   "5k & 0.080 $[0.045, 0.120]$ & 0.085 $[0.050, 0.125]$ & 0.077 $[0.052, 0.105]$"
+  ],
+  "tex_files": [
+   "artifacts/published/revision1/paper_tables/tab_lift.tex"
+  ]
+ },
+ {
+  "id": "lift.openai.primary400.meta_in.100k.delta",
+  "description": "OpenAI n=400 meta_in lift at 100k.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "metadata_lift",
+   "openai",
+   "primary400",
+   "in",
+   "per_scale",
+   {
+    "where": {
+     "scale": 100000
+    }
+   },
+   "delta"
+  ],
+  "expected": 0.06,
+  "tolerance": 0,
+  "tex_strings": [
+   "0.060 $[0.037, 0.085]$"
+  ],
+  "tex_files": [
+   "artifacts/published/revision1/paper_tables/tab_lift.tex"
+  ]
+ },
+ {
+  "id": "lift.openai.n400.slope_per_tenfold",
+  "description": "OpenAI n=400 metadata-lift slope per tenfold N (OLS of per-scale lift on log10 N; 90% bootstrap CI from exact_ladder_openai_primary400.json).",
+  "artifact": "artifacts/published/revision1/exact_ladder_openai_primary400.json",
+  "compute": "n400_lift_slope",
+  "json_path": [],
+  "expected": {
+   "estimate": -0.017,
+   "ci90_lo": -0.041,
+   "ci90_hi": 0.006
+  },
+  "tolerance": 0.01,
+  "tex_strings": [
+   "the slope against $\\log_{10}N$ at $n{=}400$ is $-0.017$ ($90\\%$ interval $[-0.041,+0.006]$)"
+  ]
+ },
+ {
+  "id": "rrf.openai.primary200.hit10.5k",
+  "description": "RRF k=60 Hit@10 at 5k.",
+  "artifact": "artifacts/published/revision1/rrf_hybrid_openai_primary200.json",
+  "json_path": [
+   "by_scale",
+   {
+    "where": {
+     "scale": 5000
+    }
+   },
+   "rrf_k60",
+   "hit_at_10"
+  ],
+  "expected": 0.905,
+  "tolerance": 0,
+  "tex_strings": [
+   "0.905"
+  ]
+ },
+ {
+  "id": "rrf.openai.primary200.hit10.100k",
+  "description": "RRF k=60 Hit@10 at 100k.",
+  "artifact": "artifacts/published/revision1/rrf_hybrid_openai_primary200.json",
+  "json_path": [
+   "by_scale",
+   {
+    "where": {
+     "scale": 100000
+    }
+   },
+   "rrf_k60",
+   "hit_at_10"
+  ],
+  "expected": 0.72,
+  "tolerance": 0,
+  "tex_strings": [
+   "0.720"
+  ]
+ },
+ {
+  "id": "rrf.openai.primary200.hit10.drop",
+  "description": "RRF Hit@10 drop 5k to 100k.",
+  "artifact": "artifacts/published/revision1/rrf_hybrid_openai_primary200.json",
+  "json_path": [
+   "drop_5k_to_100k",
+   "rrf_k60",
+   "hit_at_10",
+   "estimate"
+  ],
+  "expected": 0.185,
+  "tolerance": 0,
+  "tex_strings": [
+   "drop is $0.185$ for fusion"
+  ]
+ },
+ {
+  "id": "routing.wrong_type.breakeven.5k",
+  "description": "wrong_type break-even p at 5k.",
+  "artifact": "artifacts/published/revision1/routing_simulation_openai_primary200.json",
+  "json_path": [
+   "breakeven",
+   "wrong_type",
+   "5000"
+  ],
+  "expected": 0.091448,
+  "tolerance": 0,
+  "tex_strings": [
+   "0.091$ ($5\\text{k}$)"
+  ]
+ },
+ {
+  "id": "routing.wrong_type.breakeven.50k",
+  "description": "wrong_type break-even p at 50k.",
+  "artifact": "artifacts/published/revision1/routing_simulation_openai_primary200.json",
+  "json_path": [
+   "breakeven",
+   "wrong_type",
+   "50000"
+  ],
+  "expected": 0.10347,
+  "tolerance": 0,
+  "tex_strings": [
+   "\\texttt{wrong\\_type} & 50k & 0.715"
+  ],
+  "tex_files": [
+   "artifacts/published/revision1/paper_tables/tab_routing.tex"
+  ]
+ },
+ {
+  "id": "routing.wrong_type.breakeven.100k",
+  "description": "wrong_type break-even p at 100k.",
+  "artifact": "artifacts/published/revision1/routing_simulation_openai_primary200.json",
+  "json_path": [
+   "breakeven",
+   "wrong_type",
+   "100000"
+  ],
+  "expected": 0.11837,
+  "tolerance": 0,
+  "tex_strings": [
+   "\\texttt{wrong\\_type} & 100k & 0.665"
+  ],
+  "tex_files": [
+   "artifacts/published/revision1/paper_tables/tab_routing.tex"
+  ]
+ },
+ {
+  "id": "routing.wrong_type.p02.hit10.100k",
+  "description": "wrong_type p=0.2 Hit@10 at 100k.",
+  "artifact": "artifacts/published/revision1/routing_simulation_openai_primary200.json",
+  "json_path": [
+   "results",
+   {
+    "where": {
+     "mode": "wrong_type",
+     "p": 0.2,
+     "scale": 100000
+    }
+   },
+   "hit_at_10",
+   "estimate"
+  ],
+  "expected": 0.5309,
+  "tolerance": 0,
+  "tex_strings": [
+   "$p{=}0.2$",
+   "0.531"
+  ]
+ },
+ {
+  "id": "pern.openai.raw.ef200.5k.recall",
+  "description": "OpenAI per-size recall@10 ef200 N=5k.",
+  "artifact": "artifacts/published/revision1/per_n_hnsw_eval_openai.json",
+  "json_path": [
+   "cells",
+   {
+    "where": {
+     "scale_n": 5000,
+     "condition": "raw",
+     "ef_search": 200,
+     "iterative_scan": "relaxed_order",
+     "seqscan_off": false,
+     "max_scan_tuples": 20000
+    }
+   },
+   "recall_at_10_vs_exact"
+  ],
+  "expected": 0.996,
+  "tolerance": 0,
+  "tex_strings": [
+   "0.996"
+  ]
+ },
+ {
+  "id": "pern.openai.raw.ef200.5k.loss",
+  "description": "OpenAI per-size Hit@10 loss ef200 N=5k.",
+  "artifact": "artifacts/published/revision1/per_n_hnsw_eval_openai.json",
+  "json_path": [
+   "cells",
+   {
+    "where": {
+     "scale_n": 5000,
+     "condition": "raw",
+     "ef_search": 200,
+     "iterative_scan": "relaxed_order",
+     "seqscan_off": false,
+     "max_scan_tuples": 20000
+    }
+   },
+   "hit_at_10_drop"
+  ],
+  "expected": 0.005,
+  "tolerance": 0,
+  "tex_strings": [
+   "$0.005$"
+  ]
+ },
+ {
+  "id": "pern.openai.raw.ef200.50k.recall",
+  "description": "OpenAI per-size recall@10 ef200 N=50k.",
+  "artifact": "artifacts/published/revision1/per_n_hnsw_eval_openai.json",
+  "json_path": [
+   "cells",
+   {
+    "where": {
+     "scale_n": 50000,
+     "condition": "raw",
+     "ef_search": 200,
+     "iterative_scan": "relaxed_order",
+     "seqscan_off": false,
+     "max_scan_tuples": 20000
+    }
+   },
+   "recall_at_10_vs_exact"
+  ],
+  "expected": 0.9665,
+  "tolerance": 0.0001,
+  "tex_strings": [
+   "0.967"
+  ]
+ },
+ {
+  "id": "pern.openai.raw.ef200.50k.loss",
+  "description": "OpenAI per-size Hit@10 loss ef200 N=50k.",
+  "artifact": "artifacts/published/revision1/per_n_hnsw_eval_openai.json",
+  "json_path": [
+   "cells",
+   {
+    "where": {
+     "scale_n": 50000,
+     "condition": "raw",
+     "ef_search": 200,
+     "iterative_scan": "relaxed_order",
+     "seqscan_off": false,
+     "max_scan_tuples": 20000
+    }
+   },
+   "hit_at_10_drop"
+  ],
+  "expected": 0.045,
+  "tolerance": 0,
+  "tex_strings": [
+   "$0.967$ at $50\\text{k}$ to $0.958$ at $100\\text{k}$, and the Hit@10 loss relative to exact search rises from $0.005$ to $0.025$, $0.045$, and $0.050$"
+  ]
+ },
+ {
+  "id": "pern.openai.raw.ef200.100k.recall",
+  "description": "OpenAI per-size recall@10 ef200 N=100k.",
+  "artifact": "artifacts/published/revision1/per_n_hnsw_eval_openai.json",
+  "json_path": [
+   "cells",
+   {
+    "where": {
+     "scale_n": 100000,
+     "condition": "raw",
+     "ef_search": 200,
+     "iterative_scan": "relaxed_order",
+     "seqscan_off": false,
+     "max_scan_tuples": 20000
+    }
+   },
+   "recall_at_10_vs_exact"
+  ],
+  "expected": 0.9575,
+  "tolerance": 0.0001,
+  "tex_strings": [
+   "0.958"
+  ]
+ },
+ {
+  "id": "pern.openai.raw.ef200.100k.loss",
+  "description": "OpenAI per-size Hit@10 loss ef200 N=100k.",
+  "artifact": "artifacts/published/revision1/per_n_hnsw_eval_openai.json",
+  "json_path": [
+   "cells",
+   {
+    "where": {
+     "scale_n": 100000,
+     "condition": "raw",
+     "ef_search": 200,
+     "iterative_scan": "relaxed_order",
+     "seqscan_off": false,
+     "max_scan_tuples": 20000
+    }
+   },
+   "hit_at_10_drop"
+  ],
+  "expected": 0.05,
+  "tolerance": 0,
+  "tex_strings": [
+   "$0.050$"
+  ]
+ },
+ {
+  "id": "pern.openai.raw.ef800.100k.recall",
+  "description": "OpenAI per-size recall@10 ef800 N=100k.",
+  "artifact": "artifacts/published/revision1/per_n_hnsw_eval_openai.json",
+  "json_path": [
+   "cells",
+   {
+    "where": {
+     "scale_n": 100000,
+     "condition": "raw",
+     "ef_search": 800,
+     "iterative_scan": "relaxed_order",
+     "seqscan_off": false,
+     "max_scan_tuples": 20000
+    }
+   },
+   "recall_at_10_vs_exact"
+  ],
+  "expected": 0.986,
+  "tolerance": 0,
+  "tex_strings": [
+   "0.986"
+  ]
+ },
+ {
+  "id": "pern.titan.raw.ef200.5k.recall",
+  "description": "Titan per-size recall@10 ef200 N=5k.",
+  "artifact": "artifacts/published/revision1/per_n_hnsw_eval_titan.json",
+  "json_path": [
+   "cells",
+   {
+    "where": {
+     "scale_n": 5000,
+     "condition": "raw",
+     "ef_search": 200,
+     "iterative_scan": "relaxed_order",
+     "seqscan_off": false,
+     "max_scan_tuples": 20000
+    }
+   },
+   "recall_at_10_vs_exact"
+  ],
+  "expected": 0.9985,
+  "tolerance": 0.0001,
+  "tex_strings": [
+   "Titan & 5k & 0.972 / 0.040 & 0.994 / 0.010 & 0.999 / 0.000"
+  ],
+  "tex_files": [
+   "artifacts/published/revision1/paper_tables/tab_perN_recall.tex"
+  ]
+ },
+ {
+  "id": "pern.titan.raw.ef200.100k.recall",
+  "description": "Titan per-size recall@10 ef200 N=100k.",
+  "artifact": "artifacts/published/revision1/per_n_hnsw_eval_titan.json",
+  "json_path": [
+   "cells",
+   {
+    "where": {
+     "scale_n": 100000,
+     "condition": "raw",
+     "ef_search": 200,
+     "iterative_scan": "relaxed_order",
+     "seqscan_off": false,
+     "max_scan_tuples": 20000
+    }
+   },
+   "recall_at_10_vs_exact"
+  ],
+  "expected": 0.9745,
+  "tolerance": 0.0001,
+  "tex_strings": [
+   "Titan & 100k & 0.891 / 0.080 & 0.954 / 0.035 & 0.975 / 0.015"
+  ],
+  "tex_files": [
+   "artifacts/published/revision1/paper_tables/tab_perN_recall.tex"
+  ]
+ },
+ {
+  "id": "planner.e2.ef100.hit10",
+  "description": "E2 OpenAI raw 100k ef=100 approx Hit@10.",
+  "artifact": "artifacts/published/revision1/search_mode_diagnosis_5434.json",
+  "json_path": [
+   "experiments",
+   "e2_ef_sweep_100k_openai_raw",
+   {
+    "where": {
+     "ef_search": 100
+    }
+   },
+   "vs_exact",
+   "mean_hit_at_10_approx"
+  ],
+  "expected": 0.495,
+  "tolerance": 0,
+  "tex_strings": [
+   "0.495"
+  ]
+ },
+ {
+  "id": "planner.e2.ef100.recall",
+  "description": "E2 OpenAI raw 100k ef=100 recall@10.",
+  "artifact": "artifacts/published/revision1/search_mode_diagnosis_5434.json",
+  "json_path": [
+   "experiments",
+   "e2_ef_sweep_100k_openai_raw",
+   {
+    "where": {
+     "ef_search": 100
+    }
+   },
+   "vs_exact",
+   "mean_list_recall_at_10"
+  ],
+  "expected": 0.8935,
+  "tolerance": 0.0005,
+  "tex_strings": [
+   "recall$@10$ against exact search was $0.893$, $0.946$, and $0.967$"
+  ]
+ },
+ {
+  "id": "planner.e2.ef200.hit10",
+  "description": "E2 OpenAI raw 100k ef=200 approx Hit@10.",
+  "artifact": "artifacts/published/revision1/search_mode_diagnosis_5434.json",
+  "json_path": [
+   "experiments",
+   "e2_ef_sweep_100k_openai_raw",
+   {
+    "where": {
+     "ef_search": 200
+    }
+   },
+   "vs_exact",
+   "mean_hit_at_10_approx"
+  ],
+  "expected": 0.51,
+  "tolerance": 0,
+  "tex_strings": [
+   "recall$@10$ against exact search was $0.893$, $0.946$, and $0.967$ and Hit@10 was $0.495$, $0.510$, and $0.530$"
+  ]
+ },
+ {
+  "id": "planner.e2.ef800.hit10",
+  "description": "E2 OpenAI raw 100k ef=800 approx Hit@10 (planner exact).",
+  "artifact": "artifacts/published/revision1/search_mode_diagnosis_5434.json",
+  "json_path": [
+   "experiments",
+   "e2_ef_sweep_100k_openai_raw",
+   {
+    "where": {
+     "ef_search": 800
+    }
+   },
+   "vs_exact",
+   "mean_hit_at_10_approx"
+  ],
+  "expected": 0.585,
+  "tolerance": 0,
+  "tex_strings": [
+   "raising $\\mathrm{ef\\_search}$ from $200$ to $400$ at $100\\text{k}$ recovers $0.075$ Hit@10 ($0.510{\\to}0.585$)"
+  ]
+ },
+ {
+  "id": "uniform.s42.openai.raw.100k",
+  "description": "Uniform s42 OpenAI raw Hit@10 at 100k (ladder file; analysis_uniform hit_at_10_ladders currently stores the last embedder).",
+  "artifact": "artifacts/published/revision1/exact_ladder_uniform_s42_openai_primary200.json",
+  "json_path": [
+   "runs",
+   {
+    "where": {
+     "condition": "raw",
+     "scale": 100000
+    }
+   },
+   "metrics",
+   "hit_at_10"
+  ],
+  "expected": 0.585,
+  "tolerance": 0,
+  "tex_strings": [
+   "raw $0.585$",
+   "first-type-filtered $0.670$"
+  ]
+ },
+ {
+  "id": "uniform.s42.openai.meta_first.100k",
+  "description": "Uniform s42 OpenAI meta_first Hit@10 at 100k.",
+  "artifact": "artifacts/published/revision1/exact_ladder_uniform_s42_openai_primary200.json",
+  "json_path": [
+   "runs",
+   {
+    "where": {
+     "condition": "meta_first",
+     "scale": 100000
+    }
+   },
+   "metrics",
+   "hit_at_10"
+  ],
+  "expected": 0.67,
+  "tolerance": 0,
+  "tex_strings": [
+   "first-type-filtered $0.670$"
+  ]
+ },
+ {
+  "id": "uniform.s42.openai.raw.5k",
+  "description": "Uniform s42 OpenAI raw Hit@10 at 5k.",
+  "artifact": "artifacts/published/revision1/exact_ladder_uniform_s42_openai_primary200.json",
+  "json_path": [
+   "runs",
+   {
+    "where": {
+     "condition": "raw",
+     "scale": 5000
+    }
+   },
+   "metrics",
+   "hit_at_10"
+  ],
+  "expected": 0.79,
+  "tolerance": 0,
+  "tex_strings": [
+   "$0.790{\\to}0.585$"
+  ]
+ },
+ {
+  "id": "truncation.ladder.title_plus_chunk.titan_24000_chars",
+  "description": "Ladder-pool title+chunk Titan 24000-char truncated count.",
+  "artifact": "artifacts/published/revision1/doc_length_stats.json",
+  "json_path": [
+   "truncation",
+   "ladder_pool",
+   "title_plus_chunk",
+   "titan_24000_chars",
+   "n_truncated"
+  ],
+  "expected": 93,
+  "tolerance": 0
+ },
+ {
+  "id": "pool.prop_s42.raw.100k",
+  "description": "pool.prop_s42.raw.100k",
+  "artifact": "artifacts/published/revision1/exact_ladder_pool_prop_s42_openai_primary200.json",
+  "json_path": [
+   "runs",
+   {
+    "where": {
+     "condition": "raw",
+     "scale": 100000
+    }
+   },
+   "metrics",
+   "hit_at_10"
+  ],
+  "expected": 0.595,
+  "tolerance": 0,
+  "tex_strings": []
+ },
+ {
+  "id": "pool.prop_s0.raw.100k",
+  "description": "pool.prop_s0.raw.100k",
+  "artifact": "artifacts/published/revision1/exact_ladder_pool_prop_s0_openai_primary200.json",
+  "json_path": [
+   "runs",
+   {
+    "where": {
+     "condition": "raw",
+     "scale": 100000
+    }
+   },
+   "metrics",
+   "hit_at_10"
+  ],
+  "expected": 0.575,
+  "tolerance": 0,
+  "tex_strings": []
+ },
+ {
+  "id": "pool.rr_full.raw.full",
+  "description": "pool.rr_full.raw.full",
+  "artifact": "artifacts/published/revision1/exact_ladder_pool_rr_full_openai_primary200.json",
+  "json_path": [
+   "runs",
+   {
+    "where": {
+     "condition": "raw",
+     "scale": 184963
+    }
+   },
+   "metrics",
+   "hit_at_10"
+  ],
+  "expected": 0.515,
+  "tolerance": 0,
+  "tex_strings": [
+   "$0.515$ at the full pool"
+  ]
+ },
+ {
+  "id": "pool.rr_full.meta_in.full",
+  "description": "pool.rr_full.meta_first.full",
+  "artifact": "artifacts/published/revision1/exact_ladder_pool_rr_full_openai_primary200.json",
+  "json_path": [
+   "runs",
+   {
+    "where": {
+     "condition": "meta_in",
+     "scale": 184963
+    }
+   },
+   "metrics",
+   "hit_at_10"
+  ],
+  "expected": 0.645,
+  "tolerance": 0,
+  "tex_strings": [
+   "reaches $0.515$ at the full pool"
+  ]
+ },
+ {
+  "id": "audit.top10.questions_with_full",
+  "description": "audit.top10.questions_with_full",
+  "artifact": "artifacts/published/revision1/llm_audit_top10.json",
+  "json_path": [
+   "questions_with_any_full"
+  ],
+  "expected": 13,
+  "tolerance": 0,
+  "tex_strings": [
+   "covering $13$ of the $42$ questions"
+  ]
+ },
+ {
+  "id": "audit.top10.docs_full",
+  "description": "audit.top10.docs_full",
+  "artifact": "artifacts/published/revision1/llm_audit_top10.json",
+  "json_path": [
+   "verdict_counts",
+   "full"
+  ],
+  "expected": 38,
+  "tolerance": 0,
+  "tex_strings": [
+   "marked $38$ of the $420$ non-gold top-ten documents"
+  ]
+ },
+ {
+  "id": "rank.displaced.within100",
+  "description": "rank.displaced.within100",
+  "artifact": "artifacts/published/revision1/rank_depth_openai_primary200.json",
+  "json_path": [
+   "displaced",
+   "within_100"
+  ],
+  "expected": 34,
+  "tolerance": 0,
+  "tex_strings": [
+   "within $100$ for $34$"
+  ]
+ },
+ {
+  "id": "rank.displaced.within20",
+  "description": "rank.displaced.within20",
+  "artifact": "artifacts/published/revision1/rank_depth_openai_primary200.json",
+  "json_path": [
+   "displaced",
+   "within_20"
+  ],
+  "expected": 11,
+  "tolerance": 0,
+  "tex_strings": [
+   "within rank $20$ for $11$"
+  ]
+ },
+ {
+  "id": "pool.seeds.drop_mean",
+  "description": "pool.seeds.drop_mean",
+  "artifact": "artifacts/published/revision1/pool_schedule_uncertainty.json",
+  "json_path": [
+   "drop_5k_100k",
+   "mean"
+  ],
+  "expected": 0.232,
+  "tolerance": 0.0005,
+  "tex_strings": [
+   "$0.232$ on average over the ten proportional seeds"
+  ]
+ },
+ {
+  "id": "hnsw.replicates.loss100k",
+  "description": "hnsw.replicates.loss100k",
+  "artifact": "artifacts/published/revision1/hnsw_build_replicates_summary.json",
+  "json_path": [
+   "100000",
+   "loss_mean"
+  ],
+  "expected": 0.046,
+  "tolerance": 0.0005,
+  "tex_strings": [
+   "to $0.046$ at $100\\text{k}$"
+  ]
+ },
+ {
+  "id": "hnsw.replicates.recall5k",
+  "description": "hnsw.replicates.recall5k",
+  "artifact": "artifacts/published/revision1/hnsw_build_replicates_summary.json",
+  "json_path": [
+   "5000",
+   "recall_mean"
+  ],
+  "expected": 0.996,
+  "tolerance": 0.0005,
+  "tex_strings": [
+   "falls from $0.996$ to $0.958$"
+  ]
+ },
+ {
+  "id": "bm25.titan_text.hit10.100k",
+  "description": "bm25.titan_text.hit10.100k",
+  "artifact": "artifacts/published/revision1/bm25_titan_text_comparison.json",
+  "json_path": [
+   "bm25_titan_text_hit10",
+   "100000"
+  ],
+  "expected": 0.685,
+  "tolerance": 0,
+  "tex_strings": [
+   "$0.810{\\to}0.685$"
+  ]
+ },
+ {
+  "id": "chunk.c512.raw.5k",
+  "description": "chunk.c512.raw.5k",
+  "artifact": "artifacts/published/revision1/chunk_control_summary.json",
+  "json_path": [
+   "c512_o64_raw_5000_100000",
+   "chunk_lo"
+  ],
+  "expected": 0.83,
+  "tolerance": 0.0005,
+  "tex_strings": [
+   "$0.830{\\to}0.625$"
+  ]
+ },
+ {
+  "id": "chunk.c512.raw.100k",
+  "description": "chunk.c512.raw.100k",
+  "artifact": "artifacts/published/revision1/chunk_control_summary.json",
+  "json_path": [
+   "c512_o64_raw_5000_100000",
+   "chunk_hi"
+  ],
+  "expected": 0.625,
+  "tolerance": 0.0005,
+  "tex_strings": [
+   "$0.830{\\to}0.625$"
+  ]
+ },
+ {
+  "id": "chunk.c512.raw.drop",
+  "description": "chunk.c512.raw.drop",
+  "artifact": "artifacts/published/revision1/chunk_control_summary.json",
+  "json_path": [
+   "c512_o64_raw_5000_100000",
+   "chunk_drop"
+  ],
+  "expected": 0.205,
+  "tolerance": 0.0005,
+  "tex_strings": [
+   "(drop $0.205$"
+  ]
+ },
+ {
+  "id": "chunk.c512.raw.diff",
+  "description": "chunk.c512.raw.diff",
+  "artifact": "artifacts/published/revision1/chunk_control_summary.json",
+  "json_path": [
+   "c512_o64_raw_5000_100000",
+   "diff"
+  ],
+  "expected": -0.005,
+  "tolerance": 0.0005,
+  "tex_strings": [
+   "$-0.005$"
+  ]
+ },
+ {
+  "id": "chunk.c512.meta.100k",
+  "description": "chunk.c512.meta.100k",
+  "artifact": "artifacts/published/revision1/chunk_control_summary.json",
+  "json_path": [
+   "c512_o64_meta_in_5000_100000",
+   "chunk_hi"
+  ],
+  "expected": 0.7,
+  "tolerance": 0.0005,
+  "tex_strings": [
+   "$0.895{\\to}0.700$"
+  ]
+ },
+ {
+  "id": "chunk.c512.lift.100k",
+  "description": "chunk.c512.lift.100k",
+  "artifact": "artifacts/published/revision1/chunk_control_summary.json",
+  "json_path": [
+   "c512_o64_lift_100k"
+  ],
+  "expected": 0.075,
+  "tolerance": 0.0005,
+  "tex_strings": [
+   "a lift of $+0.075$"
+  ]
+ },
+ {
+  "id": "chunk.c256.raw.drop",
+  "description": "chunk.c256.raw.drop",
+  "artifact": "artifacts/published/revision1/chunk_control_summary.json",
+  "json_path": [
+   "c256_o32_raw_5000_25000",
+   "chunk_drop"
+  ],
+  "expected": 0.1,
+  "tolerance": 0.0005,
+  "tex_strings": [
+   "drop $0.100$ against $0.125$"
+  ]
+ },
+ {
+  "id": "chunk.c512o0.raw.drop",
+  "description": "chunk.c512o0.raw.drop",
+  "artifact": "artifacts/published/revision1/chunk_control_summary.json",
+  "json_path": [
+   "c512_o0_raw_5000_10000",
+   "chunk_drop"
+  ],
+  "expected": 0.045,
+  "tolerance": 0.0005,
+  "tex_strings": [
+   "$0.045$ against $0.060$"
+  ]
+ },
+ {
+  "id": "chunk.chunks.100k",
+  "description": "chunk.chunks.100k",
+  "artifact": "artifacts/published/revision1/chunk_control_summary.json",
+  "json_path": [
+   "chunks_100k"
+  ],
+  "expected": 381847,
+  "tolerance": 0.0005,
+  "tex_strings": [
+   "$381{,}847$ chunks"
+  ]
+ },
+ {
+  "id": "chunk.whole.recompute.cells",
+  "description": "chunk.whole.recompute.cells",
+  "artifact": "artifacts/published/revision1/chunk_control_summary.json",
+  "json_path": [
+   "whole_recompute_identical_cells"
+  ],
+  "expected": 12,
+  "tolerance": 0.0005,
+  "tex_strings": []
+ },
+ {
+  "id": "poolcounts.total.100k",
+  "description": "poolcounts.total.100k",
+  "artifact": "artifacts/published/revision1/pool_counts_by_source.json",
+  "json_path": [
+   "totals",
+   "100000"
+  ],
+  "expected": 99998,
+  "tolerance": 0
+ },
+ {
+  "id": "poolcounts.total.50k",
+  "description": "poolcounts.total.50k",
+  "artifact": "artifacts/published/revision1/pool_counts_by_source.json",
+  "json_path": [
+   "totals",
+   "50000"
+  ],
+  "expected": 49999,
+  "tolerance": 0
+ },
+ {
+  "id": "poolcounts.confluence.100k",
+  "description": "poolcounts.confluence.100k",
+  "artifact": "artifacts/published/revision1/pool_counts_by_source.json",
+  "json_path": [
+   "counts",
+   "100000",
+   "confluence"
+  ],
+  "expected": 5189,
+  "tolerance": 0
+ },
+ {
+  "id": "chunk.over512.fraction",
+  "description": "chunk.over512.fraction",
+  "artifact": "artifacts/published/revision1/chunk_control_summary.json",
+  "json_path": [
+   "chunks_over_512_fraction"
+  ],
+  "expected": 0.0211,
+  "tolerance": 0.0006,
+  "tex_strings": [
+   "$2.1\\%$ exceed $512$ tokens"
+  ]
+ },
+ {
+  "id": "hnsw.replicate.plancheck.n_index_scan",
+  "description": "hnsw.replicate.plancheck.n_index_scan",
+  "artifact": "artifacts/published/revision1/hnsw_replicate_plan_check.json",
+  "json_path": [
+   "cells",
+   {
+    "where": {
+     "scale": 100000
+    }
+   },
+   "index_scan_used"
+  ],
+  "expected": true,
+  "tolerance": 0
+ },
+ {
+  "id": "audit_v3.K_both",
+  "description": "audit_v3.K_both",
+  "artifact": "artifacts/published/revision1/audit_v3/analysis.json",
+  "json_path": [
+   "consensus",
+   "K_both_questions_with_any_full"
+  ],
+  "expected": 0,
+  "tolerance": 0,
+  "tex_strings": [
+   "Neither judge rated any of the $420$ documents as fully answering"
+  ]
+ },
+ {
+  "id": "audit_v3.K_either",
+  "description": "audit_v3.K_either",
+  "artifact": "artifacts/published/revision1/audit_v3/analysis.json",
+  "json_path": [
+   "consensus",
+   "K_either_questions_with_any_full"
+  ],
+  "expected": 0,
+  "tolerance": 0,
+  "tex_strings": []
+ },
+ {
+  "id": "audit_v3.n_pairs",
+  "description": "audit_v3.n_pairs",
+  "artifact": "artifacts/published/revision1/audit_v3/analysis.json",
+  "json_path": [
+   "consensus",
+   "n_candidate_pairs"
+  ],
+  "expected": 420,
+  "tolerance": 0,
+  "tex_strings": []
+ },
+ {
+  "id": "audit_v3.fp_gemini_n",
+  "description": "audit_v3.fp_gemini_n",
+  "artifact": "artifacts/published/revision1/audit_v3/analysis.json",
+  "json_path": [
+   "per_judge",
+   "gemini",
+   "control_false_positive_full",
+   "n"
+  ],
+  "expected": 140,
+  "tolerance": 0,
+  "tex_strings": [
+   "All $140$ random and near-miss controls were rejected"
+  ]
+ },
+ {
+  "id": "audit_v3.fp_grok_k",
+  "description": "audit_v3.fp_grok_k",
+  "artifact": "artifacts/published/revision1/audit_v3/analysis.json",
+  "json_path": [
+   "per_judge",
+   "grok",
+   "control_false_positive_full",
+   "k"
+  ],
+  "expected": 0,
+  "tolerance": 0,
+  "tex_strings": []
+ },
+ {
+  "id": "audit_v3.fp_gemini_k",
+  "description": "audit_v3.fp_gemini_k",
+  "artifact": "artifacts/published/revision1/audit_v3/analysis.json",
+  "json_path": [
+   "per_judge",
+   "gemini",
+   "control_false_positive_full",
+   "k"
+  ],
+  "expected": 0,
+  "tolerance": 0,
+  "tex_strings": []
+ },
+ {
+  "id": "audit_v3.pos_n",
+  "description": "audit_v3.pos_n",
+  "artifact": "artifacts/published/revision1/audit_v3/analysis.json",
+  "json_path": [
+   "per_judge",
+   "gemini",
+   "positive_control_full_or_partial",
+   "n"
+  ],
+  "expected": 44,
+  "tolerance": 0,
+  "tex_strings": [
+   "of $44$ cases"
+  ]
+ },
+ {
+  "id": "audit_v3.pos_any_gemini",
+  "description": "audit_v3.pos_any_gemini",
+  "artifact": "artifacts/published/revision1/audit_v3/analysis.json",
+  "json_path": [
+   "per_judge",
+   "gemini",
+   "positive_control_any_verdict_other_than_no",
+   "rate"
+  ],
+  "expected": 0.977,
+  "tolerance": 0.0006,
+  "tex_strings": [
+   "$43$ and $35$ of $44$ cases"
+  ]
+ },
+ {
+  "id": "audit_v3.pos_any_grok",
+  "description": "audit_v3.pos_any_grok",
+  "artifact": "artifacts/published/revision1/audit_v3/analysis.json",
+  "json_path": [
+   "per_judge",
+   "grok",
+   "positive_control_any_verdict_other_than_no",
+   "rate"
+  ],
+  "expected": 0.795,
+  "tolerance": 0.001,
+  "tex_strings": []
+ },
+ {
+  "id": "audit_v3.pos_fp_gemini",
+  "description": "audit_v3.pos_fp_gemini",
+  "artifact": "artifacts/published/revision1/audit_v3/analysis.json",
+  "json_path": [
+   "per_judge",
+   "gemini",
+   "positive_control_full_or_partial",
+   "k"
+  ],
+  "expected": 34,
+  "tolerance": 0,
+  "tex_strings": [
+   "$34$ and $22$ as full or partial"
+  ]
+ },
+ {
+  "id": "audit_v3.pos_fp_grok",
+  "description": "audit_v3.pos_fp_grok",
+  "artifact": "artifacts/published/revision1/audit_v3/analysis.json",
+  "json_path": [
+   "per_judge",
+   "grok",
+   "positive_control_full_or_partial",
+   "k"
+  ],
+  "expected": 22,
+  "tolerance": 0,
+  "tex_strings": []
+ },
+ {
+  "id": "audit_v3.terra_full_n",
+  "description": "audit_v3.terra_full_n",
+  "artifact": "artifacts/published/revision1/audit_v3/analysis.json",
+  "json_path": [
+   "earlier_terra_full_documents",
+   "n"
+  ],
+  "expected": 38,
+  "tolerance": 0,
+  "tex_strings": []
+ },
+ {
+  "id": "audit_v3.terra_full_no_gemini",
+  "description": "audit_v3.terra_full_no_gemini",
+  "artifact": "artifacts/published/revision1/audit_v3/analysis.json",
+  "json_path": [
+   "earlier_terra_full_documents",
+   "gemini",
+   "subject_match_false"
+  ],
+  "expected": 37,
+  "tolerance": 0,
+  "tex_strings": [
+   "($37$ for each judge alone"
+  ]
+ },
+ {
+  "id": "audit_v3.terra_full_no_grok",
+  "description": "audit_v3.terra_full_no_grok",
+  "artifact": "artifacts/published/revision1/audit_v3/analysis.json",
+  "json_path": [
+   "earlier_terra_full_documents",
+   "grok",
+   "subject_match_false"
+  ],
+  "expected": 37,
+  "tolerance": 0,
+  "tex_strings": []
+ },
+ {
+  "id": "audit_v3.old_confirmed",
+  "description": "audit_v3.old_confirmed",
+  "artifact": "artifacts/published/revision1/audit_v3/analysis.json",
+  "json_path": [
+   "comparison_with_earlier_terra_audit",
+   "of_which_confirmed_by_either"
+  ],
+  "expected": 0,
+  "tolerance": 0,
+  "tex_strings": [
+   "none of the $13$ earlier questions was confirmed"
+  ]
+ },
+ {
+  "id": "audit_v3.both_diff",
+  "description": "audit_v3.both_diff",
+  "artifact": "artifacts/published/revision1/audit_v3/analysis.json",
+  "json_path": [
+   "earlier_terra_full_documents",
+   "both_judges_different_subject"
+  ],
+  "expected": 36,
+  "tolerance": 0,
+  "tex_strings": [
+   "for $36$ of the $38$ documents"
+  ]
+ },
+ {
+  "id": "audit_v3.pos_full_gemini",
+  "description": "audit_v3.pos_full_gemini",
+  "artifact": "artifacts/published/revision1/audit_v3/analysis.json",
+  "json_path": [
+   "per_judge",
+   "gemini",
+   "positive_control_full",
+   "k"
+  ],
+  "expected": 5,
+  "tolerance": 0,
+  "tex_strings": [
+   "rated only $5$ and $4$ of the $44$ as fully answering"
+  ]
+ },
+ {
+  "id": "audit_v3.pos_full_grok",
+  "description": "audit_v3.pos_full_grok",
+  "artifact": "artifacts/published/revision1/audit_v3/analysis.json",
+  "json_path": [
+   "per_judge",
+   "grok",
+   "positive_control_full",
+   "k"
+  ],
+  "expected": 4,
+  "tolerance": 0,
+  "tex_strings": []
+ }
+]

@@ -1,0 +1,136 @@
+{
+ "sizes": [
+  5000,
+  10000,
+  15000,
+  20000,
+  25000,
+  40000,
+  50000,
+  75000,
+  100000
+ ],
+ "sources": [
+  "confluence",
+  "fireflies",
+  "github",
+  "gmail",
+  "google_drive",
+  "hubspot",
+  "jira",
+  "linear",
+  "slack"
+ ],
+ "counts": {
+  "5000": {
+   "confluence": 683,
+   "jira": 596,
+   "google_drive": 559,
+   "hubspot": 536,
+   "fireflies": 518,
+   "linear": 554,
+   "github": 551,
+   "slack": 499,
+   "gmail": 504
+  },
+  "10000": {
+   "confluence": 1239,
+   "jira": 1151,
+   "google_drive": 1114,
+   "hubspot": 1091,
+   "fireflies": 1074,
+   "linear": 1109,
+   "github": 1107,
+   "slack": 1055,
+   "gmail": 1060
+  },
+  "15000": {
+   "confluence": 1794,
+   "jira": 1707,
+   "google_drive": 1670,
+   "hubspot": 1647,
+   "fireflies": 1629,
+   "linear": 1665,
+   "github": 1662,
+   "slack": 1611,
+   "gmail": 1615
+  },
+  "20000": {
+   "confluence": 2350,
+   "jira": 2262,
+   "google_drive": 2226,
+   "hubspot": 2202,
+   "fireflies": 2185,
+   "linear": 2220,
+   "github": 2218,
+   "slack": 2166,
+   "gmail": 2171
+  },
+  "25000": {
+   "confluence": 2907,
+   "jira": 2817,
+   "google_drive": 2781,
+   "hubspot": 2758,
+   "fireflies": 2740,
+   "linear": 2776,
+   "github": 2773,
+   "slack": 2722,
+   "gmail": 2726
+  },
+  "40000": {
+   "confluence": 4572,
+   "jira": 4484,
+   "google_drive": 4448,
+   "hubspot": 4425,
+   "fireflies": 4407,
+   "linear": 4442,
+   "github": 4440,
+   "slack": 4388,
+   "gmail": 4393
+  },
+  "50000": {
+   "confluence": 5189,
+   "jira": 5656,
+   "google_drive": 5621,
+   "hubspot": 5598,
+   "fireflies": 5580,
+   "linear": 5615,
+   "github": 5613,
+   "slack": 5561,
+   "gmail": 5566
+  },
+  "75000": {
+   "confluence": 5189,
+   "jira": 6118,
+   "google_drive": 9304,
+   "hubspot": 9281,
+   "fireflies": 9263,
+   "linear": 9299,
+   "github": 8052,
+   "slack": 9244,
+   "gmail": 9249
+  },
+  "100000": {
+   "confluence": 5189,
+   "jira": 6118,
+   "google_drive": 14122,
+   "hubspot": 14098,
+   "fireflies": 10173,
+   "linear": 14117,
+   "github": 8052,
+   "slack": 14062,
+   "gmail": 14067
+  }
+ },
+ "totals": {
+  "5000": 5000,
+  "10000": 10000,
+  "15000": 15000,
+  "20000": 20000,
+  "25000": 25000,
+  "40000": 39999,
+  "50000": 49999,
+  "75000": 74999,
+  "100000": 99998
+ }
+}

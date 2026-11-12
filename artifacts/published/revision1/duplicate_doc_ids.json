@@ -1,0 +1,13 @@
+{
+  "meta": {
+    "created_at": "2026-11-11T00:46:54.359584+00:00",
+    "script": "write_duplicate_doc_ids.py",
+    "manifest": "data/erb_scale_manifest.json"
+  },
+  "duplicate_doc_ids": [
+    "dsid_8a0c5430bac64f8da21c2cee5a7f4df5",
+    "dsid_f292876dbb47462d85997383af306490",
+    "dsid_feb1e9063ebb4947bb4f935393c01f0f"
+  ],
+  "n_duplicate_doc_ids": 3
+}
