@@ -1,0 +1,59 @@
+{
+  "meta": {
+    "created_at": "2026-11-10T01:43:54.632293+00:00",
+    "embedder": "titan",
+    "bank": "primary400",
+    "search_mode": "exact",
+    "skipped": true,
+    "skip_reason": "missing_query_vectors",
+    "missing_query_vectors": 200,
+    "missing_query_vector_ids_sample": [
+      "qst_0040::metadata",
+      "qst_0137::basic",
+      "qst_0035::basic",
+      "qst_0348::project_related",
+      "qst_0293::semantic",
+      "qst_0027::basic",
+      "qst_0256::semantic",
+      "qst_0047::metadata",
+      "qst_0018::metadata",
+      "qst_0233::semantic"
+    ],
+    "query_vector_key_rule": "eval_id only; bare question ids are never used because they collide across question types",
+    "missing_query_vectors_by_question_type": {
+      "basic": 63,
+      "completeness": 7,
+      "conflicting_info": 8,
+      "constrained": 11,
+      "intra_document_reasoning": 10,
+      "metadata": 40,
+      "miscellaneous": 5,
+      "project_related": 12,
+      "semantic": 44
+    },
+    "session_settings": {
+      "enable_indexscan": "off",
+      "enable_bitmapscan": "off"
+    },
+    "postgresql_version": "PostgreSQL 16.15 (Debian 16.15-1.pgdg12+2) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit",
+    "pgvector_version": "0.8.6",
+    "plan_check": [
+      {
+        "table": "document_chunks_titan",
+        "eval_id": "qst_0040::metadata",
+        "skipped": true,
+        "skip_reason": "missing_query_vector"
+      },
+      {
+        "table": "document_chunks_titan",
+        "eval_id": "qst_0348::project_related",
+        "skipped": true,
+        "skip_reason": "missing_query_vector"
+      }
+    ],
+    "top_k": 10,
+    "manifest_sha256": "d73b248ab531fba799077c067599232ecd862e39671f6566c32f539a378ed495",
+    "query_cache_sha256": "8605beec90d0671aa409d9267e6903f8bc60dcebb37fd8c91bb628ec20f9deaf"
+  },
+  "runs": []
+}

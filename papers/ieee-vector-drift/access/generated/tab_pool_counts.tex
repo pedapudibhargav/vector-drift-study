@@ -1,0 +1,23 @@
+\begin{table*}[t]
+\caption{Documents per source at every ladder size under the round-robin schedule (gold anchors included; sizes count documents with \texttt{scale\_rank}${<}N$, so $49{,}999$ and $99{,}998$ occur because two ranks are unused). A source stops growing once it is exhausted.}
+\label{tab:poolcounts}
+\centering
+\small
+\fittext{\begin{tabular}{@{}lrrrrrrrrr@{}}
+\toprule
+Source & 5k & 10k & 15k & 20k & 25k & 40k & 50k & 75k & 100k \\
+\midrule
+confluence & 683 & 1{,}239 & 1{,}794 & 2{,}350 & 2{,}907 & 4{,}572 & 5{,}189 & 5{,}189 & 5{,}189 \\
+fireflies & 518 & 1{,}074 & 1{,}629 & 2{,}185 & 2{,}740 & 4{,}407 & 5{,}580 & 9{,}263 & 10{,}173 \\
+github & 551 & 1{,}107 & 1{,}662 & 2{,}218 & 2{,}773 & 4{,}440 & 5{,}613 & 8{,}052 & 8{,}052 \\
+gmail & 504 & 1{,}060 & 1{,}615 & 2{,}171 & 2{,}726 & 4{,}393 & 5{,}566 & 9{,}249 & 14{,}067 \\
+google\_drive & 559 & 1{,}114 & 1{,}670 & 2{,}226 & 2{,}781 & 4{,}448 & 5{,}621 & 9{,}304 & 14{,}122 \\
+hubspot & 536 & 1{,}091 & 1{,}647 & 2{,}202 & 2{,}758 & 4{,}425 & 5{,}598 & 9{,}281 & 14{,}098 \\
+jira & 596 & 1{,}151 & 1{,}707 & 2{,}262 & 2{,}817 & 4{,}484 & 5{,}656 & 6{,}118 & 6{,}118 \\
+linear & 554 & 1{,}109 & 1{,}665 & 2{,}220 & 2{,}776 & 4{,}442 & 5{,}615 & 9{,}299 & 14{,}117 \\
+slack & 499 & 1{,}055 & 1{,}611 & 2{,}166 & 2{,}722 & 4{,}388 & 5{,}561 & 9{,}244 & 14{,}062 \\
+\midrule
+Total & 5{,}000 & 10{,}000 & 15{,}000 & 20{,}000 & 25{,}000 & 39{,}999 & 49{,}999 & 74{,}999 & 99{,}998 \\
+\bottomrule
+\end{tabular}}
+\end{table*}

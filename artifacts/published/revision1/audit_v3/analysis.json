@@ -1,0 +1,219 @@
+{
+ "meta": {
+  "preregistration_sha256": "0e5070ae26482109a9951f5ee3f0f34f8e0dd259ba3bd1b3fcb8a071bcc04e32",
+  "items_sha256": "2c61fa5375730d5b46276bc0eb5b5a9827922e5e5cc283a43300c06e795d95d8",
+  "judges": {
+   "gemini": "gemini-4-argon-high",
+   "grok": "grok-4.7-high"
+  },
+  "questions": 70,
+  "valid_calls": {
+   "gemini": 42,
+   "grok": 42
+  }
+ },
+ "per_judge": {
+  "gemini": {
+   "by_category": {
+    "retrieved": {
+     "n": 420,
+     "verdicts": {
+      "full": 0,
+      "partial": 3,
+      "conflict": 0,
+      "no": 417,
+      "unsupported": 0,
+      "no_subject": 0
+     }
+    },
+    "random": {
+     "n": 70,
+     "verdicts": {
+      "full": 0,
+      "partial": 0,
+      "conflict": 0,
+      "no": 70,
+      "unsupported": 0,
+      "no_subject": 0
+     }
+    },
+    "near_miss": {
+     "n": 70,
+     "verdicts": {
+      "full": 0,
+      "partial": 0,
+      "conflict": 0,
+      "no": 70,
+      "unsupported": 0,
+      "no_subject": 0
+     }
+    },
+    "positive": {
+     "n": 44,
+     "verdicts": {
+      "full": 5,
+      "partial": 29,
+      "conflict": 9,
+      "no": 1,
+      "unsupported": 0,
+      "no_subject": 0
+     }
+    }
+   },
+   "control_false_positive_full": {
+    "k": 0,
+    "n": 140,
+    "wilson95": [
+     0.0,
+     0.02670715564899167
+    ]
+   },
+   "positive_control_full_or_partial": {
+    "k": 34,
+    "n": 44,
+    "wilson95": [
+     0.6300735713298432,
+     0.8715818916981491
+    ]
+   },
+   "positive_control_full": {
+    "k": 5,
+    "n": 44
+   },
+   "questions_with_any_full": 0,
+   "candidate_docs_full": 0,
+   "positive_control_any_verdict_other_than_no": {
+    "k": 43,
+    "n": 44,
+    "rate": 0.9772727272727273
+   },
+   "rescaled_credit_if_sensitivity_below_0.9": {
+    "sensitivity_full_or_partial": 0.7727272727272727,
+    "rescaled_credit": 0.0
+   }
+  },
+  "grok": {
+   "by_category": {
+    "retrieved": {
+     "n": 420,
+     "verdicts": {
+      "full": 0,
+      "partial": 1,
+      "conflict": 0,
+      "no": 419,
+      "unsupported": 0,
+      "no_subject": 0
+     }
+    },
+    "random": {
+     "n": 70,
+     "verdicts": {
+      "full": 0,
+      "partial": 0,
+      "conflict": 0,
+      "no": 70,
+      "unsupported": 0,
+      "no_subject": 0
+     }
+    },
+    "near_miss": {
+     "n": 70,
+     "verdicts": {
+      "full": 0,
+      "partial": 0,
+      "conflict": 0,
+      "no": 70,
+      "unsupported": 0,
+      "no_subject": 0
+     }
+    },
+    "positive": {
+     "n": 44,
+     "verdicts": {
+      "full": 4,
+      "partial": 18,
+      "conflict": 13,
+      "no": 9,
+      "unsupported": 0,
+      "no_subject": 0
+     }
+    }
+   },
+   "control_false_positive_full": {
+    "k": 0,
+    "n": 140,
+    "wilson95": [
+     0.0,
+     0.02670715564899167
+    ]
+   },
+   "positive_control_full_or_partial": {
+    "k": 22,
+    "n": 44,
+    "wilson95": [
+     0.35831521095931473,
+     0.6416847890406853
+    ]
+   },
+   "positive_control_full": {
+    "k": 4,
+    "n": 44
+   },
+   "questions_with_any_full": 0,
+   "candidate_docs_full": 0,
+   "positive_control_any_verdict_other_than_no": {
+    "k": 35,
+    "n": 44,
+    "rate": 0.7954545454545454
+   },
+   "rescaled_credit_if_sensitivity_below_0.9": {
+    "sensitivity_full_or_partial": 0.5,
+    "rescaled_credit": 0.0
+   }
+  }
+ },
+ "consensus": {
+  "questions_scored_by_both": 42,
+  "K_both_questions_with_any_full": 0,
+  "K_either_questions_with_any_full": 0,
+  "docs_full_both": 0,
+  "docs_full_either": 0,
+  "credit_both": 0.0,
+  "credit_either": 0.0,
+  "adjusted_drop_both": 0.21,
+  "adjusted_drop_either": 0.21,
+  "share_of_drop_both": 0.0,
+  "share_of_drop_either": 0.0,
+  "kappa_full_vs_not": null,
+  "kappa_note": "undefined when neither judge rated any candidate full",
+  "n_candidate_pairs": 420,
+  "questions_both": [],
+  "questions_either": []
+ },
+ "comparison_with_earlier_terra_audit": {
+  "earlier_questions_with_any_full": 13,
+  "of_which_confirmed_by_both": 0,
+  "of_which_confirmed_by_either": 0,
+  "new_questions_found_by_both_not_in_earlier": 0
+ },
+ "earlier_terra_full_documents": {
+  "n": 38,
+  "both_judges_different_subject": 36,
+  "gemini": {
+   "verdicts": {
+    "no": 37,
+    "partial": 1
+   },
+   "subject_match_false": 37,
+   "subject_match_true": 1
+  },
+  "grok": {
+   "verdicts": {
+    "no": 37,
+    "partial": 1
+   },
+   "subject_match_false": 37,
+   "subject_match_true": 1
+  }
+ }
+}

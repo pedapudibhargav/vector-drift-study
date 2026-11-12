@@ -1,0 +1,14 @@
+\begin{table*}[t]
+\caption{Length in characters of the embedded text (the title is part of it) of the $99{,}998$ ladder documents and of the $272$ gold documents of the primary bank, the share above the BM25 caps ($4{,}000$ and $8{,}191$ characters), and the counts above the OpenAI cap ($8{,}191$ cl100k tokens; $11$ documents, one a gold anchor, none a primary-bank gold document) and the Titan cap ($24{,}000$ characters).}
+\label{tab:doclen}
+\centering
+\small
+\fittext{\begin{tabular}{lrrrrrrrr}
+\toprule
+Population & $n$ & Median & p90 & Max & $>$4k chars (\%) & $>$8{,}191 chars (\%) & $\geq$8{,}191 tok. & $>$24k chars \\
+\midrule
+Ladder documents & 99,998 & 5,543 & 10,058 & 34,284 & 71.4 & 20.7 & 11 & 90 \\
+Primary-200 gold & 272 & 5,354 & 11,187 & 28,602 & 67.6 & 24.3 & 0 & 2 \\
+\bottomrule
+\end{tabular}}
+\end{table*}

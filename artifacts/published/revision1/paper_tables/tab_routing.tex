@@ -1,0 +1,25 @@
+\begin{table*}[t]
+\caption{Simulated metadata routing errors (expected Hit@10; MC over per-question oracle lists).}
+\label{tab:routing}
+\centering
+\small
+\fittext{\begin{tabular}{@{}llrrrrrrrr@{}}
+\toprule
+Mode & $N$ & \multicolumn{7}{c}{Hit@10 at router error $p$} & Break-even $p$ \\
+ &  & 0 & 0.05 & 0.1 & 0.2 & 0.3 & 0.5 & 1 &  \\
+\midrule
+\texttt{wrong\_type} & 5k & 0.875 & 0.832 & 0.787 & 0.699 & 0.614 & 0.440 & 0.000 & 0.091 \\
+\texttt{wrong\_type} & 50k & 0.715 & 0.680 & 0.642 & 0.571 & 0.502 & 0.359 & 0.000 & 0.105 \\
+\texttt{wrong\_type} & 100k & 0.665 & 0.632 & 0.597 & 0.531 & 0.468 & 0.333 & 0.000 & 0.120 \\
+\texttt{wrong\_dropgold} & 5k & 0.875 & 0.871 & 0.868 & 0.860 & 0.851 & 0.837 & 0.800 & never \\
+\texttt{wrong\_dropgold} & 50k & 0.715 & 0.711 & 0.709 & 0.700 & 0.694 & 0.680 & 0.645 & never \\
+\texttt{wrong\_dropgold} & 100k & 0.665 & 0.661 & 0.657 & 0.649 & 0.641 & 0.625 & 0.585 & 0.996 \\
+\texttt{superset} & 5k & 0.875 & 0.874 & 0.873 & 0.871 & 0.869 & 0.866 & 0.856 & never \\
+\texttt{superset} & 50k & 0.715 & 0.714 & 0.713 & 0.711 & 0.709 & 0.704 & 0.693 & never \\
+\texttt{superset} & 100k & 0.665 & 0.664 & 0.663 & 0.661 & 0.659 & 0.655 & 0.644 & never \\
+\texttt{abstain} & 5k & 0.875 & 0.871 & 0.867 & 0.860 & 0.852 & 0.836 & 0.795 & never \\
+\texttt{abstain} & 50k & 0.715 & 0.712 & 0.708 & 0.700 & 0.693 & 0.678 & 0.640 & never \\
+\texttt{abstain} & 100k & 0.665 & 0.662 & 0.657 & 0.650 & 0.642 & 0.625 & 0.585 & never \\
+\bottomrule
+\end{tabular}}
+\end{table*}

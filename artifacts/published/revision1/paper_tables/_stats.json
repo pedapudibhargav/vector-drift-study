@@ -1,0 +1,52 @@
+{
+  "openai_primary200_raw": {
+    "100000": {
+      "mean_gold_rank_among_hit10_successes": 2.606837606837607,
+      "n_miss_hit10": 83
+    },
+    "5000": {
+      "mean_gold_rank_among_hit10_successes": 1.8553459119496856,
+      "n_miss_hit10": 41
+    },
+    "metrics_100k": {
+      "hit_at_1": 0.34,
+      "hit_at_10": 0.585,
+      "mrr": 0.4084
+    },
+    "metrics_5k": {
+      "hit_at_1": 0.6,
+      "hit_at_10": 0.795,
+      "mrr": 0.6576
+    },
+    "relative_loss_pct_100k_vs_5k": {
+      "hit_at_1": 43.33333333333332,
+      "hit_at_10": 26.415094339622648,
+      "mrr": 37.89537712895377
+    }
+  },
+  "titan_primary200_raw": {
+    "100000": {
+      "mean_gold_rank_among_hit10_successes": 1.959016393442623,
+      "n_miss_hit10": 78
+    },
+    "5000": {
+      "mean_gold_rank_among_hit10_successes": 1.6815286624203822,
+      "n_miss_hit10": 43
+    },
+    "metrics_100k": {
+      "hit_at_1": 0.385,
+      "hit_at_10": 0.61,
+      "mrr": 0.465
+    },
+    "metrics_5k": {
+      "hit_at_1": 0.62,
+      "hit_at_10": 0.785,
+      "mrr": 0.6714
+    },
+    "relative_loss_pct_100k_vs_5k": {
+      "hit_at_1": 37.903225806451616,
+      "hit_at_10": 22.292993630573253,
+      "mrr": 30.741733690795346
+    }
+  }
+}

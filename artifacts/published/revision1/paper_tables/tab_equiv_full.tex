@@ -1,0 +1,38 @@
+\begin{table}[t]
+\caption{Equivalence analysis, all quantities (paired 90\% bootstrap intervals).}
+\label{tab:equivfull}
+\centering
+\small
+\fitcolumn{\begin{tabular}{lrlcc}
+\toprule
+Quantity & Est. & 90\% CI & Equivalent, $\delta{=}0.05$ & Equivalent, $\delta{=}0.10$ \\
+\midrule
+\texttt{a\_openai\_minus\_titan\_raw\_drop\_5k\_100k} & 0.035 & $[$-$0.020, 0.090]$ & no & yes \\
+\texttt{b\_openai\_minus\_titan\_meta\_in\_drop\_5k\_100k} & 0.025 & $[$-$0.025, 0.075]$ & no & yes \\
+\texttt{c\_openai\_minus\_titan\_meta\_lift\_by\_scale@5000} & $-$0.005 & $[$-$0.045, 0.035]$ & yes & yes \\
+\texttt{c\_openai\_minus\_titan\_meta\_lift\_by\_scale@10000} & 0.030 & $[$-$0.005, 0.065]$ & no & yes \\
+\texttt{c\_openai\_minus\_titan\_meta\_lift\_by\_scale@15000} & 0.020 & $[$-$0.010, 0.050]$ & no & yes \\
+\texttt{c\_openai\_minus\_titan\_meta\_lift\_by\_scale@20000} & $-$0.005 & $[$-$0.045, 0.035]$ & yes & yes \\
+\texttt{c\_openai\_minus\_titan\_meta\_lift\_by\_scale@25000} & $-$0.005 & $[$-$0.045, 0.035]$ & yes & yes \\
+\texttt{c\_openai\_minus\_titan\_meta\_lift\_by\_scale@40000} & $-$0.040 & $[$-$0.085, 0.005]$ & no & yes \\
+\texttt{c\_openai\_minus\_titan\_meta\_lift\_by\_scale@50000} & $-$0.025 & $[$-$0.070, 0.015]$ & no & yes \\
+\texttt{c\_openai\_minus\_titan\_meta\_lift\_by\_scale@75000} & $-$0.010 & $[$-$0.055, 0.035]$ & no & yes \\
+\texttt{c\_openai\_minus\_titan\_meta\_lift\_by\_scale@100000} & 0.005 & $[$-$0.030, 0.045]$ & yes & yes \\
+\texttt{d\_openai\_minus\_titan\_raw\_hit10\_level\_by\_scale@5000} & 0.010 & $[$-$0.030, 0.050]$ & no & yes \\
+\texttt{d\_openai\_minus\_titan\_raw\_hit10\_level\_by\_scale@10000} & $-$0.020 & $[$-$0.060, 0.020]$ & no & yes \\
+\texttt{d\_openai\_minus\_titan\_raw\_hit10\_level\_by\_scale@15000} & $-$0.025 & $[$-$0.070, 0.020]$ & no & yes \\
+\texttt{d\_openai\_minus\_titan\_raw\_hit10\_level\_by\_scale@20000} & $-$0.020 & $[$-$0.065, 0.025]$ & no & yes \\
+\texttt{d\_openai\_minus\_titan\_raw\_hit10\_level\_by\_scale@25000} & $-$0.025 & $[$-$0.070, 0.020]$ & no & yes \\
+\texttt{d\_openai\_minus\_titan\_raw\_hit10\_level\_by\_scale@40000} & $-$0.005 & $[$-$0.055, 0.045]$ & no & yes \\
+\texttt{d\_openai\_minus\_titan\_raw\_hit10\_level\_by\_scale@50000} & $-$0.005 & $[$-$0.055, 0.045]$ & no & yes \\
+\texttt{d\_openai\_minus\_titan\_raw\_hit10\_level\_by\_scale@75000} & $-$0.020 & $[$-$0.070, 0.030]$ & no & yes \\
+\texttt{d\_openai\_minus\_titan\_raw\_hit10\_level\_by\_scale@100000} & $-$0.025 & $[$-$0.075, 0.020]$ & no & yes \\
+\texttt{e\_dense\_minus\_bm25\_drop\_difference.openai\_raw} & 0.085 & $[0.025, 0.145]$ & no & no \\
+\texttt{e\_dense\_minus\_bm25\_drop\_difference.titan\_raw} & 0.050 & $[$-$0.005, 0.105]$ & no & no \\
+\texttt{f\_lift\_100k\_minus\_lift\_5k\_openai} & 0.000 & $[$-$0.040, 0.040]$ & yes & yes \\
+\texttt{f\_lift\_100k\_minus\_lift\_5k\_titan} & $-$0.010 & $[$-$0.055, 0.035]$ & no & yes \\
+\texttt{g\_lift\_100k\_minus\_lift\_5k\_openai\_primary400 [computed by make\_paper\_tables.py]} & $-$0.018 & $[$-$0.045, 0.010]$ & yes & yes \\
+\texttt{h\_lift\_slope\_per\_tenfold\_openai\_primary400 [computed by make\_paper\_tables.py]} & $-$0.017 & $[$-$0.041, 0.006]$ & yes & yes \\
+\bottomrule
+\end{tabular}}
+\end{table}

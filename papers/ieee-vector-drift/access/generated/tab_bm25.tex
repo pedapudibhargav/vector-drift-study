@@ -1,0 +1,23 @@
+\begin{table*}[t]
+\caption{Lexical vs dense Hit@10 across scales (primary-200). The last two rows give the 5k$\to$100k drop difference (dense minus BM25) in the first column and its paired bootstrap 95\% interval in the second; BM25 variants marked (title+chunk) count the title twice.}
+\label{tab:bm25}
+\centering
+\small
+\fittext{\begin{tabular}{lrrrr}
+\toprule
+Method & Hit@10 5k & 50k & 100k & $\Delta$(5k$\rightarrow$100k) \\
+\midrule
+Dense exact OpenAI & 0.795 & 0.640 & 0.585 & 0.210 \\
+Dense exact Titan & 0.785 & 0.645 & 0.610 & 0.175 \\
+\texttt{chars4000} (title+chunk) & 0.855 & 0.745 & 0.700 & 0.155 \\
+\texttt{dense\_text\_chars4000} & 0.845 & 0.735 & 0.690 & 0.155 \\
+\texttt{chars8191} (title+chunk) & 0.825 & 0.715 & 0.705 & 0.120 \\
+\texttt{tokens8191} (title+chunk) & 0.820 & 0.725 & 0.705 & 0.115 \\
+\texttt{untruncated} (title+chunk) & 0.820 & 0.725 & 0.705 & 0.115 \\
+\texttt{dense\_text} & 0.810 & 0.720 & 0.685 & 0.125 \\
+\texttt{raw\_untruncated} & 0.810 & 0.720 & 0.685 & 0.125 \\
+\midrule
+Dense$-$BM25(\texttt{dense\_text}) drop diff., OpenAI & 0.085 & $[0.015, 0.155]$ & & \\
+Dense$-$BM25(\texttt{dense\_text}) drop diff., Titan & 0.050 & $[$-$0.020, 0.120]$ & & \\\bottomrule
+\end{tabular}}
+\end{table*}

@@ -1,0 +1,1 @@
+{"clusters": 188, "drop": 0.21, "ci95": [0.15422885572139303, 0.2663316582914573], "B": 10000, "seed": 42, "note": "cluster bootstrap over benchmark question identifiers (188 clusters)"}

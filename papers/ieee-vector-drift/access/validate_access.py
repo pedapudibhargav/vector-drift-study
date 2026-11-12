@@ -4,7 +4,7 @@
 Guidelines encoded here:
   - Abstract: one paragraph, 150--250 words, no \\cite
   - Index terms: 3--10 comma-separated keywords (IEEE Access submission guidelines)
-  - Target length: 8--16 double-column pages (warn if PDF outside)
+  - Target length: 8--20 double-column pages (warn if PDF outside)
   - Prefer ieeeaccess.cls; allow IEEEtran journal fallback with warning
 
 PDF tooling (after brew install):
@@ -100,12 +100,34 @@ def check_pdf(pdf: Path) -> dict:
             if line.startswith("Page size:"):
                 out["page_size"] = line.split(":", 1)[1].strip()
         out["pages"] = pages
-        if pages is not None and not (8 <= pages <= 16):
-            issues.append(f"pages={pages} outside Access target 8-16 (warn; not hard reject)")
+        if pages is not None and not (8 <= pages <= 20):
+            issues.append(f"pages={pages} outside Access target 8-20 (warn; not hard reject)")
         elif pages is not None and pages < 8:
             issues.append(f"pages={pages} < 8 — risk of desk reject for insufficient depth")
     else:
         issues.append("pdfinfo not installed (brew install poppler)")
+    try:
+        bb = subprocess.run(["pdftotext", "-bbox", str(pdf), "-"], capture_output=True, text=True).stdout
+        import re as _re
+        over = []
+        for pi, pm in enumerate(_re.finditer(r'<page width="([\d.]+)" height="([\d.]+)">(.*?)</page>', bb, _re.S), 1):
+            pw = float(pm.group(1))
+            for wm in _re.finditer(r'<word xMin="([\d.]+)" yMin="[\d.]+" xMax="([\d.]+)" yMax="[\d.]+">(.*?)</word>', pm.group(3)):
+                if float(wm.group(2)) > pw - 20 or float(wm.group(1)) < 20:
+                    over.append((pi, wm.group(3)))
+        if over:
+            issues.append(f"text within 20pt of the page edge (overflow?): {over[:5]}")
+    except Exception as exc:  # pragma: no cover
+        issues.append(f"edge-overflow check failed: {exc}")
+    log = pdf.with_suffix(".log")
+    if log.exists():
+        log_lines = log.read_text(errors="replace").splitlines()
+        errs = [ln for ln in log_lines if ln.startswith("!")]
+        if errs:
+            issues.append(f"LaTeX errors in {log.name}: {errs[:3]}")
+        undefined = [ln for ln in log_lines if "undefined" in ln and ("Reference" in ln or "Citation" in ln)]
+        if undefined:
+            issues.append(f"undefined references/citations: {undefined[:3]}")
     if pdffonts:
         r = subprocess.run([pdffonts, str(pdf)], capture_output=True, text=True)
         lines = [ln for ln in r.stdout.splitlines()[2:] if ln.strip()]

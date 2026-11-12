@@ -65,16 +65,15 @@ docker compose up -d --build
 
 ---
 
-## Published numbers (primary-200, integrity-clean)
+## Published numbers (revision 1: exact search, primary-200, OpenAI `text-embedding-3-small`)
 
-| N | Hit@1 raw | Hit@10 raw | Δ_meta Hit@10 |
+| N | Hit@1 raw | Hit@10 raw | Δ_meta Hit@10 (oracle filter, all question source types) |
 |---|-----------|------------|---------------|
 | 5k | 0.600 | 0.795 | +0.080 |
-| 20k | 0.410 | 0.600 | +0.175 |
-| 100k | 0.305 | 0.510 | +0.130 |
+| 20k | 0.465 | 0.680 | +0.090 |
+| 100k | 0.340 | 0.585 | +0.080 |
 
-\(N^\star(\tau{=}0.10)\): **not observed** on this ladder (Δ stays ≥0.10 for \(N\geq10\)k).  
-Fit: Hit@10 ≈ `1.474 − 0.086 log N`. Source: `artifacts/published/CANONICAL_METRICS.json`.
+Hit@10 falls by 0.210 (paired 95% bootstrap interval [0.155, 0.270]) between 5k and 100k; Titan V2 falls by 0.175. The metadata lift shows no detectable trend with N, and the first-version threshold N★ is not used (it is unstable across banks). Source: `artifacts/published/revision1/` (exact ladders with per-question lists, `analysis_exact.json`, `analysis_equivalence.json`, ...). The first-version HNSW sweep numbers (`artifacts/published/erb_*`: Hit@10 0.795 → 0.510, lift +0.130 at 100k) are kept for the record only: they mixed exact and approximate search (see the manuscript, Sec. V-F). To reproduce everything: [`docs/REPRODUCE_REVISION1.md`](docs/REPRODUCE_REVISION1.md); to validate: `python3 scripts/erb/revision1/validate_all.py`.
 
 ## Artifact layout (A+B+C)
 

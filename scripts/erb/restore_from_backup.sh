@@ -99,6 +99,20 @@ if [[ -z "$LT100K" || "$LT100K" -lt 1000 ]]; then
   exit 1
 fi
 
+# pg_restore skips the HNSW index builds without any error when the container runs out of
+# shared memory (Docker default /dev/shm = 64 MB). Exact-search results do not need the index, but
+# the approximate-search arms do, so fail loudly instead of continuing without it.
+HNSW_COUNT="$(docker exec -e PGPASSWORD="$PGPASSWORD" "$CONTAINER" \
+  psql -U "$PGUSER" -d "$PGDB" -t -A -c \
+  "SELECT COUNT(*) FROM pg_indexes WHERE tablename = '${CHUNK_TABLE}' AND indexdef ILIKE '%USING hnsw%';")"
+if [[ "${HNSW_COUNT:-0}" -lt 1 ]]; then
+  echo "restore_failed: no HNSW index on ${CHUNK_TABLE} after restore." >&2
+  echo "  Cause: the container's shared memory was too small (use 'shm_size: 1gb' in docker-compose.yml" >&2
+  echo "  or 'docker run --shm-size=1g'). Re-create the container and restore again, or build the index with" >&2
+  echo "  CREATE INDEX ... USING hnsw (embedding vector_cosine_ops) WITH (m = 16, ef_construction = 64);" >&2
+  exit 1
+fi
+
 docker exec "$CONTAINER" rm -f /tmp/erb_tables.dump
-echo "restore_ok $COUNTS"
+echo "restore_ok $COUNTS hnsw_indexes=$HNSW_COUNT"
 echo "next: python3 scripts/erb/validate_study.py"

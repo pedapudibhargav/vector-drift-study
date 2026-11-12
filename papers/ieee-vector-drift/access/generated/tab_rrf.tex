@@ -1,0 +1,21 @@
+\begin{table*}[t]
+\caption{Dense, BM25 (\texttt{dense\_text}), and RRF fusion ($k{=}60$) on primary-200; paired bootstrap 95\% CIs. In the four summary rows the first two columns give the 5k$\to$100k drop in Hit@10 and in MRR@10 (with intervals).}
+\label{tab:rrf}
+\centering
+\small
+\fittext{\begin{tabular}{@{}lrrrrll@{}}
+\toprule
+$N$ & Dense H@10 & BM25 H@10 & RRF H@10 & RRF MRR & RRF$-$dense H@10 & RRF$-$BM25 H@10 \\
+\midrule
+5k & 0.795 & 0.810 & 0.905 & 0.770 & 0.110 $[0.060, 0.160]$ & 0.095 $[0.050, 0.145]$ \\
+25k & 0.670 & 0.745 & 0.810 & 0.669 & 0.140 $[0.085, 0.195]$ & 0.065 $[0.020, 0.115]$ \\
+50k & 0.640 & 0.720 & 0.770 & 0.623 & 0.130 $[0.070, 0.190]$ & 0.050 $[0.005, 0.100]$ \\
+100k & 0.585 & 0.685 & 0.720 & 0.584 & 0.135 $[0.080, 0.195]$ & 0.035 $[$-$0.005, 0.075]$ \\
+\midrule
+\multicolumn{2}{l}{$\Delta$Hit@10/MRR (Dense)} & 0.210 $[0.155, 0.270]$ & 0.249 $[0.204, 0.297]$ & & & \\
+\multicolumn{2}{l}{$\Delta$Hit@10/MRR (BM25)} & 0.125 $[0.080, 0.170]$ & 0.183 $[0.141, 0.228]$ & & & \\
+\multicolumn{2}{l}{$\Delta$Hit@10/MRR (RRF $k{=}60$)} & 0.185 $[0.130, 0.240]$ & 0.185 $[0.141, 0.231]$ & & & \\
+\multicolumn{2}{l}{RRF$-$dense $\Delta$drop Hit@10} & $-$0.025 $[$-$0.095, 0.045]$ & & & & \\
+\bottomrule
+\end{tabular}}
+\end{table*}

@@ -1,0 +1,18 @@
+\begin{table}[t]
+\caption{Legacy approximate (HNSW) vs exact search at selected scales.}
+\label{tab:oldexact}
+\centering
+\small
+\fitcolumn{\begin{tabular}{llrrrr}
+\toprule
+Embedder & $N$ & Hit@10 HNSW & Hit@10 exact & Diff. & \#Q flag diff. \\
+\midrule
+OpenAI & 5k & 0.795 & 0.795 & 0.000 & 0 \\
+OpenAI & 50k & 0.555 & 0.640 & $-$0.085 & 17 \\
+OpenAI & 100k & 0.510 & 0.585 & $-$0.075 & 15 \\
+Titan & 5k & 0.785 & 0.785 & 0.000 & 0 \\
+Titan & 50k & 0.645 & 0.645 & 0.000 & 0 \\
+Titan & 100k & 0.610 & 0.610 & 0.000 & 0 \\
+\bottomrule
+\end{tabular}}
+\end{table}

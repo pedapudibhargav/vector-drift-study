@@ -1,0 +1,18 @@
+\begin{table*}[t]
+\caption{Corpus-scale drift (5k$\rightarrow$100k) for Hit@10 under raw and \texttt{meta\_in}.}
+\label{tab:drift}
+\centering
+\small
+\fittext{\begin{tabular}{llrrrl}
+\toprule
+Arm & Condition & Hit@10 @5k & Hit@10 @100k & $\Delta$Hit@10 & 95\% CI \\
+\midrule
+OpenAI $n{=}200$ & \texttt{raw} & 0.795 & 0.585 & 0.210 & $[0.155, 0.270]$ \\
+OpenAI $n{=}200$ & \texttt{meta\_in} & 0.875 & 0.665 & 0.210 & $[0.155, 0.270]$ \\
+Titan $n{=}200$ & \texttt{raw} & 0.785 & 0.610 & 0.175 & $[0.125, 0.230]$ \\
+Titan $n{=}200$ & \texttt{meta\_in} & 0.870 & 0.685 & 0.185 & $[0.135, 0.240]$ \\
+OpenAI $n{=}400$ & \texttt{raw} & 0.772 & 0.568 & 0.205 & $[0.168, 0.245]$ \\
+OpenAI $n{=}400$ & \texttt{meta\_in} & 0.850 & 0.627 & 0.223 & $[0.182, 0.263]$ \\
+\bottomrule
+\end{tabular}}
+\end{table*}

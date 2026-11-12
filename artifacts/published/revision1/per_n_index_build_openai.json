@@ -1,0 +1,319 @@
+{
+  "generated_at": "2026-11-10T20:21:19Z",
+  "embedder": "openai",
+  "scales_requested": [
+    5000,
+    10000,
+    15000,
+    20000,
+    25000,
+    40000,
+    50000,
+    75000,
+    100000
+  ],
+  "server": {
+    "server_version": "16.15 (Debian 16.15-1.pgdg12+2)",
+    "maintenance_work_mem": "2GB",
+    "max_parallel_maintenance_workers": "2",
+    "shared_buffers": "2GB",
+    "effective_cache_size": "4GB",
+    "extensions": {
+      "plpgsql": "1.0",
+      "vector": "0.8.6"
+    }
+  },
+  "docker_system_df": null,
+  "tables_built_this_run": [
+    {
+      "embedder": "openai",
+      "scale_n": 5000,
+      "skipped": true,
+      "row_count": 5000,
+      "expected_row_count": 5000,
+      "hnsw_build_seconds": 2.160400499997195,
+      "sizes_bytes": {
+        "table_bytes": 483328,
+        "hnsw_index_bytes": 40968192,
+        "btree_index_bytes": 57344,
+        "total_bytes": 83427328
+      },
+      "vacuum_analyze_done": true
+    },
+    {
+      "embedder": "openai",
+      "scale_n": 10000,
+      "skipped": true,
+      "row_count": 10000,
+      "expected_row_count": 10000,
+      "hnsw_build_seconds": 4.867684916011058,
+      "sizes_bytes": {
+        "table_bytes": 966656,
+        "hnsw_index_bytes": 81928192,
+        "btree_index_bytes": 90112,
+        "total_bytes": 166723584
+      },
+      "vacuum_analyze_done": true
+    },
+    {
+      "embedder": "openai",
+      "scale_n": 15000,
+      "skipped": true,
+      "row_count": 15000,
+      "expected_row_count": 15000,
+      "hnsw_build_seconds": 7.74166283395607,
+      "sizes_bytes": {
+        "table_bytes": 1449984,
+        "hnsw_index_bytes": 122888192,
+        "btree_index_bytes": 122880,
+        "total_bytes": 249921536
+      },
+      "vacuum_analyze_done": true
+    },
+    {
+      "embedder": "openai",
+      "scale_n": 20000,
+      "skipped": true,
+      "row_count": 20000,
+      "expected_row_count": 20000,
+      "hnsw_build_seconds": 11.073931250022724,
+      "sizes_bytes": {
+        "table_bytes": 1933312,
+        "hnsw_index_bytes": 163848192,
+        "btree_index_bytes": 163840,
+        "total_bytes": 333242368
+      },
+      "vacuum_analyze_done": true
+    },
+    {
+      "embedder": "openai",
+      "scale_n": 25000,
+      "skipped": true,
+      "row_count": 25000,
+      "expected_row_count": 25000,
+      "hnsw_build_seconds": 14.256224583019502,
+      "sizes_bytes": {
+        "table_bytes": 2408448,
+        "hnsw_index_bytes": 204808192,
+        "btree_index_bytes": 196608,
+        "total_bytes": 416628736
+      },
+      "vacuum_analyze_done": true
+    },
+    {
+      "embedder": "openai",
+      "scale_n": 40000,
+      "skipped": true,
+      "row_count": 39999,
+      "expected_row_count": 39999,
+      "hnsw_build_seconds": 25.038784499978647,
+      "sizes_bytes": {
+        "table_bytes": 3858432,
+        "hnsw_index_bytes": 327680000,
+        "btree_index_bytes": 303104,
+        "total_bytes": 666353664
+      },
+      "vacuum_analyze_done": true
+    },
+    {
+      "embedder": "openai",
+      "scale_n": 50000,
+      "skipped": true,
+      "row_count": 49999,
+      "expected_row_count": 49999,
+      "hnsw_build_seconds": 30.67229724995559,
+      "sizes_bytes": {
+        "table_bytes": 4816896,
+        "hnsw_index_bytes": 409600000,
+        "btree_index_bytes": 368640,
+        "total_bytes": 833044480
+      },
+      "vacuum_analyze_done": true
+    },
+    {
+      "embedder": "openai",
+      "scale_n": 75000,
+      "skipped": true,
+      "row_count": 74999,
+      "expected_row_count": 74999,
+      "hnsw_build_seconds": 48.93306162499357,
+      "sizes_bytes": {
+        "table_bytes": 7217152,
+        "hnsw_index_bytes": 614383616,
+        "btree_index_bytes": 540672,
+        "total_bytes": 1249198080
+      },
+      "vacuum_analyze_done": true
+    },
+    {
+      "embedder": "openai",
+      "scale_n": 100000,
+      "skipped": true,
+      "row_count": 99998,
+      "expected_row_count": 99998,
+      "hnsw_build_seconds": 16.85887662501773,
+      "sizes_bytes": {
+        "table_bytes": 9625600,
+        "hnsw_index_bytes": 819175424,
+        "btree_index_bytes": 712704,
+        "total_bytes": 1666097152
+      },
+      "vacuum_analyze_done": true
+    }
+  ],
+  "build_log": [
+    {
+      "embedder": "openai",
+      "scale_n": 5000,
+      "table_name": "n_openai_5000",
+      "status": "complete",
+      "row_count": 5000,
+      "expected_row_count": 5000,
+      "hnsw_build_seconds": 2.160400499997195,
+      "table_bytes": 483328,
+      "hnsw_index_bytes": 40968192,
+      "btree_index_bytes": 57344,
+      "total_bytes": 83410944,
+      "vacuum_analyze_done": true,
+      "started_at": "2026-11-10 20:08:05+00:00",
+      "completed_at": "2026-11-10 20:08:08+00:00",
+      "error_message": null
+    },
+    {
+      "embedder": "openai",
+      "scale_n": 10000,
+      "table_name": "n_openai_10000",
+      "status": "complete",
+      "row_count": 10000,
+      "expected_row_count": 10000,
+      "hnsw_build_seconds": 4.867684916011058,
+      "table_bytes": 966656,
+      "hnsw_index_bytes": 81928192,
+      "btree_index_bytes": 90112,
+      "total_bytes": 166707200,
+      "vacuum_analyze_done": true,
+      "started_at": "2026-11-10 20:08:08+00:00",
+      "completed_at": "2026-11-10 20:08:13+00:00",
+      "error_message": null
+    },
+    {
+      "embedder": "openai",
+      "scale_n": 15000,
+      "table_name": "n_openai_15000",
+      "status": "complete",
+      "row_count": 15000,
+      "expected_row_count": 15000,
+      "hnsw_build_seconds": 7.74166283395607,
+      "table_bytes": 1449984,
+      "hnsw_index_bytes": 122888192,
+      "btree_index_bytes": 122880,
+      "total_bytes": 249905152,
+      "vacuum_analyze_done": true,
+      "started_at": "2026-11-10 20:08:13+00:00",
+      "completed_at": "2026-11-10 20:08:21+00:00",
+      "error_message": null
+    },
+    {
+      "embedder": "openai",
+      "scale_n": 20000,
+      "table_name": "n_openai_20000",
+      "status": "complete",
+      "row_count": 20000,
+      "expected_row_count": 20000,
+      "hnsw_build_seconds": 11.073931250022724,
+      "table_bytes": 1933312,
+      "hnsw_index_bytes": 163848192,
+      "btree_index_bytes": 163840,
+      "total_bytes": 333225984,
+      "vacuum_analyze_done": true,
+      "started_at": "2026-11-10 20:08:21+00:00",
+      "completed_at": "2026-11-10 20:08:33+00:00",
+      "error_message": null
+    },
+    {
+      "embedder": "openai",
+      "scale_n": 25000,
+      "table_name": "n_openai_25000",
+      "status": "complete",
+      "row_count": 25000,
+      "expected_row_count": 25000,
+      "hnsw_build_seconds": 14.256224583019502,
+      "table_bytes": 2408448,
+      "hnsw_index_bytes": 204808192,
+      "btree_index_bytes": 196608,
+      "total_bytes": 416612352,
+      "vacuum_analyze_done": true,
+      "started_at": "2026-11-10 20:08:33+00:00",
+      "completed_at": "2026-11-10 20:08:48+00:00",
+      "error_message": null
+    },
+    {
+      "embedder": "openai",
+      "scale_n": 40000,
+      "table_name": "n_openai_40000",
+      "status": "complete",
+      "row_count": 39999,
+      "expected_row_count": 39999,
+      "hnsw_build_seconds": 25.038784499978647,
+      "table_bytes": 3858432,
+      "hnsw_index_bytes": 327680000,
+      "btree_index_bytes": 303104,
+      "total_bytes": 666345472,
+      "vacuum_analyze_done": true,
+      "started_at": "2026-11-10 20:08:48+00:00",
+      "completed_at": "2026-11-10 20:09:15+00:00",
+      "error_message": null
+    },
+    {
+      "embedder": "openai",
+      "scale_n": 50000,
+      "table_name": "n_openai_50000",
+      "status": "complete",
+      "row_count": 49999,
+      "expected_row_count": 49999,
+      "hnsw_build_seconds": 30.67229724995559,
+      "table_bytes": 4816896,
+      "hnsw_index_bytes": 409600000,
+      "btree_index_bytes": 368640,
+      "total_bytes": 833019904,
+      "vacuum_analyze_done": true,
+      "started_at": "2026-11-10 20:09:15+00:00",
+      "completed_at": "2026-11-10 20:09:49+00:00",
+      "error_message": null
+    },
+    {
+      "embedder": "openai",
+      "scale_n": 75000,
+      "table_name": "n_openai_75000",
+      "status": "complete",
+      "row_count": 74999,
+      "expected_row_count": 74999,
+      "hnsw_build_seconds": 48.93306162499357,
+      "table_bytes": 7217152,
+      "hnsw_index_bytes": 614383616,
+      "btree_index_bytes": 540672,
+      "total_bytes": 1249189888,
+      "vacuum_analyze_done": true,
+      "started_at": "2026-11-10 20:09:49+00:00",
+      "completed_at": "2026-11-10 20:10:43+00:00",
+      "error_message": null
+    },
+    {
+      "embedder": "openai",
+      "scale_n": 100000,
+      "table_name": "n_openai_100000",
+      "status": "complete",
+      "row_count": 99998,
+      "expected_row_count": 99998,
+      "hnsw_build_seconds": 16.85887662501773,
+      "table_bytes": 9625600,
+      "hnsw_index_bytes": 819175424,
+      "btree_index_bytes": 712704,
+      "total_bytes": 1666088960,
+      "vacuum_analyze_done": true,
+      "started_at": "2026-11-10 20:10:43+00:00",
+      "completed_at": "2026-11-10 20:11:08+00:00",
+      "error_message": null
+    }
+  ]
+}

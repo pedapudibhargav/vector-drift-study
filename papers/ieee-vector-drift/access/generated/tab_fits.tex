@@ -1,0 +1,19 @@
+\begin{table*}[t]
+\caption{Log-linear fits $\mathrm{Hit@}k(N)\approx a+b\ln N$ (natural log; negative $b$ is decline). Bootstrap 95\% CIs resample questions ($B{=}10000$, seed 42). ``w/o 5k'' uses eight scales excluding $N{=}5\text{k}$. Slopes for Hit@1 and MRR are over all nine sizes.}
+\label{tab:fits}
+\centering
+\small
+\fittext{\begin{tabular}{@{}llrrrrrr@{}}
+\toprule
+Arm & Cond. & Hit@1 $b$ & Hit@10 $b$ & Hit@10 95\% CI & Hit@10 $R^2$ & Hit@10 $b$ w/o 5k & MRR $b$ \\
+\midrule
+OpenAI $n{=}200$ & \texttt{raw} & $-$0.082 & $-$0.068 & $[$-$0.088, $-$0.050]$ & 0.988 & $-$0.065 & $-$0.082 \\
+OpenAI $n{=}200$ & \texttt{meta\_in} & $-$0.096 & $-$0.072 & $[$-$0.093, $-$0.052]$ & 0.994 & $-$0.073 & $-$0.088 \\
+Titan $n{=}200$ & \texttt{raw} & $-$0.087 & $-$0.064 & $[$-$0.084, $-$0.044]$ & 0.984 & $-$0.067 & $-$0.074 \\
+Titan $n{=}200$ & \texttt{meta\_in} & $-$0.082 & $-$0.058 & $[$-$0.077, $-$0.041]$ & 0.978 & $-$0.060 & $-$0.075 \\
+OpenAI $n{=}400$ & \texttt{raw} & $-$0.069 & $-$0.067 & $[$-$0.081, $-$0.054]$ & 0.990 & $-$0.064 & $-$0.073 \\
+OpenAI $n{=}400$ & \texttt{meta\_in} & $-$0.075 & $-$0.075 & $[$-$0.089, $-$0.061]$ & 0.996 & $-$0.077 & $-$0.077 \\
+\bottomrule
+\end{tabular}}
+
+\end{table*}

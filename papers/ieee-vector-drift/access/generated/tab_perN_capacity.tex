@@ -1,0 +1,31 @@
+\begin{table*}[t]
+\caption{Per-$N$ index capacity and query latency (raw), with build times from per-scale HNSW builds.}
+\label{tab:perNcap}
+\centering
+\small
+\fittext{\begin{tabular}{@{}llrrrrrrrr@{}}
+\toprule
+Embedder & $N$ & Rows & Total MB & HNSW MB & Build s & p50@200 & p95@200 & p50@800 & p95@800 \\
+\midrule
+OpenAI & 5k & 5000 & 83.411 & 40.968 & 2.160 & 3.221 & 3.985 & 5.787$^{\dagger}$ & 6.724$^{\dagger}$ \\
+OpenAI & 10k & 10000 & 166.707 & 81.928 & 4.868 & 4.035 & 5.500 & 7.816$^{\dagger}$ & 9.485$^{\dagger}$ \\
+OpenAI & 15k & 15000 & 249.905 & 122.888 & 7.742 & 3.272 & 4.274 & 8.234 & 10.376 \\
+OpenAI & 20k & 20000 & 333.226 & 163.848 & 11.074 & 3.820 & 5.122 & 7.879 & 10.128 \\
+OpenAI & 25k & 25000 & 416.612 & 204.808 & 14.256 & 3.282 & 4.289 & 7.445 & 9.559 \\
+OpenAI & 40k & 39999 & 666.345 & 327.680 & 25.039 & 3.801 & 5.100 & 8.610 & 11.685 \\
+OpenAI & 50k & 49999 & 833.020 & 409.600 & 30.672 & 3.931 & 5.204 & 9.797 & 12.967 \\
+OpenAI & 75k & 74999 & 1249.190 & 614.384 & 48.933 & 4.078 & 5.535 & 9.749 & 12.861 \\
+OpenAI & 100k & 99998 & 1666.089 & 819.175 & 16.859 & 4.308 & 6.220 & 10.857 & 14.639 \\
+Titan & 5k & 5000 & 69.591 & 40.968 & 1.573 & 2.773 & 3.305 & 6.147$^{\dagger}$ & 7.048$^{\dagger}$ \\
+Titan & 10k & 10000 & 139.100 & 81.928 & 3.599 & 3.144 & 3.958 & 7.374$^{\dagger}$ & 8.452$^{\dagger}$ \\
+Titan & 15k & 15000 & 208.617 & 122.888 & 6.331 & 3.469 & 4.482 & 7.302 & 8.859 \\
+Titan & 20k & 20000 & 278.127 & 163.848 & 8.737 & 3.503 & 4.516 & 8.302 & 10.419 \\
+Titan & 25k & 25000 & 347.726 & 204.808 & 11.542 & 3.450 & 4.423 & 8.496 & 10.650 \\
+Titan & 40k & 39999 & 556.138 & 327.680 & 19.205 & 3.426 & 4.667 & 8.382 & 10.880 \\
+Titan & 50k & 49999 & 695.296 & 409.600 & 27.336 & 3.013 & 4.030 & 9.318 & 12.257 \\
+Titan & 75k & 74999 & 1042.760 & 614.384 & 39.501 & 3.797 & 4.955 & 10.174 & 13.170 \\
+Titan & 100k & 99998 & 1390.420 & 819.175 & 13.239 & 4.063 & 5.374 & 10.438 & 13.780 \\
+\bottomrule
+\end{tabular}}
+\par\smallskip\footnotesize{Host shared with other processes; query latency indicative only. Latencies are the median and 95th percentile over questions of per-question medians from three timed 200-question sweeps (\texttt{relaxed\_order}, \texttt{max\_scan\_tuples}$=20000$). $^{\dagger}$Default plan used sequential scan; latency from matching \texttt{seqscan\_off} twin (4 cells). ``Total MB'' is \texttt{total\_bytes}/$10^6$ (heap, TOAST, and indexes). The 5k heap is small because vectors are stored out of line; build time is a single measurement; the 100k build ran faster than the 75k build (parallel build workers; not interpreted).}
+\end{table*}

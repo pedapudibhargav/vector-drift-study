@@ -1,0 +1,613 @@
+{
+  "fragments": {
+    "tab_bm25.tex": [
+      {
+        "file": "artifacts/published/revision1/analysis_equivalence.json",
+        "keys": [
+          "quantities",
+          "e_dense_minus_bm25_drop_difference"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/exact_ladder_openai_primary200.json",
+        "keys": [
+          "runs",
+          "raw",
+          "metrics"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/exact_ladder_titan_primary200.json",
+        "keys": [
+          "runs",
+          "raw",
+          "metrics"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/bm25_chars4000.json",
+        "keys": [
+          "runs",
+          "hit_at_10"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/bm25_dense_text_chars4000.json",
+        "keys": [
+          "runs",
+          "hit_at_10"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/bm25_chars8191.json",
+        "keys": [
+          "runs",
+          "hit_at_10"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/bm25_tokens8191.json",
+        "keys": [
+          "runs",
+          "hit_at_10"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/bm25_untruncated.json",
+        "keys": [
+          "runs",
+          "hit_at_10"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/bm25_dense_text.json",
+        "keys": [
+          "runs",
+          "hit_at_10"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/bm25_raw_untruncated.json",
+        "keys": [
+          "runs",
+          "hit_at_10"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/analysis_exact.json",
+        "keys": [
+          "rq2_bm25",
+          "openai",
+          "primary200",
+          "bm25_dense_text",
+          "raw"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/analysis_exact.json",
+        "keys": [
+          "rq2_bm25",
+          "titan",
+          "primary200",
+          "bm25_dense_text",
+          "raw"
+        ]
+      }
+    ],
+    "tab_bytype_exact.tex": [
+      {
+        "file": "artifacts/published/revision1/exact_ladder_openai_primary200.json",
+        "keys": [
+          "runs",
+          "raw",
+          "per_question"
+        ]
+      }
+    ],
+    "tab_bytype_exact_titan.tex": [
+      {
+        "file": "artifacts/published/revision1/exact_ladder_titan_primary200.json",
+        "keys": [
+          "runs",
+          "raw",
+          "per_question"
+        ]
+      }
+    ],
+    "tab_doclen.tex": [
+      {
+        "file": "artifacts/published/revision1/doc_length_stats.json",
+        "keys": [
+          "ladder_pool",
+          "primary200_gold",
+          "truncation"
+        ]
+      }
+    ],
+    "tab_drift_summary.tex": [
+      {
+        "file": "artifacts/published/revision1/analysis_exact.json",
+        "keys": [
+          "cross_embedder",
+          "primary200",
+          "hit10_drop_5k_to_100k"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/analysis_exact.json",
+        "keys": [
+          "cross_embedder",
+          "primary200",
+          "hit10_drop_5k_to_100k",
+          "openai_raw"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/analysis_exact.json",
+        "keys": [
+          "cross_embedder",
+          "primary200",
+          "hit10_drop_5k_to_100k",
+          "openai_meta_in"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/analysis_exact.json",
+        "keys": [
+          "cross_embedder",
+          "primary200",
+          "hit10_drop_5k_to_100k",
+          "titan_raw"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/analysis_exact.json",
+        "keys": [
+          "cross_embedder",
+          "primary200",
+          "hit10_drop_5k_to_100k",
+          "titan_meta_in"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/exact_ladder_openai_primary400.json",
+        "keys": [
+          "runs",
+          "raw",
+          "per_question"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/exact_ladder_openai_primary400.json",
+        "keys": [
+          "runs",
+          "meta_in",
+          "per_question"
+        ]
+      }
+    ],
+    "tab_ef_planner.tex": [
+      {
+        "file": "artifacts/published/revision1/search_mode_diagnosis_5434.json",
+        "keys": [
+          "experiments",
+          "e2_ef_sweep_100k_openai_raw"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/search_mode_diagnosis_5434.json",
+        "keys": [
+          "experiments",
+          "planner_cost_explain_100k_raw"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/hnsw_recall_by_cell_5434.json",
+        "keys": [
+          "cells",
+          "forced_hnsw",
+          "plan_check"
+        ]
+      }
+    ],
+    "tab_equiv.tex": [
+      {
+        "file": "artifacts/published/revision1/exact_ladder_openai_primary400.json",
+        "keys": [
+          "computed",
+          "lift_change",
+          "slope"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/analysis_equivalence.json",
+        "keys": [
+          "quantities"
+        ]
+      }
+    ],
+    "tab_equiv_full.tex": [
+      {
+        "file": "artifacts/published/revision1/analysis_equivalence.json",
+        "keys": [
+          "quantities"
+        ]
+      }
+    ],
+    "tab_exact_n400.tex": [
+      {
+        "file": "artifacts/published/revision1/exact_ladder_openai_primary400.json",
+        "keys": [
+          "runs",
+          "metrics",
+          "per_question"
+        ]
+      }
+    ],
+    "tab_exact_n400_full.tex": [
+      {
+        "file": "artifacts/published/revision1/exact_ladder_openai_primary400.json",
+        "keys": [
+          "runs",
+          "metrics",
+          "per_question"
+        ]
+      }
+    ],
+    "tab_exact_openai.tex": [
+      {
+        "file": "artifacts/published/revision1/exact_ladder_openai_primary200.json",
+        "keys": [
+          "runs",
+          "metrics",
+          "per_question"
+        ]
+      }
+    ],
+    "tab_exact_titan.tex": [
+      {
+        "file": "artifacts/published/revision1/exact_ladder_titan_primary200.json",
+        "keys": [
+          "runs",
+          "metrics",
+          "per_question"
+        ]
+      }
+    ],
+    "tab_fits.tex": [
+      {
+        "file": "artifacts/published/revision1/analysis_exact.json",
+        "keys": [
+          "log_linear",
+          "openai",
+          "primary200",
+          "raw",
+          "hit_at_1"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/analysis_exact.json",
+        "keys": [
+          "log_linear",
+          "openai",
+          "primary200",
+          "raw",
+          "hit_at_10"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/analysis_exact.json",
+        "keys": [
+          "log_linear",
+          "openai",
+          "primary200",
+          "raw",
+          "mrr"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/analysis_exact.json",
+        "keys": [
+          "log_linear",
+          "openai",
+          "primary200",
+          "meta_in",
+          "hit_at_1"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/analysis_exact.json",
+        "keys": [
+          "log_linear",
+          "openai",
+          "primary200",
+          "meta_in",
+          "hit_at_10"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/analysis_exact.json",
+        "keys": [
+          "log_linear",
+          "openai",
+          "primary200",
+          "meta_in",
+          "mrr"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/analysis_exact.json",
+        "keys": [
+          "log_linear",
+          "titan",
+          "primary200",
+          "raw",
+          "hit_at_1"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/analysis_exact.json",
+        "keys": [
+          "log_linear",
+          "titan",
+          "primary200",
+          "raw",
+          "hit_at_10"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/analysis_exact.json",
+        "keys": [
+          "log_linear",
+          "titan",
+          "primary200",
+          "raw",
+          "mrr"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/analysis_exact.json",
+        "keys": [
+          "log_linear",
+          "titan",
+          "primary200",
+          "meta_in",
+          "hit_at_1"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/analysis_exact.json",
+        "keys": [
+          "log_linear",
+          "titan",
+          "primary200",
+          "meta_in",
+          "hit_at_10"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/analysis_exact.json",
+        "keys": [
+          "log_linear",
+          "titan",
+          "primary200",
+          "meta_in",
+          "mrr"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/analysis_exact.json",
+        "keys": [
+          "log_linear",
+          "openai",
+          "primary400",
+          "raw",
+          "hit_at_1"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/analysis_exact.json",
+        "keys": [
+          "log_linear",
+          "openai",
+          "primary400",
+          "raw",
+          "hit_at_10"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/analysis_exact.json",
+        "keys": [
+          "log_linear",
+          "openai",
+          "primary400",
+          "raw",
+          "mrr"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/analysis_exact.json",
+        "keys": [
+          "log_linear",
+          "openai",
+          "primary400",
+          "meta_in",
+          "hit_at_1"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/analysis_exact.json",
+        "keys": [
+          "log_linear",
+          "openai",
+          "primary400",
+          "meta_in",
+          "hit_at_10"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/analysis_exact.json",
+        "keys": [
+          "log_linear",
+          "openai",
+          "primary400",
+          "meta_in",
+          "mrr"
+        ]
+      }
+    ],
+    "tab_lift.tex": [
+      {
+        "file": "artifacts/published/revision1/exact_ladder_openai_primary200.json",
+        "keys": [
+          "runs",
+          "per_question"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/exact_ladder_titan_primary200.json",
+        "keys": [
+          "runs",
+          "per_question"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/exact_ladder_openai_primary400.json",
+        "keys": [
+          "runs",
+          "per_question"
+        ]
+      }
+    ],
+    "tab_old_vs_exact.tex": [
+      {
+        "file": "artifacts/published/erb_full_primary200_to100k.json",
+        "keys": [
+          "runs",
+          "per_question",
+          "hit_at_10"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/exact_ladder_openai_primary200.json",
+        "keys": [
+          "runs",
+          "per_question",
+          "hit_at_10"
+        ]
+      },
+      {
+        "file": "artifacts/published/erb_titan_primary200_to100k.json",
+        "keys": [
+          "runs",
+          "per_question",
+          "hit_at_10"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/exact_ladder_titan_primary200.json",
+        "keys": [
+          "runs",
+          "per_question",
+          "hit_at_10"
+        ]
+      }
+    ],
+    "tab_perN_capacity.tex": [
+      {
+        "file": "artifacts/published/revision1/per_n_index_build_openai.json",
+        "keys": [
+          "build_log"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/per_n_index_build_titan.json",
+        "keys": [
+          "build_log"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/per_n_hnsw_eval_openai.json",
+        "keys": [
+          "cells",
+          "latency"
+        ]
+      }
+    ],
+    "tab_perN_meta.tex": [
+      {
+        "file": "artifacts/published/revision1/per_n_hnsw_eval_openai.json",
+        "keys": [
+          "cells",
+          "plan"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/per_n_hnsw_eval_titan.json",
+        "keys": [
+          "cells",
+          "plan"
+        ]
+      }
+    ],
+    "tab_perN_recall.tex": [
+      {
+        "file": "artifacts/published/revision1/per_n_hnsw_eval_openai.json",
+        "keys": [
+          "cells"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/per_n_hnsw_eval_titan.json",
+        "keys": [
+          "cells"
+        ]
+      }
+    ],
+    "tab_plan_audit.tex": [
+      {
+        "file": "artifacts/published/revision1/plan_audit_5434.json",
+        "keys": [
+          "cells",
+          "frac_hnsw"
+        ]
+      },
+      {
+        "file": "artifacts/published/revision1/plan_audit_5433.json",
+        "keys": [
+          "cells",
+          "frac_hnsw"
+        ]
+      }
+    ],
+    "tab_pool.tex": [
+      {
+        "file": "data/erb_scale_manifest.json",
+        "keys": [
+          "documents.source_type",
+          "documents.scale_rank"
+        ]
+      }
+    ],
+    "tab_routing.tex": [
+      {
+        "file": "artifacts/published/revision1/routing_simulation_openai_primary200.json",
+        "keys": [
+          "table_compact",
+          "breakeven",
+          "raw_hit_at_10"
+        ]
+      }
+    ],
+    "tab_rrf.tex": [
+      {
+        "file": "artifacts/published/revision1/rrf_hybrid_openai_primary200.json",
+        "keys": [
+          "by_scale",
+          "drop_5k_to_100k"
+        ]
+      }
+    ]
+  },
+  "generator": "make_paper_tables.py"
+}

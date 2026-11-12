@@ -1,0 +1,19 @@
+\begin{table}[t]
+\caption{OpenAI raw @100k on the original database copy: planner behavior (Recall is recall@10 against exact search; Approx. and Exact are Hit@10 with approximate and exact search). Forced is Hit@10 with the HNSW index forced, from \texttt{hnsw\_recall\_by\_cell\_5434.json}, measured at $\texttt{ef}\in\{200,400,800\}$; a dash means not measured. At $\texttt{ef}\in\{100,200,300\}$ the planner used the index, so Approx. is an HNSW result; at $\texttt{ef}\ge400$ it chose an exact scan.}
+\label{tab:efplanner}
+\centering
+\small
+\fitcolumn{\begin{tabular}{rlrrrr}
+\toprule
+\texttt{ef} & Plan & Recall & Approx. & Exact & Forced \\
+\midrule
+100 & HNSW & 0.893 & 0.495 & 0.585 & -- \\
+200 & HNSW & 0.946 & 0.510 & 0.585 & 0.510 \\
+300 & HNSW & 0.967 & 0.530 & 0.585 & -- \\
+400 & exact & 1.000 & 0.585 & 0.585 & 0.545 \\
+500 & exact & 1.000 & 0.585 & 0.585 & -- \\
+600 & exact & 1.000 & 0.585 & 0.585 & -- \\
+800 & exact & 1.000 & 0.585 & 0.585 & 0.565 \\
+\bottomrule
+\end{tabular}}
+\end{table}

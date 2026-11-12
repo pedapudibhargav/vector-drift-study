@@ -1,0 +1,314 @@
+{
+ "model": "gpt-5.6-terra",
+ "effort": "high",
+ "displaced_questions": 42,
+ "fully_judged_questions": 42,
+ "n_documents_judged": 420,
+ "verdict_counts": {
+  "full": 38,
+  "partial": 246,
+  "no": 132,
+  "unsupported": 4,
+  "invalid": 0
+ },
+ "questions_with_any_full": 13,
+ "questions_with_any_new_full": 13,
+ "share_questions_any_full": 0.30952380952380953,
+ "upper_share_of_200": 0.065,
+ "per_question": {
+  "qst_0002::basic": {
+   "n_docs": 10,
+   "full": 0,
+   "partial": 2,
+   "full_new": 0,
+   "full_old": 0
+  },
+  "qst_0006::basic": {
+   "n_docs": 10,
+   "full": 3,
+   "partial": 6,
+   "full_new": 3,
+   "full_old": 0
+  },
+  "qst_0010::metadata": {
+   "n_docs": 10,
+   "full": 0,
+   "partial": 1,
+   "full_new": 0,
+   "full_old": 0
+  },
+  "qst_0022::metadata": {
+   "n_docs": 10,
+   "full": 0,
+   "partial": 2,
+   "full_new": 0,
+   "full_old": 0
+  },
+  "qst_0025::metadata": {
+   "n_docs": 10,
+   "full": 8,
+   "partial": 0,
+   "full_new": 8,
+   "full_old": 0
+  },
+  "qst_0036::basic": {
+   "n_docs": 10,
+   "full": 1,
+   "partial": 7,
+   "full_new": 1,
+   "full_old": 0
+  },
+  "qst_0041::metadata": {
+   "n_docs": 10,
+   "full": 0,
+   "partial": 6,
+   "full_new": 0,
+   "full_old": 0
+  },
+  "qst_0042::basic": {
+   "n_docs": 10,
+   "full": 0,
+   "partial": 9,
+   "full_new": 0,
+   "full_old": 0
+  },
+  "qst_0056::metadata": {
+   "n_docs": 10,
+   "full": 0,
+   "partial": 10,
+   "full_new": 0,
+   "full_old": 0
+  },
+  "qst_0057::metadata": {
+   "n_docs": 10,
+   "full": 1,
+   "partial": 4,
+   "full_new": 1,
+   "full_old": 0
+  },
+  "qst_0062::basic": {
+   "n_docs": 10,
+   "full": 0,
+   "partial": 5,
+   "full_new": 0,
+   "full_old": 0
+  },
+  "qst_0063::metadata": {
+   "n_docs": 10,
+   "full": 6,
+   "partial": 3,
+   "full_new": 6,
+   "full_old": 0
+  },
+  "qst_0065::basic": {
+   "n_docs": 10,
+   "full": 0,
+   "partial": 3,
+   "full_new": 0,
+   "full_old": 0
+  },
+  "qst_0065::metadata": {
+   "n_docs": 10,
+   "full": 0,
+   "partial": 4,
+   "full_new": 0,
+   "full_old": 0
+  },
+  "qst_0071::metadata": {
+   "n_docs": 10,
+   "full": 0,
+   "partial": 3,
+   "full_new": 0,
+   "full_old": 0
+  },
+  "qst_0079::basic": {
+   "n_docs": 10,
+   "full": 0,
+   "partial": 7,
+   "full_new": 0,
+   "full_old": 0
+  },
+  "qst_0089::basic": {
+   "n_docs": 10,
+   "full": 0,
+   "partial": 7,
+   "full_new": 0,
+   "full_old": 0
+  },
+  "qst_0094::metadata": {
+   "n_docs": 10,
+   "full": 4,
+   "partial": 3,
+   "full_new": 4,
+   "full_old": 0
+  },
+  "qst_0096::metadata": {
+   "n_docs": 10,
+   "full": 0,
+   "partial": 6,
+   "full_new": 0,
+   "full_old": 0
+  },
+  "qst_0103::basic": {
+   "n_docs": 10,
+   "full": 0,
+   "partial": 6,
+   "full_new": 0,
+   "full_old": 0
+  },
+  "qst_0116::basic": {
+   "n_docs": 10,
+   "full": 0,
+   "partial": 7,
+   "full_new": 0,
+   "full_old": 0
+  },
+  "qst_0131::basic": {
+   "n_docs": 10,
+   "full": 0,
+   "partial": 9,
+   "full_new": 0,
+   "full_old": 0
+  },
+  "qst_0138::basic": {
+   "n_docs": 10,
+   "full": 2,
+   "partial": 8,
+   "full_new": 2,
+   "full_old": 0
+  },
+  "qst_0139::basic": {
+   "n_docs": 10,
+   "full": 0,
+   "partial": 5,
+   "full_new": 0,
+   "full_old": 0
+  },
+  "qst_0189::semantic": {
+   "n_docs": 10,
+   "full": 0,
+   "partial": 9,
+   "full_new": 0,
+   "full_old": 0
+  },
+  "qst_0200::semantic": {
+   "n_docs": 10,
+   "full": 0,
+   "partial": 3,
+   "full_new": 0,
+   "full_old": 0
+  },
+  "qst_0213::semantic": {
+   "n_docs": 10,
+   "full": 2,
+   "partial": 8,
+   "full_new": 2,
+   "full_old": 0
+  },
+  "qst_0214::semantic": {
+   "n_docs": 10,
+   "full": 0,
+   "partial": 3,
+   "full_new": 0,
+   "full_old": 0
+  },
+  "qst_0227::semantic": {
+   "n_docs": 10,
+   "full": 0,
+   "partial": 6,
+   "full_new": 0,
+   "full_old": 0
+  },
+  "qst_0238::semantic": {
+   "n_docs": 10,
+   "full": 1,
+   "partial": 9,
+   "full_new": 1,
+   "full_old": 0
+  },
+  "qst_0248::semantic": {
+   "n_docs": 10,
+   "full": 2,
+   "partial": 8,
+   "full_new": 2,
+   "full_old": 0
+  },
+  "qst_0252::semantic": {
+   "n_docs": 10,
+   "full": 0,
+   "partial": 4,
+   "full_new": 0,
+   "full_old": 0
+  },
+  "qst_0261::semantic": {
+   "n_docs": 10,
+   "full": 2,
+   "partial": 6,
+   "full_new": 2,
+   "full_old": 0
+  },
+  "qst_0266::semantic": {
+   "n_docs": 10,
+   "full": 0,
+   "partial": 10,
+   "full_new": 0,
+   "full_old": 0
+  },
+  "qst_0268::semantic": {
+   "n_docs": 10,
+   "full": 5,
+   "partial": 4,
+   "full_new": 3,
+   "full_old": 2
+  },
+  "qst_0277::semantic": {
+   "n_docs": 10,
+   "full": 0,
+   "partial": 10,
+   "full_new": 0,
+   "full_old": 0
+  },
+  "qst_0285::semantic": {
+   "n_docs": 10,
+   "full": 1,
+   "partial": 9,
+   "full_new": 1,
+   "full_old": 0
+  },
+  "qst_0294::semantic": {
+   "n_docs": 10,
+   "full": 0,
+   "partial": 8,
+   "full_new": 0,
+   "full_old": 0
+  },
+  "qst_0310::intra_document_reasoning": {
+   "n_docs": 10,
+   "full": 0,
+   "partial": 6,
+   "full_new": 0,
+   "full_old": 0
+  },
+  "qst_0391::constrained": {
+   "n_docs": 10,
+   "full": 0,
+   "partial": 8,
+   "full_new": 0,
+   "full_old": 0
+  },
+  "qst_0403::constrained": {
+   "n_docs": 10,
+   "full": 0,
+   "partial": 9,
+   "full_new": 0,
+   "full_old": 0
+  },
+  "qst_0420::conflicting_info": {
+   "n_docs": 10,
+   "full": 0,
+   "partial": 3,
+   "full_new": 0,
+   "full_old": 0
+  }
+ }
+}

@@ -1,0 +1,125 @@
+{
+ "postgresql": "PostgreSQL 16.15 (Debian 16.15-1.pgdg12+2) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit",
+ "pgvector": "0.8.6",
+ "seed": 1,
+ "ef_search": 200,
+ "cells": [
+  {
+   "scale": 5000,
+   "index_access_method": [
+    "hnsw"
+   ],
+   "plan_first_line": "Limit  (cost=77.24..117.80 rows=10 width=46)",
+   "index_scan_used": true,
+   "hit10": 0.785,
+   "recall10": 0.997,
+   "stored_hit10": 0.785,
+   "stored_recall10": 0.997,
+   "matches_stored": true
+  },
+  {
+   "scale": 10000,
+   "index_access_method": [
+    "hnsw"
+   ],
+   "plan_first_line": "Limit  (cost=142.28..182.86 rows=10 width=46)",
+   "index_scan_used": true,
+   "hit10": 0.715,
+   "recall10": 0.9910000000000002,
+   "stored_hit10": 0.715,
+   "stored_recall10": 0.9905000000000003,
+   "matches_stored": false
+  },
+  {
+   "scale": 15000,
+   "index_access_method": [
+    "hnsw"
+   ],
+   "plan_first_line": "Limit  (cost=206.90..247.47 rows=10 width=46)",
+   "index_scan_used": true,
+   "hit10": 0.685,
+   "recall10": 0.9910000000000002,
+   "stored_hit10": 0.68,
+   "stored_recall10": 0.9900000000000003,
+   "matches_stored": false
+  },
+  {
+   "scale": 20000,
+   "index_access_method": [
+    "hnsw"
+   ],
+   "plan_first_line": "Limit  (cost=271.33..311.91 rows=10 width=46)",
+   "index_scan_used": true,
+   "hit10": 0.67,
+   "recall10": 0.9890000000000002,
+   "stored_hit10": 0.665,
+   "stored_recall10": 0.9910000000000002,
+   "matches_stored": false
+  },
+  {
+   "scale": 25000,
+   "index_access_method": [
+    "hnsw"
+   ],
+   "plan_first_line": "Limit  (cost=335.67..376.25 rows=10 width=46)",
+   "index_scan_used": true,
+   "hit10": 0.65,
+   "recall10": 0.9850000000000003,
+   "stored_hit10": 0.65,
+   "stored_recall10": 0.9805000000000003,
+   "matches_stored": false
+  },
+  {
+   "scale": 40000,
+   "index_access_method": [
+    "hnsw"
+   ],
+   "plan_first_line": "Limit  (cost=464.38..504.91 rows=10 width=46)",
+   "index_scan_used": true,
+   "hit10": 0.61,
+   "recall10": 0.9775000000000003,
+   "stored_hit10": 0.61,
+   "stored_recall10": 0.9745000000000004,
+   "matches_stored": false
+  },
+  {
+   "scale": 50000,
+   "index_access_method": [
+    "hnsw"
+   ],
+   "plan_first_line": "Limit  (cost=592.72..633.26 rows=10 width=46)",
+   "index_scan_used": true,
+   "hit10": 0.605,
+   "recall10": 0.9700000000000004,
+   "stored_hit10": 0.6,
+   "stored_recall10": 0.9605000000000004,
+   "matches_stored": false
+  },
+  {
+   "scale": 75000,
+   "index_access_method": [
+    "hnsw"
+   ],
+   "plan_first_line": "Limit  (cost=849.45..889.98 rows=10 width=46)",
+   "index_scan_used": true,
+   "hit10": 0.555,
+   "recall10": 0.9690000000000003,
+   "stored_hit10": 0.55,
+   "stored_recall10": 0.9645000000000005,
+   "matches_stored": false
+  },
+  {
+   "scale": 100000,
+   "index_access_method": [
+    "hnsw"
+   ],
+   "plan_first_line": "Limit  (cost=1105.89..1146.41 rows=10 width=46)",
+   "index_scan_used": true,
+   "hit10": 0.55,
+   "recall10": 0.9570000000000004,
+   "stored_hit10": 0.54,
+   "stored_recall10": 0.9555000000000006,
+   "matches_stored": false
+  }
+ ]
+}

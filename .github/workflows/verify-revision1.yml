@@ -1,0 +1,37 @@
+# Offline revision-1 artifact checks. No secrets, no database, no network installs.
+name: Verify revision1
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-revision1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Mutation tests
+        run: python3 -I scripts/erb/revision1/test_harness_mutations.py
+
+      - name: Validate committed artifacts (CI subset)
+        run: >
+          python3 -I scripts/erb/revision1/validate_all.py
+          --skip-tex
+          --checks SCHEMA,INVARIANTS,SEARCH_MODE_TRUTH,QUERY_VECTOR_PROVENANCE,ARTIFACT_PROVENANCE,CROSS_IMPLEMENTATION,DATA_HYGIENE,CLAIM_REGISTRY
+
+      - name: Note skipped checks
+        run: |
+          echo "QUERY_VECTOR_PROVENANCE SKIPs without gitignored data/erb_scale_manifest.json."
+          echo "DATA_HYGIENE and extra CROSS RRF gold SKIPs without the manifest."
+          echo "CLAIM_REGISTRY tex_strings skipped via --skip-tex (committed papers/.../main.tex may predate revision). Local: --tex data/main_current.tex"

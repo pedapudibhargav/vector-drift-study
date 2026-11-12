@@ -1,0 +1,23 @@
+\begin{table}[t]
+\caption{Share of primary-200 OpenAI \texttt{raw} queries whose plan used HNSW, on the original copy and fresh restore databases. Column heads give $\texttt{ef\_search}$. Cells at $\texttt{ef\_search}{=}200$ use 200 probe queries; cells at $\texttt{ef\_search}\in\{400,800\}$ use 40 sampled queries.}
+\label{tab:planaudit}
+\centering
+\small
+\fitcolumn{\begin{tabular}{lrrrrrr}
+\toprule
+& \multicolumn{3}{c}{original copy} & \multicolumn{3}{c}{fresh restore} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Scale & 200 & 400 & 800 & 200 & 400 & 800 \\
+\midrule
+5k & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 \\
+10k & 1.000 & 0.000 & 0.000 & 0.000 & 0.000 & 1.000 \\
+15k & 1.000 & 0.000 & 0.000 & 0.000 & 0.000 & 1.000 \\
+20k & 1.000 & 0.000 & 0.000 & 0.000 & 0.000 & 1.000 \\
+25k & 1.000 & 0.000 & 0.000 & 0.000 & 0.000 & 1.000 \\
+40k & 1.000 & 0.000 & 0.000 & 0.000 & 0.000 & 1.000 \\
+50k & 1.000 & 0.000 & 0.000 & 0.000 & 0.000 & 1.000 \\
+75k & 1.000 & 0.000 & 0.000 & 1.000 & 0.000 & 1.000 \\
+100k & 1.000 & 0.000 & 0.000 & 1.000 & 0.000 & 1.000 \\
+\bottomrule
+\end{tabular}}
+\end{table}
