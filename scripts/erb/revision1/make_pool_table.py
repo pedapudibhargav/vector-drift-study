@@ -30,7 +30,7 @@ for key, label in LAD:
     summary[key] = {s: (t[("raw", s)], t[("meta_in", s)]) for s in SIZES}
 tex = (
     "\\begin{table*}[!t]\n\\caption{Full-pool exact ladders (OpenAI, primary-200): raw / \\texttt{meta\\_in} Hit@10 at selected sizes "
-    "and the lift $\\Delta_{\\mathrm{meta}}$ at $5\\text{k}$, $100\\text{k}$, and the full pool ($184{,}963$ documents).}\n\\label{tab:poolladders}\n"
+    "and the lift in Hit@10 at $5\\text{k}$, $100\\text{k}$, and the full pool ($184{,}963$ documents).}\n\\label{tab:poolladders}\n"
     "\\fittext{\\begin{tabular}{@{}lccccccccc@{}}\n\\toprule\nSchedule & $5\\text{k}$ & $50\\text{k}$ & $100\\text{k}$ & $150\\text{k}$ & Full & "
     "$\\Delta_{5\\text{k}}$ & $\\Delta_{100\\text{k}}$ & $\\Delta_{\\text{full}}$ \\\\\n\\midrule\n" + "\n".join(rows) + "\n\\bottomrule\n\\end{tabular}}\n\\end{table*}\n"
 )

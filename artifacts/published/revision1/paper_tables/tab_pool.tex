@@ -1,11 +1,11 @@
 \begin{table}[t]
-\caption{Composition (\% of the corpus, gold anchors included) of the $99{,}998$ embedded documents at each ladder size under the round-robin schedule; document counts are the percentage times the ladder size; the ``Extracted pool'' column is the number of documents extracted per source (184,966 in total).}
+\caption{Composition (\% of the corpus, gold anchors included) of the $99{,}998$ embedded documents at each ladder size under the round-robin schedule; document counts are the percentage times the ladder size; the ``Pool'' column is the number of documents extracted per source (184,966 in total).}
 \label{tab:pool}
 \centering
 \small
-\begin{tabular}{@{}lrrrrrr@{}}
+\fitcolumn{\begin{tabular}{@{}lrrrrrr@{}}
 \toprule
-Source & Extracted pool & 5k & 25k & 50k & 75k & 100k \\
+Source & Pool & 5k & 25k & 50k & 75k & 100k \\
 \midrule
 \texttt{confluence} & 5,192 & 13.7 & 11.6 & 10.4 & 6.9 & 5.2 \\
 \texttt{fireflies} & 10,173 & 10.4 & 11.0 & 11.2 & 12.4 & 10.2 \\
@@ -19,5 +19,5 @@ Source & Extracted pool & 5k & 25k & 50k & 75k & 100k \\
 \midrule
 Total & 184,966 & 100 & 100 & 100 & 100 & 100 \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}

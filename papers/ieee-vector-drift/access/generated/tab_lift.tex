@@ -16,11 +16,14 @@ $N$ & OpenAI $n{=}$200 & Titan $n{=}$200 & OpenAI $n{=}$400 \\
 50k & 0.075 $[0.040, 0.115]$ & 0.100 $[0.060, 0.140]$ & 0.070 $[0.048, 0.095]$ \\
 75k & 0.090 $[0.055, 0.130]$ & 0.100 $[0.060, 0.145]$ & 0.072 $[0.048, 0.098]$ \\
 100k & 0.080 $[0.045, 0.120]$ & 0.075 $[0.040, 0.115]$ & 0.060 $[0.037, 0.085]$ \\
-\midrule
-\multicolumn{4}{l}{OpenAI $n{=}$200: $\Delta$lift(100k$-$5k)=0.000 $[$-$0.050, 0.050]$; slope/tenfold=-0.008 $[$-$0.048, 0.032]$} \\
-\multicolumn{4}{l}{Titan $n{=}$200: $\Delta$lift(100k$-$5k)=-0.010 $[$-$0.065, 0.040]$; slope/tenfold=0.013 $[$-$0.031, 0.057]$} \\
-\multicolumn{4}{l}{OpenAI $n{=}$400: $\Delta$lift(100k$-$5k)=-0.018 $[$-$0.050, 0.015]$; slope/tenfold=-0.017 $[$-$0.045, 0.010]$} \\
 \bottomrule
 \end{tabular}}
-\par\smallskip\footnotesize{Legacy \texttt{meta\_first} lift (meta$-$raw): OpenAI @ 5k: \texttt{meta\_first} lift 0.080, OpenAI @ 100k: \texttt{meta\_first} lift 0.085, Titan @ 5k: \texttt{meta\_first} lift 0.085, Titan @ 100k: \texttt{meta\_first} lift 0.080.}
+\par\smallskip
+{\footnotesize\begin{tabular}{@{}l@{}}
+OpenAI $n{=}$200: $\Delta$lift(100k$-$5k)=0.000 $[-0.050, 0.050]$; slope/tenfold=$-$0.008 $[-0.048, 0.032]$ \\
+Titan $n{=}$200: $\Delta$lift(100k$-$5k)=$-$0.010 $[-0.065, 0.040]$; slope/tenfold=0.013 $[-0.031, 0.057]$ \\
+OpenAI $n{=}$400: $\Delta$lift(100k$-$5k)=$-$0.018 $[-0.050, 0.015]$; slope/tenfold=$-$0.017 $[-0.045, 0.010]$ \\
+\end{tabular}}
+\par\smallskip
+\parbox{0.8\textwidth}{\footnotesize\raggedright Legacy \texttt{meta\_first} lift (meta$-$raw): OpenAI 5k 0.080, OpenAI 100k 0.085, Titan 5k 0.085, Titan 100k 0.080.}
 \end{table*}

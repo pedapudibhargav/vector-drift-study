@@ -31,7 +31,7 @@ REV1 = ROOT / "artifacts" / "published" / "revision1"
 OUT = REV1 / "paper_figures"
 CHROME = Path("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
 
-W, H = 336, 228
+W, H = 262, 188
 ML, MR, MT, MB = 40, 10, 10, 34
 FONT = "Times New Roman, Times, serif"
 BLUE, ORANGE, GREEN, GREY, PURPLE = "#1f5fa8", "#d9730d", "#2e8b57", "#555555", "#6a3d9a"
@@ -273,15 +273,22 @@ class Plot:
         pts = [(n, intercept + slope * math.log(n)) for n in (5000, 100000)]
         self.line(pts, color, dash="4 3", marker="")
 
-    def legend(self, items: list[tuple[str, str, str]], *, x: float, y: float) -> None:
-        for i, (label, color, dash) in enumerate(items):
-            yy = y + i * 12
+    def legend(self, items: list[tuple], *, x: float, y: float) -> None:
+        for i, item in enumerate(items):
+            label, color, dash = item[0], item[1], item[2]
+            marker = item[3] if len(item) > 3 else ""
+            yy = y + i * 11
             dash_attr = f' stroke-dasharray="{dash}"' if dash else ""
             self.parts.append(
                 f'<line x1="{x}" x2="{x + 16}" y1="{yy}" y2="{yy}" stroke="{color}" '
                 f'stroke-width="1.4"{dash_attr}/>'
             )
-            self.parts.append(f'<text x="{x + 20}" y="{yy + 3}" font-size="8.5">{label}</text>')
+            mx = x + 8
+            if marker == "square":
+                self.parts.append(f'<rect x="{mx - 2.4}" y="{yy - 2.4}" width="4.8" height="4.8" fill="{color}"/>')
+            elif marker == "triangle":
+                self.parts.append(f'<polygon points="{mx},{yy - 3} {mx - 3},{yy + 2.4} {mx + 3},{yy + 2.4}" fill="{color}"/>')
+            self.parts.append(f'<text x="{x + 20}" y="{yy + 3}" font-size="9">{label}</text>')
 
     def svg(self) -> str:
         body = "\n".join(self.parts)
@@ -316,19 +323,15 @@ def fig1_exact_hit_vs_logN(openai200: dict, analysis: dict) -> tuple[str, list[d
             }
         )
 
-    p = Plot(0.25, 1.05, 0.10, "Metric value")
+    p = Plot(0.25, 1.05, 0.10, "Hit@k")
     p.axes()
     p.band(band_pts, BLUE)
     p.line([(n, d["meta_in_hit_at_10"]) for n, d in zip(LADDER, plotted)], ORANGE, marker="square")
     p.line([(n, d["raw_hit_at_10"]) for n, d in zip(LADDER, plotted)], BLUE)
     p.fit_log_linear(intercept, slope, BLUE)
     p.line([(n, d["raw_hit_at_1"]) for n, d in zip(LADDER, plotted)], GREEN, marker="triangle")
-    p.legend([("meta_in Hit@10", ORANGE, ""), ("raw Hit@1", GREEN, "")], x=ML + 8, y=MT + 8)
-    p.legend(
-        [("raw Hit@10 (band: 95% bootstrap)", BLUE, ""), ("raw Hit@10 log-linear fit", BLUE, "4 3")],
-        x=ML + 128,
-        y=MT + 8,
-    )
+    p.legend([("meta_in Hit@10", ORANGE, "", "square"), ("raw Hit@1", GREEN, "", "triangle")], x=ML + 8, y=MT + 8)
+    p.legend([("raw Hit@10", BLUE, ""), ("log-linear fit", BLUE, "4 3")], x=ML + 112, y=MT + 8)
     return p.svg(), plotted
 
 

@@ -373,7 +373,11 @@ def latex_table(
 ) -> str:
     env = "table*" if star else "table"
     fit = "\\fittext" if star else "\\fitcolumn"
-    tabular = re.sub(r"(?<=[&\s\[(])-(?=\d)", "$-$", tabular)  # true minus signs in table cells
+    # true minus signs in table cells; only in text segments (even positions between "$"), never inside math
+    _parts = tabular.split("$")
+    for _i in range(0, len(_parts), 2):
+        _parts[_i] = re.sub(r"(?<=[&\s\[(=,])-(?=\d)", "$-$", _parts[_i])
+    tabular = "$".join(_parts)
     end_tag = "\\end{tabular}"
     if end_tag in tabular:
         head, tail = tabular.split(end_tag, 1)
@@ -609,7 +613,7 @@ def build_tab_lift(track: SourceTracker) -> str:
         if bank == "primary200":
             for s in (5000, 100000):
                 mf = runs[("meta_first", s)]["metrics"]["hit_at_10"] - runs[("raw", s)]["metrics"]["hit_at_10"]
-                meta_first_note.append(f"{emb} @ {scale_k(s)}: \\texttt{{meta\\_first}} lift {fmt3(mf)}")
+                meta_first_note.append(f"{emb} {scale_k(s)} {fmt3(mf)}")
 
     foot = (
         "\\midrule\n" + "\n".join(summary_rows) + "\n\\bottomrule\n\\end{tabular}\n"
@@ -623,9 +627,11 @@ def build_tab_lift(track: SourceTracker) -> str:
     import re as _re
 
     summary_rows = [_re.sub(r"\\multicolumn\{\d+\}\{l\}", f"\\\\multicolumn{{{n_arms + 1}}}{{l}}", r) for r in summary_rows]
+    summary_lines = [r.replace(f"\\multicolumn{{{n_arms + 1}}}{{l}}{{", "", 1).rsplit("}", 1)[0] + " \\\\" for r in summary_rows]
     foot = (
-        "\\midrule\n" + "\n".join(summary_rows) + "\n\\bottomrule\n\\end{tabular}\n"
-        f"\\par\\smallskip\\footnotesize{{Legacy \\texttt{{meta\\_first}} lift (meta$-$raw): {', '.join(meta_first_note)}.}}"
+        "\\bottomrule\n\\end{tabular}\n"
+        "\\par\\smallskip\n{\\footnotesize\\begin{tabular}{@{}l@{}}\n" + "\n".join(summary_lines) + "\n\\end{tabular}}\n"
+        f"\\par\\smallskip\n\\parbox{{0.8\\textwidth}}{{\\footnotesize\\raggedright Legacy \\texttt{{meta\\_first}} lift (meta$-$raw): {', '.join(meta_first_note)}.}}"
     )
     tab = (
         f"\\begin{{tabular}}{{l{'r' * n_arms}}}\n\\toprule\n"
@@ -767,14 +773,13 @@ def build_tab_bm25(track: SourceTracker) -> str:
     t_drop = ae["rq2_bm25"]["titan"]["primary200"]["bm25_dense_text"]["raw"]["dense_drop_minus_bm25_drop"]
     block2 = (
         "\\midrule\n"
-        f"Dense$-$BM25(\\texttt{{dense\\_text}}) drop diff., OpenAI & {fmt3(o_drop['estimate'])} & "
-        f"{ci_bracket(o_drop['ci_lo'], o_drop['ci_hi'])} & & \\\\\n"
-        f"Dense$-$BM25(\\texttt{{dense\\_text}}) drop diff., Titan & {fmt3(t_drop['estimate'])} & "
-        f"{ci_bracket(t_drop['ci_lo'], t_drop['ci_hi'])} & & \\\\"
+        "\\multicolumn{5}{l}{\\emph{Drop difference 5k$\\to$100k, dense minus BM25 (\\texttt{dense\\_text}): estimate and paired 95\\% interval}} \\\\\n"
+        f"OpenAI & {fmt3(o_drop['estimate'])} & \\multicolumn{{3}}{{l}}{{{ci_bracket(o_drop['ci_lo'], o_drop['ci_hi'])}}} \\\\\n"
+        f"Titan & {fmt3(t_drop['estimate'])} & \\multicolumn{{3}}{{l}}{{{ci_bracket(t_drop['ci_lo'], t_drop['ci_hi'])}}} \\\\\n"
     )
     tab = (
         "\\begin{tabular}{lrrrr}\n\\toprule\n"
-        "Method & Hit@10 5k & 50k & 100k & $\\Delta$(5k$\\rightarrow$100k) \\\\\n\\midrule\n"
+        "Method (Hit@10) & 5k & 50k & 100k & Drop 5k$\\to$100k \\\\\n\\midrule\n"
         + "\n".join(rows)
         + "\n"
         + block2
@@ -784,7 +789,7 @@ def build_tab_bm25(track: SourceTracker) -> str:
         label="tab:bm25",
         caption=(
             "Lexical vs dense Hit@10 across scales (primary-200). "
-            "The last two rows give the 5k$\\to$100k drop difference (dense minus BM25) in the first column and its paired bootstrap 95\\% interval in the second; BM25 variants marked (title+chunk) count the title twice."
+            "The last two rows give the 5k$\\to$100k drop difference (dense minus BM25) and its paired bootstrap 95\\% interval; BM25 variants marked (title+chunk) count the title twice."
         ),
         tabular=tab,
         star=True,
@@ -1349,27 +1354,27 @@ def build_tab_rrf(track: SourceTracker) -> str:
         h = block.get("hit_at_10") or {}
         m = block.get("mrr") or {}
         drop_rows.append(
-            f"\\multicolumn{{2}}{{l}}{{$\\Delta$Hit@10/MRR ({tex})}} & "
-            f"{fmt3(h.get('estimate'))} {ci_bracket(h.get('ci_lo', 0), h.get('ci_hi', 0))} & "
-            f"{fmt3(m.get('estimate'))} {ci_bracket(m.get('ci_lo', 0), m.get('ci_hi', 0))} & & & \\\\"
+            f"{tex} & {fmt3(h.get('estimate'))} {ci_bracket(h.get('ci_lo', 0), h.get('ci_hi', 0))} & "
+            f"{fmt3(m.get('estimate'))} {ci_bracket(m.get('ci_lo', 0), m.get('ci_hi', 0))} \\\\"
         )
     rmd = drop.get("rrf_minus_dense_drop_hit_at_10") or {}
     drop_rows.append(
-        f"\\multicolumn{{2}}{{l}}{{RRF$-$dense $\\Delta$drop Hit@10}} & "
-        f"{fmt3(rmd.get('estimate'))} {ci_bracket(rmd.get('ci_lo', 0), rmd.get('ci_hi', 0))} & & & & \\\\"
+        f"RRF$-$dense drop, Hit@10 & {fmt3(rmd.get('estimate'))} {ci_bracket(rmd.get('ci_lo', 0), rmd.get('ci_hi', 0))} & \\\\"
     )
     tab = (
         "\\begin{tabular}{@{}lrrrrll@{}}\n\\toprule\n"
         "$N$ & Dense H@10 & BM25 H@10 & RRF H@10 & RRF MRR & "
         "RRF$-$dense H@10 & RRF$-$BM25 H@10 \\\\\n\\midrule\n"
         + "\n".join(rows)
-        + "\n\\midrule\n"
+        + "\n\\bottomrule\n\\end{tabular}\n"
+        "\\par\\medskip\n\\begin{tabular}{lll}\n\\toprule\n"
+        "Drop 5k$\\to$100k & Hit@10 [95\\% CI] & MRR@10 [95\\% CI] \\\\\n\\midrule\n"
         + "\n".join(drop_rows)
         + "\n\\bottomrule\n\\end{tabular}"
     )
     return latex_table(
         label="tab:rrf",
-        caption="Dense, BM25 (\\texttt{dense\\_text}), and RRF fusion ($k{=}60$) on primary-200; paired bootstrap 95\\% CIs. In the four summary rows the first two columns give the 5k$\\to$100k drop in Hit@10 and in MRR@10 (with intervals).",
+        caption="Dense, BM25 (\\texttt{dense\\_text}), and RRF fusion ($k{=}60$) on primary-200; paired bootstrap 95\\% CIs. The lower block gives the 5k$\\to$100k drop in Hit@10 and in MRR@10 with intervals.",
         tabular=tab,
         star=True,
     )
@@ -1821,9 +1826,9 @@ def build_tab_pool(track: SourceTracker) -> str:
         "\\begin{table}[t]",
         "\\centering",
         "\\small",
-        "\\begin{tabular}{@{}lr" + "r" * len(scales) + "@{}}",
+        "\\fitcolumn{\\begin{tabular}{@{}lr" + "r" * len(scales) + "@{}}",
         "\\toprule",
-        f"Source & Extracted pool & {head} \\\\",
+        f"Source & Pool & {head} \\\\",
         "\\midrule",
     ]
     for s_ in sources:
@@ -1834,11 +1839,11 @@ def build_tab_pool(track: SourceTracker) -> str:
         "\\midrule",
         f"Total & {len(docs):,} & " + " & ".join("100" for _ in scales) + " \\\\",
         "\\bottomrule",
-        "\\end{tabular}",
+        "\\end{tabular}}",
         (
             "\\caption{Composition (\\% of the corpus, gold anchors included) of the $99{,}998$ embedded "
             "documents at each ladder size under the round-robin schedule; "
-            "document counts are the percentage times the ladder size; the ``Extracted pool'' column is the number of documents extracted per source "
+            "document counts are the percentage times the ladder size; the ``Pool'' column is the number of documents extracted per source "
             f"({len(docs):,} in total).}}"
         ),
         "\\label{tab:pool}",

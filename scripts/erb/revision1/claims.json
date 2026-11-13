@@ -2305,5 +2305,93 @@
   "expected": 4,
   "tolerance": 0,
   "tex_strings": []
+ },
+ {
+  "id": "bm25var.tokens8191.est",
+  "description": "Dense minus BM25(8191 tokens) drop difference, OpenAI.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "rq2_bm25",
+   "openai",
+   "primary200",
+   "bm25_tokens8191",
+   "raw",
+   "dense_drop_minus_bm25_drop",
+   "estimate"
+  ],
+  "expected": 0.095,
+  "tolerance": 1e-09,
+  "tex_strings": [
+   "difference is $0.095$ ($[0.030,0.160]$)"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "bm25var.tokens8191.lo",
+  "description": "Lower CI of the same.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "rq2_bm25",
+   "openai",
+   "primary200",
+   "bm25_tokens8191",
+   "raw",
+   "dense_drop_minus_bm25_drop",
+   "ci_lo"
+  ],
+  "expected": 0.03,
+  "tolerance": 1e-09,
+  "tex_strings": [
+   "$[0.030,0.160]$"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "bm25var.chars4000.est",
+  "description": "Dense minus BM25(4000 chars) drop difference, OpenAI.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "rq2_bm25",
+   "openai",
+   "primary200",
+   "bm25_chars4000",
+   "raw",
+   "dense_drop_minus_bm25_drop",
+   "estimate"
+  ],
+  "expected": 0.055,
+  "tolerance": 1e-09,
+  "tex_strings": [
+   "it is $0.055$ ($[-0.015,0.120]$)"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "bm25var.chars4000.lo",
+  "description": "Lower CI of the same.",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "rq2_bm25",
+   "openai",
+   "primary200",
+   "bm25_chars4000",
+   "raw",
+   "dense_drop_minus_bm25_drop",
+   "ci_lo"
+  ],
+  "expected": -0.015,
+  "tolerance": 1e-09,
+  "tex_strings": [
+   "$[-0.015,0.120]$"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
  }
 ]
