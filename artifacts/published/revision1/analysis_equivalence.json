@@ -57,7 +57,7 @@
       },
       {
         "path": "artifacts/published/revision1/doc_length_stats.json",
-        "sha256": "5cf326ebce2e8da801b8f02c8bf81b850c55c1f17fb801b51b2018753d96635c"
+        "sha256": "d28f14e7cc753d23c3829cfca179a9637574c38727ba31e0be98d79ac3282a47"
       },
       {
         "path": "artifacts/published/revision1/doc_token_cuts_openai.json",

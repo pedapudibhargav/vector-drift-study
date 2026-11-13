@@ -1,5 +1,5 @@
 \begin{table*}[t]
-\caption{Equivalence analysis: paired $90\%$ bootstrap intervals; a quantity is called equivalent when its interval lies inside $[-\delta,+\delta]$.}
+\caption{Equivalence analysis: paired $90\%$ bootstrap intervals; a quantity is called equivalent when its interval lies strictly inside $(-\delta,+\delta)$.}
 \label{tab:equiv}
 \centering
 \small
@@ -17,7 +17,7 @@ Raw drop, OpenAI $-$ BM25 & 0.085 & $[0.025, 0.145]$ & no & no \\
 Raw drop, Titan $-$ BM25 & 0.050 & $[-0.005, 0.105]$ & no & no \\
 Lift change 100k$-$5k, OpenAI $n{=}200$ & 0.000 & $[-0.040, 0.040]$ & yes & yes \\
 Lift change 100k$-$5k, Titan $n{=}200$ & $-$0.010 & $[-0.055, 0.035]$ & no & yes \\
-Lift change 100k$-$5k, OpenAI $n{=}400$ & $-$0.018 & $[-0.045, 0.010]$ & yes & yes \\
+Lift change 100k$-$5k, OpenAI $n{=}400$ & $-$0.0175 & $[-0.045, 0.010]$ & yes & yes \\
 Lift slope per tenfold $N$, OpenAI $n{=}400$ & $-$0.017 & $[-0.041, 0.006]$ & yes & yes \\
 \bottomrule
 \end{tabular}}

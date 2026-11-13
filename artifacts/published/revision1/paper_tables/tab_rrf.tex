@@ -1,5 +1,5 @@
 \begin{table*}[t]
-\caption{Dense, BM25 (\texttt{dense\_text}), and RRF fusion ($k{=}60$) on primary-200; paired bootstrap 95\% CIs. The lower block gives the 5k$\to$100k drop in Hit@10 and in MRR@10 with intervals.}
+\caption{Dense, BM25 (\texttt{dense\_text}), and RRF fusion ($k{=}60$) on primary-200; paired bootstrap 95\% CIs. The lower block gives the 5k$\to$100k drop in Hit@10 and in MRR@10 with intervals. Over all nine sizes, RRF minus dense Hit@10 ranges from $+0.110$ to $+0.150$. Intervals here come from this analysis's own bootstrap, which resamples the questions in a different order, and can differ by $0.005$ from other artifacts for the same quantity (e.g., the BM25 drop interval is $[0.080,0.170]$ here and $[0.080,0.175]$ in \texttt{analysis\_exact}).}
 \label{tab:rrf}
 \centering
 \small

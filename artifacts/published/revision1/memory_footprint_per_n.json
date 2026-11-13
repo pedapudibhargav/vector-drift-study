@@ -1,0 +1,513 @@
+{
+ "meta": {
+  "created": "2026-11-13T17:51:28Z",
+  "shared_buffers": "2GB",
+  "method": "Memory working set of the per-size HNSW indexes (R1-3 follow-up)."
+ },
+ "rows": [
+  {
+   "embedder": "openai",
+   "scale": 5000,
+   "table": "rev1.n_openai_5000",
+   "ef_search": 200,
+   "queries": 400,
+   "sweep_seconds": 2.2,
+   "buffers_in_use_after_restart": 106,
+   "uses_hnsw": true,
+   "resident": {
+    "index": {
+     "relation_bytes": 40968192,
+     "resident_pages": 4998,
+     "resident_mb": 40.9
+    },
+    "heap": {
+     "relation_bytes": 483328,
+     "resident_pages": 59,
+     "resident_mb": 0.5
+    },
+    "toast": {
+     "relation_bytes": 40960000,
+     "resident_pages": 1342,
+     "resident_mb": 11.0
+    }
+   },
+   "index_resident_fraction": 0.9994
+  },
+  {
+   "embedder": "openai",
+   "scale": 10000,
+   "table": "rev1.n_openai_10000",
+   "ef_search": 200,
+   "queries": 400,
+   "sweep_seconds": 2.73,
+   "buffers_in_use_after_restart": 106,
+   "uses_hnsw": true,
+   "resident": {
+    "index": {
+     "relation_bytes": 81928192,
+     "resident_pages": 9996,
+     "resident_mb": 81.9
+    },
+    "heap": {
+     "relation_bytes": 966656,
+     "resident_pages": 118,
+     "resident_mb": 1.0
+    },
+    "toast": {
+     "relation_bytes": 81920000,
+     "resident_pages": 1540,
+     "resident_mb": 12.6
+    }
+   },
+   "index_resident_fraction": 0.9995
+  },
+  {
+   "embedder": "openai",
+   "scale": 15000,
+   "table": "rev1.n_openai_15000",
+   "ef_search": 200,
+   "queries": 400,
+   "sweep_seconds": 3.21,
+   "buffers_in_use_after_restart": 106,
+   "uses_hnsw": true,
+   "resident": {
+    "index": {
+     "relation_bytes": 122888192,
+     "resident_pages": 14989,
+     "resident_mb": 122.8
+    },
+    "heap": {
+     "relation_bytes": 1449984,
+     "resident_pages": 177,
+     "resident_mb": 1.4
+    },
+    "toast": {
+     "relation_bytes": 122880000,
+     "resident_pages": 1641,
+     "resident_mb": 13.4
+    }
+   },
+   "index_resident_fraction": 0.9992
+  },
+  {
+   "embedder": "openai",
+   "scale": 20000,
+   "table": "rev1.n_openai_20000",
+   "ef_search": 200,
+   "queries": 400,
+   "sweep_seconds": 3.76,
+   "buffers_in_use_after_restart": 106,
+   "uses_hnsw": true,
+   "resident": {
+    "index": {
+     "relation_bytes": 163848192,
+     "resident_pages": 19912,
+     "resident_mb": 163.1
+    },
+    "heap": {
+     "relation_bytes": 1933312,
+     "resident_pages": 235,
+     "resident_mb": 1.9
+    },
+    "toast": {
+     "relation_bytes": 163840000,
+     "resident_pages": 1712,
+     "resident_mb": 14.0
+    }
+   },
+   "index_resident_fraction": 0.9956
+  },
+  {
+   "embedder": "openai",
+   "scale": 25000,
+   "table": "rev1.n_openai_25000",
+   "ef_search": 200,
+   "queries": 400,
+   "sweep_seconds": 4.54,
+   "buffers_in_use_after_restart": 106,
+   "uses_hnsw": true,
+   "resident": {
+    "index": {
+     "relation_bytes": 204808192,
+     "resident_pages": 24777,
+     "resident_mb": 203.0
+    },
+    "heap": {
+     "relation_bytes": 2408448,
+     "resident_pages": 292,
+     "resident_mb": 2.4
+    },
+    "toast": {
+     "relation_bytes": 204800000,
+     "resident_pages": 1737,
+     "resident_mb": 14.2
+    }
+   },
+   "index_resident_fraction": 0.991
+  },
+  {
+   "embedder": "openai",
+   "scale": 40000,
+   "table": "rev1.n_openai_40000",
+   "ef_search": 200,
+   "queries": 400,
+   "sweep_seconds": 5.73,
+   "buffers_in_use_after_restart": 106,
+   "uses_hnsw": true,
+   "resident": {
+    "index": {
+     "relation_bytes": 327680000,
+     "resident_pages": 38680,
+     "resident_mb": 316.9
+    },
+    "heap": {
+     "relation_bytes": 3858432,
+     "resident_pages": 450,
+     "resident_mb": 3.7
+    },
+    "toast": {
+     "relation_bytes": 327671808,
+     "resident_pages": 1814,
+     "resident_mb": 14.9
+    }
+   },
+   "index_resident_fraction": 0.967
+  },
+  {
+   "embedder": "openai",
+   "scale": 50000,
+   "table": "rev1.n_openai_50000",
+   "ef_search": 200,
+   "queries": 400,
+   "sweep_seconds": 6.68,
+   "buffers_in_use_after_restart": 106,
+   "uses_hnsw": true,
+   "resident": {
+    "index": {
+     "relation_bytes": 409600000,
+     "resident_pages": 47460,
+     "resident_mb": 388.8
+    },
+    "heap": {
+     "relation_bytes": 4816896,
+     "resident_pages": 544,
+     "resident_mb": 4.5
+    },
+    "toast": {
+     "relation_bytes": 409591808,
+     "resident_pages": 1824,
+     "resident_mb": 14.9
+    }
+   },
+   "index_resident_fraction": 0.9492
+  },
+  {
+   "embedder": "openai",
+   "scale": 75000,
+   "table": "rev1.n_openai_75000",
+   "ef_search": 200,
+   "queries": 400,
+   "sweep_seconds": 9.31,
+   "buffers_in_use_after_restart": 106,
+   "uses_hnsw": true,
+   "resident": {
+    "index": {
+     "relation_bytes": 614383616,
+     "resident_pages": 67520,
+     "resident_mb": 553.1
+    },
+    "heap": {
+     "relation_bytes": 7217152,
+     "resident_pages": 739,
+     "resident_mb": 6.1
+    },
+    "toast": {
+     "relation_bytes": 614391808,
+     "resident_pages": 1864,
+     "resident_mb": 15.3
+    }
+   },
+   "index_resident_fraction": 0.9003
+  },
+  {
+   "embedder": "openai",
+   "scale": 100000,
+   "table": "rev1.n_openai_100000",
+   "ef_search": 200,
+   "queries": 400,
+   "sweep_seconds": 12.78,
+   "buffers_in_use_after_restart": 106,
+   "uses_hnsw": true,
+   "resident": {
+    "index": {
+     "relation_bytes": 819175424,
+     "resident_pages": 84833,
+     "resident_mb": 695.0
+    },
+    "heap": {
+     "relation_bytes": 9625600,
+     "resident_pages": 870,
+     "resident_mb": 7.1
+    },
+    "toast": {
+     "relation_bytes": 819183616,
+     "resident_pages": 1885,
+     "resident_mb": 15.4
+    }
+   },
+   "index_resident_fraction": 0.8484
+  },
+  {
+   "embedder": "titan",
+   "scale": 5000,
+   "table": "rev1.n_titan_5000",
+   "ef_search": 200,
+   "queries": 400,
+   "sweep_seconds": 1.75,
+   "buffers_in_use_after_restart": 106,
+   "uses_hnsw": true,
+   "resident": {
+    "index": {
+     "relation_bytes": 40968192,
+     "resident_pages": 5001,
+     "resident_mb": 41.0
+    },
+    "heap": {
+     "relation_bytes": 483328,
+     "resident_pages": 59,
+     "resident_mb": 0.5
+    },
+    "toast": {
+     "relation_bytes": 27312128,
+     "resident_pages": 1638,
+     "resident_mb": 13.4
+    }
+   },
+   "index_resident_fraction": 1.0
+  },
+  {
+   "embedder": "titan",
+   "scale": 10000,
+   "table": "rev1.n_titan_10000",
+   "ef_search": 200,
+   "queries": 400,
+   "sweep_seconds": 2.49,
+   "buffers_in_use_after_restart": 106,
+   "uses_hnsw": true,
+   "resident": {
+    "index": {
+     "relation_bytes": 81928192,
+     "resident_pages": 9997,
+     "resident_mb": 81.9
+    },
+    "heap": {
+     "relation_bytes": 966656,
+     "resident_pages": 118,
+     "resident_mb": 1.0
+    },
+    "toast": {
+     "relation_bytes": 54616064,
+     "resident_pages": 1969,
+     "resident_mb": 16.1
+    }
+   },
+   "index_resident_fraction": 0.9996
+  },
+  {
+   "embedder": "titan",
+   "scale": 15000,
+   "table": "rev1.n_titan_15000",
+   "ef_search": 200,
+   "queries": 400,
+   "sweep_seconds": 3.22,
+   "buffers_in_use_after_restart": 106,
+   "uses_hnsw": true,
+   "resident": {
+    "index": {
+     "relation_bytes": 122888192,
+     "resident_pages": 14993,
+     "resident_mb": 122.8
+    },
+    "heap": {
+     "relation_bytes": 1449984,
+     "resident_pages": 177,
+     "resident_mb": 1.4
+    },
+    "toast": {
+     "relation_bytes": 81920000,
+     "resident_pages": 2103,
+     "resident_mb": 17.2
+    }
+   },
+   "index_resident_fraction": 0.9995
+  },
+  {
+   "embedder": "titan",
+   "scale": 20000,
+   "table": "rev1.n_titan_20000",
+   "ef_search": 200,
+   "queries": 400,
+   "sweep_seconds": 3.63,
+   "buffers_in_use_after_restart": 106,
+   "uses_hnsw": true,
+   "resident": {
+    "index": {
+     "relation_bytes": 163848192,
+     "resident_pages": 19982,
+     "resident_mb": 163.7
+    },
+    "heap": {
+     "relation_bytes": 1933312,
+     "resident_pages": 236,
+     "resident_mb": 1.9
+    },
+    "toast": {
+     "relation_bytes": 109232128,
+     "resident_pages": 2155,
+     "resident_mb": 17.7
+    }
+   },
+   "index_resident_fraction": 0.9991
+  },
+  {
+   "embedder": "titan",
+   "scale": 25000,
+   "table": "rev1.n_titan_25000",
+   "ef_search": 200,
+   "queries": 400,
+   "sweep_seconds": 4.38,
+   "buffers_in_use_after_restart": 106,
+   "uses_hnsw": true,
+   "resident": {
+    "index": {
+     "relation_bytes": 204808192,
+     "resident_pages": 24943,
+     "resident_mb": 204.3
+    },
+    "heap": {
+     "relation_bytes": 2416640,
+     "resident_pages": 294,
+     "resident_mb": 2.4
+    },
+    "toast": {
+     "relation_bytes": 136536064,
+     "resident_pages": 2211,
+     "resident_mb": 18.1
+    }
+   },
+   "index_resident_fraction": 0.9977
+  },
+  {
+   "embedder": "titan",
+   "scale": 40000,
+   "table": "rev1.n_titan_40000",
+   "ef_search": 200,
+   "queries": 400,
+   "sweep_seconds": 5.66,
+   "buffers_in_use_after_restart": 106,
+   "uses_hnsw": true,
+   "resident": {
+    "index": {
+     "relation_bytes": 327680000,
+     "resident_pages": 39618,
+     "resident_mb": 324.6
+    },
+    "heap": {
+     "relation_bytes": 3858432,
+     "resident_pages": 457,
+     "resident_mb": 3.7
+    },
+    "toast": {
+     "relation_bytes": 218447872,
+     "resident_pages": 2298,
+     "resident_mb": 18.8
+    }
+   },
+   "index_resident_fraction": 0.9905
+  },
+  {
+   "embedder": "titan",
+   "scale": 50000,
+   "table": "rev1.n_titan_50000",
+   "ef_search": 200,
+   "queries": 400,
+   "sweep_seconds": 6.7,
+   "buffers_in_use_after_restart": 106,
+   "uses_hnsw": true,
+   "resident": {
+    "index": {
+     "relation_bytes": 409600000,
+     "resident_pages": 49085,
+     "resident_mb": 402.1
+    },
+    "heap": {
+     "relation_bytes": 4825088,
+     "resident_pages": 560,
+     "resident_mb": 4.6
+    },
+    "toast": {
+     "relation_bytes": 273063936,
+     "resident_pages": 2328,
+     "resident_mb": 19.1
+    }
+   },
+   "index_resident_fraction": 0.9817
+  },
+  {
+   "embedder": "titan",
+   "scale": 75000,
+   "table": "rev1.n_titan_75000",
+   "ef_search": 200,
+   "queries": 400,
+   "sweep_seconds": 9.46,
+   "buffers_in_use_after_restart": 106,
+   "uses_hnsw": true,
+   "resident": {
+    "index": {
+     "relation_bytes": 614383616,
+     "resident_pages": 71319,
+     "resident_mb": 584.2
+    },
+    "heap": {
+     "relation_bytes": 7233536,
+     "resident_pages": 769,
+     "resident_mb": 6.3
+    },
+    "toast": {
+     "relation_bytes": 409600000,
+     "resident_pages": 2378,
+     "resident_mb": 19.5
+    }
+   },
+   "index_resident_fraction": 0.9509
+  },
+  {
+   "embedder": "titan",
+   "scale": 100000,
+   "table": "rev1.n_titan_100000",
+   "ef_search": 200,
+   "queries": 400,
+   "sweep_seconds": 12.25,
+   "buffers_in_use_after_restart": 106,
+   "uses_hnsw": true,
+   "resident": {
+    "index": {
+     "relation_bytes": 819175424,
+     "resident_pages": 91409,
+     "resident_mb": 748.8
+    },
+    "heap": {
+     "relation_bytes": 9633792,
+     "resident_pages": 911,
+     "resident_mb": 7.5
+    },
+    "toast": {
+     "relation_bytes": 546127872,
+     "resident_pages": 2501,
+     "resident_mb": 20.5
+    }
+   },
+   "index_resident_fraction": 0.9141
+  }
+ ]
+}

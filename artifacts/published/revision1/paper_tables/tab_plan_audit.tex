@@ -1,23 +1,23 @@
-\begin{table}[t]
-\caption{Share of primary-200 OpenAI \texttt{raw} queries whose plan used HNSW, on the original copy and fresh restore databases. Column heads give $\texttt{ef\_search}$. Cells at $\texttt{ef\_search}{=}200$ use 200 probe queries; cells at $\texttt{ef\_search}\in\{400,800\}$ use 40 sampled queries.}
+\begin{table*}[t]
+\caption{Share of the $200$ primary questions whose plan used the HNSW index, for each embedder, condition (raw; filtered by the first listed source type, the v1 filter whose HNSW runs are audited), database (orig.: frozen original copy; fresh: fresh restore), and size. Each cell lists the share at $\texttt{ef\_search}{=}200/400/800$ (1: every query used HNSW; 0: every query ran an exact scan). Every cell plans all $200$ questions (plain \texttt{EXPLAIN}); the \texttt{EXPLAIN (ANALYZE, BUFFERS)} audit gives identical shares at $\texttt{ef\_search}{=}200$ and agrees on its $40$-question sample at $400$ and $800$. All other queries used a B-tree or sequential scan followed by an exact sort.}
 \label{tab:planaudit}
 \centering
 \small
-\fitcolumn{\begin{tabular}{lrrrrrr}
+\fittext{\begin{tabular}{lcccccccc}
 \toprule
-& \multicolumn{3}{c}{original copy} & \multicolumn{3}{c}{fresh restore} \\
-\cmidrule(lr){2-4}\cmidrule(lr){5-7}
-Scale & 200 & 400 & 800 & 200 & 400 & 800 \\
+& \multicolumn{2}{c}{OpenAI raw} & \multicolumn{2}{c}{OpenAI filtered} & \multicolumn{2}{c}{Titan raw} & \multicolumn{2}{c}{Titan filtered} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}\cmidrule(lr){8-9}
+Scale & orig. & fresh & orig. & fresh & orig. & fresh & orig. & fresh \\
 \midrule
-5k & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 \\
-10k & 1.000 & 0.000 & 0.000 & 0.000 & 0.000 & 1.000 \\
-15k & 1.000 & 0.000 & 0.000 & 0.000 & 0.000 & 1.000 \\
-20k & 1.000 & 0.000 & 0.000 & 0.000 & 0.000 & 1.000 \\
-25k & 1.000 & 0.000 & 0.000 & 0.000 & 0.000 & 1.000 \\
-40k & 1.000 & 0.000 & 0.000 & 0.000 & 0.000 & 1.000 \\
-50k & 1.000 & 0.000 & 0.000 & 0.000 & 0.000 & 1.000 \\
-75k & 1.000 & 0.000 & 0.000 & 1.000 & 0.000 & 1.000 \\
-100k & 1.000 & 0.000 & 0.000 & 1.000 & 0.000 & 1.000 \\
+5k & 0/0/0 & 0/0/0 & 0/0/0 & 0/0/0 & 0/0/0 & 0/0/0 & 0/0/0 & 0/0/0 \\
+10k & 1/0/0 & 0/0/1 & 0/0/0 & 0/0/0 & 0/0/0 & 0/0/0 & 0/0/0 & 0/0/0 \\
+15k & 1/0/0 & 0/0/1 & 0/0/0 & 0/0/0 & 0/0/0 & 0/0/0 & 0/0/0 & 0/0/0 \\
+20k & 1/0/0 & 0/0/1 & 0/0/0 & 0/0/0 & 0/0/0 & 0/0/0 & 0/0/0 & 0/0/0 \\
+25k & 1/0/0 & 0/0/1 & 0/0/0 & 0/0/0 & 0/0/0 & 0/0/0 & 0/0/0 & 0/0/0 \\
+40k & 1/0/0 & 0/0/1 & .44/0/0 & 0/0/.13 & 0/0/0 & 0/0/0 & 0/0/0 & 0/0/0 \\
+50k & 1/0/0 & 0/0/1 & .51/0/0 & 0/0/.44 & 0/0/0 & 0/0/0 & 0/0/0 & 0/0/0 \\
+75k & 1/0/0 & 1/0/1 & .80/0/0 & 0/0/.51 & 1/0/1 & 0/0/1 & 0/0/.60 & 0/0/.51 \\
+100k & 1/0/0 & 1/0/1 & .80/0/0 & 0/0/.60 & 1/0/1 & 1/0/1 & 0/0/.60 & 0/0/.60 \\
 \bottomrule
 \end{tabular}}
-\end{table}
+\end{table*}

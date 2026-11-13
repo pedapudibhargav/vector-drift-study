@@ -566,16 +566,9 @@
     ],
     "tab_plan_audit.tex": [
       {
-        "file": "artifacts/published/revision1/plan_audit_5434.json",
+        "file": "artifacts/published/revision1/plan_coverage_full.json",
         "keys": [
-          "cells",
-          "frac_hnsw"
-        ]
-      },
-      {
-        "file": "artifacts/published/revision1/plan_audit_5433.json",
-        "keys": [
-          "cells",
+          "single_table",
           "frac_hnsw"
         ]
       }
@@ -605,6 +598,14 @@
         "keys": [
           "by_scale",
           "drop_5k_to_100k"
+        ]
+      }
+    ],
+    "tab_rrf_sens.tex": [
+      {
+        "file": "artifacts/published/revision1/rrf_sensitivity_openai_primary200.json",
+        "keys": [
+          "cells"
         ]
       }
     ]

@@ -11,7 +11,8 @@
 | `tab_bm25.tex` | BM25 truncation variants vs dense exact. |
 | `tab_doclen.tex` | Corpus and gold document length stats. |
 | `tab_pool.tex` | Pool size and source composition per ladder size (round-robin). |
-| `tab_plan_audit.tex` | HNSW plan share by PG port and ef_search. |
+| `tab_plan_audit.tex` | HNSW plan share by embedder, condition, PG port and ef_search. |
+| `tab_rrf_sens.tex` | RRF sensitivity to k and dense weight (R1.4). |
 | `tab_old_vs_exact.tex` | Published HNSW vs exact Hit@10. |
 | `tab_ef_planner.tex` | ef_search planner sweep at 100k (E2). |
 | `tab_fits.tex` | Log-linear scale slopes (raw/meta_in) with bootstrap CIs. |

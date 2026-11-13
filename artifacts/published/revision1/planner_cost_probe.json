@@ -1,0 +1,246 @@
+{
+ "meta": {
+  "created": "2026-11-13T17:43:24Z",
+  "query": "qst_0102::basic",
+  "scale": 100000,
+  "pgvector_source": "https://github.com/pgvector/pgvector/blob/v0.8.6/src/hnsw.c (hnswcostestimate)"
+ },
+ "databases": {
+  "5434": {
+   "heap_pages": 13071,
+   "index_pages": 103314,
+   "index_tuples": 103033.0,
+   "threshold_ratio": 0.12652,
+   "rows": [
+    {
+     "ef_search": 100,
+     "chosen_plan": "Limit > idx_chunks_embedding_hnsw",
+     "chosen_cost": 5663.39,
+     "index_plan": "Limit > idx_chunks_embedding_hnsw",
+     "index_cost": 5663.39,
+     "pgvector_ratio": 0.01331,
+     "startup_pages": 1375.0,
+     "toast_discount_applies": false
+    },
+    {
+     "ef_search": 200,
+     "chosen_plan": "Limit > idx_chunks_embedding_hnsw",
+     "chosen_cost": 9838.16,
+     "index_plan": "Limit > idx_chunks_embedding_hnsw",
+     "index_cost": 9838.16,
+     "pgvector_ratio": 0.0232,
+     "startup_pages": 2397.2,
+     "toast_discount_applies": false
+    },
+    {
+     "ef_search": 300,
+     "chosen_plan": "Limit > idx_chunks_embedding_hnsw",
+     "chosen_cost": 13737.64,
+     "index_plan": "Limit > idx_chunks_embedding_hnsw",
+     "index_cost": 13737.64,
+     "pgvector_ratio": 0.03245,
+     "startup_pages": 3352.1,
+     "toast_discount_applies": false
+    },
+    {
+     "ef_search": 400,
+     "chosen_plan": "Limit > Gather Merge > Sort > Seq Scan",
+     "chosen_cost": 15785.01,
+     "index_plan": "Limit > idx_chunks_embedding_hnsw",
+     "index_cost": 17476.73,
+     "pgvector_ratio": 0.04131,
+     "startup_pages": 4267.7,
+     "toast_discount_applies": false
+    },
+    {
+     "ef_search": 500,
+     "chosen_plan": "Limit > Gather Merge > Sort > Seq Scan",
+     "chosen_cost": 15785.01,
+     "index_plan": "Limit > idx_chunks_embedding_hnsw",
+     "index_cost": 21104.63,
+     "pgvector_ratio": 0.04991,
+     "startup_pages": 5156.1,
+     "toast_discount_applies": false
+    },
+    {
+     "ef_search": 600,
+     "chosen_plan": "Limit > Gather Merge > Sort > Seq Scan",
+     "chosen_cost": 15785.01,
+     "index_plan": "Limit > idx_chunks_embedding_hnsw",
+     "index_cost": 24648.43,
+     "pgvector_ratio": 0.05831,
+     "startup_pages": 6023.8,
+     "toast_discount_applies": false
+    },
+    {
+     "ef_search": 700,
+     "chosen_plan": "Limit > Gather Merge > Sort > Seq Scan",
+     "chosen_cost": 15785.01,
+     "index_plan": "Limit > idx_chunks_embedding_hnsw",
+     "index_cost": 28125.11,
+     "pgvector_ratio": 0.06655,
+     "startup_pages": 6875.2,
+     "toast_discount_applies": false
+    },
+    {
+     "ef_search": 750,
+     "chosen_plan": "Limit > Gather Merge > Sort > Seq Scan",
+     "chosen_cost": 15785.01,
+     "index_plan": "Limit > idx_chunks_embedding_hnsw",
+     "index_cost": 29842.05,
+     "pgvector_ratio": 0.07062,
+     "startup_pages": 7295.6,
+     "toast_discount_applies": false
+    },
+    {
+     "ef_search": 800,
+     "chosen_plan": "Limit > Gather Merge > Sort > Seq Scan",
+     "chosen_cost": 15785.01,
+     "index_plan": "Limit > idx_chunks_embedding_hnsw",
+     "index_cost": 31546.28,
+     "pgvector_ratio": 0.07465,
+     "startup_pages": 7712.9,
+     "toast_discount_applies": false
+    },
+    {
+     "ef_search": 900,
+     "chosen_plan": "Limit > Gather Merge > Sort > Seq Scan",
+     "chosen_cost": 15785.01,
+     "index_plan": "Limit > idx_chunks_embedding_hnsw",
+     "index_cost": 34920.29,
+     "pgvector_ratio": 0.08265,
+     "startup_pages": 8539.1,
+     "toast_discount_applies": false
+    },
+    {
+     "ef_search": 1000,
+     "chosen_plan": "Limit > Gather Merge > Sort > Seq Scan",
+     "chosen_cost": 15785.01,
+     "index_plan": "Limit > idx_chunks_embedding_hnsw",
+     "index_cost": 38253.47,
+     "pgvector_ratio": 0.09055,
+     "startup_pages": 9355.3,
+     "toast_discount_applies": false
+    }
+   ]
+  },
+  "5433": {
+   "heap_pages": 7360,
+   "index_pages": 103032,
+   "index_tuples": 103033.0,
+   "threshold_ratio": 0.07143,
+   "rows": [
+    {
+     "ef_search": 100,
+     "chosen_plan": "Limit > idx_chunks_embedding_hnsw",
+     "chosen_cost": 5539.04,
+     "index_plan": "Limit > idx_chunks_embedding_hnsw",
+     "index_cost": 5539.04,
+     "pgvector_ratio": 0.01331,
+     "startup_pages": 1371.2,
+     "toast_discount_applies": false
+    },
+    {
+     "ef_search": 200,
+     "chosen_plan": "Limit > idx_chunks_embedding_hnsw",
+     "chosen_cost": 9624.22,
+     "index_plan": "Limit > idx_chunks_embedding_hnsw",
+     "index_cost": 9624.22,
+     "pgvector_ratio": 0.0232,
+     "startup_pages": 2390.7,
+     "toast_discount_applies": false
+    },
+    {
+     "ef_search": 300,
+     "chosen_plan": "Limit > Gather Merge > Sort > Seq Scan",
+     "chosen_cost": 10110.06,
+     "index_plan": "Limit > idx_chunks_embedding_hnsw",
+     "index_cost": 13440.02,
+     "pgvector_ratio": 0.03245,
+     "startup_pages": 3343.0,
+     "toast_discount_applies": false
+    },
+    {
+     "ef_search": 400,
+     "chosen_plan": "Limit > Gather Merge > Sort > Seq Scan",
+     "chosen_cost": 10110.06,
+     "index_plan": "Limit > idx_chunks_embedding_hnsw",
+     "index_cost": 17098.86,
+     "pgvector_ratio": 0.04131,
+     "startup_pages": 4256.0,
+     "toast_discount_applies": false
+    },
+    {
+     "ef_search": 500,
+     "chosen_plan": "Limit > Gather Merge > Sort > Seq Scan",
+     "chosen_cost": 10110.06,
+     "index_plan": "Limit > idx_chunks_embedding_hnsw",
+     "index_cost": 20648.91,
+     "pgvector_ratio": 0.04991,
+     "startup_pages": 5142.0,
+     "toast_discount_applies": false
+    },
+    {
+     "ef_search": 600,
+     "chosen_plan": "Limit > Gather Merge > Sort > Seq Scan",
+     "chosen_cost": 10110.06,
+     "index_plan": "Limit > idx_chunks_embedding_hnsw",
+     "index_cost": 24116.66,
+     "pgvector_ratio": 0.05831,
+     "startup_pages": 6007.4,
+     "toast_discount_applies": false
+    },
+    {
+     "ef_search": 700,
+     "chosen_plan": "Limit > Gather Merge > Sort > Seq Scan",
+     "chosen_cost": 10110.06,
+     "index_plan": "Limit > idx_chunks_embedding_hnsw",
+     "index_cost": 27518.74,
+     "pgvector_ratio": 0.06655,
+     "startup_pages": 6856.4,
+     "toast_discount_applies": false
+    },
+    {
+     "ef_search": 750,
+     "chosen_plan": "Limit > Gather Merge > Sort > Seq Scan",
+     "chosen_cost": 10110.06,
+     "index_plan": "Limit > idx_chunks_embedding_hnsw",
+     "index_cost": 29198.83,
+     "pgvector_ratio": 0.07062,
+     "startup_pages": 7275.7,
+     "toast_discount_applies": false
+    },
+    {
+     "ef_search": 800,
+     "chosen_plan": "Limit > idx_chunks_embedding_hnsw",
+     "chosen_cost": 7461.41,
+     "index_plan": "Limit > idx_chunks_embedding_hnsw",
+     "index_cost": 7461.41,
+     "pgvector_ratio": 0.07465,
+     "startup_pages": 7691.9,
+     "toast_discount_applies": true
+    },
+    {
+     "ef_search": 900,
+     "chosen_plan": "Limit > idx_chunks_embedding_hnsw",
+     "chosen_cost": 7467.59,
+     "index_plan": "Limit > idx_chunks_embedding_hnsw",
+     "index_cost": 7467.59,
+     "pgvector_ratio": 0.08265,
+     "startup_pages": 8515.8,
+     "toast_discount_applies": true
+    },
+    {
+     "ef_search": 1000,
+     "chosen_plan": "Limit > idx_chunks_embedding_hnsw",
+     "chosen_cost": 7473.69,
+     "index_plan": "Limit > idx_chunks_embedding_hnsw",
+     "index_cost": 7473.69,
+     "pgvector_ratio": 0.09055,
+     "startup_pages": 9329.8,
+     "toast_discount_applies": true
+    }
+   ]
+  }
+ }
+}

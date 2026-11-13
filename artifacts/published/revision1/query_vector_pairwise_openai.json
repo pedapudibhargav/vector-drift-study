@@ -1,0 +1,17 @@
+{
+ "meta": {
+  "created": "2026-11-13T18:29:48Z",
+  "script": "query_vector_pairwise.py",
+  "bank": "primary200",
+  "embedder": "openai text-embedding-3-small (cached query vectors)"
+ },
+ "n_questions": 200,
+ "n_pairs": 19900,
+ "max_pairwise_cosine": 0.723539,
+ "max_pair": [
+  "qst_0027::metadata",
+  "qst_0078::metadata"
+ ],
+ "p99_pairwise_cosine": 0.523719,
+ "mean_pairwise_cosine": 0.287157
+}

@@ -459,7 +459,7 @@
   "expected": 0.075,
   "tolerance": 0,
   "tex_strings": [
-   "100k & 0.080 $[0.045, 0.120]$ & 0.075 $[0.040, 0.115]$ & 0.060 $[0.037, 0.085]$"
+   "100k & 0.080 $[0.045, 0.120]$ & 0.075 $[0.040, 0.115]$ & 0.060 $[0.0375, 0.085]$"
   ],
   "tex_files": [
    "artifacts/published/revision1/paper_tables/tab_lift.tex"
@@ -987,7 +987,7 @@
   "expected": 0.7725,
   "tolerance": 0,
   "tex_strings": [
-   "$0.772{\\to}0.568$"
+   "$0.7725{\\to}0.5675$"
   ]
  },
  {
@@ -1007,7 +1007,7 @@
   "expected": 0.5675,
   "tolerance": 0,
   "tex_strings": [
-   "$0.772{\\to}0.568$"
+   "$0.7725{\\to}0.5675$"
   ]
  },
  {
@@ -1099,7 +1099,7 @@
   "expected": 0.0775,
   "tolerance": 0,
   "tex_strings": [
-   "5k & 0.080 $[0.045, 0.120]$ & 0.085 $[0.050, 0.125]$ & 0.077 $[0.052, 0.105]$"
+   "5k & 0.080 $[0.045, 0.120]$ & 0.085 $[0.050, 0.125]$ & 0.0775 $[0.0525, 0.105]$"
   ],
   "tex_files": [
    "artifacts/published/revision1/paper_tables/tab_lift.tex"
@@ -1125,7 +1125,7 @@
   "expected": 0.06,
   "tolerance": 0,
   "tex_strings": [
-   "0.060 $[0.037, 0.085]$"
+   "0.060 $[0.0375, 0.085]$"
   ],
   "tex_files": [
    "artifacts/published/revision1/paper_tables/tab_lift.tex"
@@ -2389,6 +2389,1252 @@
   "tolerance": 1e-09,
   "tex_strings": [
    "$[-0.015,0.120]$"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "slope.prop_s0.up100k",
+  "description": "Log-linear slope of raw Hit@10 vs ln N: prop_s0|raw up_to_100k",
+  "artifact": "artifacts/published/revision1/analysis_pool_ladders.json",
+  "json_path": [
+   "slopes",
+   "prop_s0|raw",
+   "up_to_100k",
+   "slope"
+  ],
+  "expected": -0.0762,
+  "tolerance": 0.0006,
+  "tex_strings": [
+   "it is $-0.076$ and $-0.077$ (seeds $0$ and $42$"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "slope.prop_s42.up100k",
+  "description": "Log-linear slope of raw Hit@10 vs ln N: prop_s42|raw up_to_100k",
+  "artifact": "artifacts/published/revision1/analysis_pool_ladders.json",
+  "json_path": [
+   "slopes",
+   "prop_s42|raw",
+   "up_to_100k",
+   "slope"
+  ],
+  "expected": -0.0769,
+  "tolerance": 0.0006,
+  "tex_strings": [
+   "$-0.076$ and $-0.077$"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "slope.prop_s0.full",
+  "description": "Log-linear slope of raw Hit@10 vs ln N: prop_s0|raw including_150k_and_full",
+  "artifact": "artifacts/published/revision1/analysis_pool_ladders.json",
+  "json_path": [
+   "slopes",
+   "prop_s0|raw",
+   "including_150k_and_full",
+   "slope"
+  ],
+  "expected": -0.0842,
+  "tolerance": 0.0006,
+  "tex_strings": [
+   "$-0.084$ and $-0.085$ when"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "slope.prop_s42.full",
+  "description": "Log-linear slope of raw Hit@10 vs ln N: prop_s42|raw including_150k_and_full",
+  "artifact": "artifacts/published/revision1/analysis_pool_ladders.json",
+  "json_path": [
+   "slopes",
+   "prop_s42|raw",
+   "including_150k_and_full",
+   "slope"
+  ],
+  "expected": -0.0851,
+  "tolerance": 0.0006,
+  "tex_strings": [
+   "$-0.084$ and $-0.085$ when"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "slope.rr.full",
+  "description": "Log-linear slope of raw Hit@10 vs ln N: rr_full|raw including_150k_and_full",
+  "artifact": "artifacts/published/revision1/analysis_pool_ladders.json",
+  "json_path": [
+   "slopes",
+   "rr_full|raw",
+   "including_150k_and_full",
+   "slope"
+  ],
+  "expected": -0.0728,
+  "tolerance": 0.0006,
+  "tex_strings": [
+   "against $-0.073$ for round-robin"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "sept.ablation.ef200.hit1",
+  "description": "Ablation sweep ef_search=200 raw Hit@1 at 100k.",
+  "artifact": "artifacts/published/ef_search_ablation_100k.json",
+  "json_path": [
+   "runs",
+   {
+    "where": {
+     "ef_search": 200,
+     "condition": "raw"
+    }
+   },
+   "hit_at_1"
+  ],
+  "expected": 0.3,
+  "tolerance": 1e-09,
+  "tex_strings": [
+   "($0.305$ against $0.300$)"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "sept.ablation.ef200.mrr",
+  "description": "Ablation sweep ef_search=200 raw MRR at 100k.",
+  "artifact": "artifacts/published/ef_search_ablation_100k.json",
+  "json_path": [
+   "runs",
+   {
+    "where": {
+     "ef_search": 200,
+     "condition": "raw"
+    }
+   },
+   "mrr"
+  ],
+  "expected": 0.3644,
+  "tolerance": 0.00051,
+  "tex_strings": [
+   "($0.365$ against $0.364$)"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "sept.first.hit1",
+  "description": "First sweep (erb_full) raw hit_at_1 at 100k.",
+  "artifact": "artifacts/published/erb_full_primary200_to100k.json",
+  "json_path": [
+   "runs",
+   {
+    "where": {
+     "condition": "raw",
+     "corpus_scale_size": 100000
+    }
+   },
+   "hit_at_1"
+  ],
+  "expected": 0.305,
+  "tolerance": 0.00051,
+  "tex_strings": [
+   "($0.305$ against $0.300$)"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "sept.first.mrr",
+  "description": "First sweep (erb_full) raw mrr at 100k.",
+  "artifact": "artifacts/published/erb_full_primary200_to100k.json",
+  "json_path": [
+   "runs",
+   {
+    "where": {
+     "condition": "raw",
+     "corpus_scale_size": 100000
+    }
+   },
+   "mrr"
+  ],
+  "expected": 0.3647,
+  "tolerance": 0.00051,
+  "tex_strings": [
+   "($0.365$ against $0.364$)"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "sept.first.hit5",
+  "description": "First sweep raw Hit@5 at 100k.",
+  "artifact": "artifacts/published/erb_full_primary200_to100k.json",
+  "json_path": [
+   "runs",
+   {
+    "where": {
+     "condition": "raw",
+     "corpus_scale_size": 100000
+    }
+   },
+   "hit_at_5"
+  ],
+  "expected": 0.46,
+  "tolerance": 1e-09,
+  "tex_strings": [
+   "Hit@5 ($0.460$ against $0.465$)"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "sept.ablation.hit5",
+  "description": "Ablation sweep ef200 raw Hit@5 at 100k.",
+  "artifact": "artifacts/published/ef_search_ablation_100k.json",
+  "json_path": [
+   "runs",
+   {
+    "where": {
+     "ef_search": 200,
+     "condition": "raw"
+    }
+   },
+   "hit_at_5"
+  ],
+  "expected": 0.465,
+  "tolerance": 1e-09,
+  "tex_strings": [
+   "Hit@5 ($0.460$ against $0.465$)"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "exactscan.100k",
+  "description": "Exact scan of 200 queries at 100k (original DB).",
+  "artifact": "artifacts/published/exact_control_mvp.json",
+  "json_path": [
+   "comparisons",
+   {
+    "where": {
+     "condition": "raw",
+     "corpus_scale_size": 100000
+    }
+   },
+   "elapsed_s"
+  ],
+  "expected": 43.7,
+  "tolerance": 0.05,
+  "tex_strings": [
+   "took $43.7$"
+  ],
+  "tex_files": [
+   "artifacts/published/revision1/paper_tables/tab_perN_capacity.tex"
+  ]
+ },
+ {
+  "id": "srcgroup.small.raw.drop",
+  "description": "Source-group split: small.raw.drop",
+  "artifact": "artifacts/published/revision1/source_group_split.json",
+  "json_path": [
+   "groups",
+   "small",
+   "raw",
+   "drop_5k_100k"
+  ],
+  "expected": 0.16,
+  "tolerance": 0.0006,
+  "tex_strings": [
+   "fall from $0.840$ to $0.680$ ($0.160$)"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "srcgroup.small.meta.drop",
+  "description": "Source-group split: small.meta.drop",
+  "artifact": "artifacts/published/revision1/source_group_split.json",
+  "json_path": [
+   "groups",
+   "small",
+   "meta_in",
+   "drop_5k_100k"
+  ],
+  "expected": 0.15,
+  "tolerance": 0.0006,
+  "tex_strings": [
+   "from $0.920$ to $0.770$ ($0.150$)"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "srcgroup.large.raw.drop",
+  "description": "Source-group split: large.raw.drop",
+  "artifact": "artifacts/published/revision1/source_group_split.json",
+  "json_path": [
+   "groups",
+   "large",
+   "raw",
+   "drop_5k_100k"
+  ],
+  "expected": 0.279,
+  "tolerance": 0.0006,
+  "tex_strings": [
+   "fall from $0.721$ to $0.442$ ($0.279$)"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "srcgroup.large.meta.drop",
+  "description": "Source-group split: large.meta.drop",
+  "artifact": "artifacts/published/revision1/source_group_split.json",
+  "json_path": [
+   "groups",
+   "large",
+   "meta_in",
+   "drop_5k_100k"
+  ],
+  "expected": 0.279,
+  "tolerance": 0.0006,
+  "tex_strings": [
+   "from $0.802$ to $0.523$ ($0.279$)"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "srcgroup.diff.est",
+  "description": "Source-group split: diff.est",
+  "artifact": "artifacts/published/revision1/source_group_split.json",
+  "json_path": [
+   "large_minus_small_drop",
+   "estimate"
+  ],
+  "expected": 0.119,
+  "tolerance": 0.0006,
+  "tex_strings": [
+   "is $0.119$ (bootstrap"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "srcgroup.diff.lo",
+  "description": "Source-group split: diff.lo",
+  "artifact": "artifacts/published/revision1/source_group_split.json",
+  "json_path": [
+   "large_minus_small_drop",
+   "ci_lo"
+  ],
+  "expected": 0.001,
+  "tolerance": 0.0006,
+  "tex_strings": [
+   "$[0.001,0.240]$"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "srcgroup.diff.hi",
+  "description": "Source-group split: diff.hi",
+  "artifact": "artifacts/published/revision1/source_group_split.json",
+  "json_path": [
+   "large_minus_small_drop",
+   "ci_hi"
+  ],
+  "expected": 0.24,
+  "tolerance": 0.0006,
+  "tex_strings": [
+   "$[0.001,0.240]$"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "srcgroup.unif.s0",
+  "description": "Source-group split: unif.s0",
+  "artifact": "artifacts/published/revision1/source_group_split.json",
+  "json_path": [
+   "gap_by_ladder",
+   "uniform_s0_openai",
+   "large_minus_small"
+  ],
+  "expected": 0.054,
+  "tolerance": 0.0006,
+  "tex_strings": [
+   "$0.054$ and $0.064$ under the two uniform"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "srcgroup.unif.s42",
+  "description": "Source-group split: unif.s42",
+  "artifact": "artifacts/published/revision1/source_group_split.json",
+  "json_path": [
+   "gap_by_ladder",
+   "uniform_s42_openai",
+   "large_minus_small"
+  ],
+  "expected": 0.064,
+  "tolerance": 0.0006,
+  "tex_strings": [
+   "$0.054$ and $0.064$ under the two uniform"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "srcgroup.prop.min",
+  "description": "Source-group split: prop.min",
+  "artifact": "artifacts/published/revision1/source_group_split.json",
+  "json_path": [
+   "gap_by_ladder",
+   "pool_prop_s7_openai",
+   "large_minus_small"
+  ],
+  "expected": 0.089,
+  "tolerance": 0.0006,
+  "tex_strings": [
+   "$0.089$ to $0.144$ under the proportional"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "srcgroup.prop.max",
+  "description": "Source-group split: prop.max",
+  "artifact": "artifacts/published/revision1/source_group_split.json",
+  "json_path": [
+   "gap_by_ladder",
+   "pool_prop_s42_openai",
+   "large_minus_small"
+  ],
+  "expected": 0.144,
+  "tolerance": 0.0006,
+  "tex_strings": [
+   "$0.089$ to $0.144$ under the proportional"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "srcgroup.titan.rr",
+  "description": "Source-group split: titan.rr",
+  "artifact": "artifacts/published/revision1/source_group_split.json",
+  "json_path": [
+   "gap_by_ladder",
+   "titan",
+   "large_minus_small"
+  ],
+  "expected": -0.029,
+  "tolerance": 0.0006,
+  "tex_strings": [
+   "($-0.029$, $[-0.137,0.076]$ under round-robin)"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "srcgroup.titan.rr.hi",
+  "description": "Source-group split: titan.rr.hi",
+  "artifact": "artifacts/published/revision1/source_group_split.json",
+  "json_path": [
+   "gap_by_ladder",
+   "titan",
+   "ci_hi"
+  ],
+  "expected": 0.076,
+  "tolerance": 0.0006,
+  "tex_strings": [
+   "$[-0.137,0.076]$"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "srcgroup.titan.rr.lo",
+  "description": "Source-group split: titan.rr.lo",
+  "artifact": "artifacts/published/revision1/source_group_split.json",
+  "json_path": [
+   "gap_by_ladder",
+   "titan",
+   "ci_lo"
+  ],
+  "expected": -0.137,
+  "tolerance": 0.0006,
+  "tex_strings": [
+   "$[-0.137,0.076]$"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "order.titan.order.raw",
+  "description": "Titan arrival-order effect",
+  "artifact": "artifacts/published/revision1/analysis_uniform.json",
+  "json_path": [
+   "drop_5k_100k",
+   "titan",
+   "uniform_s42",
+   "raw",
+   "drop_difference_alt_minus_rr",
+   "estimate"
+  ],
+  "expected": 0.02,
+  "tolerance": 1e-09,
+  "tex_strings": [
+   "increases the raw drop by $0.020$"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "order.titan.order.meta",
+  "description": "Titan arrival-order effect",
+  "artifact": "artifacts/published/revision1/analysis_uniform.json",
+  "json_path": [
+   "drop_5k_100k",
+   "titan",
+   "uniform_s42",
+   "meta_in",
+   "drop_difference_alt_minus_rr",
+   "estimate"
+  ],
+  "expected": 0.035,
+  "tolerance": 1e-09,
+  "tex_strings": [
+   "the filtered drop by $0.035$"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "srcgroup.rr_s0",
+  "description": "round-robin seed 0 gap",
+  "artifact": "artifacts/published/revision1/source_group_split.json",
+  "json_path": [
+   "gap_by_ladder",
+   "rr_s0_openai",
+   "large_minus_small"
+  ],
+  "expected": 0.096,
+  "tolerance": 0.0006,
+  "tex_strings": [
+   "it is $0.096$ ($[-0.022,0.214]$) under round-robin with seed $0$"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "trunc.matched.drop",
+  "description": "byte-identical truncation OpenAI raw drop",
+  "artifact": "artifacts/published/revision1/matched_truncation_openai_primary200.json",
+  "json_path": [
+   "summary",
+   "raw",
+   "drop_matched_95",
+   "estimate"
+  ],
+  "expected": 0.215,
+  "tolerance": 1e-06,
+  "tex_strings": [
+   "(drop $0.215$, $[0.160,0.275]$, against $0.210$)"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "trunc.matched.drop.lo",
+  "description": "matched drop CI lo",
+  "artifact": "artifacts/published/revision1/matched_truncation_openai_primary200.json",
+  "json_path": [
+   "summary",
+   "raw",
+   "drop_matched_95",
+   "ci_lo"
+  ],
+  "expected": 0.16,
+  "tolerance": 1e-06,
+  "tex_strings": [
+   "$[0.160,0.275]$"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "trunc.matched.5k",
+  "description": "matched 5k",
+  "artifact": "artifacts/published/revision1/matched_truncation_openai_primary200.json",
+  "json_path": [
+   "summary",
+   "raw",
+   "hit10_matched",
+   "5000"
+  ],
+  "expected": 0.8,
+  "tolerance": 1e-06,
+  "tex_strings": [
+   "raw Hit@10 falls $0.800{\\to}0.585$"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "trunc.matched.vs_titan",
+  "description": "matched OpenAI-Titan raw drop",
+  "artifact": "artifacts/published/revision1/matched_truncation_openai_primary200.json",
+  "json_path": [
+   "summary",
+   "raw",
+   "openai_matched_minus_titan_drop_90",
+   "estimate"
+  ],
+  "expected": 0.04,
+  "tolerance": 1e-06,
+  "tex_strings": [
+   "is $+0.040$ ($90\\%$ interval $[-0.015,+0.095]$"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "trunc.matched.vs_titan.hi",
+  "description": "matched OpenAI-Titan hi",
+  "artifact": "artifacts/published/revision1/matched_truncation_openai_primary200.json",
+  "json_path": [
+   "summary",
+   "raw",
+   "openai_matched_minus_titan_drop_90",
+   "ci_hi"
+  ],
+  "expected": 0.095,
+  "tolerance": 1e-06,
+  "tex_strings": [
+   "$[-0.015,+0.095]$"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "chunk.top.drop",
+  "description": "top-10 chunks drop",
+  "artifact": "artifacts/published/revision1/chunk_topchunks_openai_primary200.json",
+  "json_path": [
+   "drop_comparison",
+   "raw",
+   "topchunks_drop",
+   "estimate"
+  ],
+  "expected": 0.19,
+  "tolerance": 1e-06,
+  "tex_strings": [
+   "(drop $0.190$, $[0.140,0.245]$"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "chunk.top.diff",
+  "description": "top-10 chunks minus whole",
+  "artifact": "artifacts/published/revision1/chunk_topchunks_openai_primary200.json",
+  "json_path": [
+   "drop_comparison",
+   "raw",
+   "topchunks_minus_whole_drop",
+   "estimate"
+  ],
+  "expected": -0.02,
+  "tolerance": 1e-06,
+  "tex_strings": [
+   "difference from whole documents $-0.020$, $[-0.085,+0.045]$"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "chunk.top.diff.lo",
+  "description": "top-10 chunks diff lo",
+  "artifact": "artifacts/published/revision1/chunk_topchunks_openai_primary200.json",
+  "json_path": [
+   "drop_comparison",
+   "raw",
+   "topchunks_minus_whole_drop",
+   "ci95",
+   0
+  ],
+  "expected": -0.085,
+  "tolerance": 1e-06,
+  "tex_strings": [
+   "$[-0.085,+0.045]$"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "rrf.sens.w75.k10",
+  "description": "w=0.75 k=10 100k",
+  "artifact": "artifacts/published/revision1/rrf_sensitivity_openai_primary200.json",
+  "json_path": [
+   "cells",
+   {
+    "where": {
+     "k": 10,
+     "w_dense": 0.75
+    }
+   },
+   "hit10_by_scale",
+   "100000"
+  ],
+  "expected": 0.61,
+  "tolerance": 1e-06,
+  "tex_strings": [
+   "($0.610$ to $0.660$ against $0.710$ to $0.720$ at $k{\\ge}10$)"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "mem.openai.100k.index_mb",
+  "description": "OpenAI 100k index pages resident after 400 queries (MB)",
+  "artifact": "artifacts/published/revision1/memory_footprint_per_n.json",
+  "json_path": [
+   "rows",
+   {
+    "where": {
+     "embedder": "openai",
+     "scale": 100000
+    }
+   },
+   "resident",
+   "index",
+   "resident_mb"
+  ],
+  "expected": 695.0,
+  "tolerance": 0.5,
+  "tex_strings": [
+   "$695$~MB of $819$~MB at $100\\text{k}$"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "mem.titan.100k.index_mb",
+  "description": "Titan 100k index resident MB",
+  "artifact": "artifacts/published/revision1/memory_footprint_per_n.json",
+  "json_path": [
+   "rows",
+   {
+    "where": {
+     "embedder": "titan",
+     "scale": 100000
+    }
+   },
+   "resident",
+   "index",
+   "resident_mb"
+  ],
+  "expected": 748.8,
+  "tolerance": 0.5,
+  "tex_strings": [
+   "$749$~MB for Titan"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "mem.openai.100k.frac",
+  "description": "OpenAI 100k resident fraction",
+  "artifact": "artifacts/published/revision1/memory_footprint_per_n.json",
+  "json_path": [
+   "rows",
+   {
+    "where": {
+     "embedder": "openai",
+     "scale": 100000
+    }
+   },
+   "index_resident_fraction"
+  ],
+  "expected": 0.8484,
+  "tolerance": 0.005,
+  "tex_strings": [
+   "$85\\%$ ($100\\text{k}$)"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "planner.fresh.ef800.index_cost",
+  "description": "fresh-restore index cost at ef 800",
+  "artifact": "artifacts/published/revision1/planner_cost_probe.json",
+  "json_path": [
+   "databases",
+   "5433",
+   "rows",
+   {
+    "where": {
+     "ef_search": 800
+    }
+   },
+   "index_cost"
+  ],
+  "expected": 7461.41,
+  "tolerance": 0.5,
+  "tex_strings": [
+   "drops to $7{,}461$ at $800$"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "planner.fresh.ef750.index_cost",
+  "description": "fresh-restore index cost at ef 750",
+  "artifact": "artifacts/published/revision1/planner_cost_probe.json",
+  "json_path": [
+   "databases",
+   "5433",
+   "rows",
+   {
+    "where": {
+     "ef_search": 750
+    }
+   },
+   "index_cost"
+  ],
+  "expected": 29198.8,
+  "tolerance": 0.5,
+  "tex_strings": [
+   "$\\mathrm{ef\\_search}{=}750$ ($29{,}199$)"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "planner.fresh.heap_pages",
+  "description": "fresh-restore heap pages",
+  "artifact": "artifacts/published/revision1/planner_cost_probe.json",
+  "json_path": [
+   "databases",
+   "5433",
+   "heap_pages"
+  ],
+  "expected": 7360,
+  "tolerance": 0,
+  "tex_strings": [
+   "($7{,}360$ heap pages)"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "planner.orig.heap_pages",
+  "description": "original heap pages",
+  "artifact": "artifacts/published/revision1/planner_cost_probe.json",
+  "json_path": [
+   "databases",
+   "5434",
+   "heap_pages"
+  ],
+  "expected": 13071,
+  "tolerance": 0,
+  "tex_strings": [
+   "$13{,}071$ pages"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "planner.fresh.exact_cost",
+  "description": "fresh exact plan cost at 100k",
+  "artifact": "artifacts/published/revision1/planner_cost_probe.json",
+  "json_path": [
+   "databases",
+   "5433",
+   "rows",
+   {
+    "where": {
+     "ef_search": 400
+    }
+   },
+   "chosen_cost"
+  ],
+  "expected": 10110.06,
+  "tolerance": 0.5,
+  "tex_strings": [
+   "($10{,}110$ against $15{,}785$)"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "build.probe.serial",
+  "description": "75k copy serial build seconds",
+  "artifact": "artifacts/published/revision1/build_parallel_probe.json",
+  "json_path": [
+   "probe_75k_openai_copy",
+   "default_settings",
+   "seconds"
+  ],
+  "expected": 50.645,
+  "tolerance": 0.05,
+  "tex_strings": [
+   "$50.6$~s serially"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/generated/tab_perN_capacity.tex"
+  ]
+ },
+ {
+  "id": "build.probe.parallel",
+  "description": "75k copy parallel build seconds",
+  "artifact": "artifacts/published/revision1/build_parallel_probe.json",
+  "json_path": [
+   "probe_75k_openai_copy",
+   "min_parallel_table_scan_size_0",
+   "seconds"
+  ],
+  "expected": 12.186,
+  "tolerance": 0.05,
+  "tex_strings": [
+   "$12.2$~s with workers allowed"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/generated/tab_perN_capacity.tex"
+  ]
+ },
+ {
+  "id": "multisource.first.recall5k",
+  "description": "first-type doc recall on 21 multi-source questions at 5k",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "oracle_definition",
+   "multi_source_first_vs_in",
+   "openai",
+   {
+    "where": {
+     "scale": 5000
+    }
+   },
+   "first",
+   "document_recall"
+  ],
+  "expected": 0.4501,
+  "tolerance": 0.0005,
+  "tex_strings": [
+   "$0.450$ against $0.891$ at $5\\text{k}$"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "multisource.in.recall100k",
+  "description": "all-types doc recall at 100k",
+  "artifact": "artifacts/published/revision1/analysis_exact.json",
+  "json_path": [
+   "oracle_definition",
+   "multi_source_first_vs_in",
+   "openai",
+   {
+    "where": {
+     "scale": 100000
+    }
+   },
+   "in",
+   "document_recall"
+  ],
+  "expected": 0.6009,
+  "tolerance": 0.0005,
+  "tex_strings": [
+   "$0.405$ against $0.601$ at $100\\text{k}$"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "lift.beyond.rr.full_minus_100k",
+  "description": "round-robin lift change 100k to full pool",
+  "artifact": "artifacts/published/revision1/lift_beyond_100k_openai_primary200.json",
+  "json_path": [
+   "schedules",
+   "rr_full",
+   "full_minus_100k",
+   "estimate"
+  ],
+  "expected": 0.05,
+  "tolerance": 1e-06,
+  "tex_strings": [
+   "is $+0.050$ ($[0.015,0.085]$) under round-robin"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "plancov.orig.openai.meta.40k",
+  "description": "orig OpenAI filtered HNSW share at 40k ef200",
+  "artifact": "artifacts/published/revision1/plan_coverage_full.json",
+  "json_path": [
+   "single_table",
+   {
+    "where": {
+     "port": 5434,
+     "embedder": "openai",
+     "condition": "meta",
+     "scale": 40000,
+     "ef_search": 200
+    }
+   },
+   "frac_hnsw"
+  ],
+  "expected": 0.435,
+  "tolerance": 1e-06,
+  "tex_strings": [
+   ".44/0/0"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/generated/tab_plan_audit.tex"
+  ]
+ },
+ {
+  "id": "plancov.fresh.openai.meta.40k.ef800",
+  "description": "fresh OpenAI filtered HNSW share at 40k ef800",
+  "artifact": "artifacts/published/revision1/plan_coverage_full.json",
+  "json_path": [
+   "single_table",
+   {
+    "where": {
+     "port": 5433,
+     "embedder": "openai",
+     "condition": "meta",
+     "scale": 40000,
+     "ef_search": 800
+    }
+   },
+   "frac_hnsw"
+  ],
+  "expected": 0.13,
+  "tolerance": 1e-06,
+  "tex_strings": [
+   "0/0/.13"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/generated/tab_plan_audit.tex"
+  ]
+ },
+ {
+  "id": "titanreplay.unprepared.75k",
+  "description": "unprepared Titan raw lists equal exact at 75k",
+  "artifact": "artifacts/published/revision1/titan_v1_plan_replay.json",
+  "json_path": [
+   "unprepared",
+   {
+    "where": {
+     "scale": 75000,
+     "condition": "raw"
+    }
+   },
+   "identical_to_exact"
+  ],
+  "expected": 176,
+  "tolerance": 0,
+  "tex_strings": [
+   "only $176$ and $178$"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "titanreplay.unprepared.100k",
+  "description": "unprepared Titan raw lists equal exact at 100k",
+  "artifact": "artifacts/published/revision1/titan_v1_plan_replay.json",
+  "json_path": [
+   "unprepared",
+   {
+    "where": {
+     "scale": 100000,
+     "condition": "raw"
+    }
+   },
+   "identical_to_exact"
+  ],
+  "expected": 178,
+  "tolerance": 0,
+  "tex_strings": [
+   "$178$ of $200$ raw questions"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "titanreplay.prepared.100k",
+  "description": "prepared (v1) Titan raw lists equal exact at 100k",
+  "artifact": "artifacts/published/revision1/titan_v1_plan_replay.json",
+  "json_path": [
+   "prepared",
+   {
+    "where": {
+     "scale": 100000,
+     "condition": "raw"
+    }
+   },
+   "identical_to_exact"
+  ],
+  "expected": 200,
+  "tolerance": 0,
+  "tex_strings": [
+   "reproduces exact lists at all nine sizes"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "qvec.max_pairwise",
+  "description": "max cosine between cached query vectors of different primary questions",
+  "artifact": "artifacts/published/revision1/query_vector_pairwise_openai.json",
+  "json_path": [
+   "max_pairwise_cosine"
+  ],
+  "expected": 0.7235,
+  "tolerance": 0.0006,
+  "tex_strings": [
+   "at most $0.724$ between different questions"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "titanreplay.generic_plan_btree",
+  "description": "generic plan at 100k uses the scale_rank B-tree, not HNSW",
+  "artifact": "artifacts/published/revision1/titan_v1_plan_replay.json",
+  "json_path": [
+   "plan_shapes",
+   "rows",
+   {
+    "where": {
+     "scale": 100000,
+     "plan_cache_mode": "force_generic_plan"
+    }
+   },
+   "uses_hnsw"
+  ],
+  "expected": false,
+  "tolerance": 0,
+  "tex_strings": [
+   "EXPLAIN shows as a B-tree scan on the size column"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "lift.beyond.prop.full_minus_100k.s42_lo",
+  "description": "only proportional seed whose full-minus-100k lift interval excludes zero",
+  "artifact": "artifacts/published/revision1/lift_beyond_100k_openai_primary200.json",
+  "json_path": [
+   "schedules",
+   "prop_s42",
+   "full_minus_100k",
+   "ci_lo"
+  ],
+  "expected": 0.01,
+  "tolerance": 1e-09,
+  "tex_strings": [
+   "one of the ten intervals excludes zero and two more reach it"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "v1viol.containment.10k",
+  "description": "v1 OpenAI containment violations at 10k",
+  "artifact": "artifacts/published/revision1/v1_list_violations_openai.json",
+  "json_path": [
+   "containment_counts",
+   "10000"
+  ],
+  "expected": 16,
+  "tolerance": 0,
+  "tex_strings": [
+   "$16$, $14$, $12$, $12$, $1$ and $1$"
+  ],
+  "tex_files": [
+   "papers/ieee-vector-drift/access/main.tex"
+  ]
+ },
+ {
+  "id": "v1viol.swaps.25k40k",
+  "description": "v1 OpenAI meta order swaps 25k-40k",
+  "artifact": "artifacts/published/revision1/v1_list_violations_openai.json",
+  "json_path": [
+   "order_swap_counts",
+   "25000-40000"
+  ],
+  "expected": 5,
+  "tolerance": 0,
+  "tex_strings": [
+   "$9$ question-pair swaps in total"
   ],
   "tex_files": [
    "papers/ieee-vector-drift/access/main.tex"

@@ -1,0 +1,230 @@
+{
+ "meta": {
+  "created": "2026-11-13T17:24:54Z",
+  "config": "c512_o64",
+  "rule": "top-k chunks by exact cosine, ties by doc_id then chunk order; hit if any of the k chunks belongs to a gold document",
+  "n_questions": 200,
+  "bootstrap_B": 10000,
+  "bootstrap_seed": 42,
+  "scales": [
+   5000,
+   10000,
+   25000,
+   50000,
+   75000,
+   100000
+  ]
+ },
+ "runs": [
+  {
+   "condition": "raw",
+   "scale": 5000,
+   "hit_at_10_chunks": 0.805,
+   "hit_at_20_chunks": 0.845,
+   "hit_at_50_chunks": 0.915,
+   "mean_distinct_docs_in_top10_chunks": 6.76,
+   "whole_doc_hit_at_10": 0.795
+  },
+  {
+   "condition": "raw",
+   "scale": 10000,
+   "hit_at_10_chunks": 0.745,
+   "hit_at_20_chunks": 0.805,
+   "hit_at_50_chunks": 0.855,
+   "mean_distinct_docs_in_top10_chunks": 7.05,
+   "whole_doc_hit_at_10": 0.735
+  },
+  {
+   "condition": "raw",
+   "scale": 25000,
+   "hit_at_10_chunks": 0.675,
+   "hit_at_20_chunks": 0.74,
+   "hit_at_50_chunks": 0.805,
+   "mean_distinct_docs_in_top10_chunks": 7.325,
+   "whole_doc_hit_at_10": 0.67
+  },
+  {
+   "condition": "raw",
+   "scale": 50000,
+   "hit_at_10_chunks": 0.655,
+   "hit_at_20_chunks": 0.69,
+   "hit_at_50_chunks": 0.755,
+   "mean_distinct_docs_in_top10_chunks": 7.595,
+   "whole_doc_hit_at_10": 0.64
+  },
+  {
+   "condition": "raw",
+   "scale": 75000,
+   "hit_at_10_chunks": 0.63,
+   "hit_at_20_chunks": 0.665,
+   "hit_at_50_chunks": 0.725,
+   "mean_distinct_docs_in_top10_chunks": 7.79,
+   "whole_doc_hit_at_10": 0.595
+  },
+  {
+   "condition": "raw",
+   "scale": 100000,
+   "hit_at_10_chunks": 0.615,
+   "hit_at_20_chunks": 0.655,
+   "hit_at_50_chunks": 0.71,
+   "mean_distinct_docs_in_top10_chunks": 7.98,
+   "whole_doc_hit_at_10": 0.585
+  },
+  {
+   "condition": "meta_in",
+   "scale": 5000,
+   "hit_at_10_chunks": 0.885,
+   "hit_at_20_chunks": 0.91,
+   "hit_at_50_chunks": 0.945,
+   "mean_distinct_docs_in_top10_chunks": 6.245,
+   "whole_doc_hit_at_10": 0.875
+  },
+  {
+   "condition": "meta_in",
+   "scale": 10000,
+   "hit_at_10_chunks": 0.85,
+   "hit_at_20_chunks": 0.875,
+   "hit_at_50_chunks": 0.915,
+   "mean_distinct_docs_in_top10_chunks": 6.635,
+   "whole_doc_hit_at_10": 0.835
+  },
+  {
+   "condition": "meta_in",
+   "scale": 25000,
+   "hit_at_10_chunks": 0.78,
+   "hit_at_20_chunks": 0.84,
+   "hit_at_50_chunks": 0.875,
+   "mean_distinct_docs_in_top10_chunks": 6.975,
+   "whole_doc_hit_at_10": 0.76
+  },
+  {
+   "condition": "meta_in",
+   "scale": 50000,
+   "hit_at_10_chunks": 0.73,
+   "hit_at_20_chunks": 0.78,
+   "hit_at_50_chunks": 0.86,
+   "mean_distinct_docs_in_top10_chunks": 7.315,
+   "whole_doc_hit_at_10": 0.715
+  },
+  {
+   "condition": "meta_in",
+   "scale": 75000,
+   "hit_at_10_chunks": 0.7,
+   "hit_at_20_chunks": 0.76,
+   "hit_at_50_chunks": 0.82,
+   "mean_distinct_docs_in_top10_chunks": 7.47,
+   "whole_doc_hit_at_10": 0.685
+  },
+  {
+   "condition": "meta_in",
+   "scale": 100000,
+   "hit_at_10_chunks": 0.69,
+   "hit_at_20_chunks": 0.73,
+   "hit_at_50_chunks": 0.805,
+   "mean_distinct_docs_in_top10_chunks": 7.64,
+   "whole_doc_hit_at_10": 0.665
+  }
+ ],
+ "drop_comparison": {
+  "raw": {
+   "topchunks_drop": {
+    "estimate": 0.19,
+    "ci95": [
+     0.14,
+     0.245
+    ],
+    "ci90": [
+     0.145,
+     0.235
+    ]
+   },
+   "whole_doc_drop": {
+    "estimate": 0.21,
+    "ci95": [
+     0.155,
+     0.27
+    ],
+    "ci90": [
+     0.165,
+     0.26
+    ]
+   },
+   "topchunks_minus_whole_drop": {
+    "estimate": -0.02,
+    "ci95": [
+     -0.085,
+     0.045
+    ],
+    "ci90": [
+     -0.075,
+     0.035
+    ]
+   },
+   "level_topchunks_minus_whole_100k": {
+    "estimate": 0.03,
+    "ci95": [
+     -0.03,
+     0.09
+    ],
+    "ci90": [
+     -0.02,
+     0.08
+    ]
+   }
+  },
+  "meta_in": {
+   "topchunks_drop": {
+    "estimate": 0.195,
+    "ci95": [
+     0.14,
+     0.25
+    ],
+    "ci90": [
+     0.15,
+     0.24025
+    ]
+   },
+   "whole_doc_drop": {
+    "estimate": 0.21,
+    "ci95": [
+     0.155,
+     0.27
+    ],
+    "ci90": [
+     0.165,
+     0.26
+    ]
+   },
+   "topchunks_minus_whole_drop": {
+    "estimate": -0.015,
+    "ci95": [
+     -0.075,
+     0.045
+    ],
+    "ci90": [
+     -0.065,
+     0.035
+    ]
+   },
+   "level_topchunks_minus_whole_100k": {
+    "estimate": 0.025,
+    "ci95": [
+     -0.025,
+     0.075
+    ],
+    "ci90": [
+     -0.015,
+     0.07
+    ]
+   }
+  }
+ },
+ "lift_by_scale": {
+  "5000": 0.08,
+  "10000": 0.105,
+  "25000": 0.105,
+  "50000": 0.075,
+  "75000": 0.07,
+  "100000": 0.075
+ }
+}

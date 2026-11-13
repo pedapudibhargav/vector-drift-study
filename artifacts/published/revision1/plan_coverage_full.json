@@ -1,0 +1,4113 @@
+{
+ "meta": {
+  "created": "2026-11-13T17:35:29Z",
+  "method": "plain EXPLAIN (FORMAT JSON), all 200 primary questions per cell",
+  "iterative_scan": "relaxed_order",
+  "settings_5434": {
+   "effective_cache_size": "524288",
+   "random_page_cost": "4",
+   "shared_buffers": "16384",
+   "work_mem": "4096"
+  },
+  "settings_5433": {
+   "effective_cache_size": "524288",
+   "random_page_cost": "4",
+   "shared_buffers": "262144",
+   "work_mem": "65536"
+  }
+ },
+ "single_table": [
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 5000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 5000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 5000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 10000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 10000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 10000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 15000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 15000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Seq Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 15000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Seq Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 20000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 20000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Seq Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 20000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Seq Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 25000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 25000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Gather Merge > Sort > Seq Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 25000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Gather Merge > Sort > Seq Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 40000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 40000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Gather Merge > Sort > Seq Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 40000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Gather Merge > Sort > Seq Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 50000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 50000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Gather Merge > Sort > Seq Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 50000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Gather Merge > Sort > Seq Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 75000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 75000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Gather Merge > Sort > Seq Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 75000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Gather Merge > Sort > Seq Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 100000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 100000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Gather Merge > Sort > Seq Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 100000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Gather Merge > Sort > Seq Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 5000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 5000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 5000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 10000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 10000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 10000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 15000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 15000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 15000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 20000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 20000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 20000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 25000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 25000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 25000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 40000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 87,
+   "frac_hnsw": 0.435,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 113,
+    "Limit > Index Scan": 87
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 40000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 40000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 50000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 101,
+   "frac_hnsw": 0.505,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 99,
+    "Limit > Index Scan": 101
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 50000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 174,
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 26
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 50000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 174,
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 26
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 75000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 159,
+   "frac_hnsw": 0.795,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 41,
+    "Limit > Index Scan": 159
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 75000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 75000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 100000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 159,
+   "frac_hnsw": 0.795,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 41,
+    "Limit > Index Scan": 159
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 100000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 100000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 5000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 5000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 5000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 10000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 10000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 10000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 15000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 15000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 15000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 20000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 20000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 20000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 25000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 25000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 25000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 40000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 40000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 40000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 50000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 50000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 50000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 75000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 75000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Gather Merge > Sort > Seq Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 75000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 100000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 100000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Gather Merge > Sort > Seq Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 100000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 5000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 5000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 5000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 10000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 10000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 10000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 15000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 15000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 15000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 20000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 20000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 20000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 25000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 25000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 25000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 40000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 40000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 40000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 50000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 50000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 50000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 75000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 75000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 75000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 120,
+   "frac_hnsw": 0.6,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 80,
+    "Limit > Index Scan": 120
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 100000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 100000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5434,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 100000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 120,
+   "frac_hnsw": 0.6,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 80,
+    "Limit > Index Scan": 120
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 5000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 5000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 5000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 10000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 10000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 10000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 15000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 15000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 15000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 20000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 20000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 20000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 25000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 25000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 25000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 40000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Gather Merge > Sort > Seq Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 40000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Gather Merge > Sort > Seq Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 40000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 50000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Gather Merge > Sort > Seq Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 50000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Gather Merge > Sort > Seq Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 50000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 75000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 75000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Gather Merge > Sort > Seq Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 75000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 100000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 100000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Gather Merge > Sort > Seq Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "raw",
+   "scale": 100000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 5000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 5000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 5000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 10000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 10000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 10000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 15000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 15000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 15000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 20000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 20000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 20000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 25000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 25000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 25000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 40000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 113,
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 87
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 40000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 113,
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 87
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 40000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 26,
+   "frac_hnsw": 0.13,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 113,
+    "Limit > Index Scan": 26,
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 61
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 50000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 99,
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 101
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 50000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 99,
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 101
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 50000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 87,
+   "frac_hnsw": 0.435,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > BitmapAnd > Bitmap Index Scan": 99,
+    "Limit > Index Scan": 87,
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 14
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 75000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 75000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 75000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 101,
+   "frac_hnsw": 0.505,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 99,
+    "Limit > Index Scan": 101
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 100000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 100000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "openai",
+   "condition": "meta",
+   "scale": 100000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 120,
+   "frac_hnsw": 0.6,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 80,
+    "Limit > Index Scan": 120
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 5000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 5000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 5000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 10000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 10000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 10000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 15000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 15000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 15000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 20000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 20000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 20000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 25000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 25000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 25000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 40000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 40000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 40000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 50000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 50000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 50000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 75000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Gather Merge > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 75000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Gather Merge > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 75000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 100000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 100000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Gather Merge > Sort > Seq Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "raw",
+   "scale": 100000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 5000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 5000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 5000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 10000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 10000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 10000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 15000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 15000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 15000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 20000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 20000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 20000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 25000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 25000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 25000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 40000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 40000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 40000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 50000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 50000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 50000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 75000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 75000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 75000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 101,
+   "frac_hnsw": 0.505,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 99,
+    "Limit > Index Scan": 101
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 100000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 100000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 200
+   }
+  },
+  {
+   "port": 5433,
+   "embedder": "titan",
+   "condition": "meta",
+   "scale": 100000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 120,
+   "frac_hnsw": 0.6,
+   "signatures": {
+    "Limit > Sort > Bitmap Heap Scan > Bitmap Index Scan": 80,
+    "Limit > Index Scan": 120
+   }
+  }
+ ],
+ "per_size": [
+  {
+   "embedder": "openai",
+   "table": "n_openai_5000",
+   "scale": 5000,
+   "ef_search": 40,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_5000",
+   "scale": 5000,
+   "ef_search": 100,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_5000",
+   "scale": 5000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_5000",
+   "scale": 5000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Seq Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_5000",
+   "scale": 5000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Seq Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_10000",
+   "scale": 10000,
+   "ef_search": 40,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_10000",
+   "scale": 10000,
+   "ef_search": 100,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_10000",
+   "scale": 10000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_10000",
+   "scale": 10000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_10000",
+   "scale": 10000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Seq Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_15000",
+   "scale": 15000,
+   "ef_search": 40,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_15000",
+   "scale": 15000,
+   "ef_search": 100,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_15000",
+   "scale": 15000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_15000",
+   "scale": 15000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_15000",
+   "scale": 15000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_20000",
+   "scale": 20000,
+   "ef_search": 40,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_20000",
+   "scale": 20000,
+   "ef_search": 100,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_20000",
+   "scale": 20000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_20000",
+   "scale": 20000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_20000",
+   "scale": 20000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_25000",
+   "scale": 25000,
+   "ef_search": 40,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_25000",
+   "scale": 25000,
+   "ef_search": 100,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_25000",
+   "scale": 25000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_25000",
+   "scale": 25000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_25000",
+   "scale": 25000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_40000",
+   "scale": 40000,
+   "ef_search": 40,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_40000",
+   "scale": 40000,
+   "ef_search": 100,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_40000",
+   "scale": 40000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_40000",
+   "scale": 40000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_40000",
+   "scale": 40000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_50000",
+   "scale": 50000,
+   "ef_search": 40,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_50000",
+   "scale": 50000,
+   "ef_search": 100,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_50000",
+   "scale": 50000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_50000",
+   "scale": 50000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_50000",
+   "scale": 50000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_75000",
+   "scale": 75000,
+   "ef_search": 40,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_75000",
+   "scale": 75000,
+   "ef_search": 100,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_75000",
+   "scale": 75000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_75000",
+   "scale": 75000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_75000",
+   "scale": 75000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_100000",
+   "scale": 100000,
+   "ef_search": 40,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_100000",
+   "scale": 100000,
+   "ef_search": 100,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_100000",
+   "scale": 100000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_100000",
+   "scale": 100000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "openai",
+   "table": "n_openai_100000",
+   "scale": 100000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_5000",
+   "scale": 5000,
+   "ef_search": 40,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_5000",
+   "scale": 5000,
+   "ef_search": 100,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_5000",
+   "scale": 5000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_5000",
+   "scale": 5000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Seq Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_5000",
+   "scale": 5000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Seq Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_10000",
+   "scale": 10000,
+   "ef_search": 40,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_10000",
+   "scale": 10000,
+   "ef_search": 100,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_10000",
+   "scale": 10000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_10000",
+   "scale": 10000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_10000",
+   "scale": 10000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 0,
+   "frac_hnsw": 0.0,
+   "signatures": {
+    "Limit > Sort > Seq Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_15000",
+   "scale": 15000,
+   "ef_search": 40,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_15000",
+   "scale": 15000,
+   "ef_search": 100,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_15000",
+   "scale": 15000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_15000",
+   "scale": 15000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_15000",
+   "scale": 15000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_20000",
+   "scale": 20000,
+   "ef_search": 40,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_20000",
+   "scale": 20000,
+   "ef_search": 100,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_20000",
+   "scale": 20000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_20000",
+   "scale": 20000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_20000",
+   "scale": 20000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_25000",
+   "scale": 25000,
+   "ef_search": 40,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_25000",
+   "scale": 25000,
+   "ef_search": 100,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_25000",
+   "scale": 25000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_25000",
+   "scale": 25000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_25000",
+   "scale": 25000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_40000",
+   "scale": 40000,
+   "ef_search": 40,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_40000",
+   "scale": 40000,
+   "ef_search": 100,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_40000",
+   "scale": 40000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_40000",
+   "scale": 40000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_40000",
+   "scale": 40000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_50000",
+   "scale": 50000,
+   "ef_search": 40,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_50000",
+   "scale": 50000,
+   "ef_search": 100,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_50000",
+   "scale": 50000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_50000",
+   "scale": 50000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_50000",
+   "scale": 50000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_75000",
+   "scale": 75000,
+   "ef_search": 40,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_75000",
+   "scale": 75000,
+   "ef_search": 100,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_75000",
+   "scale": 75000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_75000",
+   "scale": 75000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_75000",
+   "scale": 75000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_100000",
+   "scale": 100000,
+   "ef_search": 40,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_100000",
+   "scale": 100000,
+   "ef_search": 100,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_100000",
+   "scale": 100000,
+   "ef_search": 200,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_100000",
+   "scale": 100000,
+   "ef_search": 400,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  },
+  {
+   "embedder": "titan",
+   "table": "n_titan_100000",
+   "scale": 100000,
+   "ef_search": 800,
+   "n": 200,
+   "n_hnsw": 200,
+   "frac_hnsw": 1.0,
+   "signatures": {
+    "Limit > Index Scan": 200
+   }
+  }
+ ],
+ "table_state": {
+  "5434": {
+   "document_chunks": {
+    "last_vacuum": "None",
+    "last_autovacuum": "2026-09-27 06:59:47.328524+00:00",
+    "last_analyze": "None",
+    "last_autoanalyze": "2026-09-27 06:58:19.194625+00:00",
+    "n_dead_tup": 0,
+    "n_mod_since_analyze": 0
+   },
+   "document_chunks_titan": {
+    "last_vacuum": "None",
+    "last_autovacuum": "2026-09-23 18:56:23.402031+00:00",
+    "last_analyze": "None",
+    "last_autoanalyze": "2026-09-23 19:10:23.663034+00:00",
+    "n_dead_tup": 4,
+    "n_mod_since_analyze": 6890
+   }
+  },
+  "5433": {
+   "document_chunks": {
+    "last_vacuum": "None",
+    "last_autovacuum": "None",
+    "last_analyze": "2026-11-10 00:36:58.660807+00:00",
+    "last_autoanalyze": "None",
+    "n_dead_tup": 0,
+    "n_mod_since_analyze": 0
+   },
+   "document_chunks_titan": {
+    "last_vacuum": "None",
+    "last_autovacuum": "None",
+    "last_analyze": "2026-11-10 00:36:58.867488+00:00",
+    "last_autoanalyze": "None",
+    "n_dead_tup": 0,
+    "n_mod_since_analyze": 0
+   },
+   "n_openai_5000": {
+    "last_vacuum": "2026-11-10 20:08:08.260763+00:00",
+    "last_autovacuum": "None",
+    "last_analyze": "2026-11-10 20:08:08.273171+00:00",
+    "last_autoanalyze": "None",
+    "n_dead_tup": 0,
+    "n_mod_since_analyze": 0
+   },
+   "n_openai_10000": {
+    "last_vacuum": "2026-11-10 20:08:13.537730+00:00",
+    "last_autovacuum": "None",
+    "last_analyze": "2026-11-10 20:08:13.558421+00:00",
+    "last_autoanalyze": "None",
+    "n_dead_tup": 0,
+    "n_mod_since_analyze": 0
+   },
+   "n_openai_15000": {
+    "last_vacuum": "2026-11-10 20:08:21.657408+00:00",
+    "last_autovacuum": "None",
+    "last_analyze": "2026-11-10 20:08:21.689623+00:00",
+    "last_autoanalyze": "None",
+    "n_dead_tup": 0,
+    "n_mod_since_analyze": 0
+   },
+   "n_openai_20000": {
+    "last_vacuum": "2026-11-10 20:08:33.526512+00:00",
+    "last_autovacuum": "None",
+    "last_analyze": "2026-11-10 20:08:33.572036+00:00",
+    "last_autoanalyze": "None",
+    "n_dead_tup": 0,
+    "n_mod_since_analyze": 0
+   },
+   "n_openai_25000": {
+    "last_vacuum": "2026-11-10 20:08:48.695576+00:00",
+    "last_autovacuum": "None",
+    "last_analyze": "2026-11-10 20:08:48.750024+00:00",
+    "last_autoanalyze": "None",
+    "n_dead_tup": 0,
+    "n_mod_since_analyze": 0
+   },
+   "n_openai_40000": {
+    "last_vacuum": "2026-11-10 20:09:15.338546+00:00",
+    "last_autovacuum": "None",
+    "last_analyze": "2026-11-10 20:09:15.381877+00:00",
+    "last_autoanalyze": "None",
+    "n_dead_tup": 0,
+    "n_mod_since_analyze": 0
+   },
+   "n_openai_50000": {
+    "last_vacuum": "2026-11-10 20:09:49.150929+00:00",
+    "last_autovacuum": "None",
+    "last_analyze": "2026-11-10 20:09:49.236155+00:00",
+    "last_autoanalyze": "None",
+    "n_dead_tup": 0,
+    "n_mod_since_analyze": 0
+   },
+   "n_openai_75000": {
+    "last_vacuum": "2026-11-10 20:10:43.187502+00:00",
+    "last_autovacuum": "None",
+    "last_analyze": "2026-11-10 20:10:43.236880+00:00",
+    "last_autoanalyze": "None",
+    "n_dead_tup": 0,
+    "n_mod_since_analyze": 0
+   },
+   "n_openai_100000": {
+    "last_vacuum": "2026-11-10 20:11:08.311848+00:00",
+    "last_autovacuum": "None",
+    "last_analyze": "2026-11-10 20:11:08.361299+00:00",
+    "last_autoanalyze": "None",
+    "n_dead_tup": 0,
+    "n_mod_since_analyze": 0
+   },
+   "n_titan_5000": {
+    "last_vacuum": "2026-11-10 20:11:10.748376+00:00",
+    "last_autovacuum": "None",
+    "last_analyze": "2026-11-10 20:11:10.759981+00:00",
+    "last_autoanalyze": "None",
+    "n_dead_tup": 0,
+    "n_mod_since_analyze": 0
+   },
+   "n_titan_10000": {
+    "last_vacuum": "2026-11-10 20:11:14.680306+00:00",
+    "last_autovacuum": "None",
+    "last_analyze": "2026-11-10 20:11:14.699990+00:00",
+    "last_autoanalyze": "None",
+    "n_dead_tup": 0,
+    "n_mod_since_analyze": 0
+   },
+   "n_titan_15000": {
+    "last_vacuum": "2026-11-10 20:11:21.624301+00:00",
+    "last_autovacuum": "None",
+    "last_analyze": "2026-11-10 20:11:21.656006+00:00",
+    "last_autoanalyze": "None",
+    "n_dead_tup": 0,
+    "n_mod_since_analyze": 0
+   },
+   "n_titan_20000": {
+    "last_vacuum": "2026-11-10 20:11:31.028290+00:00",
+    "last_autovacuum": "None",
+    "last_analyze": "2026-11-10 20:11:31.068930+00:00",
+    "last_autoanalyze": "None",
+    "n_dead_tup": 0,
+    "n_mod_since_analyze": 0
+   },
+   "n_titan_25000": {
+    "last_vacuum": "2026-11-10 20:11:43.487202+00:00",
+    "last_autovacuum": "None",
+    "last_analyze": "2026-11-10 20:11:43.549404+00:00",
+    "last_autoanalyze": "None",
+    "n_dead_tup": 0,
+    "n_mod_since_analyze": 0
+   },
+   "n_titan_40000": {
+    "last_vacuum": "2026-11-10 20:12:04.336144+00:00",
+    "last_autovacuum": "None",
+    "last_analyze": "2026-11-10 20:12:04.380492+00:00",
+    "last_autoanalyze": "None",
+    "n_dead_tup": 0,
+    "n_mod_since_analyze": 0
+   },
+   "n_titan_50000": {
+    "last_vacuum": "2026-11-10 20:12:33.636510+00:00",
+    "last_autovacuum": "None",
+    "last_analyze": "2026-11-10 20:12:33.790460+00:00",
+    "last_autoanalyze": "None",
+    "n_dead_tup": 0,
+    "n_mod_since_analyze": 0
+   },
+   "n_titan_75000": {
+    "last_vacuum": "2026-11-10 20:13:17.003034+00:00",
+    "last_autovacuum": "None",
+    "last_analyze": "2026-11-10 20:13:17.102436+00:00",
+    "last_autoanalyze": "None",
+    "n_dead_tup": 0,
+    "n_mod_since_analyze": 0
+   },
+   "n_titan_100000": {
+    "last_vacuum": "2026-11-10 20:13:33.817855+00:00",
+    "last_autovacuum": "None",
+    "last_analyze": "2026-11-10 20:13:33.989412+00:00",
+    "last_autoanalyze": "None",
+    "n_dead_tup": 0,
+    "n_mod_since_analyze": 0
+   }
+  }
+ }
+}

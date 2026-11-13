@@ -29,8 +29,6 @@
 <text x="146.0" y="184" font-size="9.5" text-anchor="middle">Corpus size N</text>
 <text x="11" y="82.0" font-size="9.5" text-anchor="middle" transform="rotate(-90 11 82.0)">Δmeta (Hit@10)</text>
 <line x1="40" x2="252" y1="130.0" y2="130.0" stroke="#000" stroke-width="0.8"/>
-<line x1="40" x2="252" y1="82.0" y2="82.0" stroke="#555555" stroke-width="0.9" stroke-dasharray="2 2"/>
-<text x="250" y="79.0" font-size="8.5" text-anchor="end" fill="#555555">τ = 0.10</text>
 <line x1="42.0" x2="42.0" y1="108.4" y2="72.4" stroke="#1f5fa8" stroke-width="1.1"/>
 <line x1="39.0" x2="45.0" y1="108.4" y2="108.4" stroke="#1f5fa8" stroke-width="1.1"/>
 <line x1="39.0" x2="45.0" y1="72.4" y2="72.4" stroke="#1f5fa8" stroke-width="1.1"/>
@@ -143,9 +141,12 @@
 <polygon points="250.7,98.2 247.9,103.4 253.5,103.4" fill="#2e8b57"/>
 <polyline points="52.0,92.8 98.0,84.4 124.9,89.2 143.9,91.6 158.7,92.8 189.9,95.2 204.7,96.4 231.6,95.2 250.7,101.2" fill="none" stroke="#2e8b57" stroke-width="1.4"/>
 <line x1="48" x2="64" y1="12.400000000000002" y2="12.400000000000002" stroke="#1f5fa8" stroke-width="1.4"/>
+<circle cx="56" cy="12.400000000000002" r="2.6" fill="#1f5fa8"/>
 <text x="68" y="15.400000000000002" font-size="9">OpenAI, n=200</text>
 <line x1="48" x2="64" y1="23.400000000000002" y2="23.400000000000002" stroke="#d9730d" stroke-width="1.4"/>
+<rect x="53.6" y="21.000000000000004" width="4.8" height="4.8" fill="#d9730d"/>
 <text x="68" y="26.400000000000002" font-size="9">Titan V2, n=200</text>
 <line x1="48" x2="64" y1="34.400000000000006" y2="34.400000000000006" stroke="#2e8b57" stroke-width="1.4"/>
+<polygon points="56,31.400000000000006 53,36.800000000000004 59,36.800000000000004" fill="#2e8b57"/>
 <text x="68" y="37.400000000000006" font-size="9">OpenAI, n=400</text>
 </svg>

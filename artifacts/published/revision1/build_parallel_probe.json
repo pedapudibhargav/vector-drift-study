@@ -1,0 +1,108 @@
+{
+ "created": "2026-11-13",
+ "script": "scripts/erb/revision1/build_parallel_probe.sql",
+ "question": "why the 100k per-size HNSW build is faster than the 75k build",
+ "server": {
+  "min_parallel_table_scan_size": "8MB",
+  "max_parallel_maintenance_workers_session": 4,
+  "maintenance_work_mem": "2GB"
+ },
+ "heap_pages": {
+  "n_openai_75000": 881,
+  "n_openai_100000": 1175,
+  "n_titan_75000": 883,
+  "n_titan_100000": 1176,
+  "threshold_pages": 1024
+ },
+ "probe_75k_openai_copy": {
+  "default_settings": {
+   "plan": "serial (DEBUG: building index serially)",
+   "seconds": 50.645
+  },
+  "min_parallel_table_scan_size_0": {
+   "plan": "4 parallel workers + leader",
+   "seconds": 12.186
+  }
+ },
+ "build_seconds_openai_5_builds": {
+  "5000": [
+   2.2,
+   2.3,
+   2.3,
+   2.3
+  ],
+  "10000": [
+   5.2,
+   5.3,
+   5.3,
+   5.4
+  ],
+  "15000": [
+   8.4,
+   8.4,
+   8.5,
+   8.5
+  ],
+  "20000": [
+   11.7,
+   11.7,
+   12.1,
+   12.2
+  ],
+  "25000": [
+   15.2,
+   15.6,
+   16.4,
+   17.0
+  ],
+  "40000": [
+   25.5,
+   26.7,
+   27.0,
+   28.8
+  ],
+  "50000": [
+   31.9,
+   33.3,
+   35.0,
+   35.5
+  ],
+  "75000": [
+   50.2,
+   52.4,
+   55.5,
+   56.0
+  ],
+  "100000": [
+   25.1,
+   26.9,
+   28.8,
+   29.9
+  ]
+ },
+ "primary_build_seconds": {
+  "openai": {
+   "5000": 2.2,
+   "10000": 4.9,
+   "15000": 7.7,
+   "20000": 11.1,
+   "25000": 14.3,
+   "40000": 25.0,
+   "50000": 30.7,
+   "75000": 48.9,
+   "100000": 16.9
+  },
+  "titan": {
+   "5000": 1.6,
+   "10000": 3.6,
+   "15000": 6.3,
+   "20000": 8.7,
+   "25000": 11.5,
+   "40000": 19.2,
+   "50000": 27.3,
+   "75000": 39.5,
+   "100000": 13.2
+  }
+ },
+ "conclusion": "PostgreSQL plans parallel index-build workers only when the heap (vectors are stored out of line in TOAST) reaches min_parallel_table_scan_size; the per-size heaps cross 8 MB between 75k and 100k, so builds up to 75k ran serially and the 100k builds in parallel."
+}

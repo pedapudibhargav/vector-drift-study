@@ -5,7 +5,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import re
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
@@ -14,7 +13,6 @@ ROOT = Path(__file__).resolve().parents[3]
 DATA = ROOT / "data"
 REV1 = ROOT / "artifacts" / "published" / "revision1"
 MANIFEST = DATA / "erb_scale_manifest.json"
-TAB_EQUIV = REV1 / "paper_tables" / "tab_equiv.tex"
 
 
 def duplicate_doc_ids(manifest: dict) -> list[str]:
@@ -24,20 +22,6 @@ def duplicate_doc_ids(manifest: dict) -> list[str]:
         if did:
             counts[str(did)] += 1
     return sorted(did for did, n in counts.items() if n > 1)
-
-
-def parse_n400_lift_slope(tex: str) -> dict[str, float]:
-    m = re.search(
-        r"Lift slope per tenfold \$N\$, OpenAI \$n\{=\}400\$\s*&\s*(-?[0-9.]+)\s*&\s*\$\[(-?[0-9.]+),\s*(-?[0-9.]+)\]\$",
-        tex,
-    )
-    if not m:
-        raise SystemExit("could not parse n=400 lift slope from tab_equiv.tex")
-    return {
-        "estimate": float(m.group(1)),
-        "ci90_lo": float(m.group(2)),
-        "ci90_hi": float(m.group(3)),
-    }
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -76,13 +60,24 @@ def main(argv: list[str] | None = None) -> int:
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
     print(f"wrote {args.out} n={len(dups)}")
-    if TAB_EQUIV.is_file():
-        slope = parse_n400_lift_slope(TAB_EQUIV.read_text(encoding="utf-8"))
+    ladder = REV1 / "exact_ladder_openai_primary400.json"
+    if ladder.is_file():
+        import sys
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        import make_paper_tables as mpt
+        blob = json.loads(ladder.read_text(encoding="utf-8"))
+        runs = mpt.index_runs(blob)
+        order = mpt.canonical_question_ids(runs[("raw", 5000)])
+        lad = {int(s): (mpt.hit10_list(runs[("raw", int(s))], order), mpt.hit10_list(runs[("meta_in", int(s))], order))
+               for s in blob["meta"]["scales"]}
+        est, lo, hi = mpt.bootstrap_lift_slope_ci(lad, pct=mpt.CI90)
+        slope = {"estimate": round(est, 6), "ci90_lo": round(lo, 6), "ci90_hi": round(hi, 6)}
         slope_payload = {
             "meta": {
                 "created_at": created,
-                "script": "write_duplicate_doc_ids.py",
-                "source": "artifacts/published/revision1/paper_tables/tab_equiv.tex",
+                "script": "write_duplicate_doc_ids.py (make_paper_tables.bootstrap_lift_slope_ci, the computation behind Table 13)",
+                "source": "artifacts/published/revision1/exact_ladder_openai_primary400.json",
+                "method": "OLS of per-scale meta_in minus raw Hit@10 lift on log10 N; 90% paired bootstrap over questions (B=10000, numpy default_rng(42), questions sorted by id)",
             },
             **slope,
         }

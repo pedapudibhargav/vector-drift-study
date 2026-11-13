@@ -286,6 +286,8 @@ class Plot:
             mx = x + 8
             if marker == "square":
                 self.parts.append(f'<rect x="{mx - 2.4}" y="{yy - 2.4}" width="4.8" height="4.8" fill="{color}"/>')
+            elif marker == "circle":
+                self.parts.append(f'<circle cx="{mx}" cy="{yy}" r="2.6" fill="{color}"/>')
             elif marker == "triangle":
                 self.parts.append(f'<polygon points="{mx},{yy - 3} {mx - 3},{yy + 2.4} {mx + 3},{yy + 2.4}" fill="{color}"/>')
             self.parts.append(f'<text x="{x + 20}" y="{yy + 3}" font-size="9">{label}</text>')
@@ -355,11 +357,6 @@ def fig2_exact_lift(openai200: dict, titan200: dict, openai400: dict) -> tuple[s
     p = Plot(-0.05, 0.25, 0.05, "Δmeta (Hit@10)")
     p.axes()
     p.hline(0.0, "#000", width=0.8)
-    p.hline(TAU, GREY, dash="2 2")
-    yy = p.y(TAU)
-    p.parts.append(
-        f'<text x="{W - MR - 2}" y="{yy - 3:.1f}" font-size="8.5" text-anchor="end" fill="{GREY}">τ = {TAU:.2f}</text>'
-    )
     plotted: list[dict] = []
     for label, pts, color, xoff, marker in series:
         for row in pts:
@@ -369,9 +366,9 @@ def fig2_exact_lift(openai200: dict, titan200: dict, openai400: dict) -> tuple[s
         p.parts.append(f'<polyline points="{d}" fill="none" stroke="{color}" stroke-width="1.4"/>')
     p.legend(
         [
-            ("OpenAI, n=200", BLUE, ""),
-            ("Titan V2, n=200", ORANGE, ""),
-            ("OpenAI, n=400", GREEN, ""),
+            ("OpenAI, n=200", BLUE, "", "circle"),
+            ("Titan V2, n=200", ORANGE, "", "square"),
+            ("OpenAI, n=400", GREEN, "", "triangle"),
         ],
         x=ML + 8,
         y=p.y(0.245),

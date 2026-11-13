@@ -1,0 +1,757 @@
+{
+ "meta": {
+  "created": "2026-11-13T17:53:51Z",
+  "database": "frozen original copy (port 5434)",
+  "v1_script": "scripts/erb/run_scale_sweep_titan.py",
+  "driver": "psycopg 3 (prepare_threshold default 5)"
+ },
+ "prepared": [
+  {
+   "scale": 5000,
+   "condition": "raw",
+   "n": 200,
+   "identical_to_exact": 200,
+   "prepared_statements": [
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 195
+    }
+   ]
+  },
+  {
+   "scale": 5000,
+   "condition": "meta",
+   "n": 200,
+   "identical_to_exact": 200,
+   "prepared_statements": [
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 195
+    },
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 195
+    }
+   ]
+  },
+  {
+   "scale": 10000,
+   "condition": "raw",
+   "n": 200,
+   "identical_to_exact": 200,
+   "prepared_statements": [
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 395
+    },
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 195
+    }
+   ]
+  },
+  {
+   "scale": 10000,
+   "condition": "meta",
+   "n": 200,
+   "identical_to_exact": 200,
+   "prepared_statements": [
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 395
+    },
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 395
+    }
+   ]
+  },
+  {
+   "scale": 15000,
+   "condition": "raw",
+   "n": 200,
+   "identical_to_exact": 200,
+   "prepared_statements": [
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 595
+    },
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 395
+    }
+   ]
+  },
+  {
+   "scale": 15000,
+   "condition": "meta",
+   "n": 200,
+   "identical_to_exact": 200,
+   "prepared_statements": [
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 595
+    },
+    {
+     "statement": "SELECT left(statement, 60), generic_plans, custom_plans FROM",
+     "generic_plans": 1,
+     "custom_plans": 0
+    },
+    {
+     "statement": "SET hnsw.iterative_scan = relaxed_order",
+     "generic_plans": 1,
+     "custom_plans": 0
+    },
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 595
+    },
+    {
+     "statement": "SET hnsw.ef_search = 200",
+     "generic_plans": 1,
+     "custom_plans": 0
+    }
+   ]
+  },
+  {
+   "scale": 20000,
+   "condition": "raw",
+   "n": 200,
+   "identical_to_exact": 200,
+   "prepared_statements": [
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 795
+    },
+    {
+     "statement": "SELECT left(statement, 60), generic_plans, custom_plans FROM",
+     "generic_plans": 2,
+     "custom_plans": 0
+    },
+    {
+     "statement": "SET hnsw.iterative_scan = relaxed_order",
+     "generic_plans": 2,
+     "custom_plans": 0
+    },
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 595
+    },
+    {
+     "statement": "SET hnsw.ef_search = 200",
+     "generic_plans": 2,
+     "custom_plans": 0
+    }
+   ]
+  },
+  {
+   "scale": 20000,
+   "condition": "meta",
+   "n": 200,
+   "identical_to_exact": 200,
+   "prepared_statements": [
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 795
+    },
+    {
+     "statement": "SELECT left(statement, 60), generic_plans, custom_plans FROM",
+     "generic_plans": 3,
+     "custom_plans": 0
+    },
+    {
+     "statement": "SET hnsw.iterative_scan = relaxed_order",
+     "generic_plans": 3,
+     "custom_plans": 0
+    },
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 795
+    },
+    {
+     "statement": "SET hnsw.ef_search = 200",
+     "generic_plans": 3,
+     "custom_plans": 0
+    }
+   ]
+  },
+  {
+   "scale": 25000,
+   "condition": "raw",
+   "n": 200,
+   "identical_to_exact": 200,
+   "prepared_statements": [
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 995
+    },
+    {
+     "statement": "SELECT left(statement, 60), generic_plans, custom_plans FROM",
+     "generic_plans": 4,
+     "custom_plans": 0
+    },
+    {
+     "statement": "SET hnsw.iterative_scan = relaxed_order",
+     "generic_plans": 4,
+     "custom_plans": 0
+    },
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 795
+    },
+    {
+     "statement": "SET hnsw.ef_search = 200",
+     "generic_plans": 4,
+     "custom_plans": 0
+    }
+   ]
+  },
+  {
+   "scale": 25000,
+   "condition": "meta",
+   "n": 200,
+   "identical_to_exact": 200,
+   "prepared_statements": [
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 995
+    },
+    {
+     "statement": "SELECT left(statement, 60), generic_plans, custom_plans FROM",
+     "generic_plans": 5,
+     "custom_plans": 0
+    },
+    {
+     "statement": "SET hnsw.iterative_scan = relaxed_order",
+     "generic_plans": 5,
+     "custom_plans": 0
+    },
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 995
+    },
+    {
+     "statement": "SET hnsw.ef_search = 200",
+     "generic_plans": 5,
+     "custom_plans": 0
+    }
+   ]
+  },
+  {
+   "scale": 40000,
+   "condition": "raw",
+   "n": 200,
+   "identical_to_exact": 200,
+   "prepared_statements": [
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 995
+    },
+    {
+     "statement": "SELECT left(statement, 60), generic_plans, custom_plans FROM",
+     "generic_plans": 6,
+     "custom_plans": 0
+    },
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 195
+    },
+    {
+     "statement": "SET hnsw.iterative_scan = relaxed_order",
+     "generic_plans": 6,
+     "custom_plans": 0
+    },
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 995
+    },
+    {
+     "statement": "SET hnsw.ef_search = 200",
+     "generic_plans": 6,
+     "custom_plans": 0
+    }
+   ]
+  },
+  {
+   "scale": 40000,
+   "condition": "meta",
+   "n": 200,
+   "identical_to_exact": 200,
+   "prepared_statements": [
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 995
+    },
+    {
+     "statement": "SELECT left(statement, 60), generic_plans, custom_plans FROM",
+     "generic_plans": 7,
+     "custom_plans": 0
+    },
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 195
+    },
+    {
+     "statement": "SET hnsw.iterative_scan = relaxed_order",
+     "generic_plans": 7,
+     "custom_plans": 0
+    },
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 995
+    },
+    {
+     "statement": "SET hnsw.ef_search = 200",
+     "generic_plans": 7,
+     "custom_plans": 0
+    },
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 190,
+     "custom_plans": 5
+    }
+   ]
+  },
+  {
+   "scale": 50000,
+   "condition": "raw",
+   "n": 200,
+   "identical_to_exact": 200,
+   "prepared_statements": [
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 995
+    },
+    {
+     "statement": "SELECT left(statement, 60), generic_plans, custom_plans FROM",
+     "generic_plans": 8,
+     "custom_plans": 0
+    },
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 117,
+     "custom_plans": 278
+    },
+    {
+     "statement": "SET hnsw.iterative_scan = relaxed_order",
+     "generic_plans": 8,
+     "custom_plans": 0
+    },
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 995
+    },
+    {
+     "statement": "SET hnsw.ef_search = 200",
+     "generic_plans": 8,
+     "custom_plans": 0
+    },
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 190,
+     "custom_plans": 5
+    }
+   ]
+  },
+  {
+   "scale": 50000,
+   "condition": "meta",
+   "n": 200,
+   "identical_to_exact": 200,
+   "prepared_statements": [
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 995
+    },
+    {
+     "statement": "SELECT left(statement, 60), generic_plans, custom_plans FROM",
+     "generic_plans": 9,
+     "custom_plans": 0
+    },
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 117,
+     "custom_plans": 278
+    },
+    {
+     "statement": "SET hnsw.iterative_scan = relaxed_order",
+     "generic_plans": 9,
+     "custom_plans": 0
+    },
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 995
+    },
+    {
+     "statement": "SET hnsw.ef_search = 200",
+     "generic_plans": 9,
+     "custom_plans": 0
+    },
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 390,
+     "custom_plans": 5
+    }
+   ]
+  },
+  {
+   "scale": 75000,
+   "condition": "raw",
+   "n": 200,
+   "identical_to_exact": 200,
+   "prepared_statements": [
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 995
+    },
+    {
+     "statement": "SELECT left(statement, 60), generic_plans, custom_plans FROM",
+     "generic_plans": 10,
+     "custom_plans": 0
+    },
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 317,
+     "custom_plans": 278
+    },
+    {
+     "statement": "SET hnsw.iterative_scan = relaxed_order",
+     "generic_plans": 10,
+     "custom_plans": 0
+    },
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 995
+    },
+    {
+     "statement": "SET hnsw.ef_search = 200",
+     "generic_plans": 10,
+     "custom_plans": 0
+    },
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 390,
+     "custom_plans": 5
+    }
+   ]
+  },
+  {
+   "scale": 75000,
+   "condition": "meta",
+   "n": 200,
+   "identical_to_exact": 200,
+   "prepared_statements": [
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 995
+    },
+    {
+     "statement": "SELECT left(statement, 60), generic_plans, custom_plans FROM",
+     "generic_plans": 11,
+     "custom_plans": 0
+    },
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 317,
+     "custom_plans": 278
+    },
+    {
+     "statement": "SET hnsw.iterative_scan = relaxed_order",
+     "generic_plans": 11,
+     "custom_plans": 0
+    },
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 995
+    },
+    {
+     "statement": "SET hnsw.ef_search = 200",
+     "generic_plans": 11,
+     "custom_plans": 0
+    },
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 590,
+     "custom_plans": 5
+    }
+   ]
+  },
+  {
+   "scale": 100000,
+   "condition": "raw",
+   "n": 200,
+   "identical_to_exact": 200,
+   "prepared_statements": [
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 995
+    },
+    {
+     "statement": "SELECT left(statement, 60), generic_plans, custom_plans FROM",
+     "generic_plans": 12,
+     "custom_plans": 0
+    },
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 517,
+     "custom_plans": 278
+    },
+    {
+     "statement": "SET hnsw.iterative_scan = relaxed_order",
+     "generic_plans": 12,
+     "custom_plans": 0
+    },
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 995
+    },
+    {
+     "statement": "SET hnsw.ef_search = 200",
+     "generic_plans": 12,
+     "custom_plans": 0
+    },
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 590,
+     "custom_plans": 5
+    }
+   ]
+  },
+  {
+   "scale": 100000,
+   "condition": "meta",
+   "n": 200,
+   "identical_to_exact": 200,
+   "prepared_statements": [
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 995
+    },
+    {
+     "statement": "SELECT left(statement, 60), generic_plans, custom_plans FROM",
+     "generic_plans": 13,
+     "custom_plans": 0
+    },
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 517,
+     "custom_plans": 278
+    },
+    {
+     "statement": "SET hnsw.iterative_scan = relaxed_order",
+     "generic_plans": 13,
+     "custom_plans": 0
+    },
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 0,
+     "custom_plans": 995
+    },
+    {
+     "statement": "SET hnsw.ef_search = 200",
+     "generic_plans": 13,
+     "custom_plans": 0
+    },
+    {
+     "statement": "\n            SELECT doc_id, 1 - (embedding <=> $1::vector) A",
+     "generic_plans": 790,
+     "custom_plans": 5
+    }
+   ]
+  }
+ ],
+ "unprepared": [
+  {
+   "scale": 5000,
+   "condition": "raw",
+   "n": 200,
+   "identical_to_exact": 200,
+   "prepared_statements": []
+  },
+  {
+   "scale": 5000,
+   "condition": "meta",
+   "n": 200,
+   "identical_to_exact": 200,
+   "prepared_statements": []
+  },
+  {
+   "scale": 10000,
+   "condition": "raw",
+   "n": 200,
+   "identical_to_exact": 200,
+   "prepared_statements": []
+  },
+  {
+   "scale": 10000,
+   "condition": "meta",
+   "n": 200,
+   "identical_to_exact": 200,
+   "prepared_statements": []
+  },
+  {
+   "scale": 15000,
+   "condition": "raw",
+   "n": 200,
+   "identical_to_exact": 200,
+   "prepared_statements": []
+  },
+  {
+   "scale": 15000,
+   "condition": "meta",
+   "n": 200,
+   "identical_to_exact": 200,
+   "prepared_statements": []
+  },
+  {
+   "scale": 20000,
+   "condition": "raw",
+   "n": 200,
+   "identical_to_exact": 200,
+   "prepared_statements": []
+  },
+  {
+   "scale": 20000,
+   "condition": "meta",
+   "n": 200,
+   "identical_to_exact": 200,
+   "prepared_statements": []
+  },
+  {
+   "scale": 25000,
+   "condition": "raw",
+   "n": 200,
+   "identical_to_exact": 200,
+   "prepared_statements": []
+  },
+  {
+   "scale": 25000,
+   "condition": "meta",
+   "n": 200,
+   "identical_to_exact": 200,
+   "prepared_statements": []
+  },
+  {
+   "scale": 40000,
+   "condition": "raw",
+   "n": 200,
+   "identical_to_exact": 200,
+   "prepared_statements": []
+  },
+  {
+   "scale": 40000,
+   "condition": "meta",
+   "n": 200,
+   "identical_to_exact": 200,
+   "prepared_statements": []
+  },
+  {
+   "scale": 50000,
+   "condition": "raw",
+   "n": 200,
+   "identical_to_exact": 200,
+   "prepared_statements": []
+  },
+  {
+   "scale": 50000,
+   "condition": "meta",
+   "n": 200,
+   "identical_to_exact": 200,
+   "prepared_statements": []
+  },
+  {
+   "scale": 75000,
+   "condition": "raw",
+   "n": 200,
+   "identical_to_exact": 176,
+   "prepared_statements": []
+  },
+  {
+   "scale": 75000,
+   "condition": "meta",
+   "n": 200,
+   "identical_to_exact": 200,
+   "prepared_statements": []
+  },
+  {
+   "scale": 100000,
+   "condition": "raw",
+   "n": 200,
+   "identical_to_exact": 178,
+   "prepared_statements": []
+  },
+  {
+   "scale": 100000,
+   "condition": "meta",
+   "n": 200,
+   "identical_to_exact": 200,
+   "prepared_statements": []
+  }
+ ],
+ "plan_shapes": {
+  "question": "qst_0102::basic",
+  "parameter_types": "vector, int4, vector, int2",
+  "rows": [
+   {
+    "scale": 75000,
+    "plan_cache_mode": "force_generic_plan",
+    "plan": "Limit > Gather Merge > Sort > idx_chunks_titan_scale_rank",
+    "uses_hnsw": false
+   },
+   {
+    "scale": 75000,
+    "plan_cache_mode": "force_custom_plan",
+    "plan": "Limit > idx_chunks_titan_embedding_hnsw",
+    "uses_hnsw": true
+   },
+   {
+    "scale": 100000,
+    "plan_cache_mode": "force_generic_plan",
+    "plan": "Limit > Gather Merge > Sort > idx_chunks_titan_scale_rank",
+    "uses_hnsw": false
+   },
+   {
+    "scale": 100000,
+    "plan_cache_mode": "force_custom_plan",
+    "plan": "Limit > idx_chunks_titan_embedding_hnsw",
+    "uses_hnsw": true
+   }
+  ]
+ }
+}

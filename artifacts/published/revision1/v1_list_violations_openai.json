@@ -1,0 +1,292 @@
+{
+ "meta": {
+  "created": "2026-11-13T23:21:08Z",
+  "script": "v1_list_violations.py",
+  "source": "v1 OpenAI HNSW lists (analyze_exact.HNSW_OPENAI)",
+  "filter": "first listed source type (v1 meta)"
+ },
+ "containment_counts": {
+  "5000": 0,
+  "10000": 16,
+  "15000": 14,
+  "20000": 12,
+  "25000": 12,
+  "40000": 1,
+  "50000": 1,
+  "75000": 0,
+  "100000": 0
+ },
+ "containment": {
+  "5000": [],
+  "10000": [
+   {
+    "question": "qst_0041::metadata",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0042::basic",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0053::metadata",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0063::metadata",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0068::metadata",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0069::metadata",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0082::metadata",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0107::basic",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0109::basic",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0124::basic",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0131::basic",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0138::basic",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0170::basic",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0204::semantic",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0213::semantic",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0251::semantic",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   }
+  ],
+  "15000": [
+   {
+    "question": "qst_0041::metadata",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0042::basic",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0053::metadata",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0063::metadata",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0068::metadata",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0069::metadata",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0082::metadata",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0107::basic",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0109::basic",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0124::basic",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0131::basic",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0138::basic",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0204::semantic",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0251::semantic",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   }
+  ],
+  "20000": [
+   {
+    "question": "qst_0021::metadata",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0041::metadata",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0042::basic",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0044::metadata",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0053::metadata",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0063::metadata",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0068::metadata",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0069::metadata",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0082::metadata",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0124::basic",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0204::semantic",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0251::semantic",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   }
+  ],
+  "25000": [
+   {
+    "question": "qst_0021::metadata",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0041::metadata",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0042::basic",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0044::metadata",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0053::metadata",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0063::metadata",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0068::metadata",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0069::metadata",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0082::metadata",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0124::basic",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0204::semantic",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   },
+   {
+    "question": "qst_0251::semantic",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   }
+  ],
+  "40000": [
+   {
+    "question": "qst_0053::metadata",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   }
+  ],
+  "50000": [
+   {
+    "question": "qst_0282::semantic",
+    "reason": "raw_allowed_doc_missing_from_meta"
+   }
+  ],
+  "75000": [],
+  "100000": []
+ },
+ "order_swap_counts": {
+  "5000-10000": 0,
+  "10000-15000": 0,
+  "15000-20000": 0,
+  "20000-25000": 0,
+  "25000-40000": 5,
+  "40000-50000": 3,
+  "50000-75000": 1,
+  "75000-100000": 0
+ },
+ "order_swaps": {
+  "5000-10000": [],
+  "10000-15000": [],
+  "15000-20000": [],
+  "20000-25000": [],
+  "25000-40000": [
+   "qst_0003::metadata",
+   "qst_0116::basic",
+   "qst_0134::basic",
+   "qst_0200::semantic",
+   "qst_0224::semantic"
+  ],
+  "40000-50000": [
+   "qst_0010::metadata",
+   "qst_0082::basic",
+   "qst_0156::basic"
+  ],
+  "50000-75000": [
+   "qst_0349::project_related"
+  ],
+  "75000-100000": []
+ }
+}

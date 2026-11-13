@@ -1,0 +1,17 @@
+\begin{table}[t]
+\caption{Weighted reciprocal rank fusion, $2[w/(k+r_{\mathrm{dense}})+(1-w)/(k+r_{\mathrm{BM25}})]$, on primary-200 (exact dense top-100 and BM25 \texttt{dense\_text} top-100). Each cell gives Hit@10 at $100$k / Hit@10 drop from $5$k to $100$k. Dense alone: 0.585 / 0.210; BM25 alone: 0.685 / 0.125. The grid is evaluated on the test bank itself (in-sample), and no fused setting has a drop whose paired 95\% interval of the difference from the dense drop excludes zero.}
+\label{tab:rrfsens}
+\centering
+\small
+\fitcolumn{\begin{tabular}{lcccc}
+\toprule
+Dense weight $w$ & $k{=}1$ & $k{=}10$ & $k{=}60$ & $k{=}200$ \\
+\midrule
+0.25 & 0.695 / 0.175 & 0.690 / 0.165 & 0.690 / 0.185 & 0.705 / 0.185 \\
+0.40 & 0.685 / 0.190 & 0.720 / 0.175 & 0.705 / 0.190 & 0.705 / 0.190 \\
+0.50 & 0.700 / 0.175 & 0.710 / 0.180 & 0.720 / 0.185 & 0.715 / 0.180 \\
+0.60 & 0.700 / 0.190 & 0.715 / 0.170 & 0.670 / 0.220 & 0.670 / 0.215 \\
+0.75 & 0.680 / 0.205 & 0.610 / 0.225 & 0.635 / 0.230 & 0.660 / 0.220 \\
+\bottomrule
+\end{tabular}}
+\end{table}

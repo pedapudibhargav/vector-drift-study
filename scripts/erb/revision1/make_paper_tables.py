@@ -110,6 +110,21 @@ def fmt3(x: float | int | None) -> str:
     return f"{float(x):.3f}"
 
 
+def fmtq(x: float | int | None) -> str:
+    """n=400 values: print a value on the 1/400 grid that ends in 5 at the
+    fourth decimal exactly (0.0775, not 0.077 from round-half-even)."""
+    if x is None:
+        return "---"
+    v = float(x)
+    if abs(abs(v * 1000 - math.floor(v * 1000)) - 0.5) < 1e-6 and abs(v * 400 - round(v * 400)) < 1e-6:
+        return f"{v:.4f}"
+    return f"{v:.3f}"
+
+
+def ci_bracket_q(lo: float, hi: float) -> str:
+    return f"$[{fmtq(lo)}, {fmtq(hi)}]$"
+
+
 def ci_bracket(lo: float, hi: float) -> str:
     return f"$[{fmt3(lo)}, {fmt3(hi)}]$"
 
@@ -409,8 +424,8 @@ def build_tab_exact_openai(track: SourceTracker) -> str:
             h10 = hit10_list(run, order)
             _, lo, hi = bootstrap_mean_ci(h10)
             rows.append(
-                f"\\texttt{{{cond}}} & {scale_k(scale)} & {fmt3(m['hit_at_1'])} & "
-                f"{fmt3(m['hit_at_5'])} & {fmt3(m['hit_at_10'])} & {ci_bracket(lo, hi)} & "
+                f"\\texttt{{{cond}}} & {scale_k(scale)} & {fmtq(m['hit_at_1'])} & "
+                f"{fmtq(m['hit_at_5'])} & {fmtq(m['hit_at_10'])} & {ci_bracket_q(lo, hi)} & "
                 f"{fmt3(m['document_recall'])} & {fmt3(m['mrr'])} \\\\"
             )
     tab = (
@@ -473,9 +488,9 @@ def _tab_exact_n400_body(blob: dict[str, Any], scales: list[int], track_name: st
             order = canonical_question_ids(run)
             _, lo, hi = bootstrap_mean_ci(hit10_list(run, order))
             rows.append(
-                f"\\texttt{{{cond}}} & {scale_k(scale)} & {fmt3(m['hit_at_1'])} & "
-                f"{fmt3(m['hit_at_5'])} & {fmt3(m['hit_at_10'])} & {ci_bracket(lo, hi)} & "
-                f"{fmt3(m['document_recall'])} & {fmt3(m['mrr'])} \\\\"
+                f"\\texttt{{{cond}}} & {scale_k(scale)} & {fmtq(m['hit_at_1'])} & "
+                f"{fmtq(m['hit_at_5'])} & {fmtq(m['hit_at_10'])} & {ci_bracket_q(lo, hi)} & "
+                f"{fmtq(m['document_recall'])} & {fmtq(m['mrr'])} \\\\"
             )
     return (
         "\\begin{tabular}{llrrrrrl}\n\\toprule\n"
@@ -540,9 +555,11 @@ def build_tab_drift_summary(track: SourceTracker) -> str:
                 drop = drops_art[key_map[(emb, bank, cond)]]
                 track.add("tab_drift_summary.tex", ae_path, ["cross_embedder", "primary200", "hit10_drop_5k_to_100k", key_map[(emb, bank, cond)]])
             nlabel = f"{emb} $n{{=}}200$" if bank == "primary200" else f"{emb} $n{{=}}400$"
+            f = fmtq if bank == "primary400" else fmt3
+            cb = ci_bracket_q if bank == "primary400" else ci_bracket
             rows.append(
-                f"{nlabel} & \\texttt{{{cond}}} & {fmt3(drop['hit_at_10_5000'])} & "
-                f"{fmt3(drop['hit_at_10_100000'])} & {fmt3(drop['estimate'])} & {ci_bracket(drop['ci_lo'], drop['ci_hi'])} \\\\"
+                f"{nlabel} & \\texttt{{{cond}}} & {f(drop['hit_at_10_5000'])} & "
+                f"{f(drop['hit_at_10_100000'])} & {f(drop['estimate'])} & {cb(drop['ci_lo'], drop['ci_hi'])} \\\\"
             )
     tab = (
         "\\begin{tabular}{llrrrl}\n\\toprule\n"
@@ -591,7 +608,7 @@ def build_tab_lift(track: SourceTracker) -> str:
         for s in col_scales:
             if s in lift_by_scale:
                 p, lo, hi = lift_by_scale[s]
-                cells.append(f"{fmt3(p)} {ci_bracket(lo, hi)}")
+                cells.append(f"{(fmtq if bank == 'primary400' else fmt3)(p)} {(ci_bracket_q if bank == 'primary400' else ci_bracket)(lo, hi)}")
             else:
                 cells.append("---")
         arm_labels.append(f"{emb} $n{{=}}${bank[-3:]}")
@@ -605,8 +622,8 @@ def build_tab_lift(track: SourceTracker) -> str:
         chg, lo, hi = bootstrap_paired_mean_ci(diffs)
         slope, slo, shi = bootstrap_lift_slope_ci(ladder_mat)
         summary_rows.append(
-            f"\\multicolumn{{{len(arm_labels)+1}}}{{l}}{{{emb} $n{{=}}${bank[-3:]}: "
-            f"$\\Delta$lift(100k$-$5k)={fmt3(chg)} {ci_bracket(lo, hi)}; "
+            f"\\multicolumn{{{len(arm_labels)+1}}}{{l}}{{{emb} $n{{=}}${bank[-3:]}, $95\\%$ intervals: "
+            f"$\\Delta$lift(100k$-$5k)={(fmtq if bank == 'primary400' else fmt3)(chg)} {(ci_bracket_q if bank == 'primary400' else ci_bracket)(lo, hi)}; "
             f"slope/tenfold={fmt3(slope)} {ci_bracket(slo, shi)}}} \\\\"
         )
 
@@ -688,9 +705,9 @@ def _build_equiv(track: SourceTracker, extra: dict[str, Any], *, compact: bool) 
             if full_name not in EQUIV_LABELS and name not in EQUIV_LABELS:
                 return
             label = EQUIV_LABELS.get(full_name) or EQUIV_LABELS[name]
-            rows.append(f"{label} & {fmt3(est)} & {ci_bracket(lo, hi)} & {v05} & {v10} \\\\")
+            rows.append(f"{label} & {fmtq(est)} & {ci_bracket_q(lo, hi)} & {v05} & {v10} \\\\")
         else:
-            rows.append(f"\\texttt{{{tex_escape(full_name)}}} & {fmt3(est)} & {ci_bracket(lo, hi)} & {v05} & {v10} \\\\")
+            rows.append(f"\\texttt{{{tex_escape(full_name)}}} & {fmtq(est)} & {ci_bracket_q(lo, hi)} & {v05} & {v10} \\\\")
 
     quantities = dict(eq["quantities"])
     quantities.update(extra)
@@ -715,8 +732,8 @@ def _build_equiv(track: SourceTracker, extra: dict[str, Any], *, compact: bool) 
     return latex_table(
         label="tab:equiv" if compact else "tab:equivfull",
         caption=(
-            "Equivalence analysis: paired $90\\%$ bootstrap intervals; a quantity is called equivalent when its interval lies inside "
-            "$[-\\delta,+\\delta]$."
+            "Equivalence analysis: paired $90\\%$ bootstrap intervals; a quantity is called equivalent when its interval lies strictly inside "
+            "$(-\\delta,+\\delta)$."
             if compact
             else "Equivalence analysis, all quantities (paired 90\\% bootstrap intervals)."
         ),
@@ -825,7 +842,7 @@ def build_tab_doclen(track: SourceTracker) -> str:
         label="tab:doclen",
         caption=(
             "Length in characters of the embedded text (the title is part of it) of the $99{,}998$ ladder documents and of the $272$ gold documents "
-            "of the primary bank, the share above the BM25 caps ($4{,}000$ and $8{,}191$ characters), and the counts above the "
+            "of the primary bank, the share above the BM25 caps ($4{,}000$ and $8{,}191$ characters; $72.0\\%$ and $21.1\\%$ of the ladder documents for the title-plus-text BM25 input, which repeats the title), and the counts above the "
             "OpenAI cap ($8{,}191$ cl100k tokens; $11$ documents, one a gold anchor, none a primary-bank gold document) and the "
             "Titan cap ($24{,}000$ characters)."
         ),
@@ -835,53 +852,68 @@ def build_tab_doclen(track: SourceTracker) -> str:
 
 
 def build_tab_plan_audit(track: SourceTracker) -> str:
-    audits = {
-        port: load_json(REV1 / f"plan_audit_{port}.json")
-        for port, _ in PLAN_AUDIT_DBS
-    }
-    for port, data in audits.items():
-        track.add("tab_plan_audit.tex", REV1 / f"plan_audit_{port}.json", ["cells", "frac_hnsw"])
+    # Plan choice for all 200 primary questions in every cell (plain EXPLAIN,
+    # full_plan_coverage.py). At ef_search=200 these equal the EXPLAIN (ANALYZE,
+    # BUFFERS) shares of plan_audit_{port}.json in every cell; at 400/800 the
+    # 40-question ANALYZE sample agrees wherever it is all-or-nothing.
+    cov = load_json(REV1 / "plan_coverage_full.json")
+    track.add("tab_plan_audit.tex", REV1 / "plan_coverage_full.json", ["single_table", "frac_hnsw"])
+    audits = {port: {"cells": [dict(r, **{"pass": "forward"}) for r in cov["single_table"] if int(r["port"]) == int(port)]}
+              for port, _ in PLAN_AUDIT_DBS}
+    # Every arm (embedder) x condition x database x scale x ef_search cell (R3-B).
+    groups = [("openai", "raw", "OpenAI raw"), ("openai", "meta", "OpenAI filtered"),
+              ("titan", "raw", "Titan raw"), ("titan", "meta", "Titan filtered")]
+
+    def share(v: float) -> str:
+        if v == 0.0:
+            return "0"
+        if v == 1.0:
+            return "1"
+        from decimal import Decimal, ROUND_HALF_UP
+        return str(Decimal(repr(v)).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)).lstrip("0")
+
     rows = []
     for scale in PLAN_AUDIT_SCALES:
         cells = [scale_k(scale)]
-        for port, _ in PLAN_AUDIT_DBS:
-            for ef in PLAN_EFS:
-                match = [
-                    c
-                    for c in audits[port]["cells"]
-                    if c.get("embedder") == "openai"
-                    and c.get("condition") == "raw"
-                    and int(c["scale"]) == scale
-                    and int(c["ef_search"]) == ef
-                ]
-                if not match:
-                    cells.append("---")
-                else:
-                    cells.append(fmt3(float(match[0].get("frac_hnsw") or 0.0)))
+        for emb, cond, _ in groups:
+            for port, _ in PLAN_AUDIT_DBS:
+                vals = []
+                for ef in PLAN_EFS:
+                    match = [
+                        c
+                        for c in audits[port]["cells"]
+                        if c.get("pass", "forward") == "forward"
+                        and c.get("embedder") == emb
+                        and c.get("condition") == cond
+                        and int(c["scale"]) == scale
+                        and int(c["ef_search"]) == ef
+                    ]
+                    vals.append("--" if not match else share(float(match[0].get("frac_hnsw") or 0.0)))
+                cells.append("/".join(vals))
         rows.append(" & ".join(cells) + " \\\\")
-    nef = len(PLAN_EFS)
-    top = " & ".join(f"\\multicolumn{{{nef}}}{{c}}{{{db_name}}}" for _, db_name in PLAN_AUDIT_DBS)
-    cmid = "".join(f"\\cmidrule(lr){{{2 + i * nef}-{1 + (i + 1) * nef}}}" for i in range(len(PLAN_AUDIT_DBS)))
-    efs = " & ".join(str(ef) for _ in PLAN_AUDIT_DBS for ef in PLAN_EFS)
-    hdr = "& " + top + " \\\\\n" + cmid + "\nScale & " + efs
+    ndb = len(PLAN_AUDIT_DBS)
+    top = " & ".join(f"\\multicolumn{{{ndb}}}{{c}}{{{label}}}" for _, _, label in groups)
+    cmid = "".join(f"\\cmidrule(lr){{{2 + i * ndb}-{1 + (i + 1) * ndb}}}" for i in range(len(groups)))
+    dbs = " & ".join(("orig." if "original" in db else "fresh") for _ in groups for _, db in PLAN_AUDIT_DBS)
+    hdr = "& " + top + " \\\\\n" + cmid + "\nScale & " + dbs
     tab = (
-        "\\begin{tabular}{l" + "r" * (len(PLAN_AUDIT_DBS) * len(PLAN_EFS)) + "}\n\\toprule\n"
+        "\\begin{tabular}{l" + "c" * (len(groups) * ndb) + "}\n\\toprule\n"
         + hdr
         + " \\\\\n\\midrule\n"
         + "\n".join(rows)
         + "\n\\bottomrule\n\\end{tabular}"
     )
-    db_names_tex = " and ".join(db for _, db in PLAN_AUDIT_DBS)
     return latex_table(
         label="tab:planaudit",
         caption=(
-            f"Share of primary-200 OpenAI \\texttt{{raw}} queries whose plan used HNSW, "
-            f"on the {db_names_tex} databases. "
-            "Column heads give $\\texttt{ef\\_search}$. Cells at $\\texttt{ef\\_search}{=}200$ use 200 probe queries; "
-            "cells at $\\texttt{ef\\_search}\\in\\{400,800\\}$ use 40 sampled queries."
+            "Share of the $200$ primary questions whose plan used the HNSW index, "
+            "for each embedder, condition (raw; filtered by the first listed source type, the v1 filter whose HNSW runs are audited), database (orig.: frozen original copy; fresh: fresh restore), "
+            "and size. Each cell lists the share at $\\texttt{ef\\_search}{=}200/400/800$ (1: every query used HNSW; "
+            "0: every query ran an exact scan). Every cell plans all $200$ questions (plain \\texttt{EXPLAIN}); the \\texttt{EXPLAIN (ANALYZE, BUFFERS)} audit gives identical shares at $\\texttt{ef\\_search}{=}200$ and agrees on its $40$-question sample at $400$ and $800$. "
+            "All other queries used a B-tree or sequential scan followed by an exact sort."
         ),
         tabular=tab,
-        star=False,
+        star=True,
     )
 
 
@@ -1188,13 +1220,13 @@ def build_tab_perN_recall(track: SourceTracker, openai: dict[str, Any], titan: d
                 if dagger:
                     dagger_count += 1
                 mark = "$^{\\dagger}$" if dagger else ""
-                cells_ef.append(f"{fmt3(recall)} / {fmt3(loss)}{mark}")
+                cells_ef.append(f"{(f'{recall:.4f}' if recall is not None and 0.9995 <= recall < 1 else fmt3(recall))} / {fmt3(loss)}{mark}")
             rows.append(f"{emb_label} & {scale_k(scale)} & " + " & ".join(cells_ef) + " \\\\")
     hdr = " & ".join(str(ef) for ef in PER_N_EFS)
     foot = (
         "\\par\\smallskip\\footnotesize{$^{\\dagger}$Planner chose a sequential scan; "
         "recall and Hit@10 loss shown from the matching \\texttt{seqscan\\_off} cell "
-        f"({dagger_count} cells).}}"
+        f"({dagger_count} cells). Recall between $0.9995$ and $1$ is printed to four decimals.}}"
     )
     tab = (
         "\\begin{tabular}{@{}ll" + "r" * len(PER_N_EFS) + "@{}}\n\\toprule\n"
@@ -1267,15 +1299,15 @@ def build_tab_perN_capacity(
         f"from three timed 200-question sweeps (\\texttt{{relaxed\\_order}}, "
         f"\\texttt{{max\\_scan\\_tuples}}$=20000$). "
         f"$^{{\\dagger}}$Default plan used sequential scan; latency from matching "
-        f"\\texttt{{seqscan\\_off}} twin ({lat_dagger_count} cells). "
-        "``Total MB'' is \\texttt{total\\_bytes}/$10^6$ (heap, TOAST, and indexes). "
-        "The 5k heap is small because vectors are stored out of line; build time is a single measurement; "
-        "the 100k build ran faster than the 75k build (parallel build workers; not interpreted).}"
+        f"\\texttt{{seqscan\\_off}} twin (the same probes run with \\texttt{{SET enable\\_seqscan=off}}; {lat_dagger_count} cells). "
+        "``Total MB'' is on-disk size, \\texttt{total\\_bytes}/$10^6$ (heap, TOAST, and indexes), not memory use; the measured memory working set is given in Sec.~\\ref{sec:perN}. The HNSW size is the same for both embedders because each index entry occupies one 8~kB page at these dimensions. Exact scans are not timed here; the exact scan of the 200 queries at $100$k took $43.7$~s on the original database (artifact \\texttt{exact\\_control\\_mvp}). "
+        "The 5k heap is small because vectors are stored out of line. Build time is the primary build (session setting \\texttt{max\\_parallel\\_maintenance\\_workers}$=4$, server default $2$); four further OpenAI builds per size took $2.2$--$2.3$~s at 5k, $50.2$--$56.0$~s at 75k and $25.1$--$29.9$~s at 100k. "
+        "The 100k builds are faster because PostgreSQL assigns parallel build workers only when the heap reaches $8$~MB (\\texttt{min\\_parallel\\_table\\_scan\\_size}), which happens between 75k ($881$ pages) and 100k ($1{,}175$); builds up to 75k ran serially (a 75k copy built in $50.6$~s serially and in $12.2$~s with workers allowed; artifact \\texttt{build\\_parallel\\_probe}).}"
     )
     tab = (
         "\\begin{tabular}{@{}llrrrrrrrr@{}}\n\\toprule\n"
         "Embedder & $N$ & Rows & Total MB & HNSW MB & Build s & "
-        "p50@200 & p95@200 & p50@800 & p95@800 \\\\\n\\midrule\n"
+        "p50@200 (ms) & p95@200 (ms) & p50@800 (ms) & p95@800 (ms) \\\\\n\\midrule\n"
         + "\n".join(rows)
         + f"\n\\bottomrule\n\\end{{tabular}}\n{foot}"
     )
@@ -1374,7 +1406,7 @@ def build_tab_rrf(track: SourceTracker) -> str:
     )
     return latex_table(
         label="tab:rrf",
-        caption="Dense, BM25 (\\texttt{dense\\_text}), and RRF fusion ($k{=}60$) on primary-200; paired bootstrap 95\\% CIs. The lower block gives the 5k$\\to$100k drop in Hit@10 and in MRR@10 with intervals.",
+        caption="Dense, BM25 (\\texttt{dense\\_text}), and RRF fusion ($k{=}60$) on primary-200; paired bootstrap 95\\% CIs. The lower block gives the 5k$\\to$100k drop in Hit@10 and in MRR@10 with intervals. Over all nine sizes, RRF minus dense Hit@10 ranges from $+0.110$ to $+0.150$. Intervals here come from this analysis's own bootstrap, which resamples the questions in a different order, and can differ by $0.005$ from other artifacts for the same quantity (e.g., the BM25 drop interval is $[0.080,0.170]$ here and $[0.080,0.175]$ in \\texttt{analysis\\_exact}).",
         tabular=tab,
         star=True,
     )
@@ -1469,7 +1501,7 @@ def build_tab_routing(track: SourceTracker) -> str:
         tab += "\n\\par\\smallskip\\footnotesize{" + " ".join(be_footnotes) + "}"
     return latex_table(
         label="tab:routing",
-        caption="Simulated metadata routing errors (expected Hit@10; MC over per-question oracle lists).",
+        caption="Simulated metadata routing errors (expected Hit@10; Monte Carlo over per-question oracle lists). Break-even $p$: the error rate at which expected Hit@10 falls to the unfiltered level, interpolated between $p{=}0$ and $p{=}1$ (expected Hit@10 is linear in $p$); \\emph{never}: not below the unfiltered level even at $p{=}1$. The artifact also stores an interpolation over the full $p$ grid, which differs by at most $0.002$.",
         tabular=tab,
         star=True,
     )
@@ -1843,7 +1875,7 @@ def build_tab_pool(track: SourceTracker) -> str:
         (
             "\\caption{Composition (\\% of the corpus, gold anchors included) of the $99{,}998$ embedded "
             "documents at each ladder size under the round-robin schedule; "
-            "document counts are the percentage times the ladder size; the ``Pool'' column is the number of documents extracted per source "
+            "document counts per source are in Table~\\ref{tab:poolcounts}; the ``Pool'' column is the number of documents extracted per source "
             f"({len(docs):,} in total).}}"
         ),
         "\\label{tab:pool}",
@@ -1867,6 +1899,49 @@ def escape_texttt_underscores(tex: str) -> str:
         return "\\texttt{" + inner + "}"
 
     return re.sub(r"\\texttt\{([^{}]*)\}", repl, tex)
+
+
+def build_tab_rrf_sens(track: SourceTracker) -> str:
+    """R1.4: RRF sensitivity to k and to the dense weight w (rrf_sensitivity.py)."""
+    path = REV1 / "rrf_sensitivity_openai_primary200.json"
+    data = load_json(path)
+    track.add("tab_rrf_sens.tex", path, ["cells"])
+    cells = {(int(c["k"]), float(c["w_dense"])): c for c in data["cells"]}
+    ks = (1, 10, 60, 200)
+    ws = (0.25, 0.4, 0.5, 0.6, 0.75)
+    rows = []
+    for w in ws:
+        out = [f"{w:.2f}"]
+        for k in ks:
+            c = cells[(k, w)]
+            out.append(f"{c['hit10_by_scale']['100000']:.3f} / {c['hit10_drop']['estimate']:.3f}")
+        rows.append(" & ".join(out) + " \\\\")
+    dense = cells[(60, 1.0)]
+    bm25 = cells[(60, 0.0)]
+    any_excl = [
+        (k, w) for (k, w), c in cells.items()
+        if 0.0 < w < 1.0 and (c["drop_minus_dense_drop_hit10"]["ci_lo"] > 0 or c["drop_minus_dense_drop_hit10"]["ci_hi"] < 0)
+    ]
+    note = ("no fused setting has a drop whose paired 95\\% interval of the difference from the dense drop excludes zero"
+            if not any_excl else f"{len(any_excl)} fused settings have a drop difference from dense whose interval excludes zero")
+    tab = (
+        "\\begin{tabular}{l" + "c" * len(ks) + "}\n\\toprule\n"
+        + "Dense weight $w$ & " + " & ".join(f"$k{{=}}{k}$" for k in ks) + " \\\\\n\\midrule\n"
+        + "\n".join(rows)
+        + "\n\\bottomrule\n\\end{tabular}"
+    )
+    return latex_table(
+        label="tab:rrfsens",
+        caption=(
+            "Weighted reciprocal rank fusion, $2[w/(k+r_{\\mathrm{dense}})+(1-w)/(k+r_{\\mathrm{BM25}})]$, on primary-200 "
+            "(exact dense top-100 and BM25 \\texttt{dense\\_text} top-100). Each cell gives Hit@10 at $100$k / Hit@10 drop "
+            f"from $5$k to $100$k. Dense alone: {dense['hit10_by_scale']['100000']:.3f} / {dense['hit10_drop']['estimate']:.3f}; "
+            f"BM25 alone: {bm25['hit10_by_scale']['100000']:.3f} / {bm25['hit10_drop']['estimate']:.3f}. "
+            f"The grid is evaluated on the test bank itself (in-sample), and {note}."
+        ),
+        tabular=tab,
+        star=False,
+    )
 
 
 def main() -> int:
@@ -1894,6 +1969,7 @@ def main() -> int:
         "tab_doclen.tex": build_tab_doclen(SOURCES),
         "tab_pool.tex": build_tab_pool(SOURCES),
         "tab_plan_audit.tex": build_tab_plan_audit(SOURCES),
+        "tab_rrf_sens.tex": build_tab_rrf_sens(SOURCES),
         "tab_old_vs_exact.tex": build_tab_old_vs_exact(SOURCES),
         "tab_ef_planner.tex": build_tab_ef_planner(SOURCES),
         "tab_fits.tex": build_tab_fits(SOURCES),
@@ -1937,7 +2013,8 @@ def main() -> int:
         "tab_bm25.tex": "BM25 truncation variants vs dense exact.",
         "tab_doclen.tex": "Corpus and gold document length stats.",
         "tab_pool.tex": "Pool size and source composition per ladder size (round-robin).",
-        "tab_plan_audit.tex": "HNSW plan share by PG port and ef_search.",
+        "tab_plan_audit.tex": "HNSW plan share by embedder, condition, PG port and ef_search.",
+        "tab_rrf_sens.tex": "RRF sensitivity to k and dense weight (R1.4).",
         "tab_old_vs_exact.tex": "Published HNSW vs exact Hit@10.",
         "tab_ef_planner.tex": "ef_search planner sweep at 100k (E2).",
         "tab_fits.tex": "Log-linear scale slopes (raw/meta_in) with bootstrap CIs.",

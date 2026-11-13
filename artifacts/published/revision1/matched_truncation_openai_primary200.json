@@ -1,0 +1,293 @@
+{
+ "meta": {
+  "created_at": "2026-11-13T17:23:20.940471+00:00",
+  "purpose": "R1.2 byte-identical input truncation for both embedders",
+  "n_documents_reembedded": 90,
+  "n_gold_anchors_among_them": 5,
+  "input_rule": "OpenAI input := Titan chunk_text (first 24,000 characters) for the 90 documents; all other 99,908 inputs were already identical",
+  "model": "text-embedding-3-small",
+  "tokens_used_this_run": 530917,
+  "cosine_original_vs_matched_vector": {
+   "min": 0.804888,
+   "median": 0.936812
+  },
+  "postgresql_version": "PostgreSQL 16.15 (Debian 16.15-1.pgdg12+2) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit",
+  "pgvector_version": "0.8.6",
+  "reproduction": "merge with the original 90 vectors reproduced all published raw and meta_in lists (fail closed)",
+  "bootstrap_B": 10000,
+  "bootstrap_seed": 42,
+  "scales": [
+   5000,
+   10000,
+   15000,
+   20000,
+   25000,
+   40000,
+   50000,
+   75000,
+   100000
+  ],
+  "conditions": [
+   "raw",
+   "meta_in"
+  ]
+ },
+ "summary": {
+  "raw": {
+   "hit10_matched": {
+    "5000": 0.8,
+    "10000": 0.74,
+    "15000": 0.715,
+    "20000": 0.68,
+    "25000": 0.67,
+    "40000": 0.645,
+    "50000": 0.64,
+    "75000": 0.595,
+    "100000": 0.585
+   },
+   "hit10_published": {
+    "5000": 0.795,
+    "10000": 0.735,
+    "15000": 0.71,
+    "20000": 0.68,
+    "25000": 0.67,
+    "40000": 0.645,
+    "50000": 0.64,
+    "75000": 0.595,
+    "100000": 0.585
+   },
+   "hit1_matched": {
+    "5000": 0.6,
+    "10000": 0.485,
+    "15000": 0.47,
+    "20000": 0.465,
+    "25000": 0.45,
+    "40000": 0.4,
+    "50000": 0.37,
+    "75000": 0.355,
+    "100000": 0.34
+   },
+   "questions_with_changed_list": {
+    "5000": 2,
+    "10000": 2,
+    "15000": 2,
+    "20000": 1,
+    "25000": 1,
+    "40000": 0,
+    "50000": 0,
+    "75000": 1,
+    "100000": 1
+   },
+   "questions_with_changed_hit10": {
+    "5000": 1,
+    "10000": 1,
+    "15000": 1,
+    "20000": 0,
+    "25000": 0,
+    "40000": 0,
+    "50000": 0,
+    "75000": 0,
+    "100000": 0
+   },
+   "drop_matched_95": {
+    "estimate": 0.215,
+    "ci_lo": 0.16,
+    "ci_hi": 0.275
+   },
+   "drop_matched_minus_published_95": {
+    "estimate": 0.005,
+    "ci_lo": 0.0,
+    "ci_hi": 0.015
+   },
+   "openai_matched_minus_titan_drop_90": {
+    "estimate": 0.04,
+    "ci_lo": -0.015,
+    "ci_hi": 0.095
+   },
+   "openai_published_minus_titan_drop_90": {
+    "estimate": 0.035,
+    "ci_lo": -0.02,
+    "ci_hi": 0.09
+   },
+   "openai_matched_minus_titan_level100k_90": {
+    "estimate": -0.025,
+    "ci_lo": -0.075,
+    "ci_hi": 0.02
+   }
+  },
+  "meta_in": {
+   "hit10_matched": {
+    "5000": 0.875,
+    "10000": 0.835,
+    "15000": 0.805,
+    "20000": 0.77,
+    "25000": 0.76,
+    "40000": 0.72,
+    "50000": 0.715,
+    "75000": 0.685,
+    "100000": 0.665
+   },
+   "hit10_published": {
+    "5000": 0.875,
+    "10000": 0.835,
+    "15000": 0.805,
+    "20000": 0.77,
+    "25000": 0.76,
+    "40000": 0.72,
+    "50000": 0.715,
+    "75000": 0.685,
+    "100000": 0.665
+   },
+   "hit1_matched": {
+    "5000": 0.685,
+    "10000": 0.585,
+    "15000": 0.57,
+    "20000": 0.54,
+    "25000": 0.53,
+    "40000": 0.46,
+    "50000": 0.44,
+    "75000": 0.415,
+    "100000": 0.395
+   },
+   "questions_with_changed_list": {
+    "5000": 2,
+    "10000": 2,
+    "15000": 2,
+    "20000": 2,
+    "25000": 2,
+    "40000": 1,
+    "50000": 2,
+    "75000": 2,
+    "100000": 2
+   },
+   "questions_with_changed_hit10": {
+    "5000": 0,
+    "10000": 0,
+    "15000": 0,
+    "20000": 0,
+    "25000": 0,
+    "40000": 0,
+    "50000": 0,
+    "75000": 0,
+    "100000": 0
+   },
+   "drop_matched_95": {
+    "estimate": 0.21,
+    "ci_lo": 0.155,
+    "ci_hi": 0.27
+   },
+   "drop_matched_minus_published_95": {
+    "estimate": 0.0,
+    "ci_lo": 0.0,
+    "ci_hi": 0.0
+   },
+   "openai_matched_minus_titan_drop_90": {
+    "estimate": 0.025,
+    "ci_lo": -0.03,
+    "ci_hi": 0.08
+   },
+   "openai_published_minus_titan_drop_90": {
+    "estimate": 0.025,
+    "ci_lo": -0.03,
+    "ci_hi": 0.08
+   },
+   "openai_matched_minus_titan_level100k_90": {
+    "estimate": -0.02,
+    "ci_lo": -0.065,
+    "ci_hi": 0.025
+   }
+  }
+ },
+ "doc_ids": [
+  "dsid_04f0a08d55d745ed9a4f53571b012697",
+  "dsid_05faa1ab6427403888a06d7083c7f0a9",
+  "dsid_090a4e39e8cf43eb87341670ea5e3a0f",
+  "dsid_1497f277d8574569a135162eb2591b71",
+  "dsid_1502b05e0688459b9120b68aacde72e7",
+  "dsid_1675bc4b34e846da964594efd539f21e",
+  "dsid_1d80a9bd5a584503bc9a3e90f9d2bbc8",
+  "dsid_208b49ccf28e430799b1f6743a498a8d",
+  "dsid_21066424d3cc4f3a956a77a7a5f5b0fb",
+  "dsid_224e79c59fb948ea9db587baa7488537",
+  "dsid_245bd098f80b4e6eb6e57466d36bd24f",
+  "dsid_26690647d18349be91cd9c89c516f782",
+  "dsid_26af962e0b6a46a793eeb25dd54b1e80",
+  "dsid_276ba73066244f258a6ac6842c5ed22b",
+  "dsid_2a7f83785aa54911860bb7cb9bcbd40e",
+  "dsid_2bebac79edb342d79b3bcd070a19c658",
+  "dsid_2bfa02417df74e88a9f9c75b604455cc",
+  "dsid_2cf17070e6eb487ea3820e73c2d336ea",
+  "dsid_2fb2685d7b734e22a7020e62eb35567c",
+  "dsid_338d7823f0b94f4bb02b020beb8919ba",
+  "dsid_38517717fc6848e8a3a4302b303af302",
+  "dsid_3956df230e1746d9a508eb0a80420fa2",
+  "dsid_3e792c1ffd11426b9ccfb819f067e516",
+  "dsid_414c8ca6a92f46fe831736cf0e35df60",
+  "dsid_46a4d80929554f98bdec1f3f63f3e9eb",
+  "dsid_47be1728c0f14038af3d711575245ba8",
+  "dsid_4e8e46e602544238a02652c6e9bb2bdb",
+  "dsid_4fe81e1d7f774e649aa69869556b8840",
+  "dsid_5170de915fdd451fbd4ae7b0776f551e",
+  "dsid_523df3a44bee447887707c0aa1f72996",
+  "dsid_58ca20423ede49fd82466120c6339dd5",
+  "dsid_5927bd46fb42418bb6732543b5138ea5",
+  "dsid_5a1cbc82593e4f17aa31110dbf07baa7",
+  "dsid_5ba60fc3cfcb4ac0995be95658b4f56f",
+  "dsid_5bc9e06d059d43f7aa5c5ff0fc00a5a5",
+  "dsid_5f24255e6dbe4ae085c66944f3a90eba",
+  "dsid_6411d0a053384f6eac6bdb8356f9b7e1",
+  "dsid_6467c99561554ed69e4807a2fe8fcc3a",
+  "dsid_6745fe604ee24ae2addb2f5e8a3e8ce1",
+  "dsid_6aff4d7b82fe48c1976591d17ac3aef9",
+  "dsid_6c4c1c875e704f09b4d791d64d7bc7e5",
+  "dsid_6c5a304df2624649ae057b3d2de3028d",
+  "dsid_6e028a3d8bee470c9619d43fd91c8ccc",
+  "dsid_6efa7c5f7d9e4b4ea564484501422f02",
+  "dsid_7328c766c5994fd2ad4a12e883570860",
+  "dsid_76403bcd93124ed4bd4bf61db6f81fc8",
+  "dsid_7884f28a415e4daa81556a7a829ec2d0",
+  "dsid_7b0514411b404df4b1fb1d6d137f81ed",
+  "dsid_7d9551aa21124d70b0e247c390d88622",
+  "dsid_7f135a2317d8414f9ac3040aef863a8e",
+  "dsid_7f9c3e359a414208a2a1e31f7373f21a",
+  "dsid_8430e5b6eb3642da9e68924fa3b50577",
+  "dsid_87a63fea810a4ac5ada21db7a186f886",
+  "dsid_88ebf2e7e64f4264994beb213591c750",
+  "dsid_8f80247ff66945138d72c6194b9f8509",
+  "dsid_918a2ba9aaf447ea9d9e076fc7212af7",
+  "dsid_91c4f66148554894b6f4d780d4841cb4",
+  "dsid_9482abf8c8744e2c90bbf847979b345b",
+  "dsid_96e8efcf1026486a946ecff1a78b6546",
+  "dsid_9ad2845335a24cbea55b53d43c855116",
+  "dsid_9b0079ccab5241aa88b1a6e36be2af2a",
+  "dsid_9b3274b3d8d549c4b8cabb2adce1534d",
+  "dsid_9d9afc869cac43c29d47fc8769ea4a88",
+  "dsid_9ec047f7be244f6fac5e4d8ba8f80dd4",
+  "dsid_9ed01291d81947f49500df5fb28ab724",
+  "dsid_a52a2354f2ef4a26be3e96dc2f9d6a63",
+  "dsid_a932c7a5b8b747e3a812a8d6899a6d68",
+  "dsid_a9e7653ef06347d4be8758825a0e3757",
+  "dsid_aa97b7293f9f4f3c8180f645e4fe5911",
+  "dsid_ab60c67cc4e149abbab804cfacf25999",
+  "dsid_af9a02a0c6f440e08afefb8f6ebf7b9e",
+  "dsid_bcf9d25732a642f790fd4332708aab44",
+  "dsid_c3a1725b680348cabc8a5bf9498e71c2",
+  "dsid_c4bd1ea6dcc84209b1d4c30aca74caea",
+  "dsid_c70d8bffc59745ccbcf1770df2ec6152",
+  "dsid_c9a813f512b746a0a8dd5eb64d6fbcda",
+  "dsid_cbe6b2509f5f4179a15b7d84349f8060",
+  "dsid_db83694d8fbe459dac9964665ab38ca9",
+  "dsid_dc29174c3c6a4aba82630af581c4d772",
+  "dsid_de5a4cfb2e144c4794ee943c2ec53b72",
+  "dsid_dfd104ad5c8749749d698a0fc767d597",
+  "dsid_e0c1e3cec31d45229facd21eee0fe0cc",
+  "dsid_e1bedcdb2fd34c9a9837a3dae2838a5d",
+  "dsid_e7dc193514a847dca1ba1d0ce6c33424",
+  "dsid_e9f58463031441dba9efed0f6f69457a",
+  "dsid_ebb3b8f95f9c4047b5df1bf8b8f9dca2",
+  "dsid_ed46ddd7c98941ada053d494eb7a27d6",
+  "dsid_f2d5557e5a66420ab69617b62d95bc79",
+  "dsid_f4b1003c13ac404ea2f8e982caaf4679",
+  "dsid_f6c3d51bad194475a884c2108b71ad45"
+ ]
+}

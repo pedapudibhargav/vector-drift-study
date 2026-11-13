@@ -1,0 +1,202 @@
+{
+  "bootstrap": {
+    "B": 10000,
+    "level": 0.95,
+    "seed": 42
+  },
+  "definition": "small = all listed source types in {confluence, jira, github, fireflies}; large = none of them; mixed = both",
+  "gap_by_ladder": {
+    "openai": {
+      "ci_hi": 0.24046511627906975,
+      "ci_lo": 0.0009302325581395376,
+      "large_drop": 0.27906976744186046,
+      "large_minus_small": 0.11906976744186046,
+      "small_drop": 0.16
+    },
+    "pool_prop_evalgold_s42_openai": {
+      "ci_hi": 0.21558139534883725,
+      "ci_lo": -0.03395348837209303,
+      "large_drop": 0.29069767441860467,
+      "large_minus_small": 0.09069767441860466,
+      "small_drop": 0.2
+    },
+    "pool_prop_s0_openai": {
+      "ci_hi": 0.21372093023255814,
+      "ci_lo": -0.03232558139534886,
+      "large_drop": 0.27906976744186046,
+      "large_minus_small": 0.08906976744186046,
+      "small_drop": 0.19
+    },
+    "pool_prop_s1_openai": {
+      "ci_hi": 0.23209302325581394,
+      "ci_lo": -0.012558139534883772,
+      "large_drop": 0.29069767441860467,
+      "large_minus_small": 0.11069767441860467,
+      "small_drop": 0.18
+    },
+    "pool_prop_s2_openai": {
+      "ci_hi": 0.25372093023255815,
+      "ci_lo": 0.010930232558139547,
+      "large_drop": 0.3023255813953488,
+      "large_minus_small": 0.1323255813953488,
+      "small_drop": 0.17
+    },
+    "pool_prop_s3_openai": {
+      "ci_hi": 0.24883720930232558,
+      "ci_lo": -0.002325581395348858,
+      "large_drop": 0.313953488372093,
+      "large_minus_small": 0.12395348837209302,
+      "small_drop": 0.19
+    },
+    "pool_prop_s42_openai": {
+      "ci_hi": 0.2669767441860465,
+      "ci_lo": 0.02069767441860465,
+      "large_drop": 0.313953488372093,
+      "large_minus_small": 0.143953488372093,
+      "small_drop": 0.17
+    },
+    "pool_prop_s4_openai": {
+      "ci_hi": 0.2669767441860465,
+      "ci_lo": 0.022558139534883725,
+      "large_drop": 0.313953488372093,
+      "large_minus_small": 0.143953488372093,
+      "small_drop": 0.17
+    },
+    "pool_prop_s5_openai": {
+      "ci_hi": 0.2172093023255814,
+      "ci_lo": -0.03232558139534886,
+      "large_drop": 0.3023255813953488,
+      "large_minus_small": 0.09232558139534883,
+      "small_drop": 0.21
+    },
+    "pool_prop_s6_openai": {
+      "ci_hi": 0.2153488372093023,
+      "ci_lo": -0.03232558139534886,
+      "large_drop": 0.29069767441860467,
+      "large_minus_small": 0.09069767441860466,
+      "small_drop": 0.2
+    },
+    "pool_prop_s7_openai": {
+      "ci_hi": 0.21209302325581394,
+      "ci_lo": -0.03395348837209303,
+      "large_drop": 0.27906976744186046,
+      "large_minus_small": 0.08906976744186046,
+      "small_drop": 0.19
+    },
+    "pool_prop_s8_openai": {
+      "ci_hi": 0.21046511627906975,
+      "ci_lo": -0.03395348837209303,
+      "large_drop": 0.27906976744186046,
+      "large_minus_small": 0.08906976744186046,
+      "small_drop": 0.19
+    },
+    "pool_rr_full_openai": {
+      "ci_hi": 0.24046511627906975,
+      "ci_lo": 0.0009302325581395376,
+      "large_drop": 0.27906976744186046,
+      "large_minus_small": 0.11906976744186046,
+      "small_drop": 0.16
+    },
+    "rr_s0_openai": {
+      "ci_hi": 0.21372093023255814,
+      "ci_lo": -0.022325581395348848,
+      "large_drop": 0.2558139534883721,
+      "large_minus_small": 0.0958139534883721,
+      "small_drop": 0.16
+    },
+    "rr_s0_titan": {
+      "ci_hi": 0.08255813953488372,
+      "ci_lo": -0.13697674418604652,
+      "large_drop": 0.16279069767441862,
+      "large_minus_small": -0.027209302325581386,
+      "small_drop": 0.19
+    },
+    "titan": {
+      "ci_hi": 0.07608139534883669,
+      "ci_lo": -0.13697674418604652,
+      "large_drop": 0.1511627906976744,
+      "large_minus_small": -0.028837209302325584,
+      "small_drop": 0.18
+    },
+    "uniform_s0_openai": {
+      "ci_hi": 0.17558139534883724,
+      "ci_lo": -0.06395348837209303,
+      "large_drop": 0.2441860465116279,
+      "large_minus_small": 0.054186046511627894,
+      "small_drop": 0.19
+    },
+    "uniform_s0_titan": {
+      "ci_hi": 0.07934302325581337,
+      "ci_lo": -0.13697674418604652,
+      "large_drop": 0.16279069767441862,
+      "large_minus_small": -0.027209302325581386,
+      "small_drop": 0.19
+    },
+    "uniform_s42_openai": {
+      "ci_hi": 0.18395348837209302,
+      "ci_lo": -0.055581395348837215,
+      "large_drop": 0.2441860465116279,
+      "large_minus_small": 0.0641860465116279,
+      "small_drop": 0.18
+    },
+    "uniform_s42_titan": {
+      "ci_hi": 0.0625581395348837,
+      "ci_lo": -0.1602325581395349,
+      "large_drop": 0.16279069767441862,
+      "large_minus_small": -0.047209302325581376,
+      "small_drop": 0.21
+    }
+  },
+  "groups": {
+    "large": {
+      "meta_in": {
+        "drop_5k_100k": 0.2790697674418604,
+        "hit10_100k": 0.5232558139534884,
+        "hit10_5k": 0.8023255813953488,
+        "hit10_full_pool": 0.4883720930232558
+      },
+      "n": 86,
+      "raw": {
+        "drop_5k_100k": 0.2790697674418604,
+        "hit10_100k": 0.4418604651162791,
+        "hit10_5k": 0.7209302325581395,
+        "hit10_full_pool": 0.3488372093023256
+      }
+    },
+    "mixed": {
+      "meta_in": {
+        "drop_5k_100k": 0.2142857142857143,
+        "hit10_100k": 0.7857142857142857,
+        "hit10_5k": 1.0,
+        "hit10_full_pool": 0.7142857142857143
+      },
+      "n": 14,
+      "raw": {
+        "drop_5k_100k": 0.1428571428571429,
+        "hit10_100k": 0.7857142857142857,
+        "hit10_5k": 0.9285714285714286,
+        "hit10_full_pool": 0.7142857142857143
+      }
+    },
+    "small": {
+      "meta_in": {
+        "drop_5k_100k": 0.15000000000000002,
+        "hit10_100k": 0.77,
+        "hit10_5k": 0.92,
+        "hit10_full_pool": 0.77
+      },
+      "n": 100,
+      "raw": {
+        "drop_5k_100k": 0.15999999999999992,
+        "hit10_100k": 0.68,
+        "hit10_5k": 0.84,
+        "hit10_full_pool": 0.63
+      }
+    }
+  },
+  "large_minus_small_drop": {
+    "ci_hi": 0.24046511627906975,
+    "ci_lo": 0.0009302325581395376,
+    "estimate": 0.11906976744186049
+  }
+}

@@ -5,7 +5,7 @@
 \small
 \fittext{\begin{tabular}{@{}llrrrrrrrr@{}}
 \toprule
-Embedder & $N$ & Rows & Total MB & HNSW MB & Build s & p50@200 & p95@200 & p50@800 & p95@800 \\
+Embedder & $N$ & Rows & Total MB & HNSW MB & Build s & p50@200 (ms) & p95@200 (ms) & p50@800 (ms) & p95@800 (ms) \\
 \midrule
 OpenAI & 5k & 5000 & 83.411 & 40.968 & 2.160 & 3.221 & 3.985 & 5.787$^{\dagger}$ & 6.724$^{\dagger}$ \\
 OpenAI & 10k & 10000 & 166.707 & 81.928 & 4.868 & 4.035 & 5.500 & 7.816$^{\dagger}$ & 9.485$^{\dagger}$ \\
@@ -27,5 +27,5 @@ Titan & 75k & 74999 & 1042.760 & 614.384 & 39.501 & 3.797 & 4.955 & 10.174 & 13.
 Titan & 100k & 99998 & 1390.420 & 819.175 & 13.239 & 4.063 & 5.374 & 10.438 & 13.780 \\
 \bottomrule
 \end{tabular}}
-\par\smallskip\footnotesize{Host shared with other processes; query latency indicative only. Latencies are the median and 95th percentile over questions of per-question medians from three timed 200-question sweeps (\texttt{relaxed\_order}, \texttt{max\_scan\_tuples}$=20000$). $^{\dagger}$Default plan used sequential scan; latency from matching \texttt{seqscan\_off} twin (4 cells). ``Total MB'' is \texttt{total\_bytes}/$10^6$ (heap, TOAST, and indexes). The 5k heap is small because vectors are stored out of line; build time is a single measurement; the 100k build ran faster than the 75k build (parallel build workers; not interpreted).}
+\par\smallskip\footnotesize{Host shared with other processes; query latency indicative only. Latencies are the median and 95th percentile over questions of per-question medians from three timed 200-question sweeps (\texttt{relaxed\_order}, \texttt{max\_scan\_tuples}$=20000$). $^{\dagger}$Default plan used sequential scan; latency from matching \texttt{seqscan\_off} twin (the same probes run with \texttt{SET enable\_seqscan=off}; 4 cells). ``Total MB'' is on-disk size, \texttt{total\_bytes}/$10^6$ (heap, TOAST, and indexes), not memory use; the measured memory working set is given in Sec.~\ref{sec:perN}. The HNSW size is the same for both embedders because each index entry occupies one 8~kB page at these dimensions. Exact scans are not timed here; the exact scan of the 200 queries at $100$k took $43.7$~s on the original database (artifact \texttt{exact\_control\_mvp}). The 5k heap is small because vectors are stored out of line. Build time is the primary build (session setting \texttt{max\_parallel\_maintenance\_workers}$=4$, server default $2$); four further OpenAI builds per size took $2.2$--$2.3$~s at 5k, $50.2$--$56.0$~s at 75k and $25.1$--$29.9$~s at 100k. The 100k builds are faster because PostgreSQL assigns parallel build workers only when the heap reaches $8$~MB (\texttt{min\_parallel\_table\_scan\_size}), which happens between 75k ($881$ pages) and 100k ($1{,}175$); builds up to 75k ran serially (a 75k copy built in $50.6$~s serially and in $12.2$~s with workers allowed; artifact \texttt{build\_parallel\_probe}).}
 \end{table*}
