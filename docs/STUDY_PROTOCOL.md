@@ -1,3 +1,5 @@
+> **Archived v1 document.** It describes the first release (v1.0.0-artifacts), whose HNSW-based numbers are superseded. The current results and procedures are in `artifacts/published/revision1/` and `docs/REPRODUCE_REVISION1.md`.
+
 # EnterpriseRAG-Bench Vector Drift Study Protocol
 
 **Manuscript:** IEEE Access submission — [`papers/ieee-vector-drift/access/main.tex`](../papers/ieee-vector-drift/access/main.tex)

@@ -1,3 +1,5 @@
+> **Archived v1 document.** It describes the first release (v1.0.0-artifacts), whose HNSW-based numbers are superseded. The current results and procedures are in `artifacts/published/revision1/` and `docs/REPRODUCE_REVISION1.md`.
+
 # Threats to Validity
 
 Mirrors Sec. VII of the IEEE Access manuscript (`papers/ieee-vector-drift/access/main.tex`).
