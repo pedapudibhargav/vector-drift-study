@@ -1846,8 +1846,11 @@ def acceptance_bytype_openai() -> list[tuple[str, bool, str]]:
 def build_tab_pool(track: SourceTracker) -> str:
     """Source composition of the round-robin ladder (counts include gold anchors)."""
     path = ROOT / "data" / "erb_scale_manifest.json"
-    manifest = load_json(path)
-    docs = manifest["documents"]
+    if path.exists():
+        docs = load_json(path)["documents"]
+    else:  # fresh clone: the committed compact manifest holds the same doc_id, source_type, scale_rank rows
+        path = ROOT / "artifacts" / "published" / "revision1" / "scale_manifest_compact.json"
+        docs = [{"doc_id": r[0], "source_type": r[1], "scale_rank": r[2]} for r in load_json(path)["documents"]]
     sources = sorted({d["source_type"] for d in docs})
     scales = [5000, 25000, 50000, 75000, 100000]
     pool = {s_: sum(1 for d in docs if d["source_type"] == s_) for s_ in sources}

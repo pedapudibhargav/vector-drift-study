@@ -1,14 +1,18 @@
 #!/usr/bin/env python3
 """Per-source document counts at all nine ladder sizes (round-robin ladder, gold anchors included).
-Reads data/chunk_study/docs.jsonl (doc_id, scale_rank, source_type for scale_rank<100000)."""
+Reads the committed artifacts/published/revision1/scale_manifest_compact.json (doc_id, source_type, scale_rank, gold flag)."""
 import json, collections
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
-SRC = ROOT / "data" / "chunk_study" / "docs.jsonl"
-if not SRC.exists():
-    SRC = ROOT.parent / "tagging-comparision-agents" / "data" / "chunk_study" / "docs.jsonl"
+SRC = ROOT / "artifacts" / "published" / "revision1" / "scale_manifest_compact.json"
 SIZES = [5000, 10000, 15000, 20000, 25000, 40000, 50000, 75000, 100000]
-docs = [json.loads(l) for l in open(SRC)]
+# the database holds one row per doc_id, so a duplicated manifest entry keeps only its lowest rank (rows are sorted by rank)
+seen = set()
+docs = []
+for r in json.load(open(SRC))["documents"]:
+    if r[2] < 100000 and r[0] not in seen:
+        seen.add(r[0])
+        docs.append({"doc_id": r[0], "source_type": r[1], "scale_rank": r[2]})
 srcs = sorted({d["source_type"] for d in docs})
 counts = {n: collections.Counter(d["source_type"] for d in docs if d["scale_rank"] < n) for n in SIZES}
 tot = {n: sum(counts[n].values()) for n in SIZES}
