@@ -17,7 +17,7 @@ lab = lambda n: f"{n//1000}k"
 rows = [" & ".join([nm(s)] + [f"{counts[n][s]:,}".replace(",", "{,}") for n in SIZES]) + " \\\\" for s in srcs]
 rows.append("\\midrule")
 rows.append(" & ".join(["Total"] + [f"{tot[n]:,}".replace(",", "{,}") for n in SIZES]) + " \\\\")
-cap = ("\\caption{Documents per source at every ladder size under the round-robin schedule (gold anchors included; sizes count documents with \\texttt{scale\\_rank}${<}N$, so $49{,}999$ and $99{,}998$ occur because two ranks are unused). A source stops growing once it is exhausted.}\n\\label{tab:poolcounts}\n")
+cap = ("\\caption{Documents per source at every ladder size under the round-robin schedule (gold anchors included; sizes count documents with \\texttt{scale\\_rank}${<}N$, so totals from $40\\text{k}$ on are one short, and two short at $100\\text{k}$, because ranks are unused). A source stops growing once it is exhausted.}\n\\label{tab:poolcounts}\n")
 tex = ("\\begin{table*}[t]\n" + cap + "\\centering\n\\small\n\\fittext{\\begin{tabular}{@{}l" + "r" * len(SIZES) + "@{}}\n\\toprule\nSource & "
        + " & ".join(lab(n) for n in SIZES) + " \\\\\n\\midrule\n" + "\n".join(rows)
        + "\n\\bottomrule\n\\end{tabular}}\n\\end{table*}\n")
