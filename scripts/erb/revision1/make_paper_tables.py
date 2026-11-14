@@ -563,7 +563,7 @@ def build_tab_drift_summary(track: SourceTracker) -> str:
             )
     tab = (
         "\\begin{tabular}{llrrrl}\n\\toprule\n"
-        "Arm & Condition & Hit@10 @5k & Hit@10 @100k & $\\Delta$Hit@10 & 95\\% CI \\\\"
+        "Arm & Condition & Hit@10 (5k) & Hit@10 (100k) & $\\Delta$Hit@10 & 95\\% CI \\\\"
         "\n\\midrule\n" + "\n".join(rows) + "\n\\bottomrule\n\\end{tabular}"
     )
     return latex_table(
@@ -842,7 +842,7 @@ def build_tab_doclen(track: SourceTracker) -> str:
         label="tab:doclen",
         caption=(
             "Length in characters of the embedded text (the title is part of it) of the $99{,}998$ ladder documents and of the $272$ gold documents "
-            "of the primary bank, the share above the BM25 caps ($4{,}000$ and $8{,}191$ characters; $72.0\\%$ and $21.1\\%$ of the ladder documents for the title-plus-text BM25 input, which repeats the title), and the counts above the "
+            "of the primary bank, the share above the BM25 caps ($4{,}000$ and $8{,}191$ characters; $72.0\\%$ and $21.1\\%$ of the ladder documents for the title-plus-text BM25 input, which repeats the title), and the counts at or above the "
             "OpenAI cap ($8{,}191$ cl100k tokens; $11$ documents, one a gold anchor, none a primary-bank gold document) and the "
             "Titan cap ($24{,}000$ characters)."
         ),
@@ -1297,7 +1297,7 @@ def build_tab_perN_capacity(
         "\\par\\smallskip\\footnotesize{Host shared with other processes; query latency indicative only. "
         "Latencies are the median and 95th percentile over questions of per-question medians "
         f"from three timed 200-question sweeps (\\texttt{{relaxed\\_order}}, "
-        f"\\texttt{{max\\_scan\\_tuples}}$=20000$). "
+        f"\\texttt{{max\\_scan\\_tuples}}${{=}}20000$). "
         f"$^{{\\dagger}}$Default plan used sequential scan; latency from matching "
         f"\\texttt{{seqscan\\_off}} twin (the same probes run with \\texttt{{SET enable\\_seqscan=off}}; {lat_dagger_count} cells). "
         "``Total MB'' is on-disk size, \\texttt{total\\_bytes}/$10^6$ (heap, TOAST, and indexes), not memory use; the measured memory working set is given in Sec.~\\ref{sec:perN}. The HNSW size is the same for both embedders because each index entry occupies one 8~kB page at these dimensions. Exact scans are not timed here; the exact scan of the 200 queries at $100$k took $43.7$~s on the original database (artifact \\texttt{exact\\_control\\_mvp}). "
