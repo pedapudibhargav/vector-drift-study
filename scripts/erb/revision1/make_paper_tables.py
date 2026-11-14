@@ -659,7 +659,7 @@ def build_tab_lift(track: SourceTracker) -> str:
     )
     return latex_table(
         label="tab:lift",
-        caption="Metadata lift (\\texttt{meta\\_in}$-$raw) with paired 95\\% bootstrap CIs; the text quotes the $90\\%$ intervals of the summary rows from Table~\\ref{tab:equiv}.",
+        caption="Metadata lift (\\texttt{meta\\_in}$-$raw) with paired 95\\% bootstrap CIs; the text quotes the $90\\%$ intervals of the summary rows from Appendix~\\ref{app:equiv}.",
         tabular=tab,
         star=True,
     )
@@ -805,7 +805,7 @@ def build_tab_bm25(track: SourceTracker) -> str:
     return latex_table(
         label="tab:bm25",
         caption=(
-            "Lexical vs dense Hit@10 across scales (primary-200). "
+            "Lexical vs.\\ dense Hit@10 across scales (primary-200). "
             "The last two rows give the 5k$\\to$100k drop difference (dense minus BM25) and its paired bootstrap 95\\% interval; BM25 variants marked (title+chunk) count the title twice."
         ),
         tabular=tab,
@@ -1238,7 +1238,7 @@ def build_tab_perN_recall(track: SourceTracker, openai: dict[str, Any], titan: d
     )
     return latex_table(
         label="tab:perNrecall",
-        caption="Per-size HNSW approximate search (raw, \\texttt{relaxed\\_order}): list recall@10 vs exact and Hit@10 loss.",
+        caption="Per-size HNSW approximate search (raw, \\texttt{relaxed\\_order}): list recall@10 vs.\\ exact and Hit@10 loss.",
         tabular=tab,
         star=True,
     )
@@ -1875,7 +1875,7 @@ def build_tab_pool(track: SourceTracker) -> str:
         (
             "\\caption{Composition (\\% of the corpus, gold anchors included) of the $99{,}998$ embedded "
             "documents at each ladder size under the round-robin schedule; "
-            "document counts per source are in Table~\\ref{tab:poolcounts}; the ``Pool'' column is the number of documents extracted per source "
+            "document counts per source are in Appendix~\\ref{app:exec}; the ``Pool'' column is the number of documents extracted per source "
             f"({len(docs):,} in total).}}"
         ),
         "\\label{tab:pool}",

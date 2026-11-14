@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-11-14T02:42:29.019013+00:00",
+  "created_at": "2026-11-14T03:51:30.604356+00:00",
   "script": "write_artifact_manifest.py",
   "files": {
     "artifacts/published/revision1/analysis_delta_meta.csv": {
@@ -1063,7 +1063,7 @@
       "path": "artifacts/published/revision1/paper_tables/README.md",
       "sha256": "a228e327afbf8a17c9d6068c4167a71c8ec9793022fb21d2f62acab53e3100a2",
       "script": null,
-      "created_at": "2026-11-14T02:42:01.685142+00:00",
+      "created_at": "2026-11-14T03:51:29.041489+00:00",
       "created_at_source": "file_mtime",
       "input_artifact_files": []
     },
@@ -1071,7 +1071,7 @@
       "path": "artifacts/published/revision1/paper_tables/_sources.json",
       "sha256": "2bdfb80daf6e0ce93638733207b76af73443a725946ad51936fe6c00eb4bbe62",
       "script": "make_paper_tables.py",
-      "created_at": "2026-11-14T02:42:01.685338+00:00",
+      "created_at": "2026-11-14T03:51:29.041690+00:00",
       "created_at_source": "file_mtime",
       "input_artifact_files": []
     },
@@ -1079,15 +1079,15 @@
       "path": "artifacts/published/revision1/paper_tables/_stats.json",
       "sha256": "20a7754bac6df12ea0f9266ce9fdacd67f5c90618308cfd08f1aac9e2942af16",
       "script": "make_paper_tables.py",
-      "created_at": "2026-11-14T02:42:01.685469+00:00",
+      "created_at": "2026-11-14T03:51:29.041833+00:00",
       "created_at_source": "file_mtime",
       "input_artifact_files": []
     },
     "artifacts/published/revision1/paper_tables/tab_bm25.tex": {
       "path": "artifacts/published/revision1/paper_tables/tab_bm25.tex",
-      "sha256": "89a93ac5d201ada91c27be6596009d4c47616bc80c616bd617645eecece39527",
+      "sha256": "b7a8173b0b8f548bb7578bb1e63c4a70f6308459f748313d56a6310a67253053",
       "script": "make_paper_tables.py",
-      "created_at": "2026-11-14T02:42:01.682349+00:00",
+      "created_at": "2026-11-14T03:51:29.038833+00:00",
       "created_at_source": "file_mtime",
       "input_artifact_files": []
     },
@@ -1095,7 +1095,7 @@
       "path": "artifacts/published/revision1/paper_tables/tab_bytype_exact.tex",
       "sha256": "8eed6e05e3dc0fa8d13f1e9e5b176feb082f17ca04b341220db16a31d2c62b97",
       "script": "make_paper_tables.py",
-      "created_at": "2026-11-14T02:42:01.684059+00:00",
+      "created_at": "2026-11-14T03:51:29.039723+00:00",
       "created_at_source": "file_mtime",
       "input_artifact_files": []
     },
@@ -1103,7 +1103,7 @@
       "path": "artifacts/published/revision1/paper_tables/tab_bytype_exact_titan.tex",
       "sha256": "9e015a9dee442a6bb73f22ce550662dd85eb6e9a89e48a1631dfc99611c2ab2e",
       "script": "make_paper_tables.py",
-      "created_at": "2026-11-14T02:42:01.684171+00:00",
+      "created_at": "2026-11-14T03:51:29.040341+00:00",
       "created_at_source": "file_mtime",
       "input_artifact_files": []
     },
@@ -1111,7 +1111,7 @@
       "path": "artifacts/published/revision1/paper_tables/tab_doclen.tex",
       "sha256": "ccff9563c7e3437d2ba0f4ab80119e62a6e7d547a23fc591a1394554bca4fcbb",
       "script": "make_paper_tables.py",
-      "created_at": "2026-11-14T02:42:01.682594+00:00",
+      "created_at": "2026-11-14T03:51:29.038948+00:00",
       "created_at_source": "file_mtime",
       "input_artifact_files": []
     },
@@ -1119,7 +1119,7 @@
       "path": "artifacts/published/revision1/paper_tables/tab_drift_summary.tex",
       "sha256": "6ce4d0d1286e6fb89e482092edd5500155fd271eb827371b78120e1fa38931aa",
       "script": "make_paper_tables.py",
-      "created_at": "2026-11-14T02:42:01.681619+00:00",
+      "created_at": "2026-11-14T03:51:29.038306+00:00",
       "created_at_source": "file_mtime",
       "input_artifact_files": []
     },
@@ -1127,7 +1127,7 @@
       "path": "artifacts/published/revision1/paper_tables/tab_ef_planner.tex",
       "sha256": "4a5d2abd0bc3ee1e8aeba5333a05ba5f4cffeeaf009895caf317b6560c8a02ae",
       "script": "make_paper_tables.py",
-      "created_at": "2026-11-14T02:42:01.683740+00:00",
+      "created_at": "2026-11-14T03:51:29.039496+00:00",
       "created_at_source": "file_mtime",
       "input_artifact_files": []
     },
@@ -1135,7 +1135,7 @@
       "path": "artifacts/published/revision1/paper_tables/tab_equiv.tex",
       "sha256": "1199dc511821cedcfc63f3dc36a024b28ca5113fc1c1c95c402650aeb156ebc2",
       "script": "make_paper_tables.py",
-      "created_at": "2026-11-14T02:42:01.681904+00:00",
+      "created_at": "2026-11-14T03:51:29.038548+00:00",
       "created_at_source": "file_mtime",
       "input_artifact_files": []
     },
@@ -1143,7 +1143,7 @@
       "path": "artifacts/published/revision1/paper_tables/tab_equiv_full.tex",
       "sha256": "c79c98e1d23c90092b634c1a5e0280e8058db76729827a46af8989c9c8fee404",
       "script": "make_paper_tables.py",
-      "created_at": "2026-11-14T02:42:01.682092+00:00",
+      "created_at": "2026-11-14T03:51:29.038710+00:00",
       "created_at_source": "file_mtime",
       "input_artifact_files": []
     },
@@ -1151,7 +1151,7 @@
       "path": "artifacts/published/revision1/paper_tables/tab_exact_n400.tex",
       "sha256": "a36f8e830411822e2898823061960e3448b90062a1d47bc45b5c4b54b9e54f7d",
       "script": "make_paper_tables.py",
-      "created_at": "2026-11-14T02:42:01.681044+00:00",
+      "created_at": "2026-11-14T03:51:29.038054+00:00",
       "created_at_source": "file_mtime",
       "input_artifact_files": []
     },
@@ -1159,7 +1159,7 @@
       "path": "artifacts/published/revision1/paper_tables/tab_exact_n400_full.tex",
       "sha256": "72d431b2207d38c82222eff33165b0ef83f328179b27d12a4b326cad7d860cbc",
       "script": "make_paper_tables.py",
-      "created_at": "2026-11-14T02:42:01.681457+00:00",
+      "created_at": "2026-11-14T03:51:29.038189+00:00",
       "created_at_source": "file_mtime",
       "input_artifact_files": []
     },
@@ -1167,7 +1167,7 @@
       "path": "artifacts/published/revision1/paper_tables/tab_exact_openai.tex",
       "sha256": "a431e983ea2595c31c504ac9d2732653489269a216d980c0f38ef080fb65cd40",
       "script": "make_paper_tables.py",
-      "created_at": "2026-11-14T02:42:01.679922+00:00",
+      "created_at": "2026-11-14T03:51:29.037539+00:00",
       "created_at_source": "file_mtime",
       "input_artifact_files": []
     },
@@ -1175,7 +1175,7 @@
       "path": "artifacts/published/revision1/paper_tables/tab_exact_titan.tex",
       "sha256": "87cfe317e13c8433cfdc79bdeb605e4f17edb627b8b1de4271b1d5c5524e31b2",
       "script": "make_paper_tables.py",
-      "created_at": "2026-11-14T02:42:01.680687+00:00",
+      "created_at": "2026-11-14T03:51:29.037903+00:00",
       "created_at_source": "file_mtime",
       "input_artifact_files": []
     },
@@ -1183,15 +1183,15 @@
       "path": "artifacts/published/revision1/paper_tables/tab_fits.tex",
       "sha256": "a015214f5c8323913f00ea281574d06cff3a357f4318170f75073fde14f74b80",
       "script": "make_paper_tables.py",
-      "created_at": "2026-11-14T02:42:01.683943+00:00",
+      "created_at": "2026-11-14T03:51:29.039608+00:00",
       "created_at_source": "file_mtime",
       "input_artifact_files": []
     },
     "artifacts/published/revision1/paper_tables/tab_lift.tex": {
       "path": "artifacts/published/revision1/paper_tables/tab_lift.tex",
-      "sha256": "f8b861955880ae84bc9eab80ffd4049dae7b868ee3a2ca6ffd6e9b119e92f5ea",
+      "sha256": "738a37ae7bc1afa6eed81fe78500504d1569fb5727b85d2d43631ab8ba371309",
       "script": "make_paper_tables.py",
-      "created_at": "2026-11-14T02:42:01.681770+00:00",
+      "created_at": "2026-11-14T03:51:29.038433+00:00",
       "created_at_source": "file_mtime",
       "input_artifact_files": []
     },
@@ -1199,7 +1199,7 @@
       "path": "artifacts/published/revision1/paper_tables/tab_old_vs_exact.tex",
       "sha256": "0254881531cc4d28297826971af1336419a53b52b93e4b6809ba70cf26879858",
       "script": "make_paper_tables.py",
-      "created_at": "2026-11-14T02:42:01.683539+00:00",
+      "created_at": "2026-11-14T03:51:29.039397+00:00",
       "created_at_source": "file_mtime",
       "input_artifact_files": []
     },
@@ -1207,7 +1207,7 @@
       "path": "artifacts/published/revision1/paper_tables/tab_perN_capacity.tex",
       "sha256": "5786144b87f8188b917ba4abb6205701c802d8e68903ae74b80bd26acb6991ba",
       "script": "make_paper_tables.py",
-      "created_at": "2026-11-14T02:42:01.684481+00:00",
+      "created_at": "2026-11-14T03:51:29.041027+00:00",
       "created_at_source": "file_mtime",
       "input_artifact_files": []
     },
@@ -1215,15 +1215,15 @@
       "path": "artifacts/published/revision1/paper_tables/tab_perN_meta.tex",
       "sha256": "0064ac9c62984b3ea085a28e774154423c969990f20cea912fa00c4f72521895",
       "script": "make_paper_tables.py",
-      "created_at": "2026-11-14T02:42:01.684652+00:00",
+      "created_at": "2026-11-14T03:51:29.041135+00:00",
       "created_at_source": "file_mtime",
       "input_artifact_files": []
     },
     "artifacts/published/revision1/paper_tables/tab_perN_recall.tex": {
       "path": "artifacts/published/revision1/paper_tables/tab_perN_recall.tex",
-      "sha256": "300efd0b13e1cd225fee5d56f7e957db7722985e7edb8e6a207d48eed9018925",
+      "sha256": "5a52a8eff833124a10e2624d50df1dc6cca31a58eca83e88c0678f0e709e5bb0",
       "script": "make_paper_tables.py",
-      "created_at": "2026-11-14T02:42:01.684332+00:00",
+      "created_at": "2026-11-14T03:51:29.040894+00:00",
       "created_at_source": "file_mtime",
       "input_artifact_files": []
     },
@@ -1231,15 +1231,15 @@
       "path": "artifacts/published/revision1/paper_tables/tab_plan_audit.tex",
       "sha256": "854ed36816b12619aef1b62923ad537b80162b092cbaf2eb8f5227c7fbdd8769",
       "script": "make_paper_tables.py",
-      "created_at": "2026-11-14T02:42:01.683088+00:00",
+      "created_at": "2026-11-14T03:51:29.039158+00:00",
       "created_at_source": "file_mtime",
       "input_artifact_files": []
     },
     "artifacts/published/revision1/paper_tables/tab_pool.tex": {
       "path": "artifacts/published/revision1/paper_tables/tab_pool.tex",
-      "sha256": "3cdb0993e441501b7a40d4928ee99f87079b1461632993a31f4c91d3c5c24f58",
+      "sha256": "57ca68670a272dc0002b329cb2ecf5d1343b136c337c26073af3d933ef98bcb3",
       "script": "make_paper_tables.py",
-      "created_at": "2026-11-14T02:42:01.682834+00:00",
+      "created_at": "2026-11-14T03:51:29.039051+00:00",
       "created_at_source": "file_mtime",
       "input_artifact_files": []
     },
@@ -1263,7 +1263,7 @@
       "path": "artifacts/published/revision1/paper_tables/tab_routing.tex",
       "sha256": "9402f2dad5f4ebdabe5f64e39d533117be857330363bc7dd55e0fa7f3fc8b26f",
       "script": "make_paper_tables.py",
-      "created_at": "2026-11-14T02:42:01.685024+00:00",
+      "created_at": "2026-11-14T03:51:29.041381+00:00",
       "created_at_source": "file_mtime",
       "input_artifact_files": []
     },
@@ -1271,7 +1271,7 @@
       "path": "artifacts/published/revision1/paper_tables/tab_rrf.tex",
       "sha256": "f23ea6dfec2c7dba5cb8b0a9773e4db58b860a77e7e7f479ae656cf5779639e4",
       "script": "make_paper_tables.py",
-      "created_at": "2026-11-14T02:42:01.684882+00:00",
+      "created_at": "2026-11-14T03:51:29.041236+00:00",
       "created_at_source": "file_mtime",
       "input_artifact_files": []
     },
@@ -1279,7 +1279,7 @@
       "path": "artifacts/published/revision1/paper_tables/tab_rrf_sens.tex",
       "sha256": "b8c433dde5962a3d1d0fc4685e8aac2b559950f0bb51a39a6cf7c60cb3070039",
       "script": "make_paper_tables.py",
-      "created_at": "2026-11-14T02:42:01.683314+00:00",
+      "created_at": "2026-11-14T03:51:29.039287+00:00",
       "created_at_source": "file_mtime",
       "input_artifact_files": []
     },
@@ -1407,7 +1407,7 @@
       "path": "artifacts/published/revision1/pool_counts_by_source.json",
       "sha256": "67c6eb6c6367110a3997961a576a9c6d814536c47c5f8c770da5d4e7e3405000",
       "script": "make_pool_counts_table.py",
-      "created_at": "2026-11-14T02:42:27.857200+00:00",
+      "created_at": "2026-11-14T03:45:41.670179+00:00",
       "created_at_source": "file_mtime",
       "input_artifact_files": []
     },
