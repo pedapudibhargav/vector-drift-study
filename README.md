@@ -11,6 +11,7 @@ Controlled study of how dense-retrieval Hit@$k$ drifts as an EnterpriseRAG-Bench
 | **Study protocol** | [docs/STUDY_PROTOCOL.md](docs/STUDY_PROTOCOL.md) |
 | **Replication** | [docs/REPLICATE.md](docs/REPLICATE.md) |
 | **IEEE Access manuscript** | [papers/ieee-vector-drift/access/](papers/ieee-vector-drift/access/) |
+| **Third-party data** | EnterpriseRAG-Bench (MIT License, Copyright (c) 2026 DanswerAI, Inc.); see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) |
 
 ## What you can do on GitHub Pages (no Postgres)
 
