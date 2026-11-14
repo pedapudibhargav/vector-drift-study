@@ -647,8 +647,9 @@ def build_tab_lift(track: SourceTracker) -> str:
     summary_lines = [r.replace(f"\\multicolumn{{{n_arms + 1}}}{{l}}{{", "", 1).rsplit("}", 1)[0] + " \\\\" for r in summary_rows]
     foot = (
         "\\bottomrule\n\\end{tabular}\n"
-        "\\par\\smallskip\n{\\footnotesize\\begin{tabular}{@{}l@{}}\n" + "\n".join(summary_lines) + "\n\\end{tabular}}\n"
-        f"\\par\\smallskip\n\\parbox{{0.8\\textwidth}}{{\\footnotesize\\raggedright Legacy \\texttt{{meta\\_first}} lift (meta$-$raw): {', '.join(meta_first_note)}.}}"
+        "\\par\\smallskip\n{\\footnotesize\\begin{tabular}{@{}l@{}}\n" + "\n".join(summary_lines) + "\n"
+        f"Legacy \\texttt{{meta\\_first}} lift (meta$-$raw): {', '.join(meta_first_note)}. \\\\\n"
+        "\\end{tabular}}"
     )
     tab = (
         f"\\begin{{tabular}}{{l{'r' * n_arms}}}\n\\toprule\n"
